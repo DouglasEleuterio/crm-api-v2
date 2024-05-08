@@ -32,7 +32,6 @@ public class ApplicationProperties {
     private String resourceReportFolder;
     private String corsOrigin;
     private boolean debugEmail;
-    private String storageType;
     private String minioUrl;
     private String minioAccessKey;
     private String minioSecretKey;
