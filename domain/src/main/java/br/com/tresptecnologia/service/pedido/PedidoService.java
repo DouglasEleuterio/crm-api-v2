@@ -1,4 +1,4 @@
-package br.com.tresptecnologia.service;
+package br.com.tresptecnologia.service.pedido;
 
 
 import br.com.tresptecnologia.core.service.IBaseActiveService;

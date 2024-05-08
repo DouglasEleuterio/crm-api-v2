@@ -10,4 +10,5 @@
     <include file="/db/migration/changes/20240108-2-pedido.sql"/>
     <include file="/db/migration/changes/20240109-1-produto.sql"/>
     <include file="/db/migration/changes/20240109-2-item-de-pedido.sql"/>
+    <include file="/db/migration/changes/20240805-1-add-arquivo.sql"/>
 </databaseChangeLog>

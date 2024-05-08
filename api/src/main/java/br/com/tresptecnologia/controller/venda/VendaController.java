@@ -10,7 +10,7 @@ import br.com.tresptecnologia.entity.Pedido;
 import br.com.tresptecnologia.model.pedido.PedidoMapper;
 import br.com.tresptecnologia.model.pedido.PedidoRequest;
 import br.com.tresptecnologia.model.pedido.PedidoResponse;
-import br.com.tresptecnologia.service.PedidoService;
+import br.com.tresptecnologia.service.pedido.PedidoService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

@@ -1,4 +1,4 @@
-package br.com.tresptecnologia.service;
+package br.com.tresptecnologia.service.pedido;
 
 import br.com.tresptecnologia.core.exception.DomainException;
 import br.com.tresptecnologia.core.jpa.mapper.JsonMapper;
@@ -6,7 +6,6 @@ import br.com.tresptecnologia.core.repository.BaseRepository;
 import br.com.tresptecnologia.core.service.BaseActiveService;
 import br.com.tresptecnologia.entity.Pedido;
 import br.com.tresptecnologia.model.pagamento.Pagamento;
-import br.com.tresptecnologia.model.pedido.PedidoMapper;
 import br.com.tresptecnologia.repository.pedido.PedidoRepository;
 import br.com.tresptecnologia.service.rabbit.RabbitMQService;
 import lombok.NonNull;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Function;
 
 
 @Service

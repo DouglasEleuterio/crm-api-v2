@@ -9,6 +9,9 @@ import br.com.tresptecnologia.core.email.impl.EmailService;
 import br.com.tresptecnologia.email.EmailHtmlParserService;
 import br.com.tresptecnologia.service.auth.IOAuthLogoutStrategy;
 import br.com.tresptecnologia.service.auth.logout.OAuthLogoutKeycloakStrategy;
+import br.com.tresptecnologia.service.storage.IStorageService;
+import br.com.tresptecnologia.service.storage.MinioStorageService;
+import io.minio.MinioClient;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
@@ -98,6 +101,16 @@ public class ApplicationConfig {
     public IOAuthLogoutStrategy authLogoutStrategy(RestTemplate restTemplate) {
         return new OAuthLogoutKeycloakStrategy(restTemplate, applicationProperties.getAuth());
     }
+
+    @Bean
+    public IStorageService storageService() {
+            MinioClient minioClient =
+                    MinioClient.builder()
+                            .endpoint(applicationProperties.getMinioUrl())
+                            .credentials(applicationProperties.getMinioAccessKey(), applicationProperties.getMinioSecretKey())
+                            .build();
+            return new MinioStorageService(minioClient);
+        }
 
     @Bean
     public IEmailService emailService(final JavaMailSender javaMailSender,
