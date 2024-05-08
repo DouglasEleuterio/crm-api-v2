@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.0.4</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>br.com.tresptecnologia</groupId>
+    <artifactId>vendas-backend</artifactId>
+    <packaging>pom</packaging>
+    <version>${revision}</version>
+
+    <name>Projeto Base</name>
+    <description>Projeto Base para Demais Aplicações</description>
+
+    <properties>
+        <revision>1.0.0</revision>
+        <project.java.version>17</project.java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <project.lombok.version>1.18.26</project.lombok.version>
+
+        <project.hibernate.version>6.1.7.Final</project.hibernate.version>
+
+        <project.springboot.version>3.0.4</project.springboot.version>
+        <project.spring.version>6.0.7</project.spring.version>
+
+        <jacoco-maven-puglin>0.8.7</jacoco-maven-puglin>
+        <project.liquibase.version>4.20.0</project.liquibase.version>
+        <project.springdoc.version>2.0.2</project.springdoc.version>
+
+        <project.rsql-parser.version>2.1.0</project.rsql-parser.version>
+
+        <project.flatten-maven-plugin.version>1.2.7</project.flatten-maven-plugin.version>
+        <project.jacoco-maven-puglin.version>0.8.7</project.jacoco-maven-puglin.version>
+
+        <project.mapstruct.version>1.5.1.Final</project.mapstruct.version>
+        <project.mapstruct.lombok.version>0.2.0</project.mapstruct.lombok.version>
+
+        <project.jeasy.version>6.1.7</project.jeasy.version>
+
+        <project.maven-sonar-plugin.version>3.7.0.1746</project.maven-sonar-plugin.version>
+<!--        <sonar.host.url>https://sonar.fabricacrp.com.br</sonar.host.url>-->
+<!--        <sonar.projectKey>Springboot.Arquitetura.Backend</sonar.projectKey>-->
+<!--        <sonar.projectName>Springboot.Arquitetura.Backend</sonar.projectName>-->
+
+        <sonar.coverage.exclusions>
+            **/br/com/tresptecnologia/entity/**/*,
+            **/br/com/tresptecnologia/enumeration/**/*,
+            **/br/com/tresptecnologia/model/**/*,
+            **/br/com/tresptecnologia/repository/**/*,
+            **/br/com/tresptecnologia/core/**/*,
+            **/br/com/tresptecnologia/config/**/*,
+            **/br/com/tresptecnologia/shared/validation/**/*,
+            **/br/com/tresptecnologia/shared/util/**/*,
+        </sonar.coverage.exclusions>
+
+        <sonar.coverage.jacoco.xmlReportPaths>
+            ${project.basedir}/../api/target/site/jacoco/jacoco.xml,
+            ${project.basedir}/../api/target/site/jacoco-aggregate/jacoco.xml
+        </sonar.coverage.jacoco.xmlReportPaths>
+
+    </properties>
+
+    <modules>
+        <module>tools-annotations</module>
+        <module>domain</module>
+        <module>api</module>
+    </modules>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+
+        <profile>
+            <id>prod</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+        </profile>
+    </profiles>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>${project.maven-sonar-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${project.jacoco-maven-puglin.version}</version>
+                <executions>
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <version>${project.flatten-maven-plugin.version}</version>
+                <configuration>
+                    <updatePomFile>true</updatePomFile>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>flatten</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>flatten</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>flatten.clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

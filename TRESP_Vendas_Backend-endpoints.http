@@ -1,0 +1,56 @@
+###
+POST http://localhost:8070/vendas
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJVN0Z1M0FVUERfOTlybXpIaG5Rd1Y3R1o2VzNydWh6eTBBUkpLakRLRlB3In0.eyJleHAiOjE3MDQ4Njc3NzUsImlhdCI6MTcwNDg0OTc3NCwiYXV0aF90aW1lIjoxNzA0ODQ5NzcyLCJqdGkiOiJmZmU3NjY0Yy1iYmRkLTQ2NmYtOWI2OC0xMzFjMDliZWY3YzIiLCJpc3MiOiJodHRwOi8vM3Atb2F1dGguZGRucy5uZXQ6ODA4My9hdXRoL3JlYWxtcy92ZW5kYXMiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiN2VhMTMwNDYtZmEwZi00ZmFjLWE5NzMtMzYwZGYyMWE2MzUzIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoidmVuZGFzIiwic2Vzc2lvbl9zdGF0ZSI6ImQxZGMxMGQzLTlhOTYtNDllZi1hZWRiLWIwMjUyMmViMzAwNiIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDo0MjAxIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIiwiZGVmYXVsdC1yb2xlcy12ZW5kYXMiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9mZmxpbmVfYWNjZXNzIHByb2ZpbGUgZW1haWwiLCJzaWQiOiJkMWRjMTBkMy05YTk2LTQ5ZWYtYWVkYi1iMDI1MjJlYjMwMDYiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IkRvdWdsYXMgRWxldXRlcmlvIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiYWRtaW5AbWFpbC5jb20iLCJnaXZlbl9uYW1lIjoiRG91Z2xhcyIsImZhbWlseV9uYW1lIjoiRWxldXRlcmlvIn0.LMfPICsD5-6OnMd4aztClKTOtsEvwMDmkqdCjoL3S8YHI4awBtZ_onyXYIo2vcV5UmSns2vFUrDeynojDSD_Y8gjjeEelmJCDrhAIj9YtjEYCBg0dNgJOzSsXzIV0GdQH5BhDFVJSr1ieMRW1w5mn3XRXUu8-k6PqgqKBNcQllAVAqrBVDlzgXfi3d0PiIQOxV8bUHkeXnQrRN5OrUFjjOfReo16LVdEyvuYyhzgEewqUrM4BK25PRtMlS_ESlaDXj1M0Bll_aZ9Yb1e3DB5wkdy2joKW6JhJhDekToxagtVuNJx8u0shLMMAb592eJRZJdm252M3gNZPAo38GITXA
+
+{
+  "cliente": {
+    "nome": "Douglas Eleuterio",
+    "telefone": "62935616591"
+  },
+  "itens": [
+    {
+      "quantidade": 1,
+      "produto": {
+        "nome": "Mouse",
+        "preco": 109.99
+      }
+    },
+    {
+      "quantidade": 3,
+      "produto": {
+        "nome": "Monitor 27'",
+        "preco": 2109.99
+      }
+    }
+  ],
+  "pagamentos": [
+    {
+      "formaDePagamento": {
+        "nome": "Cartão de Debito",
+        "isAceitaParcelamento": false
+      },
+      "quantidadeParcelas": 1,
+      "parcelas": [],
+      "valor": 109.99
+    },
+    {
+      "formaDePagamento": {
+        "nome": "Cartão de Crédito",
+        "isAceitaParcelamento": true
+      },
+      "quantidadeParcelas": 3,
+      "parcelas": [
+        {"data": "2023-04-01", "valor": 2104.99},
+        {"data": "2023-05-01", "valor": 2104.99},
+        {"data": "2023-06-01", "valor": 2104.99}
+      ],
+      "valor": 6314.97
+    }
+  ],
+  "valorTotalItens": 6439.96,
+  "desconto": 15.00,
+  "valorTotal": 6424.96
+}
+
+

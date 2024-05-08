@@ -1,0 +1,57 @@
+version: "3.7"
+
+services:
+  crm-api-v2:
+    image: douglaseleuterioferreira/apps:api
+    networks:
+      - minha_rede
+    #    ports:
+    #      - 8070:8070
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.crm-api-v2.rule=Host(`crm-api-v2.3ptecnologia.com.br`)
+        - traefik.http.routers.crm-api-v2.entrypoints=websecure
+        - traefik.http.routers.crm-api-v2.tls.certresolver=letsencryptresolver
+        - traefik.http.routers.crm-api-v2.priority=1
+        - traefik.http.routers.crm-api-v2.service=crm-api-v2
+        - traefik.http.services.crm-api-v2.loadbalancer.server.port=8070
+        - traefik.http.services.crm-api-v2.loadbalancer.passHostHeader=true
+    environment:
+      - API_URL=${API_URL}
+      - API_ENV=${API_ENV}
+      - APP_DEFAULT_USER_NAME=${APP_DEFAULT_USER_NAME}
+      - APP_EXIBIR_EXCEPTION_STACKTRACE=${APP_EXIBIR_EXCEPTION_STACKTRACE}
+      - APP_EXIBIR_AUTORIZACAO=${APP_EXIBIR_AUTORIZACAO}
+      - APP_IGNORAR_AUTORIZACAO=${APP_IGNORAR_AUTORIZACAO}
+      - APP_CORS_ORIGEM=${APP_CORS_ORIGEM}
+      - APP_CLAIM_NAME=${APP_CLAIM_NAME}
+      - OAUTH_TOKEN_URL=${OAUTH_TOKEN_URL}
+      - OAUTH_LOGOUT_URL=${OAUTH_LOGOUT_URL}
+      - OAUTH_REDIRECT_LOGOUT_URL=${OAUTH_REDIRECT_LOGOUT_URL}
+      - OAUTH_CLIENT_ID=${OAUTH_CLIENT_ID}
+      - OAUTH_CLIENT_SECRET=${OAUTH_CLIENT_SECRET}
+      - OAUTH_REDIRECT_URI=${OAUTH_REDIRECT_URI}
+      - OAUTH_RESOURCE_SERVER_ISSUER_URI=${OAUTH_RESOURCE_SERVER_ISSUER_URI}
+      - SERVER_PORT=${SERVER_PORT}
+      - CONTEXT_PATH=${CONTEXT_PATH}
+      - APP_LOGGING_LEVEL=${APP_LOGGING_LEVEL}
+      - EMAIL_HOST=${EMAIL_HOST}
+      - EMAIL_PORT=${EMAIL_PORT}
+      - EMAIL_USERNAME=${EMAIL_USERNAME}
+      - EMAIL_PASSWORD=${EMAIL_PASSWORD}
+      - EMAIL_SMTP_AUTH=${EMAIL_SMTP_AUTH}
+      - EMAIL_START_TLS=${EMAIL_START_TLS}
+      - OPEN_API_ENABLE=${OPEN_API_ENABLE}
+      - OPEN_API_ACTUATOR_ENABLE=${OPEN_API_ACTUATOR_ENABLE}
+      - ACTUATOR_ENABLE=${ACTUATOR_ENABLE}
+      - ACTUATOR_ENDPOINT_EXPOSE=${ACTUATOR_ENDPOINT_EXPOSE}
+      - DATABASE_CONNECTION_STRING=${DATABASE_CONNECTION_STRING}
+      - DATABASE_USERNAME=${DATABASE_USERNAME}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+      - DATABASE_SCHEMA=${DATABASE_SCHEMA}
+
+networks:
+  minha_rede:
+    name: minha_rede
+    external: true

@@ -1,0 +1,1 @@
+insert into exemplo (id, nome, descricao, data_criacao, data_atualizacao, situacao) values (1, 'Teste de Nome', 'Teste de Descrição', TIMESTAMP '2022-09-23 16:59:16.000000', TIMESTAMP '2023-08-01 17:08:54.000000', true);
