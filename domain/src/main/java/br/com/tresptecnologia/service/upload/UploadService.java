@@ -4,6 +4,7 @@ import br.com.tresptecnologia.core.audit.AuditRevisionInfo;
 import br.com.tresptecnologia.core.config.ApplicationProperties;
 import br.com.tresptecnologia.core.exception.DomainException;
 import br.com.tresptecnologia.core.message.Message;
+import br.com.tresptecnologia.enumeration.EnumSituacaoArquivo;
 import br.com.tresptecnologia.model.arquivo.ArquivoMapper;
 import br.com.tresptecnologia.model.upload.AnexoUploadResponse;
 import br.com.tresptecnologia.model.upload.ArquivoUploadResponse;
@@ -15,6 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,6 +60,7 @@ public class UploadService implements IUploadService {
             toSave.setNome(NomeArquivoUtils.getName(toSave.getNome()));
             toSave.setUsuarioId(userInfo.getUserId());
             toSave.setUsuarioNome(userInfo.getUserName());
+            toSave.setSituacaoArquivo(EnumSituacaoArquivo.PENDENTE);
 
             arquivoRepository.save(toSave);
 
@@ -86,8 +89,8 @@ public class UploadService implements IUploadService {
         if (file.getSize() > applicationProperties.getTamanhoMaximoAnexo()) {
             throw new DomainException(Message.toLocale("error-tamanho-anexo"));
         }
-//        if (tiposSuportados.isEmpty() || tiposSuportados.stream().filter(tp -> tp.getNome().equals(file.getContentType())).findFirst().isEmpty())
-//            throw new DomainException(Message.toLocale("error-tipo-arquivo-anexo"));
+        if (!file.getContentType().equals("text/xml"))
+            throw new DomainException(Message.toLocale("error-tipo-arquivo-anexo"));
     }
 
 }

@@ -6,7 +6,10 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,6 +30,8 @@ import java.time.LocalDateTime;
 public class Arquivo extends BaseEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_ARQUIVO")
+    @SequenceGenerator(name = "SQ_ARQUIVO", sequenceName = "SQ_ARQUIVO", allocationSize = 1)
     @Column(name = "arq_id", nullable = false, length = 36)
     private Long id;
 
@@ -51,22 +56,9 @@ public class Arquivo extends BaseEntity {
     @Column(name = "arq_nm_usuario")
     private String usuarioNome;
 
-    @Column(name = "arq_dh_criacao")
-    private LocalDateTime dataCriacao;
-
     @Builder.Default
     @Enumerated(EnumType.STRING)
     @Column(name = "arq_cd_situacao", nullable = false, length = 20)
     private EnumSituacaoArquivo situacaoArquivo = EnumSituacaoArquivo.PENDENTE;
 
-    public static Arquivo of(MultipartFile multipartFile, String bucket, String path) {
-        return Arquivo.builder()
-                .nome(multipartFile.getOriginalFilename())
-                .contentType(multipartFile.getContentType())
-                .size(multipartFile.getSize())
-                .path(path)
-                .bucket(bucket)
-                .dataCriacao(LocalDateTime.now())
-                .build();
-    }
 }

@@ -1,5 +1,6 @@
 package br.com.tresptecnologia.service.audit;
 
+import br.com.tresptecnologia.core.audit.AuditRevisionInfo;
 import br.com.tresptecnologia.core.audit.IAuditRevisionInfo;
 import br.com.tresptecnologia.core.audit.model.AuditRevisionUserInfo;
 import br.com.tresptecnologia.core.config.ApplicationProperties;
@@ -18,6 +19,7 @@ public class AuditRevisionInfoService implements IAuditRevisionInfo {
 
     public AuditRevisionInfoService(final ApplicationProperties applicationProperties) {
         this.applicationProperties = applicationProperties;
+        AuditRevisionInfo.setAuditRevisionInfoService(this);
     }
 
     @Override
@@ -31,7 +33,7 @@ public class AuditRevisionInfoService implements IAuditRevisionInfo {
 
             if (authentication.getPrincipal() instanceof Jwt jwt) {
                 info.setUserId(jwt.getClaimAsString("sub"));
-                info.setUserName(jwt.getClaimAsString("prefered_username"));
+                info.setUserName(jwt.getClaimAsString("preferred_username"));
             } else {
                 info.setUserName(applicationProperties.getDefaultAppName());
             }

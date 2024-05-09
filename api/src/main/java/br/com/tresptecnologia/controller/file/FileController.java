@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -24,10 +25,10 @@ public class FileController {
         this.uploadService = uploadService;
     }
 
-    @PostMapping("/")
+    @PostMapping
     @Operation(description = "Enviar arquivo para Upload")
-    public AnexoUploadResponse upload(@RequestParam("file") MultipartFile file) throws DomainException {
-        return uploadService.upload(file);
+    public List<AnexoUploadResponse> upload(@RequestParam("file") MultipartFile[] file) throws DomainException {
+        return uploadService.upload(Arrays.stream(file).toList());
     }
 
     @PostMapping("/list")

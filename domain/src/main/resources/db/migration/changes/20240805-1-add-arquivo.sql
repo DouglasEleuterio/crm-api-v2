@@ -17,3 +17,11 @@ CREATE TABLE arq_arquivo
     arq_cd_situacao      VARCHAR2(20)   NOT NULL,
     CONSTRAINT pk_arq_arquivo PRIMARY KEY (arq_id)
 );
+--changeset douglas.ferreira:add-sequence-arquivo
+CREATE SEQUENCE SQ_ARQUIVO START WITH 1 INCREMENT BY 1;
+
+--changeset douglas.ferreira:edit-remove-data-criacao-duplicado
+ALTER TABLE ARQ_ARQUIVO drop column arq_dh_criacao;
+ALTER TABLE ARQ_ARQUIVO drop column data_atualizacao;
+--changeset douglas.ferreira:edit-add-data-criacao-duplicado
+ALTER TABLE ARQ_ARQUIVO add data_atualizacao TIMESTAMP NOT NULL;

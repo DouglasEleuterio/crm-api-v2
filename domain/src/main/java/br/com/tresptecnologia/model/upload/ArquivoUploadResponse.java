@@ -26,7 +26,6 @@ public class ArquivoUploadResponse {
 
     public static ArquivoUploadResponse of(MultipartFile multipartFile, MiniIOProperties miniIOProperties) {
         return ArquivoUploadResponse.builder()
-                .id(UUID.randomUUID().toString())
                 .nome(multipartFile.getOriginalFilename())
                 .contentType(multipartFile.getContentType())
                 .size(multipartFile.getSize())
