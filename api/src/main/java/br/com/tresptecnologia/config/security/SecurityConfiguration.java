@@ -53,10 +53,12 @@ public class SecurityConfiguration {
             for (final ApplyAuthority applyAuthority : interfaces) {
                 applyAuthority.configure(http);
             }
+            http.authorizeHttpRequests().anyRequest().authenticated();
+        } else {
+            http.authorizeHttpRequests().anyRequest().permitAll();
         }
 
-        http.authorizeHttpRequests().anyRequest().authenticated()
-                .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+        http.authorizeHttpRequests().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
                 .exceptionHandling()
