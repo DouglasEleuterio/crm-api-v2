@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nfeProc xmlns="http://www.portalfiscal.inf.br/nfe" versao="4.00">
+    <NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+        <infNFe Id="NFe52240426651646001447550010011401801916828862" versao="4.00">
+            <ide>
+                <cUF>52</cUF>
+                <cNF>91682886</cNF>
+                <natOp>VENDA ESTADUAL</natOp>
+                <mod>55</mod>
+                <serie>1</serie>
+                <nNF>1140180</nNF>
+                <dhEmi>2024-04-12T14:23:00-03:00</dhEmi>
+                <dhSaiEnt>2024-04-12T14:23:00-03:00</dhSaiEnt>
+                <tpNF>1</tpNF>
+                <idDest>1</idDest>
+                <cMunFG>5201108</cMunFG>
+                <tpImp>1</tpImp>
+                <tpEmis>1</tpEmis>
+                <cDV>2</cDV>
+                <tpAmb>1</tpAmb>
+                <finNFe>1</finNFe>
+                <indFinal>0</indFinal>
+                <indPres>9</indPres>
+                <indIntermed>0</indIntermed>
+                <procEmi>0</procEmi>
+                <verProc>12.1.2210 | 3.0</verProc>
+            </ide>
+            <emit>
+                <CNPJ>26651646001447</CNPJ>
+                <xNome>CDA ALIMENTOS S.A. EM RECUPERACAO JUDICIAL</xNome>
+                <xFant>CDA01</xFant>
+                <enderEmit>
+                    <xLgr>VI - L2 Quadra 1-B Modulo 03 Bloco A</xLgr>
+                    <nro>SN</nro>
+                    <xCpl>Bloco A</xCpl>
+                    <xBairro>DAIA</xBairro>
+                    <cMun>5201108</cMun>
+                    <xMun>ANAPOLIS</xMun>
+                    <UF>GO</UF>
+                    <CEP>75135010</CEP>
+                    <cPais>1058</cPais>
+                    <xPais>BRASIL</xPais>
+                    <fone>006240153500</fone>
+                </enderEmit>
+                <IE>104271892</IE>
+                <CRT>3</CRT>
+            </emit>
+            <dest>
+                <CNPJ>11048724000121</CNPJ>
+                <xNome>FABIO DAMACENO PINTO - ME</xNome>
+                <enderDest>
+                    <xLgr>R JOSE DE DEUS</xLgr>
+                    <nro>SN</nro>
+                    <xCpl>QUADRA 01 LOTE 01 TERRENO</xCpl>
+                    <xBairro>RODRIGUES</xBairro>
+                    <cMun>5220280</cMun>
+                    <xMun>SAO PATRICIO</xMun>
+                    <UF>GO</UF>
+                    <CEP>76343000</CEP>
+                    <cPais>1058</cPais>
+                    <xPais>BRASIL</xPais>
+                    <fone>6285767519</fone>
+                </enderDest>
+                <indIEDest>1</indIEDest>
+                <IE>104581670</IE>
+                <email>fabiodamacenop@yahoo.com.br;genezioneto@hotmail.com</email>
+            </dest>
+            <det nItem="1">
+                <prod>
+                    <cProd>11210105</cProd>
+                    <cEAN>17898461320047</cEAN>
+                    <xProd>ARROZ TIO JORGE TIPO 1 6X5 Lote: 042401A</xProd>
+                    <NCM>10063021</NCM>
+                    <cBenef>GO821010</cBenef>
+                    <CFOP>5101</CFOP>
+                    <uCom>FD</uCom>
+                    <qCom>26.0000</qCom>
+                    <vUnCom>161.00000000</vUnCom>
+                    <vProd>4186.00</vProd>
+                    <cEANTrib>17898461320047</cEANTrib>
+                    <uTrib>FD</uTrib>
+                    <qTrib>26.0000</qTrib>
+                    <vUnTrib>161.00000000</vUnTrib>
+                    <indTot>1</indTot>
+                </prod>
+                <imposto>
+                    <ICMS>
+                        <ICMS20>
+                            <orig>0</orig>
+                            <CST>20</CST>
+                            <modBC>3</modBC>
+                            <pRedBC>41.6667</pRedBC>
+                            <vBC>2441.83</vBC>
+                            <pICMS>12.0000</pICMS>
+                            <vICMS>293.02</vICMS>
+                        </ICMS20>
+                    </ICMS>
+                    <IPI>
+                        <cEnq>999</cEnq>
+                        <IPINT>
+                            <CST>53</CST>
+                        </IPINT>
+                    </IPI>
+                    <PIS>
+                        <PISNT>
+                            <CST>06</CST>
+                        </PISNT>
+                    </PIS>
+                    <COFINS>
+                        <COFINSNT>
+                            <CST>06</CST>
+                        </COFINSNT>
+                    </COFINS>
+                </imposto>
+            </det>
+            <det nItem="2">
+                <prod>
+                    <cProd>11210305</cProd>
+                    <cEAN>17898461320153</cEAN>
+                    <xProd>ARROZ GOL BRANCO T1 6X5 Lote: 042401A</xProd>
+                    <NCM>10063021</NCM>
+                    <cBenef>GO821010</cBenef>
+                    <CFOP>5101</CFOP>
+                    <uCom>FD</uCom>
+                    <qCom>12.0000</qCom>
+                    <vUnCom>148.25000000</vUnCom>
+                    <vProd>1779.00</vProd>
+                    <cEANTrib>17898461320153</cEANTrib>
+                    <uTrib>FD</uTrib>
+                    <qTrib>12.0000</qTrib>
+                    <vUnTrib>148.25000000</vUnTrib>
+                    <indTot>1</indTot>
+                </prod>
+                <imposto>
+                    <ICMS>
+                        <ICMS20>
+                            <orig>0</orig>
+                            <CST>20</CST>
+                            <modBC>3</modBC>
+                            <pRedBC>41.6667</pRedBC>
+                            <vBC>1037.75</vBC>
+                            <pICMS>12.0000</pICMS>
+                            <vICMS>124.53</vICMS>
+                        </ICMS20>
+                    </ICMS>
+                    <IPI>
+                        <cEnq>999</cEnq>
+                        <IPINT>
+                            <CST>53</CST>
+                        </IPINT>
+                    </IPI>
+                    <PIS>
+                        <PISNT>
+                            <CST>06</CST>
+                        </PISNT>
+                    </PIS>
+                    <COFINS>
+                        <COFINSNT>
+                            <CST>06</CST>
+                        </COFINSNT>
+                    </COFINS>
+                </imposto>
+            </det>
+            <det nItem="3">
+                <prod>
+                    <cProd>11210405</cProd>
+                    <cEAN>17898461320115</cEAN>
+                    <xProd>ARROZ PAINHO TIPO 1 6X5 Lote: 042401A</xProd>
+                    <NCM>10063021</NCM>
+                    <cBenef>GO821010</cBenef>
+                    <CFOP>5101</CFOP>
+                    <uCom>FD</uCom>
+                    <qCom>12.0000</qCom>
+                    <vUnCom>147.19000000</vUnCom>
+                    <vProd>1766.28</vProd>
+                    <cEANTrib>17898461320115</cEANTrib>
+                    <uTrib>FD</uTrib>
+                    <qTrib>12.0000</qTrib>
+                    <vUnTrib>147.19000000</vUnTrib>
+                    <indTot>1</indTot>
+                </prod>
+                <imposto>
+                    <ICMS>
+                        <ICMS20>
+                            <orig>0</orig>
+                            <CST>20</CST>
+                            <modBC>3</modBC>
+                            <pRedBC>41.6667</pRedBC>
+                            <vBC>1030.33</vBC>
+                            <pICMS>12.0000</pICMS>
+                            <vICMS>123.64</vICMS>
+                        </ICMS20>
+                    </ICMS>
+                    <IPI>
+                        <cEnq>999</cEnq>
+                        <IPINT>
+                            <CST>53</CST>
+                        </IPINT>
+                    </IPI>
+                    <PIS>
+                        <PISNT>
+                            <CST>06</CST>
+                        </PISNT>
+                    </PIS>
+                    <COFINS>
+                        <COFINSNT>
+                            <CST>06</CST>
+                        </COFINSNT>
+                    </COFINS>
+                </imposto>
+            </det>
+            <total>
+                <ICMSTot>
+                    <vBC>4509.91</vBC>
+                    <vICMS>541.19</vICMS>
+                    <vICMSDeson>0</vICMSDeson>
+                    <vFCPUFDest>0</vFCPUFDest>
+                    <vICMSUFDest>0</vICMSUFDest>
+                    <vICMSUFRemet>0</vICMSUFRemet>
+                    <vFCP>0</vFCP>
+                    <vBCST>0</vBCST>
+                    <vST>0</vST>
+                    <vFCPST>0</vFCPST>
+                    <vFCPSTRet>0</vFCPSTRet>
+                    <vProd>7731.28</vProd>
+                    <vFrete>0</vFrete>
+                    <vSeg>0</vSeg>
+                    <vDesc>0</vDesc>
+                    <vII>0</vII>
+                    <vIPI>0</vIPI>
+                    <vIPIDevol>0</vIPIDevol>
+                    <vPIS>0</vPIS>
+                    <vCOFINS>0</vCOFINS>
+                    <vOutro>0</vOutro>
+                    <vNF>7731.28</vNF>
+                </ICMSTot>
+            </total>
+            <transp>
+                <modFrete>0</modFrete>
+                <transporta>
+                    <CNPJ>20661904000175</CNPJ>
+                    <xNome>ALMEIDA E CLAUDINO TRANSPORTES LTDA</xNome>
+                    <IE>106248251</IE>
+                    <xEnder>RUA  LILI ANTONIO DA SILVA</xEnder>
+                    <xMun>PETROLINA DE GOIAS</xMun>
+                    <UF>GO</UF>
+                </transporta>
+                <veicTransp>
+                    <placa>EGU0I80</placa>
+                    <UF>GO</UF>
+                </veicTransp>
+                <vol>
+                    <qVol>1</qVol>
+                    <pesoL>1500.000</pesoL>
+                    <pesoB>1508.000</pesoB>
+                </vol>
+            </transp>
+            <cobr>
+                <fat>
+                    <nFat>001001140180</nFat>
+                    <vOrig>7731.28</vOrig>
+                    <vDesc>0</vDesc>
+                    <vLiq>7731.28</vLiq>
+                </fat>
+                <dup>
+                    <nDup>001</nDup>
+                    <dVenc>2024-05-03</dVenc>
+                    <vDup>2577.09</vDup>
+                </dup>
+                <dup>
+                    <nDup>002</nDup>
+                    <dVenc>2024-05-10</dVenc>
+                    <vDup>2577.09</vDup>
+                </dup>
+                <dup>
+                    <nDup>003</nDup>
+                    <dVenc>2024-05-17</dVenc>
+                    <vDup>2577.10</vDup>
+                </dup>
+            </cobr>
+            <pag>
+                <detPag>
+                    <indPag>1</indPag>
+                    <tPag>15</tPag>
+                    <vPag>7731.28</vPag>
+                </detPag>
+            </pag>
+            <infAdic>
+                <infAdFisco>Base de calculo reduzida de maneira que a carga tributaria seja equivalente a aliquota de
+                    7%. Conforme art. 4 Lei 19.930 de 29.12.2017. Produto: 11210105 CERTIFICADO DE CLASSIFICACAO DF
+                    000068 39143 Produto: 11210305 CERTIFICADO DE CLASSIFICACAO DF 000068 39144 Produto: 11210405
+                    CERTIFICADO DE CLASSIFICACAO DF 000068 39145
+                </infAdFisco>
+                <infCpl>Caso nao tenha recebido o XML entrar em contato (62) 4015-3500, e-mail
+                    faturamento.go@cdaraguaia.com.br ; Carga:091937 ; Cod.:97899; P.V.:99JOHT ; R.C.:A1104 LUCAS
+                    GONCALVES Tel:62994764723 ; G.V.:DR01 ROGERIO JOSE DA Tel:6299084753; 21-28-35 DIAS - BOLETO
+                    BANCARIO; Nome Fantasia Cliente: SUPERMERCADO DAMACENO; ; - ; - CONFERIR AS MERCADORIAS NO ATO DA
+                    ENTREGA, NAO ACEITAMOS RECLAMACOES POSTERIORES
+                </infCpl>
+            </infAdic>
+        </infNFe>
+        <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+            <SignedInfo>
+                <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+                <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+                <Reference URI="#NFe52240426651646001447550010011401801916828862">
+                    <Transforms>
+                        <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+                        <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+                    </Transforms>
+                    <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+                    <DigestValue>kWHp1tfeisrlNwmq/ayHflkeEIY=</DigestValue>
+                </Reference>
+            </SignedInfo>
+            <SignatureValue>
+                EOWqUXRQZaYo7DIGmeTJsa9GfOlhvA3FnlDPQTEyt38xzbhB++4QJmAlCStTT3/vwckVWZs/lp3j5t+17/o5ecUIwgVTgIDlkDEuKe9BWkATItw+oV9mzKrOgonhuUTP71d6ikkjQo7swek6qBnRdeTGlMh25kkRWQLVEV+h9QIbkKdvI8YHJlTiJ6uMAuXWsG4qHp7HQXnKaar/ZGy3i6F4eML6Lrz2n/AdHHTv89CUSAr+gilceNuHQrxBM3e9kQ1i85U5Yb9/ndspHl7HtSlK2KJIQWqbvB94H7HwBmlGs/bsM5x56HDo+AWX+U5ezpxBs/WMD3tdvQ81eNxydA==
+            </SignatureValue>
+            <KeyInfo>
+                <X509Data>
+                    <X509Certificate>
+                        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
+                    </X509Certificate>
+                </X509Data>
+            </KeyInfo>
+        </Signature>
+    </NFe>
+    <protNFe versao="4.00">
+        <infProt Id="ID152247434365613">
+            <tpAmb>1</tpAmb>
+            <verAplic>0.0.1</verAplic>
+            <chNFe>52240426651646001447550010011401801916828862</chNFe>
+            <dhRecbto>2024-04-12T14:53:34-03:00</dhRecbto>
+            <nProt>152247434365613</nProt>
+            <digVal>kWHp1tfeisrlNwmq/ayHflkeEIY=</digVal>
+            <cStat>100</cStat>
+            <xMotivo>Autorizado o uso da NF-e</xMotivo>
+        </infProt>
+    </protNFe>
+</nfeProc>
