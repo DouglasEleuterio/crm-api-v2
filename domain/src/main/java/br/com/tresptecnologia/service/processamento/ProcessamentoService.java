@@ -8,7 +8,7 @@ import br.com.tresptecnologia.enumeration.ESituacaoProcessamento;
 import br.com.tresptecnologia.enumeration.EnumSituacaoArquivo;
 import br.com.tresptecnologia.service.ParseService;
 import br.com.tresptecnologia.service.arquivo.IArquivoService;
-import br.com.tresptecnologia.service.aux.AuxiliarService;
+import br.com.tresptecnologia.service.auxiliar.AuxiliarService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.util.Strings;
