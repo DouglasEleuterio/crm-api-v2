@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 public interface ArquivoRepository extends BaseRepository<Arquivo> {
 
-//    @Query(value = "from Arquivo arq where arq.situacaoArquivo =:situacao")
-    List<Arquivo> findAllBySituacaoArquivo(EnumSituacaoArquivo situacaoArquivo);
+    @Query(value = "from Arquivo arq where arq.situacaoArquivo =:situacaoArquivo")
+    List<Arquivo> findBySituacaoArquivo(EnumSituacaoArquivo situacaoArquivo);
 }

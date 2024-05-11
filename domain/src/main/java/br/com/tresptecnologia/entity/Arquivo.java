@@ -16,9 +16,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -58,7 +55,7 @@ public class Arquivo extends BaseEntity {
 
     @Builder.Default
     @Enumerated(EnumType.STRING)
-    @Column(name = "arq_cd_situacao", nullable = false, length = 20)
+    @Column(name = "arq_cd_situacao", nullable = false)
     private EnumSituacaoArquivo situacaoArquivo = EnumSituacaoArquivo.PENDENTE;
 
     @Column(name = "ARQ_DS_ERRO")

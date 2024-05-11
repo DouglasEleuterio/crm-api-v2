@@ -16,6 +16,6 @@ public class ArquivoService implements IArquivoService {
 
     @Override
     public List<Arquivo> getAllNaoProcessado() {
-        return arquivoRepository.findAllBySituacaoArquivo(EnumSituacaoArquivo.PENDENTE);
+        return arquivoRepository.findBySituacaoArquivo(EnumSituacaoArquivo.PENDENTE);
     }
 }

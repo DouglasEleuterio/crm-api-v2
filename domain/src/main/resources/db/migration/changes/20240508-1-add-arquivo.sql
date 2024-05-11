@@ -27,3 +27,5 @@ ALTER TABLE ARQ_ARQUIVO drop column data_atualizacao;
 ALTER TABLE ARQ_ARQUIVO add data_atualizacao TIMESTAMP NOT NULL;
 --changeset douglas.ferreira:edit-arquivo-add-mensagem-erro
 ALTER TABLE ARQ_ARQUIVO add ARQ_DS_ERRO varchar2(2000);
+--changeset douglas.ferreira:edit-arquivo-change-situacao-size
+ALTER TABLE ARQ_ARQUIVO MODIFY arq_cd_situacao      VARCHAR2(255);

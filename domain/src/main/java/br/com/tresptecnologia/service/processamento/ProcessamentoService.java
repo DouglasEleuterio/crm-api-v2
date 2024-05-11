@@ -6,11 +6,9 @@ import br.com.tresptecnologia.enumeration.EOrigemProcessamento;
 import br.com.tresptecnologia.enumeration.ESituacaoFinalizacao;
 import br.com.tresptecnologia.enumeration.ESituacaoProcessamento;
 import br.com.tresptecnologia.enumeration.EnumSituacaoArquivo;
-import br.com.tresptecnologia.repository.arquivo.ArquivoRepository;
-import br.com.tresptecnologia.repository.processamento.ProcessamentoRepository;
-import br.com.tresptecnologia.repository.xml.XmlRepository;
 import br.com.tresptecnologia.service.ParseService;
 import br.com.tresptecnologia.service.arquivo.IArquivoService;
+import br.com.tresptecnologia.service.aux.AuxiliarService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.util.Strings;
@@ -23,20 +21,19 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProcessamentoService implements IProcessamentoService {
 
-    private final ProcessamentoRepository repository;
     private final IArquivoService arquivoService;
     private final ParseService parseService;
-    private final ArquivoRepository arquivoRepository;
-    private final XmlRepository xmlRepository;
+
+    private final AuxiliarService auxiliarService;
 
     @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     @Override
     public void alterarSituacaoProcessamentosPresos(List<Processamento> proceList) {
-            proceList.forEach(proc -> {
-                proc.setSituacaoProcessamento(ESituacaoProcessamento.FINALIZADO);
-                proc.setSituacaoFinalizacao(ESituacaoFinalizacao.INATIVIDADE);
-            });
-            repository.saveAllAndFlush(proceList);
+        proceList.forEach(proc -> {
+            proc.setSituacaoProcessamento(ESituacaoProcessamento.FINALIZADO);
+            proc.setSituacaoFinalizacao(ESituacaoFinalizacao.INATIVIDADE);
+        });
+        auxiliarService.saveProcessamento(proceList);
     }
 
     @Transactional(value = Transactional.TxType.REQUIRES_NEW)
@@ -50,7 +47,7 @@ public class ProcessamentoService implements IProcessamentoService {
                 .origemProcessamento(origemProcessamento)
                 .quantidadeParaProcessar(arquivos.isEmpty() ? 0L : (long) arquivos.size())
                 .build();
-        repository.saveAndFlush(proc);
+        auxiliarService.saveProcessamento(proc);
 
         processar(arquivos, proc);
     }
@@ -58,32 +55,36 @@ public class ProcessamentoService implements IProcessamentoService {
     @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     protected void processar(List<Arquivo> arquivos, Processamento proc) {
         proc.setQuantidadeErro(0L);
-        proc.setQuantidadeProcessada(0L);        for (Arquivo arquivo : arquivos) {
+        proc.setQuantidadeProcessada(0L);
+        for (Arquivo arquivo : arquivos) {
             try {
 
                 var xml = parseService.convertArquivoToXml(arquivo);
-                arquivo.setSituacaoArquivo(EnumSituacaoArquivo.PROCESSADO);
+                auxiliarService.saveXml(xml);
 
-                xml.setArquivo(arquivo);
+                arquivo.setSituacaoArquivo(EnumSituacaoArquivo.PROCESSADO);
+                var arqSaved = auxiliarService.saveArquivo(arquivo);
+
+                xml.setArquivo(arqSaved);
+                auxiliarService.saveXml(xml);
 
                 proc.setUltimoProcessamento(LocalDateTime.now());
+                proc.setQuantidadeProcessada(proc.getQuantidadeProcessada() + 1);
 
-                xmlRepository.saveAndFlush(xml);
-                arquivoRepository.saveAndFlush(arquivo);
-                repository.saveAndFlush(proc);
+                auxiliarService.saveProcessamento(proc);
             } catch (Exception e) {
 
                 proc.setQuantidadeErro(proc.getQuantidadeErro() + 1);
 
-                arquivo.setErro(Strings.isEmpty(e.getMessage()) ? "erro desconhecido" : e.getMessage()  );
+                arquivo.setErro(Strings.isEmpty(e.getMessage()) ? "erro desconhecido" : e.getMessage());
                 arquivo.setSituacaoArquivo(EnumSituacaoArquivo.ERRO_NO_PROCESSAMENTO);
-                arquivoRepository.saveAndFlush(arquivo);
+                auxiliarService.saveArquivo(arquivo);
             }
         }
         proc.setSituacaoFinalizacao(ESituacaoFinalizacao.SUCESSO);
         proc.setFim(LocalDateTime.now());
         proc.setSituacaoProcessamento(ESituacaoProcessamento.FINALIZADO);
 
-        repository.saveAndFlush(proc);
+        auxiliarService.saveProcessamento(proc);
     }
 }

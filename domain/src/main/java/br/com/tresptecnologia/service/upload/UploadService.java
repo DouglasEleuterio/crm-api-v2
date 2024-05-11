@@ -10,15 +10,14 @@ import br.com.tresptecnologia.model.upload.AnexoUploadResponse;
 import br.com.tresptecnologia.model.upload.ArquivoUploadResponse;
 import br.com.tresptecnologia.repository.arquivo.ArquivoRepository;
 import br.com.tresptecnologia.service.storage.IStorageService;
-import br.com.tresptecnologia.shared.util.NomeArquivoUtils;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Slf4j
 @Service
@@ -48,7 +47,7 @@ public class UploadService implements IUploadService {
             log.debug("Iniciando o envio do arquivo ao MinIO");
 
             final var arquivoResponse = ArquivoUploadResponse.of(file, applicationProperties.getMiniIOProperties());
-            var nomeOriginal = NomeArquivoUtils.getNovoNomeOriginal(arquivoResponse.getNome());
+            var nomeOriginal = file.getOriginalFilename();
 
             storageService.upload(applicationProperties.getMiniIOProperties().getBucket(),
                     applicationProperties.getMiniIOProperties().getPath(),
@@ -57,7 +56,7 @@ public class UploadService implements IUploadService {
             log.debug("Finalizado o envio do arquivo ao MinIO");
 
             var toSave = arquivoMapper.fromRequest(arquivoResponse);
-            toSave.setNome(NomeArquivoUtils.getName(toSave.getNome()));
+            toSave.setNome(nomeOriginal);
             toSave.setUsuarioId(userInfo.getUserId());
             toSave.setUsuarioNome(userInfo.getUserName());
             toSave.setSituacaoArquivo(EnumSituacaoArquivo.PENDENTE);
@@ -89,7 +88,7 @@ public class UploadService implements IUploadService {
         if (file.getSize() > applicationProperties.getTamanhoMaximoAnexo()) {
             throw new DomainException(Message.toLocale("error-tamanho-anexo"));
         }
-        if (!file.getContentType().equals("text/xml"))
+        if (Objects.nonNull(file.getContentType()) && !file.getContentType().equals("text/xml"))
             throw new DomainException(Message.toLocale("error-tipo-arquivo-anexo"));
     }
 

@@ -4,13 +4,9 @@ import br.com.tresptecnologia.core.exception.DomainException;
 import br.com.tresptecnologia.entity.Arquivo;
 import br.com.tresptecnologia.entity.notafiscal.XML;
 import br.com.tresptecnologia.service.storage.IStorageService;
-import br.com.tresptecnologia.service.storage.MinioStorageService;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.io.File;
 
 @Service
 @RequiredArgsConstructor
@@ -18,7 +14,6 @@ public class ParseService {
 
     private final IStorageService storageService;
 
-    @Transactional(rollbackFor = Exception.class)
     public XML convertArquivoToXml(Arquivo arquivo) throws DomainException {
         try {
 
