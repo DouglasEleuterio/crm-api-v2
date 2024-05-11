@@ -20,3 +20,7 @@ ALTER TABLE xml_xml
     ADD CONSTRAINT XML_NFE_XML FOREIGN KEY (nfe_id) REFERENCES nfe_nfe (nfe_id);
 
 
+--changeset douglas.ferreira:edit-xml-add-arquivo
+ALTER TABLE xml_xml ADD ARQ_ID NUMBER(38, 0);
+ALTER TABLE xml_xml
+    ADD CONSTRAINT XML_ARQ_XML FOREIGN KEY (ARQ_ID) REFERENCES ARQ_ARQUIVO (ARQ_ID);

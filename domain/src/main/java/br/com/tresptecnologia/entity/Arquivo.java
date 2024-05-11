@@ -61,4 +61,7 @@ public class Arquivo extends BaseEntity {
     @Column(name = "arq_cd_situacao", nullable = false, length = 20)
     private EnumSituacaoArquivo situacaoArquivo = EnumSituacaoArquivo.PENDENTE;
 
+    @Column(name = "ARQ_DS_ERRO")
+    private String erro;
+
 }

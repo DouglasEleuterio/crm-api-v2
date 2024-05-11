@@ -1,6 +1,7 @@
 package br.com.tresptecnologia.entity.processamento;
 
 import br.com.tresptecnologia.core.entity.BaseEntity;
+import br.com.tresptecnologia.enumeration.EOrigemProcessamento;
 import br.com.tresptecnologia.enumeration.ESituacaoFinalizacao;
 import br.com.tresptecnologia.enumeration.ESituacaoProcessamento;
 import jakarta.persistence.Column;
@@ -44,6 +45,15 @@ public class Processamento extends BaseEntity {
     @Column(name = "PRC_CD_SITUACAO_PROCESSAMENTO", nullable = false)
     private ESituacaoProcessamento situacaoProcessamento;
     @Enumerated(EnumType.STRING)
-    @Column(name = "PRC_CD_SITUACAO_FINALIZACAO", nullable = false)
+    @Column(name = "PRC_CD_SITUACAO_FINALIZACAO")
     private ESituacaoFinalizacao situacaoFinalizacao;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "PRC_CD_ORIGEM_PROCESSAMENTO", nullable = false)
+    private EOrigemProcessamento origemProcessamento;
+    @Column(name = "NU_QUANTIDADE_PROCESSADA")
+    private Long quantidadeProcessada;
+    @Column(name = "NU_QUANTIDADE_PARA_PROCESSAR")
+    private Long quantidadeParaProcessar;
+    @Column(name = "NU_QUANTIDADE_ERRO")
+    private Long quantidadeErro;
 }

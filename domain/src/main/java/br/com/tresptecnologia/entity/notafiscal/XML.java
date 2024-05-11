@@ -1,6 +1,7 @@
 package br.com.tresptecnologia.entity.notafiscal;
 
 import br.com.tresptecnologia.core.entity.BaseEntity;
+import br.com.tresptecnologia.entity.Arquivo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -41,6 +42,10 @@ public class XML extends BaseEntity {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "NFE_ID", foreignKey = @ForeignKey(name = "XML_NFE_XML"))
     public NFe NFe;
+
+    @JoinColumn(name = "ARQ_ID", foreignKey = @ForeignKey(name = "XML_ARQ_XML"))
+    @OneToOne(cascade = CascadeType.ALL)
+    public Arquivo arquivo;
 
 //    public String protNFe;
 }

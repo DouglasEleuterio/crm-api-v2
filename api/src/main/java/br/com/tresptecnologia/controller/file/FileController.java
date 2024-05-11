@@ -43,10 +43,10 @@ public class FileController {
         return uploadService.upload(file);
     }
 
-    @GetMapping("/parse/{arquivo-name}")
-    @Operation(description = "Converte um arquivo XML em Objeto")
-    public ResponseEntity<Object> parse(@PathVariable(name = "arquivo-name") String arquivoName) throws DomainException {
-        return ResponseEntity.ok(parseService.convertXmlToOject(arquivoName));
-    }
+//    @GetMapping("/parse/{arquivo-name}")
+//    @Operation(description = "Converte um arquivo XML em Objeto")
+//    public ResponseEntity<Object> parse(@PathVariable(name = "arquivo-name") String arquivoName) throws DomainException {
+//        return ResponseEntity.ok(parseService.convertArquivoToXml(arquivoName));
+//    }
 
 }

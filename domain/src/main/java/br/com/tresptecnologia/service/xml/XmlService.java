@@ -3,7 +3,7 @@ package br.com.tresptecnologia.service.xml;
 import br.com.tresptecnologia.core.jpa.mapper.JsonMapper;
 import br.com.tresptecnologia.core.service.BaseService;
 import br.com.tresptecnologia.entity.notafiscal.XML;
-import br.com.tresptecnologia.repository.xmlrepository.XmlRepository;
+import br.com.tresptecnologia.repository.xml.XmlRepository;
 import org.springframework.stereotype.Service;
 
 @Service

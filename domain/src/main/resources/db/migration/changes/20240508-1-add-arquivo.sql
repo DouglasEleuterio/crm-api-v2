@@ -25,3 +25,5 @@ ALTER TABLE ARQ_ARQUIVO drop column arq_dh_criacao;
 ALTER TABLE ARQ_ARQUIVO drop column data_atualizacao;
 --changeset douglas.ferreira:edit-add-data-criacao-duplicado
 ALTER TABLE ARQ_ARQUIVO add data_atualizacao TIMESTAMP NOT NULL;
+--changeset douglas.ferreira:edit-arquivo-add-mensagem-erro
+ALTER TABLE ARQ_ARQUIVO add ARQ_DS_ERRO varchar2(2000);
