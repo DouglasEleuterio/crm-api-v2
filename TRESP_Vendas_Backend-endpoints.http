@@ -57,3 +57,7 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJVN0Z1M0
 ###
 GET http://localhost:8070/processamento
 Authorization: Bearer {{token}}
+
+###
+GET localhost:8070/xml/select?columns=id,NFe&page=0&size=5&search=NFe.infNFe.dest.CNPJ==11048724000121
+Authorization: Bearer {{token}}

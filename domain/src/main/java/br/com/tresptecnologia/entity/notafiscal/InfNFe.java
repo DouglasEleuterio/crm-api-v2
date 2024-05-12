@@ -6,6 +6,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,7 +22,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -59,7 +59,7 @@ public class InfNFe extends BaseEntity {
     public Dest dest;
 
     @JacksonXmlElementWrapper(useWrapping = false)
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "infNFe")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "infNFe", fetch = FetchType.EAGER)
     public List<Det> det;
 
     @OneToOne(cascade = CascadeType.ALL)
