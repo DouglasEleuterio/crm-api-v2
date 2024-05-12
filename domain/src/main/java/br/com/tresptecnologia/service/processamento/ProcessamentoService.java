@@ -59,7 +59,7 @@ public class ProcessamentoService implements IProcessamentoService {
 
     @Override
     public Boolean isEmProcessamento() {
-        var limiteProcesamento = Objects.isNull(properties.getMilisegundosLimiteProcessamento()) ? 300000 : properties.getMilisegundosLimiteProcessamento();
+        var limiteProcesamento = Objects.isNull(properties.getMilisegundosLimiteProcessamento()) ? 120000 : properties.getMilisegundosLimiteProcessamento();
         var procList = processamentoRepository.findTop3BySituacaoProcessamentoOrderByInicioDesc(ESituacaoProcessamento.PROCESSANDO);
 
         if (procList.isEmpty())
