@@ -25,7 +25,7 @@ public class ProcessamentoJob {
     private final JobProperties properties;
     private final IProcessamentoService processamentoService;
 
-    @Scheduled(fixedDelay = 2, timeUnit = TimeUnit.MINUTES)
+    @Scheduled(fixedDelay = 30, timeUnit = TimeUnit.SECONDS)
     public void iniciarProcessamentoXml() {
 
         var limiteProcesamento = Objects.isNull(properties.getMilisegundosLimiteProcessamento()) ? 120000 : properties.getMilisegundosLimiteProcessamento();
