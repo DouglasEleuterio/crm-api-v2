@@ -5,6 +5,5 @@ import br.com.tresptecnologia.model.entity.BaseResponse;
 public class DetResponse implements BaseResponse {
 
     private Long id;
-    public InfNFeResponse infNFe;
     public ProdResponse prod ;
 }
