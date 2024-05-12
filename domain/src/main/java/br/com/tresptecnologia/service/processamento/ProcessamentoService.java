@@ -1,11 +1,13 @@
 package br.com.tresptecnologia.service.processamento;
 
+import br.com.tresptecnologia.core.config.JobProperties;
 import br.com.tresptecnologia.entity.Arquivo;
 import br.com.tresptecnologia.entity.processamento.Processamento;
 import br.com.tresptecnologia.enumeration.EOrigemProcessamento;
 import br.com.tresptecnologia.enumeration.ESituacaoFinalizacao;
 import br.com.tresptecnologia.enumeration.ESituacaoProcessamento;
 import br.com.tresptecnologia.enumeration.EnumSituacaoArquivo;
+import br.com.tresptecnologia.repository.processamento.ProcessamentoRepository;
 import br.com.tresptecnologia.service.ParseService;
 import br.com.tresptecnologia.service.arquivo.IArquivoService;
 import br.com.tresptecnologia.service.auxiliar.AuxiliarService;
@@ -14,8 +16,10 @@ import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Service;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -23,8 +27,9 @@ public class ProcessamentoService implements IProcessamentoService {
 
     private final IArquivoService arquivoService;
     private final ParseService parseService;
-
     private final AuxiliarService auxiliarService;
+    private final ProcessamentoRepository processamentoRepository;
+    private final JobProperties properties;
 
     @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     @Override
@@ -50,6 +55,21 @@ public class ProcessamentoService implements IProcessamentoService {
         auxiliarService.saveProcessamento(proc);
 
         processar(arquivos, proc);
+    }
+
+    @Override
+    public Boolean isEmProcessamento() {
+        var limiteProcesamento = Objects.isNull(properties.getMilisegundosLimiteProcessamento()) ? 300000 : properties.getMilisegundosLimiteProcessamento();
+        var procList = processamentoRepository.findTop3BySituacaoProcessamentoOrderByInicioDesc(ESituacaoProcessamento.PROCESSANDO);
+
+        if (procList.isEmpty())
+            return false;
+
+        return procList
+                .stream()
+                .anyMatch(p -> Objects.isNull(p.getUltimoProcessamento()) || p.getUltimoProcessamento().plus(Duration.ofMillis(limiteProcesamento))
+                        .isBefore(LocalDateTime.now()));
+
     }
 
     @Transactional(value = Transactional.TxType.REQUIRES_NEW)

@@ -9,4 +9,6 @@ public interface IProcessamentoService {
     void alterarSituacaoProcessamentosPresos(List<Processamento> proceList);
 
     void iniciar(EOrigemProcessamento origemProcessamento);
+
+    Boolean isEmProcessamento();
 }

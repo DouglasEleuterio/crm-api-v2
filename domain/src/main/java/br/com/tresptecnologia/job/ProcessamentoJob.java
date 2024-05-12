@@ -7,6 +7,7 @@ import br.com.tresptecnologia.repository.processamento.ProcessamentoRepository;
 import br.com.tresptecnologia.service.processamento.IProcessamentoService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -23,8 +24,8 @@ public class ProcessamentoJob {
     private final JobProperties properties;
     private final IProcessamentoService processamentoService;
 
-    @Scheduled(fixedDelay = 30000)
-    void iniciarProcessamentoXml() {
+    @Scheduled(fixedDelay = 3600000)
+    public void iniciarProcessamentoXml() {
 
         var limiteProcesamento = Objects.isNull(properties.getMilisegundosLimiteProcessamento()) ? 300000 : properties.getMilisegundosLimiteProcessamento();
 
@@ -55,8 +56,13 @@ public class ProcessamentoJob {
                 //Existe processamento preso
                 log.info("Existem processamento(s) preso(s) vou alterar a situação dele(s) e processar os arquivos");
                 processamentoService.alterarSituacaoProcessamentosPresos(procList);
-//                processamentoService.iniciar(EOrigemProcessamento.JOB);
+                processamentoService.iniciar(EOrigemProcessamento.JOB);
             }
         }
+    }
+
+    @Async
+    public void iniciarProcessamentoXmlManual() {
+        processamentoService.iniciar(EOrigemProcessamento.USUARIO);
     }
 }
