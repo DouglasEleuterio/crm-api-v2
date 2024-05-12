@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 @Component
 @AllArgsConstructor
@@ -24,7 +25,7 @@ public class ProcessamentoJob {
     private final JobProperties properties;
     private final IProcessamentoService processamentoService;
 
-    @Scheduled(fixedDelay = 3600000)
+    @Scheduled(fixedDelay = 2, timeUnit = TimeUnit.MINUTES)
     public void iniciarProcessamentoXml() {
 
         var limiteProcesamento = Objects.isNull(properties.getMilisegundosLimiteProcessamento()) ? 120000 : properties.getMilisegundosLimiteProcessamento();
@@ -51,7 +52,7 @@ public class ProcessamentoJob {
             //Não processar
             if (!isExisteProcessamentoPreso) {
                 log.info("Não existe processamento preso, não vou processar pois o Job já está trabalhando.");
-//                processamentoService.iniciar(EOrigemProcessamento.JOB);
+                processamentoService.iniciar(EOrigemProcessamento.JOB);
             } else {
                 //Existe processamento preso
                 log.info("Existem processamento(s) preso(s) vou alterar a situação dele(s) e processar os arquivos");

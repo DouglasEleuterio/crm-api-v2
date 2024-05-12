@@ -77,13 +77,15 @@ public class ProcessamentoService implements IProcessamentoService {
         proc.setQuantidadeErro(0L);
         proc.setQuantidadeProcessada(0L);
         for (Arquivo arquivo : arquivos) {
+            if(auxiliarService.isArquivoJaProcessado(arquivo))
+                continue;
             try {
-
-                var xml = parseService.convertArquivoToXml(arquivo);
-                auxiliarService.saveXml(xml);
 
                 arquivo.setSituacaoArquivo(EnumSituacaoArquivo.PROCESSADO);
                 var arqSaved = auxiliarService.saveArquivo(arquivo);
+
+                var xml = parseService.convertArquivoToXml(arquivo);
+                auxiliarService.saveXml(xml);
 
                 xml.setArquivo(arqSaved);
                 auxiliarService.saveXml(xml);
