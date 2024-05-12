@@ -27,7 +27,7 @@ public class ProcessamentoJob {
     @Scheduled(fixedDelay = 3600000)
     public void iniciarProcessamentoXml() {
 
-        var limiteProcesamento = Objects.isNull(properties.getMilisegundosLimiteProcessamento()) ? 300000 : properties.getMilisegundosLimiteProcessamento();
+        var limiteProcesamento = Objects.isNull(properties.getMilisegundosLimiteProcessamento()) ? 120000 : properties.getMilisegundosLimiteProcessamento();
 
         var procList = repository.findTop3BySituacaoProcessamentoOrderByInicioDesc(ESituacaoProcessamento.PROCESSANDO);
         //Não existe processamento sendo executado
