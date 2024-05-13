@@ -25,4 +25,6 @@
     <include file="/db/migration/changes/20240509-12-add-nfe.sql"/>
     <include file="/db/migration/changes/20240509-13-add-xml.sql"/>
     <include file="/db/migration/changes/20240511-1-add-processamento.sql"/>
+    <include file="/db/migration/changes/20240513-1-add-fat.sql"/>
+    <include file="/db/migration/changes/20240513-2-add-cob.sql"/>
 </databaseChangeLog>

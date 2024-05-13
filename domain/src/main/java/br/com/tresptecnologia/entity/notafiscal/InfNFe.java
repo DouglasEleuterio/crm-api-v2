@@ -70,6 +70,10 @@ public class InfNFe extends BaseEntity {
     @JoinColumn(name = "IFD_ID", foreignKey = @ForeignKey(name = "FK_IFD_INF"))
     public InfAdic infAdic;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "COB_ID", foreignKey = @ForeignKey(name = "FK_COB_INF"))
+    public Cobr cobr;
+
     @Override
     public void setId(Long id) {
         this.idB = id;

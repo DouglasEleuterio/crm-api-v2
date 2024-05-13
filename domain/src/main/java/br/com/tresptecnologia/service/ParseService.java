@@ -8,6 +8,8 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
+
 @Service
 @RequiredArgsConstructor
 public class ParseService {
@@ -27,18 +29,18 @@ public class ParseService {
         }
     }
 
-//    public static void main(String[] args) throws Exception {
-//        convertXmlToOjectStatic();
-//    }
-//
-//    public static Object convertXmlToOjectStatic() throws Exception {
-//        File file = new File("C:\\Users\\dougl\\IdeaProjects\\crm-api-v2\\exemplos\\31240417159518000175550010040191551690820399.xml");
-//
-//        XmlMapper xmlMapper = new XmlMapper();
-//        Object obj = xmlMapper.readValue(file, Object.class);
-//        XML XML = xmlMapper.readValue(file, XML.class);
-//        return obj;
-//    }
+    public static void main(String[] args) throws Exception {
+        convertXmlToOjectStatic();
+    }
+
+    public static Object convertXmlToOjectStatic() throws Exception {
+        File file = new File("C:\\Users\\dougl\\IdeaProjects\\crm-api-v2\\exemplos\\31240417159518000175550010040191551690820399.xml");
+
+        XmlMapper xmlMapper = new XmlMapper();
+        Object obj = xmlMapper.readValue(file, Object.class);
+        XML XML = xmlMapper.readValue(file, XML.class);
+        return obj;
+    }
 
 }
 
