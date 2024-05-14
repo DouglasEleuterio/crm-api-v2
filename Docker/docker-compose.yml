@@ -8,12 +8,14 @@ services:
       - 1521:1521
       - 5500:5500
     volumes:
-      - oracle_data:/opt/oracle/oradata
+      - ./oracle-data:/opt/oracle/oradata
     environment:
       - ORACLE_SID=XE
-      - ORACLE_PWD=fox789789@!@!
+      - ORACLE_PDB=
+      - ORACLE_PWD=Fox789789@!@!
+      - AUTO_MEM_CALCULATION=false
 
-volumes:
-  oracle_data:
-    external: true
-    name: oracle_data
+#volumes:
+#  oracle_data:
+#    external: true
+#    name: oracle_data

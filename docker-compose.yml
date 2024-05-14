@@ -51,6 +51,18 @@ services:
       - DATABASE_PASSWORD=${DATABASE_PASSWORD}
       - DATABASE_SCHEMA=${DATABASE_SCHEMA}
 
+  oracle-xe:
+    image: container-registry.oracle.com/database/express:21.3.0-xe
+    networks:
+      - minha_rede
+    ports:
+      - 1521:1521
+      - 5500:5500
+    volumes:
+      - ./oracle-data:/opt/oracle/oradata
+    env_file:
+      - ./Docker/contabilidade.env
+
 networks:
   minha_rede:
     name: minha_rede
