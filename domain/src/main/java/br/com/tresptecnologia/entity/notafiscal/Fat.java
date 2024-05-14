@@ -32,15 +32,15 @@ public class Fat extends BaseEntity {
     private Long id;
 
     @Column(name = "FAT_vOrig")
-    public String vOrig;
+    public Double vOrig;
 
     @Column(name = "FAT_nFat")
     public String nFat;
 
     @Column(name = "FAT_vDesc")
-    public String vDesc;
+    public Double vDesc;
 
     @Column(name = "FAT_vLiq")
-    public String vLiq;
+    public Double vLiq;
 
 }

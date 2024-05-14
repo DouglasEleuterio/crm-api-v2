@@ -13,7 +13,7 @@ CREATE TABLE ide_ide
     ide_nat_op       VARCHAR2(255),
     ide_mod          VARCHAR2(255),
     ide_serie        VARCHAR2(255),
-    ide_nnf          VARCHAR2(255),
+    ide_nnf          NUMBER(38, 0),
     ide_dh_emi       VARCHAR2(255),
     ide_dh_sai_ent   VARCHAR2(255),
     ide_tpnf         VARCHAR2(255),

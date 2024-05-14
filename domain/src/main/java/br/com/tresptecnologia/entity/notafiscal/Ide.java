@@ -42,7 +42,7 @@ public class Ide extends BaseEntity {
     @Column(name = "IDE_serie")
     public String serie;
     @Column(name = "IDE_nNF")
-    public String nNF;
+    public Long nNF;
     @Column(name = "IDE_dhEmi")
     public String dhEmi;
     @Column(name = "IDE_dhSaiEnt")
