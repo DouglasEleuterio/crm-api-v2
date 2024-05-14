@@ -6,7 +6,8 @@ import lombok.Getter;
 public enum ReportType {
     WORD("application/msword", ".docx"),
     EXCEL("application/excel", ".xlsx"),
-    PDF("application/pdf", ".pdf");
+    PDF("application/pdf", ".pdf"),
+    XML("text/xml", ".xml");
 
     private final String name;
     private final String mimeType;

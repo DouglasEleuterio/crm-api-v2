@@ -32,41 +32,41 @@ public class ICMSTot extends BaseEntity {
     private Long id;
 
     @Column(name = "ICT_vBC")
-    public String vBC;
+    public Double vBC;
     @Column(name = "ICT_vICMS")
-    public String vICMS;
+    public Double vICMS;
     @Column(name = "ICT_vICMSDeson")
-    public String vICMSDeson;
+    public Double vICMSDeson;
     @Column(name = "ICT_vFCP")
-    public String vFCP;
+    public Double vFCP;
     @Column(name = "ICT_vBCST")
-    public String vBCST;
+    public Double vBCST;
     @Column(name = "ICT_vST")
-    public String vST;
+    public Double vST;
     @Column(name = "ICT_vFCPST")
-    public String vFCPST;
+    public Double vFCPST;
     @Column(name = "ICT_vFCPSTRet")
-    public String vFCPSTRet;
+    public Double vFCPSTRet;
     @Column(name = "ICT_vProd")
-    public String vProd;
+    public Double vProd;
     @Column(name = "ICT_vFrete")
-    public String vFrete;
+    public Double vFrete;
     @Column(name = "ICT_vSeg")
-    public String vSeg;
+    public Double vSeg;
     @Column(name = "ICT_vDesc")
-    public String vDesc;
+    public Double vDesc;
     @Column(name = "ICT_vII")
-    public String vII;
+    public Double vII;
     @Column(name = "ICT_vIPI")
-    public String vIPI;
+    public Double vIPI;
     @Column(name = "ICT_vIPIDevol")
-    public String vIPIDevol;
+    public Double vIPIDevol;
     @Column(name = "ICT_vPIS")
-    public String vPIS;
+    public Double vPIS;
     @Column(name = "ICT_vCOFINS")
-    public String vCOFINS;
+    public Double vCOFINS;
     @Column(name = "ICT_vOutro")
-    public String vOutro;
+    public Double vOutro;
     @Column(name = "ICT_vNF")
-    public String vNF;
+    public Double vNF;
 }

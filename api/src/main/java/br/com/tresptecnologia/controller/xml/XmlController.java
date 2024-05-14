@@ -14,15 +14,19 @@ import br.com.tresptecnologia.service.xml.IXmlService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.web.SortDefault;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/xml")
@@ -60,5 +64,12 @@ public class XmlController extends BaseRsqlFindController<XML, XmlResponse> impl
 
         final Specification<XML> spec = SpecificationUtils.rsqlToSpecification(search);
         return getService().findAll(spec, page, size, sort, mapper::toTableResponse);
+    }
+
+    @GetMapping(value = "/download/{id}")
+    @Operation(description = "Realiza o download do arquivo XML")
+    public ResponseEntity<Resource> relatorioExcesso(@PathVariable String id)
+            throws DomainException, IOException {
+        return getService().downloadXmlFile(id).toResponseEntity();
     }
 }
