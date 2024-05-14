@@ -5,7 +5,7 @@ public class IdeTableResponse {
 //    public Long id;
 //    public String cUF;
     public String cNF;
-//    public String natOp;
+    public String natOp;
 //    public String mod;
 //    public String serie;
     public String nNF;
