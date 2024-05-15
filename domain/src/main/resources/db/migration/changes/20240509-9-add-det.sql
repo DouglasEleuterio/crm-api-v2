@@ -10,6 +10,7 @@ CREATE TABLE det_det
     data_atualizacao TIMESTAMP     NOT NULL,
     inf_id           NUMBER(38, 0),
     prd_id           NUMBER(38, 0),
+    imp_id           NUMBER(38, 0),
     CONSTRAINT pk_det_det PRIMARY KEY (det_id)
 );
 

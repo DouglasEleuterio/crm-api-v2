@@ -6,10 +6,6 @@
 
     <include file="/db/migration/changes/exemplo/20221121-1-add-migracao-inicial.sql"/>
     <include file="/db/migration/changes/exemplo/20221121-2-migracao-exemplo.sql"/>
-<!--    <include file="/db/migration/changes/20240108-1-cliente.sql"/>-->
-<!--    <include file="/db/migration/changes/20240108-2-pedido.sql"/>-->
-<!--    <include file="/db/migration/changes/20240109-1-produto.sql"/>-->
-<!--    <include file="/db/migration/changes/20240109-2-item-de-pedido.sql"/>-->
     <include file="/db/migration/changes/20240508-1-add-arquivo.sql"/>
     <include file="/db/migration/changes/20240509-1-add-total.sql"/>
     <include file="/db/migration/changes/20240509-2-add-icmstot.sql"/>
@@ -27,4 +23,9 @@
     <include file="/db/migration/changes/20240511-1-add-processamento.sql"/>
     <include file="/db/migration/changes/20240513-1-add-fat.sql"/>
     <include file="/db/migration/changes/20240513-2-add-cob.sql"/>
+    <include file="/db/migration/changes/20240514-1-add-pis.sql"/>
+    <include file="/db/migration/changes/20240514-2-add-cofins.sql"/>
+    <include file="/db/migration/changes/20240514-3-add-ipi.sql"/>
+    <include file="/db/migration/changes/20240514-4-add-icms.sql"/>
+    <include file="/db/migration/changes/20240514-5-add-imposto.sql"/>
 </databaseChangeLog>

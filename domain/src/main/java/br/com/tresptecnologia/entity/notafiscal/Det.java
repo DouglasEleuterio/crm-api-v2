@@ -1,6 +1,7 @@
 package br.com.tresptecnologia.entity.notafiscal;
 
 import br.com.tresptecnologia.core.entity.BaseEntity;
+import br.com.tresptecnologia.entity.notafiscal.imposto.Imposto;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.CascadeType;
@@ -21,10 +22,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Table(name = "DET_DET")
 @Getter
 @Setter
 @Entity
-@Table(name = "DET_DET")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -45,4 +46,8 @@ public class Det extends BaseEntity {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "PRD_ID", foreignKey = @ForeignKey(name = "FK_PRD_DET"))
     public Prod prod ;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "IMP_ID", foreignKey = @ForeignKey(name = "FK_IMP_DET"))
+    public Imposto imposto ;
 }
