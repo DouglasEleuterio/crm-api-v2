@@ -57,7 +57,7 @@ public class XmlController extends BaseRsqlFindController<XML, XmlResponse> impl
     public Iterable<? extends BaseResponse> findPage(
             @Parameter(description = BaseControllerConstants.FIND_PAGE_DOC)
             @RequestParam(required = false) String search,
-            @SortDefault(sort = "id")
+            @SortDefault(sort = "NFe.infNFe.ide.dhEmi", direction = Sort.Direction.DESC)
             Sort sort,
             @RequestParam(required = false) Integer page,
             @RequestParam(required = false) Integer size) {
