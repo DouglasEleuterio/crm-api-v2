@@ -32,7 +32,7 @@ public class IPITrib extends BaseEntity {
     private Long id;
 
     @Column(name = "IPT_CST")
-    public String cst;
+    public String CST;
 
     @Column(name = "IPT_qUnid")
     public Integer qUnid;

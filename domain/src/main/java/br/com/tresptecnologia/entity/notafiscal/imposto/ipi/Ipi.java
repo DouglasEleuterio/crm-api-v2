@@ -41,4 +41,8 @@ public class Ipi extends BaseEntity {
     @JoinColumn(name = "IPT_ID", foreignKey = @ForeignKey(name = "FK_IPT_IPI"))
     @OneToOne(cascade = CascadeType.ALL)
     private IPITrib IPITrib;
+
+    @JoinColumn(name = "IPN_ID", foreignKey = @ForeignKey(name = "FK_IPN_IPI"))
+    @OneToOne(cascade = CascadeType.ALL)
+    public IPINT IPINT;
 }

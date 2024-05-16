@@ -28,4 +28,6 @@
     <include file="/db/migration/changes/20240514-3-add-ipi.sql"/>
     <include file="/db/migration/changes/20240514-4-add-icms.sql"/>
     <include file="/db/migration/changes/20240514-5-add-imposto.sql"/>
+    <include file="/db/migration/changes/20240516-1-add-icms-00.sql"/>
+    <include file="/db/migration/changes/20240516-2-add-ipi-ipint.sql"/>
 </databaseChangeLog>

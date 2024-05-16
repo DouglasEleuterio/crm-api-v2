@@ -1,4 +1,4 @@
-package br.com.tresptecnologia.entity.notafiscal.imposto.pis;
+package br.com.tresptecnologia.entity.notafiscal.imposto.icms;
 
 import br.com.tresptecnologia.core.entity.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -22,24 +22,30 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Table(name = "PIA_PISAliq")
-public class PISAliq extends BaseEntity {
+@Table(name = "IC0_ICMS00")
+public class Icms00 extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_PISAliq")
-    @Column(name = "PIA_ID", nullable = false)
-    @SequenceGenerator(name = "SQ_PISAliq", sequenceName = "SQ_PISAliq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_ICMS00")
+    @Column(name = "IC0_ID", nullable = false)
+    @SequenceGenerator(name = "SQ_ICMS00", sequenceName = "SQ_ICMS00", allocationSize = 1)
     private Long id;
 
-    @Column(name = "PIA_vPIS")
-    public Double vPIS;
+    @Column(name = "IC0_orig")
+    public String orig;
 
-    @Column(name = "PIA_CST")
+    @Column(name = "IC0_CST")
     public String CST;
 
-    @Column(name = "PIA_vBC")
+    @Column(name = "IC0_modBC")
+    public Integer modBC;
+
+    @Column(name = "IC0_vBC")
     public Double vBC;
 
-    @Column(name = "PIA_pPIS")
-    public Double pPIS;
+    @Column(name = "IC0_pICMS")
+    public Double pICMS;
+
+    @Column(name = "IC0_vICMS")
+    public Double vICMS;
 }

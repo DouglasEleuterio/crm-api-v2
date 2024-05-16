@@ -37,6 +37,6 @@ public class Cofins extends BaseEntity {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "CFA_ID", foreignKey = @ForeignKey(name = "FK_CFA_COF"))
-    private COFINSAliq COFINSAliq;
+    public COFINSAliq COFINSAliq;
 
 }

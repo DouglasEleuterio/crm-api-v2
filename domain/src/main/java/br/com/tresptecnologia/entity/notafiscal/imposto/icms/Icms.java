@@ -38,4 +38,8 @@ public class Icms extends BaseEntity {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "IC6_ID", foreignKey = @ForeignKey(name = "FK_IC6_ICM"))
     public Icms60 ICMS60 ;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "IC0_ID", foreignKey = @ForeignKey(name = "FK_IC0_ICM"))
+    public Icms00 ICMS00 ;
 }

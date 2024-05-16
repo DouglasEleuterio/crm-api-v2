@@ -6,4 +6,6 @@ public class DetResponse implements BaseResponse {
 
     private Long id;
     public ProdResponse prod ;
+    public ImpostoResponse imposto ;
+
 }
