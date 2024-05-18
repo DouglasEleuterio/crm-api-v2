@@ -10,6 +10,8 @@ import br.com.tresptecnologia.repository.xml.XmlRepository;
 import br.com.tresptecnologia.service.arquivo.ApagarArquivoService;
 import br.com.tresptecnologia.service.storage.IStorageService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 
@@ -42,8 +44,9 @@ public class XmlService extends BaseService<XML> implements IXmlService {
     }
 
     @Override
+//    @Transactional(isolation = Isolation.READ_COMMITTED)
     public void delete(Long id) throws DomainException {
-        super.delete(id);
         apagarArquivoService.apagarArquivo(findById(id).getArquivo());
+        super.delete(id);
     }
 }
