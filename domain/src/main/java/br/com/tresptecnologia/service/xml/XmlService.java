@@ -44,7 +44,6 @@ public class XmlService extends BaseService<XML> implements IXmlService {
     }
 
     @Override
-//    @Transactional(isolation = Isolation.READ_COMMITTED)
     public void delete(Long id) throws DomainException {
         apagarArquivoService.apagarArquivo(findById(id).getArquivo());
         super.delete(id);
