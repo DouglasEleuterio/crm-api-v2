@@ -7,6 +7,7 @@ import br.com.tresptecnologia.core.report.ReportType;
 import br.com.tresptecnologia.core.service.BaseService;
 import br.com.tresptecnologia.entity.notafiscal.XML;
 import br.com.tresptecnologia.repository.xml.XmlRepository;
+import br.com.tresptecnologia.service.arquivo.ApagarArquivoService;
 import br.com.tresptecnologia.service.storage.IStorageService;
 import org.springframework.stereotype.Service;
 
@@ -17,11 +18,13 @@ public class XmlService extends BaseService<XML> implements IXmlService {
 
     private final JsonMapper jsonMapper;
     private final IStorageService storageService;
+    private final ApagarArquivoService apagarArquivoService;
 
-    protected XmlService(XmlRepository repository, final JsonMapper jsonMapper, IStorageService storageService) {
+    protected XmlService(XmlRepository repository, final JsonMapper jsonMapper, IStorageService storageService, ApagarArquivoService apagarArquivoService) {
         super(repository);
         this.jsonMapper = jsonMapper;
         this.storageService = storageService;
+        this.apagarArquivoService = apagarArquivoService;
     }
 
     @Override
@@ -36,5 +39,11 @@ public class XmlService extends BaseService<XML> implements IXmlService {
         var arquivoIS = storageService.get(xmlEntity.getArquivo().getBucket(), xmlEntity.getArquivo().getPath(), xmlEntity.getArquivo().getNome());
 
         return new ReportData(xmlEntity.getArquivo().getNome(), ReportType.XML, arquivoIS.readAllBytes());
+    }
+
+    @Override
+    public void delete(Long id) throws DomainException {
+        super.delete(id);
+        apagarArquivoService.apagarArquivo(findById(id).getArquivo());
     }
 }
