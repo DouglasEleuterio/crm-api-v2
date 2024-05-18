@@ -20,6 +20,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.web.SortDefault;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -71,5 +72,12 @@ public class XmlController extends BaseRsqlFindController<XML, XmlResponse> impl
     public ResponseEntity<Resource> relatorioExcesso(@PathVariable String id)
             throws DomainException, IOException {
         return getService().downloadXmlFile(id).toResponseEntity();
+    }
+
+    @DeleteMapping(path = "/{id}")
+    @Operation(description = "Apaga um documento XML e o arquivo relacionado")
+    public ResponseEntity<Boolean> delete(@PathVariable("id") Long id) throws DomainException {
+        this.getService().delete(id);
+        return ResponseEntity.ok(true);
     }
 }

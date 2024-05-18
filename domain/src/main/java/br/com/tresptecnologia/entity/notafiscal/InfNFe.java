@@ -58,7 +58,7 @@ public class InfNFe extends BaseEntity {
     public Dest dest;
 
     @JacksonXmlElementWrapper(useWrapping = false)
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "infNFe")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "infNFe", orphanRemoval = true)
     public List<Det> det;
 
     @OneToOne(cascade = CascadeType.ALL)
