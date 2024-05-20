@@ -37,13 +37,13 @@ public class InfNFe extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_INF")
     @SequenceGenerator(name = "SQ_INF", sequenceName = "SQ_INF", allocationSize = 1)
     @Column(name = "INF_ID", nullable = false)
-    private Long idB;
+    private Long id;
 
     @Column(name = "INF_VERSAO")
     public String versao;
 
     @Column(name = "INF_IDNF")
-    public String Id;
+    public String idnf;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "IDE_ID", foreignKey = @ForeignKey(name = "FK_IDE_INF"))
@@ -58,7 +58,7 @@ public class InfNFe extends BaseEntity {
     public Dest dest;
 
     @JacksonXmlElementWrapper(useWrapping = false)
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "infNFe", orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "infnf", orphanRemoval = true)
     public List<Det> det;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -73,18 +73,8 @@ public class InfNFe extends BaseEntity {
     @JoinColumn(name = "COB_ID", foreignKey = @ForeignKey(name = "FK_COB_INF"))
     public Cobr cobr;
 
-    @Override
-    public void setId(Long id) {
-        this.idB = id;
-    }
-
-    @Override
-    public Long getId() {
-        return this.idB;
-    }
-
     public void setDet(List<Det> det) {
         this.det = det;
-        this.det.forEach(d -> d.setInfNFe(this));
+        this.det.forEach(d -> d.setInfnf(this));
     }
 }

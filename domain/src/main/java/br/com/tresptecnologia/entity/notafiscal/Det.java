@@ -4,6 +4,7 @@ import br.com.tresptecnologia.core.entity.BaseEntity;
 import br.com.tresptecnologia.entity.notafiscal.imposto.Imposto;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,6 +17,10 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import javax.xml.bind.annotation.XmlElement;
+
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -29,6 +34,7 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@XmlAccessorType(XmlAccessType.FIELD)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Det extends BaseEntity {
 
@@ -41,7 +47,8 @@ public class Det extends BaseEntity {
     @JsonBackReference
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "INF_ID", foreignKey = @ForeignKey(name = "FK_INF_DET"))
-    private InfNFe infNFe;
+    @JsonProperty("infNFe")
+    private InfNFe infnf;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "PRD_ID", foreignKey = @ForeignKey(name = "FK_PRD_DET"))

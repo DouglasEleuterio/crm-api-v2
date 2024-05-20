@@ -5,5 +5,5 @@ import br.com.tresptecnologia.model.entity.BaseResponse;
 public class XmlTable implements BaseResponse {
     public Long id;
     public String versao;
-    public NFeTableResponse NFe;
+    public NFeTableResponse nfe;
 }

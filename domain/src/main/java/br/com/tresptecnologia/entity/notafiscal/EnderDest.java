@@ -2,6 +2,7 @@ package br.com.tresptecnologia.entity.notafiscal;
 
 import br.com.tresptecnologia.core.entity.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,6 +10,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import javax.xml.bind.annotation.XmlElement;
+
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,6 +27,7 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@XmlAccessorType(XmlAccessType.FIELD)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class EnderDest extends BaseEntity {
 
@@ -44,9 +50,11 @@ public class EnderDest extends BaseEntity {
     @Column(name = "END_xMun")
     public String xMun;
     @Column(name = "END_UF")
-    public String UF;
+    @JsonProperty("UF")
+    public String uf;
     @Column(name = "END_CEP")
-    public String CEP;
+    @JsonProperty("CEP")
+    public String cep;
     @Column(name = "END_cPais")
     public String cPais;
     @Column(name = "END_xPais")

@@ -4,7 +4,7 @@ import br.com.tresptecnologia.model.entity.BaseResponse;
 
 public class DestTableResponse implements BaseResponse {
 
-    public String CNPJ;
+    public String cnpj;
     public String xNome;
 //    public String indIEDest;
 //    public String IE;

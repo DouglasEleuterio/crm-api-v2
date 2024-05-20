@@ -7,8 +7,8 @@ import br.com.tresptecnologia.entity.notafiscal.imposto.pis.Pis;
 
 public class ImpostoResponse {
 
-    public Icms ICMS;
-    public Ipi IPI;
-    public Cofins COFINS;
-    public Pis PIS;
+    public Icms icms;
+    public Ipi ipi;
+    public Cofins cofins;
+    public Pis pis;
 }

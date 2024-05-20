@@ -5,6 +5,7 @@ import br.com.tresptecnologia.entity.Arquivo;
 import br.com.tresptecnologia.entity.notafiscal.XML;
 import br.com.tresptecnologia.service.storage.IStorageService;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import jakarta.xml.bind.JAXB;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,7 @@ public class ParseService {
             var arquivoIS = storageService.get(arquivo.getBucket(), arquivo.getPath(), arquivo.getNome());
 
             XmlMapper xmlMapper = new XmlMapper();
+//            return JAXB.unmarshal(arquivoIS, XML.class);
             return xmlMapper.readValue(arquivoIS, XML.class);
 
         } catch (Exception e) {

@@ -8,8 +8,8 @@ public class ProdResponse implements BaseResponse {
     public String cProd;
     public String cEAN;
     public String xProd;
-    public String NCM;
-    public String CFOP;
+    public String ncm;
+    public String cfop;
     public String uCom;
     public String qCom;
     public String vUnCom;

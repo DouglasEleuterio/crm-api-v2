@@ -6,9 +6,8 @@ import java.util.List;
 
 public class InfNFeResponse implements BaseResponse {
 
-    public Long idB;
     public String versao;
-    public String Id;
+    public String id;
     public IdeResponse ide;
     public EmitResponse emit;
     public DestResponse dest;

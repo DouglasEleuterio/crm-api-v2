@@ -5,10 +5,10 @@ import br.com.tresptecnologia.model.entity.BaseResponse;
 public class EmitResponse implements BaseResponse {
 
     public Long id;
-    public String CNPJ;
+    public String cnpj;
     public String xNome;
     public String xFant;
-    public String IE;
-    public String CRT;
+    public String ie;
+    public String crt;
     public EnderEmitResponse enderEmit;
 }

@@ -2,6 +2,7 @@ package br.com.tresptecnologia.entity.notafiscal;
 
 import br.com.tresptecnologia.core.entity.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,6 +14,10 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import javax.xml.bind.annotation.XmlElement;
+
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -26,6 +31,7 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@XmlAccessorType(XmlAccessType.FIELD)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Dest extends BaseEntity {
 
@@ -36,13 +42,15 @@ public class Dest extends BaseEntity {
     private Long id;
 
     @Column(name = "DST_CNPJ")
-    public String CNPJ;
+    @JsonProperty("CNPJ")
+    public String cnpj;
     @Column(name = "DST_xNome")
     public String xNome;
     @Column(name = "DST_indIEDest")
     public String indIEDest;
     @Column(name = "DST_IE")
-    public String IE;
+    @JsonProperty("IE")
+    public String ie;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "END_ID", foreignKey = @ForeignKey(name = "FK_END_DST"))

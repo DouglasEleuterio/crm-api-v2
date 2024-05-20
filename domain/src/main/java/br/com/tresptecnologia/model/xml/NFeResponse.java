@@ -5,6 +5,6 @@ import br.com.tresptecnologia.model.entity.BaseResponse;
 public class NFeResponse implements BaseResponse {
 
     public Long id;
-    public InfNFeResponse infNFe;
+    public InfNFeResponse inf;
 
 }

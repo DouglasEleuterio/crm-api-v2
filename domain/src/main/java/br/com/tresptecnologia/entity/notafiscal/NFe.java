@@ -2,6 +2,7 @@ package br.com.tresptecnologia.entity.notafiscal;
 
 import br.com.tresptecnologia.core.entity.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,6 +14,11 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import javax.xml.bind.annotation.XmlElement;
+
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -37,7 +43,8 @@ public class NFe extends BaseEntity {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "INF_ID", foreignKey = @ForeignKey(name = "FK_InfNFe_NFE"))
-    public InfNFe infNFe;
+    @JsonProperty("infNFe")
+    public InfNFe inf;
 
 //    public Object Signature;
 }

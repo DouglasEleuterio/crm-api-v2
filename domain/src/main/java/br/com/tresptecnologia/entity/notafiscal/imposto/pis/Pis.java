@@ -2,6 +2,8 @@ package br.com.tresptecnologia.entity.notafiscal.imposto.pis;
 
 import br.com.tresptecnologia.core.entity.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,6 +15,10 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import javax.xml.bind.annotation.XmlElement;
+
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -26,6 +32,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
+@XmlAccessorType(XmlAccessType.FIELD)
 @Table(name = "PIS_PIS")
 public class Pis extends BaseEntity {
 
@@ -37,5 +44,6 @@ public class Pis extends BaseEntity {
 
     @JoinColumn(name = "PIA_ID", foreignKey = @ForeignKey(name = "FK_PIA_PIS"))
     @OneToOne(cascade = CascadeType.ALL)
-    public PISAliq PISAliq;
+    @JsonProperty( "PISAliq")
+    public PISAliq pisaliq;
 }

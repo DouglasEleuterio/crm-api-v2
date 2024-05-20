@@ -5,6 +5,6 @@ import br.com.tresptecnologia.model.entity.BaseResponse;
 public class TotalResponse implements BaseResponse {
 
     public Long id;
-    public ICMSTotResponse ICMSTot;
+    public ICMSTotResponse icmstot;
 
 }

@@ -3,6 +3,7 @@ package br.com.tresptecnologia.entity.notafiscal;
 import br.com.tresptecnologia.core.entity.BaseEntity;
 import br.com.tresptecnologia.entity.Arquivo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,6 +15,12 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -41,7 +48,8 @@ public class XML extends BaseEntity {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "NFE_ID", foreignKey = @ForeignKey(name = "XML_NFE_XML"))
-    public NFe NFe;
+    @JsonProperty("NFe")
+    public NFe nfe;
 
     @JoinColumn(name = "ARQ_ID", foreignKey = @ForeignKey(name = "XML_ARQ_XML"))
     @OneToOne(cascade = CascadeType.ALL)

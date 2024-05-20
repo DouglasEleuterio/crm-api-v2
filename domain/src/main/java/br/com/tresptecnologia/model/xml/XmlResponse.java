@@ -6,5 +6,5 @@ public class XmlResponse implements BaseResponse {
 
     public Long id;
     public String versao;
-    public NFeResponse NFe;
+    public NFeResponse nfe;
 }

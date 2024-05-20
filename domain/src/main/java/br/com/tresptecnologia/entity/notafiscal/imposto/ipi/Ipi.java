@@ -2,6 +2,7 @@ package br.com.tresptecnologia.entity.notafiscal.imposto.ipi;
 
 import br.com.tresptecnologia.core.entity.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,6 +14,10 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import javax.xml.bind.annotation.XmlElement;
+
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -26,6 +31,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
+@XmlAccessorType(XmlAccessType.FIELD)
 @Table(name = "IPI_IPI")
 public class Ipi extends BaseEntity {
 
@@ -40,9 +46,11 @@ public class Ipi extends BaseEntity {
 
     @JoinColumn(name = "IPT_ID", foreignKey = @ForeignKey(name = "FK_IPT_IPI"))
     @OneToOne(cascade = CascadeType.ALL)
-    private IPITrib IPITrib;
+    @JsonProperty( "IPITrib")
+    private IPITrib ipitrib;
 
     @JoinColumn(name = "IPN_ID", foreignKey = @ForeignKey(name = "FK_IPN_IPI"))
     @OneToOne(cascade = CascadeType.ALL)
-    public IPINT IPINT;
+    @JsonProperty( "IPINT")
+    public IPINT ipint;
 }

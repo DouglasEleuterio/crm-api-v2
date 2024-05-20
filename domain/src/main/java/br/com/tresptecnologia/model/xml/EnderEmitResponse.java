@@ -10,8 +10,8 @@ public class EnderEmitResponse implements BaseResponse {
     public String xBairro;
     public String cMun;
     public String xMun;
-    public String UF;
-    public String CEP;
+    public String uf;
+    public String cep;
     public String cPais;
     public String xPais;
     public String fone;
