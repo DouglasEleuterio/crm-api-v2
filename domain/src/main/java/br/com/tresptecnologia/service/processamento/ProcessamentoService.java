@@ -7,10 +7,12 @@ import br.com.tresptecnologia.enumeration.EOrigemProcessamento;
 import br.com.tresptecnologia.enumeration.ESituacaoFinalizacao;
 import br.com.tresptecnologia.enumeration.ESituacaoProcessamento;
 import br.com.tresptecnologia.enumeration.EnumSituacaoArquivo;
+import br.com.tresptecnologia.repository.informacoes.InfNFeRepository;
 import br.com.tresptecnologia.repository.processamento.ProcessamentoRepository;
 import br.com.tresptecnologia.service.ParseService;
 import br.com.tresptecnologia.service.arquivo.IArquivoService;
 import br.com.tresptecnologia.service.auxiliar.AuxiliarService;
+import br.com.tresptecnologia.service.storage.IStorageService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.util.Strings;
@@ -30,6 +32,9 @@ public class ProcessamentoService implements IProcessamentoService {
     private final AuxiliarService auxiliarService;
     private final ProcessamentoRepository processamentoRepository;
     private final JobProperties properties;
+    private final InfNFeRepository infNFeRepository;
+    private final IStorageService storageService;
+
 
     @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     @Override
@@ -43,7 +48,7 @@ public class ProcessamentoService implements IProcessamentoService {
 
     @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     @Override
-    public void iniciar(EOrigemProcessamento origemProcessamento) {
+    public void iniciarProcessamentoArquivos(EOrigemProcessamento origemProcessamento) {
         var arquivos = arquivoService.getAllNaoProcessado();
 
         var proc = Processamento.builder()
@@ -54,7 +59,7 @@ public class ProcessamentoService implements IProcessamentoService {
                 .build();
         auxiliarService.saveProcessamento(proc);
 
-        processar(arquivos, proc);
+        processarESalvar(arquivos, proc);
     }
 
     @Override
@@ -73,18 +78,25 @@ public class ProcessamentoService implements IProcessamentoService {
     }
 
     @Transactional(value = Transactional.TxType.REQUIRES_NEW)
-    protected void processar(List<Arquivo> arquivos, Processamento proc) {
+    protected void processarESalvar(List<Arquivo> arquivos, Processamento proc) {
         proc.setQuantidadeErro(0L);
         proc.setQuantidadeProcessada(0L);
         for (Arquivo arquivo : arquivos) {
-            if(auxiliarService.isArquivoJaProcessado(arquivo))
+            if (auxiliarService.isArquivoJaProcessado(arquivo))
                 continue;
             try {
+                var xml = parseService.convertArquivoToXml(arquivo);
+                //Não processa duplicado, remove arquivo xml do storage
+
+                if (infNFeRepository.findByIdnf(xml.getNfe().inf.idnf).isPresent()) {
+                    storageService.delete(arquivo.getBucket(), arquivo.getPath(), arquivo.getNome());
+                    auxiliarService.deletarArquivo(arquivo);
+                    continue;
+                }
 
                 arquivo.setSituacaoArquivo(EnumSituacaoArquivo.PROCESSADO);
                 var arqSaved = auxiliarService.saveArquivo(arquivo);
 
-                var xml = parseService.convertArquivoToXml(arquivo);
                 auxiliarService.saveXml(xml);
 
                 xml.setArquivo(arqSaved);

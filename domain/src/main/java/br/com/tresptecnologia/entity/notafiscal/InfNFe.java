@@ -2,6 +2,7 @@ package br.com.tresptecnologia.entity.notafiscal;
 
 import br.com.tresptecnologia.core.entity.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -43,6 +44,7 @@ public class InfNFe extends BaseEntity {
     public String versao;
 
     @Column(name = "INF_IDNF")
+    @JsonProperty("Id")
     public String idnf;
 
     @OneToOne(cascade = CascadeType.ALL)

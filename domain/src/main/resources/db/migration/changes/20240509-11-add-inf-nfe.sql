@@ -19,11 +19,6 @@ CREATE TABLE inf_infnfe
     CONSTRAINT pk_inf_infnfe PRIMARY KEY (inf_id)
 );
 
-ALTER TABLE inf_infnfe
-    ADD CONSTRAINT uc_inf_infnfe_dst UNIQUE (dst_id);
-
-ALTER TABLE inf_infnfe
-    ADD CONSTRAINT uc_inf_infnfe_emt UNIQUE (emt_id);
 
 ALTER TABLE inf_infnfe
     ADD CONSTRAINT uc_inf_infnfe_ide UNIQUE (ide_id);

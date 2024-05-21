@@ -12,9 +12,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import javax.xml.bind.annotation.XmlElement;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -58,5 +58,8 @@ public class Emit extends BaseEntity {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "EDT_ID", foreignKey = @ForeignKey(name = "FK_EDT_EMT"))
     public EnderEmit enderEmit;
+
+    @OneToOne(mappedBy = "emit", cascade = CascadeType.ALL)
+    private InfNFe infNFe;
 
 }
