@@ -13,4 +13,6 @@ public interface ArquivoRepository extends BaseRepository<Arquivo> {
 
     @Query(value = "from Arquivo arq where arq.situacaoArquivo =:situacaoArquivo")
     List<Arquivo> findBySituacaoArquivo(EnumSituacaoArquivo situacaoArquivo);
+
+    List<Arquivo> findAllByNome(String name);
 }
