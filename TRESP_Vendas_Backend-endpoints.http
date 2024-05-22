@@ -61,3 +61,15 @@ Authorization: Bearer {{token}}
 ###
 GET localhost:8070/xml/select?columns=id,NFe&page=0&size=2&search=NFe.infNFe.emit.CNPJ==03387396000160&sort=id,asc
 Authorization: Bearer {{token}}
+
+### Cadastrar itens na tabela de aliquota diferenciada
+POST localhost:8081/tabela-aliquota-diferenciada
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "ncm": "00000000",
+  "inicioVigencia": "2022-01-01",
+  "fimVigencia": "2025-01-01"
+}
+

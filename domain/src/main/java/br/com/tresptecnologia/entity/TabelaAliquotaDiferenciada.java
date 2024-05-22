@@ -1,6 +1,6 @@
 package br.com.tresptecnologia.entity;
 
-import br.com.tresptecnologia.core.entity.BaseEntity;
+import br.com.tresptecnologia.core.entity.BaseActiveEntity;
 import br.com.tresptecnologia.enumeration.EnumSituacao;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -26,7 +26,7 @@ import java.time.LocalDate;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class TabelaAliquotaDiferenciada extends BaseEntity {
+public class TabelaAliquotaDiferenciada extends BaseActiveEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_TAD")
@@ -42,5 +42,5 @@ public class TabelaAliquotaDiferenciada extends BaseEntity {
     private LocalDate fimVigencia;
     @Column(name = "TAD_ST_SITUACAO")
     @Enumerated(EnumType.STRING)
-    private EnumSituacao situacao;
+    private EnumSituacao enumSituacao;
 }
