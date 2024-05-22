@@ -8,7 +8,7 @@ import java.util.List;
 public interface IProcessamentoService {
     void alterarSituacaoProcessamentosPresos(List<Processamento> proceList);
 
-    void iniciar(EOrigemProcessamento origemProcessamento);
+    void iniciarProcessamentoArquivos(EOrigemProcessamento origemProcessamento);
 
     Boolean isEmProcessamento();
 }

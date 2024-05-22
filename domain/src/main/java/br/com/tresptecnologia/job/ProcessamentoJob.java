@@ -34,7 +34,7 @@ public class ProcessamentoJob {
         //Não existe processamento sendo executado
         if (procList.isEmpty()) {
             log.info("Nao existem processamentos em execução, vou executar");
-            processamentoService.iniciar(EOrigemProcessamento.JOB);
+            processamentoService.iniciarProcessamentoArquivos(EOrigemProcessamento.JOB);
 
         } else {
             log.info("Existem processamentos em execução, vou checar seu processamento");
@@ -52,18 +52,18 @@ public class ProcessamentoJob {
             //Não processar
             if (!isExisteProcessamentoPreso) {
                 log.info("Não existe processamento preso, não vou processar pois o Job já está trabalhando.");
-                processamentoService.iniciar(EOrigemProcessamento.JOB);
+                processamentoService.iniciarProcessamentoArquivos(EOrigemProcessamento.JOB);
             } else {
                 //Existe processamento preso
                 log.info("Existem processamento(s) preso(s) vou alterar a situação dele(s) e processar os arquivos");
                 processamentoService.alterarSituacaoProcessamentosPresos(procList);
-                processamentoService.iniciar(EOrigemProcessamento.JOB);
+                processamentoService.iniciarProcessamentoArquivos(EOrigemProcessamento.JOB);
             }
         }
     }
 
     @Async
     public void iniciarProcessamentoXmlManual() {
-        processamentoService.iniciar(EOrigemProcessamento.USUARIO);
+        processamentoService.iniciarProcessamentoArquivos(EOrigemProcessamento.USUARIO);
     }
 }

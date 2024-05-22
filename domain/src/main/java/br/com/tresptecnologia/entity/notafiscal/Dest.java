@@ -12,9 +12,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import javax.xml.bind.annotation.XmlElement;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -55,4 +55,8 @@ public class Dest extends BaseEntity {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "END_ID", foreignKey = @ForeignKey(name = "FK_END_DST"))
     public EnderDest enderDest;
+
+    @OneToOne(mappedBy = "dest", cascade = CascadeType.ALL)
+    private InfNFe infNFe;
+
 }

@@ -32,6 +32,11 @@ public class AuxiliarService {
     }
 
     @Transactional(Transactional.TxType.REQUIRES_NEW)
+    public void deletarArquivo(Arquivo arquivo) {
+        arquivoRepository.delete(arquivo);
+    }
+
+    @Transactional(Transactional.TxType.REQUIRES_NEW)
     public void saveProcessamento(Processamento proc) {
         processamentoRepository.saveAndFlush(proc);
     }
