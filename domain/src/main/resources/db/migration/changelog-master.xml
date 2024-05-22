@@ -30,4 +30,5 @@
     <include file="/db/migration/changes/20240514-5-add-imposto.sql"/>
     <include file="/db/migration/changes/20240516-1-add-icms-00.sql"/>
     <include file="/db/migration/changes/20240516-2-add-ipi-ipint.sql"/>
+    <include file="/db/migration/changes/20240522-add-aliquota-diferenciada.sql"/>
 </databaseChangeLog>
