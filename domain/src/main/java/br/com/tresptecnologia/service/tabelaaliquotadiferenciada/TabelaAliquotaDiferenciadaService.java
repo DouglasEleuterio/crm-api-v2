@@ -35,6 +35,13 @@ public class TabelaAliquotaDiferenciadaService extends BaseActiveService<TabelaA
     }
 
     @Override
+    public void delete(Long id) throws DomainException {
+        var entity = findById(id);
+        entity.setSituacao(false);
+        super.update(entity.getId(), entity);
+    }
+
+    @Override
     public JsonMapper getJsonMapper() {
         return jsonMapper;
     }
