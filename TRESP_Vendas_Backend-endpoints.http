@@ -68,8 +68,8 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-  "ncm": "00000000",
-  "inicioVigencia": "2022-01-01",
-  "fimVigencia": "2025-01-01"
+  "ncm": "00000001",
+  "inicioVigencia": "2023-01-01",
+  "fimVigencia": "2023-12-31"
 }
 
