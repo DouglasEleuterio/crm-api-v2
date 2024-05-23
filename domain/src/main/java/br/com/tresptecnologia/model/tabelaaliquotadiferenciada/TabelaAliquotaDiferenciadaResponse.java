@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Data
 @Builder
 public class TabelaAliquotaDiferenciadaResponse implements BaseResponse {
@@ -15,4 +17,7 @@ public class TabelaAliquotaDiferenciadaResponse implements BaseResponse {
     private LocalDate inicioVigencia;
     private LocalDate fimVigencia;
     private EnumSituacao enumSituacao;
+    private LocalDateTime dataAtualizacao;
+    private LocalDateTime dataCriacao;
+
 }
