@@ -10,8 +10,6 @@ import br.com.tresptecnologia.enumeration.EnumSituacao;
 import br.com.tresptecnologia.repository.tabelaaliquotadiferenciada.TabelaAliquotaDiferenciadaRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class TabelaAliquotaDiferenciadaService extends BaseActiveService<TabelaAliquotaDiferenciada> implements ITabelaAliquotaDiferenciadaService {
 
