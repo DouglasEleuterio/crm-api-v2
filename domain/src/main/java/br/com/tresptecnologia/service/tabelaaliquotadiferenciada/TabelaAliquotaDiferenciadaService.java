@@ -9,6 +9,7 @@ import br.com.tresptecnologia.entity.TabelaAliquotaDiferenciada;
 import br.com.tresptecnologia.enumeration.EnumSituacao;
 import br.com.tresptecnologia.repository.tabelaaliquotadiferenciada.TabelaAliquotaDiferenciadaRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class TabelaAliquotaDiferenciadaService extends BaseActiveService<TabelaAliquotaDiferenciada> implements ITabelaAliquotaDiferenciadaService {
@@ -23,8 +24,10 @@ public class TabelaAliquotaDiferenciadaService extends BaseActiveService<TabelaA
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public TabelaAliquotaDiferenciada create(TabelaAliquotaDiferenciada tabelaAliquotaDiferenciada) throws DomainException {
         tabelaAliquotaDiferenciada.setEnumSituacao(EnumSituacao.ATIVO);
+        tabelaAliquotaDiferenciada.setSituacao(true);
         var aliquotaOtp = ((TabelaAliquotaDiferenciadaRepository) getRepository())
                 .findByNcm(tabelaAliquotaDiferenciada.getNcm());
         if (aliquotaOtp.isPresent())

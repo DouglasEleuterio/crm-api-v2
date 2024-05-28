@@ -1,5 +1,6 @@
 package br.com.tresptecnologia.model.tabelaaliquotadiferenciada;
 
+import br.com.tresptecnologia.enumeration.EnumSituacao;
 import br.com.tresptecnologia.shared.validation.Required;
 import br.com.tresptecnologia.shared.validation.RequiredSize;
 import lombok.Builder;
@@ -17,4 +18,6 @@ public class TabelaAliquotaDiferenciadaRequest {
     @Required(label = "tabelaaliquotadiferenciada.iniciovigencia")
     private LocalDate inicioVigencia;
     private LocalDate fimVigencia;
+    private EnumSituacao enumSituacao;
+    private Boolean situacao;
 }
