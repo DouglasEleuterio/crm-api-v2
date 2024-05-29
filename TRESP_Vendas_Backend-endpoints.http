@@ -55,7 +55,7 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJVN0Z1M0
 
 
 ###
-GET http://localhost:8070/processamento
+GET http://localhost:8081/processamento
 Authorization: Bearer {{token}}
 
 ###
@@ -73,3 +73,12 @@ Content-Type: application/json
   "fimVigencia": "2025-01-01"
 }
 
+### Listar Itens Tabela Aliquota Diferenciada
+GET  https://clemente-api.3ptecnologia.com.br/tabela-aliquota-diferenciada/select?search=id!=0;situacao==true;enumSituacao==ATIVO&page=0&size=10&sort=inicioVigencia,desc&columns=id,ncm,inicioVigencia,fimVigencia,situacao,enumSituacao
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+### Obtem lista de incidencia monofasica
+GET localhost:8081/tabela-valores-monofasico-nf
+Authorization: Bearer {{token}}
+Content-Type: application/json
