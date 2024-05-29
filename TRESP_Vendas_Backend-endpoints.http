@@ -92,3 +92,8 @@ Content-Type: application/json
 GET localhost:8081/tabela-valores-monofasico-nf/11048724000121
 Authorization: Bearer {{token}}
 Content-Type: application/json
+
+### Obtem lista de CNPJ
+GET localhost:8081/destinatario
+Authorization: Bearer {{token}}
+Content-Type: application/json
