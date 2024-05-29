@@ -1,6 +1,10 @@
 package br.com.tresptecnologia.service.tabelavaloresmonofasicosnf;
 
+import br.com.tresptecnologia.enumeration.EnumSituacao;
 import br.com.tresptecnologia.model.tabelavaloresmonofasicosnf.TabelaValoresMonofasicosNF;
+import br.com.tresptecnologia.model.xml.InfNFeResponse;
+import br.com.tresptecnologia.model.xml.NFeResponse;
+import br.com.tresptecnologia.repository.informacoes.InfNFeRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +20,8 @@ public class TabelaValoresMonofasicosNFService {
 
     @PersistenceContext
     private EntityManager entityManager;
+
+    private InfNFeRepository infNFeRepository;
 
     public List<TabelaValoresMonofasicosNF> findAllProdutosComMonosfasico()  {
         List<TabelaValoresMonofasicosNF> resultList = new ArrayList<>();
@@ -70,5 +76,10 @@ public class TabelaValoresMonofasicosNFService {
         return resultList;
     }
 
+    public List<NFeResponse> findAllProdutosComMonosfasico() {
+        var result = infNFeRepository.getAllProdutosComMonofasicos(EnumSituacao.ATIVO);
+
+        return null;
+    }
 
 }

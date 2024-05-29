@@ -1,6 +1,7 @@
 package br.com.tresptecnologia.controller.tabelavaloresmonofasicosnf;
 
 import br.com.tresptecnologia.model.tabelavaloresmonofasicosnf.TabelaValoresMonofasicosNF;
+import br.com.tresptecnologia.model.xml.NFeResponse;
 import br.com.tresptecnologia.service.tabelavaloresmonofasicosnf.TabelaValoresMonofasicosNFService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -24,4 +25,11 @@ public class TabelaValoresMonofasicosNFController {
     List<TabelaValoresMonofasicosNF> findAllProdutosComMonosfasico() {
         return tabelaValoresMonofasicosNFService.findAllProdutosComMonosfasico();
     }
+
+    @GetMapping(path = "/new")
+    @Operation(description = "Retorna lista de Produtos na NF que tem incidencia monofasica")
+    List<NFeResponse> findAllEntity(){
+        return tabelaValoresMonofasicosNFService.findAllProdutosComMonosfasico();
+    }
+
 }
