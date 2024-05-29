@@ -5,11 +5,11 @@ import br.com.tresptecnologia.entity.Arquivo;
 import br.com.tresptecnologia.entity.notafiscal.XML;
 import br.com.tresptecnologia.service.storage.IStorageService;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import jakarta.xml.bind.JAXB;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 
 @Service
 @RequiredArgsConstructor
@@ -23,7 +23,7 @@ public class ParseService {
             var arquivoIS = storageService.get(arquivo.getBucket(), arquivo.getPath(), arquivo.getNome());
 
             XmlMapper xmlMapper = new XmlMapper();
-//            return JAXB.unmarshal(arquivoIS, XML.class);
+            xmlMapper.findAndRegisterModules();
             return xmlMapper.readValue(arquivoIS, XML.class);
 
         } catch (Exception e) {
@@ -32,7 +32,12 @@ public class ParseService {
     }
 
     public static void main(String[] args) throws Exception {
-        convertXmlToOjectStatic();
+//        convertXmlToOjectStatic();
+        var dataParaConverter = "2024-03-04T20:45:00-03:00";
+        var formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX");
+        var formatado = formatter.parse(dataParaConverter);
+        System.out.println(formatado.toString());
+
     }
 
     public static Object convertXmlToOjectStatic() throws Exception {

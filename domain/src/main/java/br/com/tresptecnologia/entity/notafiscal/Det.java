@@ -17,8 +17,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import javax.xml.bind.annotation.XmlElement;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import lombok.AllArgsConstructor;
@@ -52,7 +50,7 @@ public class Det extends BaseEntity {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "PRD_ID", foreignKey = @ForeignKey(name = "FK_PRD_DET"))
-    public Prod prod ;
+    public Prod prod;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "IMP_ID", foreignKey = @ForeignKey(name = "FK_IMP_DET"))

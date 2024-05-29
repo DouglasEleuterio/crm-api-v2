@@ -31,4 +31,7 @@ CREATE TABLE ide_ide
     ide_ver_proc     VARCHAR2(255),
     CONSTRAINT pk_ide_ide PRIMARY KEY (ide_id)
 );
+--changeset douglas.ferreira:edit-ide-add-ide_dh_emidt
+ALTER TABLE ide_ide
+ADD ide_dh_emidt     date;
 

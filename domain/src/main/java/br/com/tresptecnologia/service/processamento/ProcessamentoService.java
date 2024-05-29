@@ -19,6 +19,7 @@ import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
@@ -96,7 +97,7 @@ public class ProcessamentoService implements IProcessamentoService {
 
                 arquivo.setSituacaoArquivo(EnumSituacaoArquivo.PROCESSADO);
                 var arqSaved = auxiliarService.saveArquivo(arquivo);
-
+                xml.getNfe().getInf().getIde().setDhEmiDT(LocalDate.parse(xml.getNfe().getInf().getIde().getDhEmi().split("T")[0])) ;
                 auxiliarService.saveXml(xml);
 
                 xml.setArquivo(arqSaved);

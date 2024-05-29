@@ -17,6 +17,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @Entity
@@ -47,7 +49,9 @@ public class Ide extends BaseEntity {
     @Column(name = "IDE_nNF")
     public Long nNF;
     @Column(name = "IDE_dhEmi")
-    public String dhEmi;
+    private String dhEmi;
+    @Column(name = "IDE_dhEmiDT")
+    private LocalDate dhEmiDT;
     @Column(name = "IDE_dhSaiEnt")
     public String dhSaiEnt;
     @Column(name = "IDE_tpNF")

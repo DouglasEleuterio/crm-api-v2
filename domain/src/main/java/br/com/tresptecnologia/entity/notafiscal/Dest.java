@@ -1,6 +1,7 @@
 package br.com.tresptecnologia.entity.notafiscal;
 
 import br.com.tresptecnologia.core.entity.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.CascadeType;
@@ -56,6 +57,7 @@ public class Dest extends BaseEntity {
     @JoinColumn(name = "END_ID", foreignKey = @ForeignKey(name = "FK_END_DST"))
     public EnderDest enderDest;
 
+    @JsonBackReference
     @OneToOne(mappedBy = "dest", cascade = CascadeType.ALL)
     private InfNFe infNFe;
 
