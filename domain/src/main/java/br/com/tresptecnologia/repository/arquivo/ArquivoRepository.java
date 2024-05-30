@@ -15,4 +15,6 @@ public interface ArquivoRepository extends BaseRepository<Arquivo> {
     List<Arquivo> findBySituacaoArquivo(EnumSituacaoArquivo situacaoArquivo);
 
     List<Arquivo> findAllByNome(String name);
+
+    Long countAllByErroNotNull();
 }

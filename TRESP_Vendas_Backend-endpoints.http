@@ -108,3 +108,8 @@ GET {{urlLocal}}/upload/quantidade
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
+### Quantidade de Arquivos XML com erro no processamento
+GET {{urlLocal}}/upload/quantidade-erro
+Authorization: Bearer {{token}}
+Content-Type: application/json
+

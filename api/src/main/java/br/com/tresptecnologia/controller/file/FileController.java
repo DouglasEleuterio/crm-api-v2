@@ -47,4 +47,9 @@ public class FileController {
         return uploadService.getQuantiadeArquivosXML();
     }
 
+    @GetMapping(path = "/quantidade-erro")
+    @Operation(description = "Retorna quantidade de Arquivos XML enviado e com erros no processamento")
+    public Long getQuantidadeErro() {
+        return uploadService.getQuantiadeArquivosErro();
+    }
 }

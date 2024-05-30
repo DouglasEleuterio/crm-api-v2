@@ -88,6 +88,11 @@ public class UploadService implements IUploadService {
         return arquivoRepository.count();
     }
 
+    @Override
+    public Long getQuantiadeArquivosErro() {
+        return arquivoRepository.countAllByErroNotNull();
+    }
+
     //todo: Validar se arquivo é xml
     private void validarAnexo(MultipartFile file) throws DomainException {
         if (file.getSize() > applicationProperties.getTamanhoMaximoAnexo()) {
