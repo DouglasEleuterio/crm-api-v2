@@ -10,4 +10,6 @@ import java.io.IOException;
 
 public interface IXmlService extends IBaseService<XML>, IBaseFetchMapperService<XML> {
     ReportData downloadXmlFile(String id) throws DomainException, IOException;
+
+    Long getQuantiadeXml();
 }

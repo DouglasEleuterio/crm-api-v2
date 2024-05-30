@@ -67,6 +67,12 @@ public class XmlController extends BaseRsqlFindController<XML, XmlResponse> impl
         return getService().findAll(spec, page, size, sort, mapper::toTableResponse);
     }
 
+    @GetMapping(path = "/quantidade")
+    @Operation(description = "Retorna quantidade de Documentos XML processados")
+    public Long getQuantidade() {
+        return getService().getQuantiadeXml();
+    }
+
     @GetMapping(value = "/download/{id}")
     @Operation(description = "Realiza o download do arquivo XML")
     public ResponseEntity<Resource> relatorioExcesso(@PathVariable String id)

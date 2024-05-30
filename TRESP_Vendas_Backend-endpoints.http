@@ -97,3 +97,8 @@ Content-Type: application/json
 GET localhost:8081/destinatario
 Authorization: Bearer {{token}}
 Content-Type: application/json
+
+### Quantidade de Documentos XML processados
+GET {{urlLocal}}/xml/quantidade
+Authorization: Bearer {{token}}
+Content-Type: application/json
