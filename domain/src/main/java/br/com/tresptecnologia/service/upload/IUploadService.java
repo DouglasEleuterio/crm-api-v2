@@ -11,4 +11,6 @@ public interface IUploadService {
     AnexoUploadResponse upload(MultipartFile file) throws DomainException;
 
     List<AnexoUploadResponse> upload(List<MultipartFile> files) throws DomainException;
+
+    Long getQuantiadeArquivosXML();
 }

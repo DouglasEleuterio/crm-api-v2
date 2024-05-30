@@ -102,3 +102,9 @@ Content-Type: application/json
 GET {{urlLocal}}/xml/quantidade
 Authorization: Bearer {{token}}
 Content-Type: application/json
+
+### Quantidade de Arquivos XML processados
+GET {{urlLocal}}/upload/quantidade
+Authorization: Bearer {{token}}
+Content-Type: application/json
+

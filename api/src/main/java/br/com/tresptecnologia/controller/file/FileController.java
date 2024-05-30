@@ -6,6 +6,7 @@ import br.com.tresptecnologia.service.ParseService;
 import br.com.tresptecnologia.service.upload.IUploadService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,10 +41,10 @@ public class FileController {
         return uploadService.upload(file);
     }
 
-//    @GetMapping("/parse/{arquivo-name}")
-//    @Operation(description = "Converte um arquivo XML em Objeto")
-//    public ResponseEntity<Object> parse(@PathVariable(name = "arquivo-name") String arquivoName) throws DomainException {
-//        return ResponseEntity.ok(parseService.convertArquivoToXml(arquivoName));
-//    }
+    @GetMapping(path = "/quantidade")
+    @Operation(description = "Retorna quantidade de Arquivos XML enviado")
+    public Long getQuantidade() {
+        return uploadService.getQuantiadeArquivosXML();
+    }
 
 }
