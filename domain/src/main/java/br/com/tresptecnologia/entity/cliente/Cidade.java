@@ -1,6 +1,7 @@
 package br.com.tresptecnologia.entity.cliente;
 
 import br.com.tresptecnologia.core.entity.BaseEntity;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,12 +28,12 @@ public class Cidade extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_CIDADE")
     @SequenceGenerator(name = "SQ_CIDADE", sequenceName = "SQ_CIDADE", allocationSize = 1)
-    @Column(name = "id", nullable = false, length = 36)
+    @Column(name = "id", nullable = false)
     private Long id;
 
     @Column(name = "nome", nullable = false)
     private String nome;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "estado_id")
     private Estado estado;
     @Column(name = "codigo_ibge")
