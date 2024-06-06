@@ -2,7 +2,6 @@ package br.com.tresptecnologia.controller.file;
 
 import br.com.tresptecnologia.core.exception.DomainException;
 import br.com.tresptecnologia.model.upload.AnexoUploadResponse;
-import br.com.tresptecnologia.service.ParseService;
 import br.com.tresptecnologia.service.upload.IUploadService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -22,11 +21,9 @@ import java.util.List;
 public class FileController {
 
     private final IUploadService uploadService;
-    private final ParseService parseService;
 
-    public FileController(IUploadService uploadService, ParseService parseService) {
+    public FileController(IUploadService uploadService) {
         this.uploadService = uploadService;
-        this.parseService = parseService;
     }
 
     @PostMapping
