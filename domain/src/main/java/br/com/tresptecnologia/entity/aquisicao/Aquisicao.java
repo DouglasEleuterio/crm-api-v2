@@ -1,6 +1,6 @@
 package br.com.tresptecnologia.entity.aquisicao;
 
-import br.com.tresptecnologia.entity.Cliente;
+import br.com.tresptecnologia.entity.cliente.Cliente;
 import lombok.Builder;
 import lombok.Data;
 

@@ -7,4 +7,8 @@
     <include file="/db/migration/changes/exemplo/20221121-1-add-migracao-inicial.sql"/>
     <include file="/db/migration/changes/exemplo/20221121-2-migracao-exemplo.sql"/>
     <include file="/db/migration/changes/20240508-1-add-arquivo.sql"/>
+    <include file="/db/migration/changes/20240605-1-add-estado.sql"/>
+    <include file="/db/migration/changes/20240605-2-add-cidade.sql"/>
+    <include file="/db/migration/changes/20240606-1-add-endereco.sql"/>
+    <include file="/db/migration/changes/20240606-2-add-cliente.sql"/>
 </databaseChangeLog>

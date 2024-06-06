@@ -3,7 +3,9 @@
 
 CREATE TABLE exemplo_relacao
 (
-    id   VARCHAR2(36)  NOT NULL,
+    id   NUMBER(38, 0) NOT NULL,
+    data_atualizacao TIMESTAMP     NOT NULL,
+    data_criacao     TIMESTAMP     NOT NULL,
     nome VARCHAR2(255) NOT NULL,
     CONSTRAINT pk_exemplo_relacao PRIMARY KEY (id)
 );
@@ -12,13 +14,13 @@ CREATE TABLE exemplo_relacao
 
 CREATE TABLE exemplo
 (
-    id               VARCHAR2(36)  NOT NULL,
+    id               NUMBER(38, 0) NOT NULL,
     situacao         NUMBER(1)     NOT NULL,
     data_criacao     TIMESTAMP     NOT NULL,
     data_atualizacao TIMESTAMP     NOT NULL,
     nome             VARCHAR2(255) NOT NULL,
     descricao        VARCHAR2(255) NOT NULL,
-    fk_relacao       VARCHAR2(36),
+    fk_relacao       NUMBER(38, 0) NOT NULL,
     CONSTRAINT pk_exemplo PRIMARY KEY (id)
 );
 
@@ -27,7 +29,7 @@ ALTER TABLE exemplo
 
 CREATE TABLE exemplo_root_filho_one
 (
-    id               VARCHAR2(36) NOT NULL,
+    id               NUMBER(38, 0) NOT NULL,
     situacao         NUMBER(1)    NOT NULL,
     data_criacao     TIMESTAMP    NOT NULL,
     data_atualizacao TIMESTAMP    NOT NULL,
@@ -37,12 +39,12 @@ CREATE TABLE exemplo_root_filho_one
 
 CREATE TABLE exemplo_root
 (
-    id               VARCHAR2(36) NOT NULL,
+    id               NUMBER(38, 0) NOT NULL,
     situacao         NUMBER(1)    NOT NULL,
     data_criacao     TIMESTAMP    NOT NULL,
     data_atualizacao TIMESTAMP    NOT NULL,
     nome             VARCHAR2(36) NOT NULL,
-    fk_filho_one     VARCHAR2(36),
+    fk_filho_one     NUMBER(38, 0) NOT NULL,
     CONSTRAINT pk_exemplo_root PRIMARY KEY (id)
 );
 
@@ -51,12 +53,12 @@ ALTER TABLE exemplo_root
 
 CREATE TABLE exemplo_root_filho_many
 (
-    id               VARCHAR2(36) NOT NULL,
+    id               NUMBER(38, 0) NOT NULL,
     situacao         NUMBER(1)    NOT NULL,
     data_criacao     TIMESTAMP    NOT NULL,
     data_atualizacao TIMESTAMP    NOT NULL,
     descricao        VARCHAR2(36) NOT NULL,
-    fk_root          VARCHAR2(36),
+    fk_root          NUMBER(38, 0) NOT NULL,
     CONSTRAINT pk_exemplo_root_filho_many PRIMARY KEY (id)
 );
 

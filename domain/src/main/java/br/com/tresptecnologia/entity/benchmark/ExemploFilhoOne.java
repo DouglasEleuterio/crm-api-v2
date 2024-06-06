@@ -15,10 +15,10 @@ import lombok.Setter;
 public class ExemploFilhoOne extends BaseActiveEntity {
 
     @Id
-    @Column(name = "id", nullable = false, length = 36)
+    @Column(name = "id", nullable = false)
     private Long id;
 
 
-    @Column(name = "descricao", nullable = false, length = 36)
+    @Column(name = "descricao", nullable = false)
     private String descricao;
 }
