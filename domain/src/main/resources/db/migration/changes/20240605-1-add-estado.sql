@@ -58,9 +58,6 @@ INSERT INTO estado
 values (sq_estado.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Pará', '15','PA');
 
 INSERT INTO estado
-values (sq_estado.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Pará', '15','PA');
-
-INSERT INTO estado
 values (sq_estado.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Paraíba', '25','PB');
 
 INSERT INTO estado
