@@ -13,4 +13,5 @@
     <include file="/db/migration/changes/20240606-2-add-cliente.sql"/>
     <include file="/db/migration/changes/20240607-1-add-cidade.sql"/>
     <include file="/db/migration/changes/20240607-2-add-cidade.sql"/>
+    <include file="/db/migration/changes/20240608-1-add-auditoria.sql"/>
 </databaseChangeLog>

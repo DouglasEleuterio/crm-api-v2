@@ -16,8 +16,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
+import org.hibernate.validator.constraints.br.CPF;
 import java.time.LocalDate;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -33,6 +34,7 @@ public class Cliente extends BaseEntity {
     private Long id;
     @Column(name = "nome", nullable = false)
     private String nome;
+    @CPF
     @Column(name = "cpf", nullable = false, unique = true)
     private String cpf;
     @Column(name = "email", nullable = false, unique = true)
