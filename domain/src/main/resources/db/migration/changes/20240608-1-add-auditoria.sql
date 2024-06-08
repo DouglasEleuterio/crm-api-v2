@@ -18,7 +18,6 @@ CREATE TABLE historico
 
 
 --changeset douglas.ferreira:add-auditoria
-
 CREATE SEQUENCE sq_auditoria START WITH 1 INCREMENT BY 1;
 
 CREATE TABLE auditoria
@@ -27,7 +26,7 @@ CREATE TABLE auditoria
     data_criacao      TIMESTAMP       NOT NULL,
     data_atualizacao  TIMESTAMP       NOT NULL,
     situacao_registro VARCHAR2(255)   NOT NULL,
-    dado              VARCHAR2(10000) NOT NULL,
+    dado              VARCHAR2(2000) NOT NULL,
     historico_id      NUMBER(38, 0)   NOT NULL,
     CONSTRAINT pk_auditoria PRIMARY KEY (id)
 );
