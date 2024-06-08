@@ -3,6 +3,7 @@ package br.com.tresptecnologia.controller.cliente;
 import br.com.tresptecnologia.core.controller.model.ErrorResponse;
 import br.com.tresptecnologia.entity.Exemplo;
 import br.com.tresptecnologia.entity.cliente.Cliente;
+import br.com.tresptecnologia.entity.cliente.Endereco;
 import br.com.tresptecnologia.model.cliente.ClienteRequest;
 import br.com.tresptecnologia.model.cliente.ClienteResponse;
 import br.com.tresptecnologia.model.exemplo.ExemploNomeRequest;
@@ -172,12 +173,17 @@ public class ClienteTest extends BaseTest {
     @Test
     @Rollback
     void testarAlterarNome_IdValido_RetornarSucesso() throws Exception {
+
+        var endereco = Endereco.builder().build();
+        //todo instanciar endereço
+
         Cliente clienteAlterarNome = new Cliente();
         clienteAlterarNome.setId(2L);
         clienteAlterarNome.setNome("Exemplo Ativar");
         clienteAlterarNome.setTelefone("62999999999");
         clienteAlterarNome.setCpf("40049617001");
         clienteAlterarNome.setEmail("teste@email.com");
+        clienteAlterarNome.setEndereco(endereco);
         clienteAlterarNome.setDataNascimento(LocalDate.now());
 
         clienteAlterarNome = clienteRepository.saveAndFlush(clienteAlterarNome);
