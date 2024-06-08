@@ -1,20 +1,20 @@
 version: "3.7"
 
 services:
-  contabilidade-api:
-    image: douglaseleuterioferreira/apps:contabilidade-api
+  clinica-api:
+    image: douglaseleuterioferreira/apps:clinica-api
     networks:
       - minha_rede
     deploy:
       labels:
         - traefik.enable=true
-        - traefik.http.routers.contabilidade-api.rule=Host(`clemente-api.3ptecnologia.com.br`)
-        - traefik.http.routers.contabilidade-api.entrypoints=websecure
-        - traefik.http.routers.contabilidade-api.tls.certresolver=letsencryptresolver
-        - traefik.http.routers.contabilidade-api.priority=1
-        - traefik.http.routers.contabilidade-api.service=contabilidade-api
-        - traefik.http.services.contabilidade-api.loadbalancer.server.port=8080
-        - traefik.http.services.contabilidade-api.loadbalancer.passHostHeader=true
+        - traefik.http.routers.clinica-api.rule=Host(`clinica.3ptecnologia.com.br`)
+        - traefik.http.routers.clinica-api.entrypoints=websecure
+        - traefik.http.routers.clinica-api.tls.certresolver=letsencryptresolver
+        - traefik.http.routers.clinica-api.priority=1
+        - traefik.http.routers.clinica-api.service=clinica-api
+        - traefik.http.services.clinica-api.loadbalancer.server.port=8080
+        - traefik.http.services.clinica-api.loadbalancer.passHostHeader=true
     environment:
       - API_URL=${API_URL}
       - API_ENV=${API_ENV}

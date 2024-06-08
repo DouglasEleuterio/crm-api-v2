@@ -12,4 +12,5 @@
     <include file="/db/migration/changes/20240606-1-add-endereco.sql"/>
     <include file="/db/migration/changes/20240606-2-add-cliente.sql"/>
     <include file="/db/migration/changes/20240607-1-add-cidade.sql"/>
+    <include file="/db/migration/changes/20240607-2-add-cidade.sql"/>
 </databaseChangeLog>
