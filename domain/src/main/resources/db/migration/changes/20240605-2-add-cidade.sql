@@ -1112,457 +1112,766 @@ INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FRO
 INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Varjota', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 23),'2313955');
 INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Várzea Alegre', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 23),'2314003');
 INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Viçosa do Ceará', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 23),'2314102');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
---  INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'nome', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 12),'codigo');
---  INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'nome', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 12),'codigo');
---  INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'nome', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 12),'codigo');
---  INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'nome', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 12),'codigo');
---  INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'nome', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 12),'codigo');
---  INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'nome', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 12),'codigo');
---  INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'nome', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 12),'codigo');
---  INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'nome', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 12),'codigo');
---  INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'nome', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 12),'codigo');
---  INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'nome', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 12),'codigo');
+--changeset douglas.ferreira:seed-cidade-rio-grande-norte
+
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Acari', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2400109');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Açu', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2400208');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Afonso Bezerra', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2400307');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Água Nova', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2400406');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Alexandria', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2400505');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Almino Afonso', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2400604');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Alto do Rodrigues', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2400703');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Angicos', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2400802');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Antônio Martins', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2400901');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Apodi', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2401008');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Areia Branca', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2401107');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Arês', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2401206');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Baía Formosa', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2401404');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Baraúna', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2401453');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Barcelona', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2401503');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Bento Fernandes', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2401602');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Bodó', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2401651');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Bom Jesus', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2401701');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Brejinho', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2401800');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Caiçara do Norte', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2401859');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Caiçara do Rio do Vento', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2401909');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Caicó', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2402006');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Campo Grande', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2401305');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Campo Redondo', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2402105');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Canguaretama', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2402204');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Caraúbas', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2402303');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Carnaúba dos Dantas', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2402402');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Carnaubais', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2402501');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Ceará-Mirim', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2402600');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Cerro Corá', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2402709');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Coronel Ezequiel', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2402808');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Coronel João Pessoa', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2402907');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Cruzeta', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2403004');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Currais Novos', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2403103');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Doutor Severiano', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2403202');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Encanto', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2403301');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Equador', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2403400');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Espírito Santo', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2403509');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Extremoz', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2403608');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Felipe Guerra', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2403707');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Fernando Pedroza', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2403756');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Florânia', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2403806');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Francisco Dantas', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2403905');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Frutuoso Gomes', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2404002');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Galinhos', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2404101');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Goianinha', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2404200');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Governador Dix-Sept Rosado', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2404309');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Grossos', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2404408');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Guamaré', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2404507');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Ielmo Marinho', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2404606');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Ipanguaçu', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2404705');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Ipueira', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2404804');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Itajá', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2404853');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Itaú', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2404903');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Jaçanã', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2405009');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Jandaíra', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2405108');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Janduís', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2405207');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Januário Cicco', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2405306');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Japi', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2405405');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Jardim de Angicos', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2405504');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Jardim de Piranhas', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2405603');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Jardim do Seridó', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2405702');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'João Câmara', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2405801');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'João Dias', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2405900');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'José da Penha', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2406007');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Jucurutu', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2406106');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Jundiá', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2406155');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Lagoa d Anta', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2406205');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Lagoa de Pedras', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2406304');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Lagoa de Velhos', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2406403');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Lagoa Nova', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2406502');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Lagoa Salgada', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2406601');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Lajes', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2406700');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Lajes Pintadas', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2406809');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Lucrécia', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2406908');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Luís Gomes', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2407005');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Macaíba', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2407104');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Macau', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2407203');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Major Sales', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2407252');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Marcelino Vieira', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2407302');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Martins', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2407401');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Maxaranguape', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2407500');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Messias Targino', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2407609');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Montanhas', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2407708');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Monte Alegre', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2407807');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Monte das Gameleiras', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2407906');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Mossoró', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2408003');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Natal', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2408102');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Nísia Floresta', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2408201');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Nova Cruz', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2408300');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Olho d Água do Borges', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2408409');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Ouro Branco', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2408508');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Paraná', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2408607');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Paraú', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2408706');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Parazinho', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2408805');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Parelhas', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2408904');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Parnamirim', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2403251');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Passa e Fica', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2409100');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Passagem', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2409209');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Patu', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2409308');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Pau dos Ferros', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2409407');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Pedra Grande', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2409506');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Pedra Preta', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2409605');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Pedro Avelino', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2409704');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Pedro Velho', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2409803');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Pendências', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2409902');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Pilões', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2410009');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Poço Branco', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2410108');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Portalegre', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2410207');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Porto do Mangue', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2410256');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Pureza', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2410405');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Rafael Fernandes', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2410504');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Rafael Godeiro', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2410603');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Riacho da Cruz', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2410702');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Riacho de Santana', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2410801');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Riachuelo', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2410900');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Rio do Fogo', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2408953');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Rodolfo Fernandes', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2411007');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Ruy Barbosa', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2411106');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Santa Cruz', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2411205');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Santa Maria', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2409332');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Santana do Matos', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2411403');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Santana do Seridó', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2411429');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Santo Antônio', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2411502');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Bento do Norte', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2411601');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Bento do Trairí', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2411700');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Fernando', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2411809');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Francisco do Oeste', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2411908');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Gonçalo do Amarante', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2412005');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São João do Sabugi', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2412104');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São José de Mipibu', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2412203');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São José do Campestre', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2412302');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São José do Seridó', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2412401');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Miguel', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2412500');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Miguel do Gostoso', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2412559');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Paulo do Potengi', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2412609');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Pedro', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2412708');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Rafael', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2412807');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Tomé', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2412906');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Vicente', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2413003');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Senador Elói de Souza', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2413102');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Senador Georgino Avelino', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2413201');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Serra Caiada', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2410306');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Serra de São Bento', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2413300');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Serra do Mel', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2413359');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Serra Negra do Norte', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2413409');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Serrinha', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2413508');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Serrinha dos Pintos', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2413557');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Severiano Melo', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2413607');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Sítio Novo', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2413706');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Taboleiro Grande', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2413805');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Taipu', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2413904');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Tangará', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2414001');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Tenente Ananias', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2414100');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Tenente Laurentino Cruz', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2414159');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Tibau', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2411056');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Tibau do Sul', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2414209');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Timbaúba dos Batistas', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2414308');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Touros', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2414407');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Triunfo Potiguar', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2414456');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Umarizal', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2414506');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Upanema', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2414605');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Várzea', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2414704');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Venha-Ver', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2414753');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Vera Cruz', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2414803');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Viçosa', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2414902');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Vila Flor', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 24),'2415008');
+--changeset douglas.ferreira:seed-cidade-paraiba
+
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Água Branca', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2500106');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Aguiar', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2500205');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Alagoa Grande', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2500304');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Alagoa Nova', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2500403');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Alagoinha', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2500502');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Alcantil', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2500536');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Algodão de Jandaíra', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2500577');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Alhandra', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2500601');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Amparo', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2500734');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Aparecida', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2500775');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Araçagi', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2500809');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Arara', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2500908');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Araruna', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2501005');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Areia', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2501104');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Areia de Baraúnas', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2501153');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Areial', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2501203');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Aroeiras', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2501302');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Assunção', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2501351');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Baía da Traição', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2501401');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Bananeiras', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2501500');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Baraúna', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2501534');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Barra de Santa Rosa', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2501609');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Barra de Santana', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2501575');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Barra de São Miguel', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2501708');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Bayeux', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2501807');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Belém', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2501906');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Belém do Brejo do Cruz', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2502003');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Bernardino Batista', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2502052');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Boa Ventura', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2502102');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Boa Vista', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2502151');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Bom Jesus', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2502201');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Bom Sucesso', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2502300');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Bonito de Santa Fé', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2502409');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Boqueirão', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2502508');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Borborema', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2502706');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Brejo do Cruz', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2502805');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Brejo dos Santos', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2502904');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Caaporã', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2503001');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Cabaceiras', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2503100');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Cabedelo', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2503209');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Cachoeira dos Índios', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2503308');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Cacimba de Areia', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2503407');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Cacimba de Dentro', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2503506');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Cacimbas', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2503555');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Caiçara', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2503605');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Cajazeiras', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2503704');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Cajazeirinhas', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2503753');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Caldas Brandão', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2503803');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Camalaú', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2503902');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Campina Grande', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2504009');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Capim', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2504033');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Caraúbas', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2504074');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Carrapateira', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2504108');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Casserengue', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2504157');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Catingueira', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2504207');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Catolé do Rocha', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2504306');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Caturité', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2504355');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Conceição', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2504405');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Condado', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2504504');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Conde', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2504603');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Congo', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2504702');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Coremas', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2504801');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Coxixola', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2504850');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Cruz do Espírito Santo', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2504900');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Cubati', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2505006');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Cuité', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2505105');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Cuité de Mamanguape', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2505238');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Cuitegi', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2505204');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Curral de Cima', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2505279');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Curral Velho', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2505303');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Damião', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2505352');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Desterro', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2505402');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Diamante', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2505600');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Dona Inês', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2505709');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Duas Estradas', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2505808');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Emas', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2505907');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Esperança', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2506004');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Fagundes', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2506103');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Frei Martinho', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2506202');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Gado Bravo', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2506251');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Guarabira', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2506301');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Gurinhém', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2506400');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Gurjão', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2506509');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Ibiara', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2506608');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Igaracy', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2502607');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Imaculada', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2506707');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Ingá', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2506806');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Itabaiana', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2506905');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Itaporanga', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2507002');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Itapororoca', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2507101');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Itatuba', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2507200');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Jacaraú', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2507309');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Jericó', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2507408');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'João Pessoa', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2507507');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Joca Claudino', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2513653');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Juarez Távora', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2507606');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Juazeirinho', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2507705');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Junco do Seridó', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2507804');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Juripiranga', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2507903');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Juru', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2508000');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Lagoa', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2508109');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Lagoa de Dentro', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2508208');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Lagoa Seca', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2508307');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Lastro', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2508406');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Livramento', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2508505');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Logradouro', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2508554');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Lucena', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2508604');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Mãe d Água', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2508703');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Malta', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2508802');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Mamanguape', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2508901');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Manaíra', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2509008');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Marcação', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2509057');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Mari', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2509107');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Marizópolis', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2509156');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Massaranduba', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2509206');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Mataraca', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2509305');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Matinhas', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2509339');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Mato Grosso', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2509370');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Maturéia', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2509396');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Mogeiro', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2509404');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Montadas', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2509503');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Monte Horebe', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2509602');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Monteiro', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2509701');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Mulungu', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2509800');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Natuba', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2509909');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Nazarezinho', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2510006');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Nova Floresta', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2510105');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Nova Olinda', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2510204');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Nova Palmeira', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2510303');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Olho d Água', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2510402');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Olivedos', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2510501');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Ouro Velho', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2510600');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Parari', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2510659');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Passagem', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2510709');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Patos', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2510808');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Paulista', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2510907');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Pedra Branca', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2511004');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Pedra Lavrada', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2511103');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Pedras de Fogo', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2511202');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Pedro Régis', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2512721');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Piancó', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2511301');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Picuí', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2511400');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Pilar', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2511509');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Pilões', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2511608');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Pilõezinhos', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2511707');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Pirpirituba', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2511806');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Pitimbu', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2511905');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Pocinhos', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2512002');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Poço Dantas', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2512036');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Poço de José de Moura', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2512077');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Pombal', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2512101');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Prata', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2512200');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Princesa Isabel', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2512309');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Puxinanã', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2512408');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Queimadas', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2512507');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Quixaba', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2512606');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Remígio', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2512705');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Riachão', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2512747');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Riachão do Bacamarte', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2512754');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Riachão do Poço', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2512762');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Riacho de Santo Antônio', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2512788');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Riacho dos Cavalos', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2512804');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Rio Tinto', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2512903');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Salgadinho', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2513000');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Salgado de São Félix', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2513109');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Santa Cecília', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2513158');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Santa Cruz', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2513208');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Santa Helena', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2513307');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Santa Inês', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2513356');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Santa Luzia', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2513406');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Santa Rita', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2513703');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Santa Teresinha', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2513802');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Santana de Mangueira', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2513505');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Santana dos Garrotes', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2513604');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Santo André', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2513851');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Bentinho', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2513927');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Bento', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2513901');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Domingos', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2513968');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Domingos do Cariri', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2513943');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Francisco', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2513984');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São João do Cariri', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2514008');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São João do Rio do Peixe', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2500700');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São João do Tigre', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2514107');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São José da Lagoa Tapada', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2514206');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São José de Caiana', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2514305');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São José de Espinharas', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2514404');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São José de Piranhas', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2514503');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São José de Princesa', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2514552');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São José do Bonfim', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2514602');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São José do Brejo do Cruz', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2514651');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São José do Sabugi', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2514701');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São José dos Cordeiros', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2514800');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São José dos Ramos', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2514453');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Mamede', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2514909');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Miguel de Taipu', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2515005');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Sebastião de Lagoa de Roça', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2515104');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Sebastião do Umbuzeiro', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2515203');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Vicente do Seridó', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2515401');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Sapé', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2515302');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Serra Branca', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2515500');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Serra da Raiz', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2515609');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Serra Grande', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2515708');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Serra Redonda', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2515807');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Serraria', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2515906');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Sertãozinho', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2515930');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Sobrado', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2515971');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Solânea', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2516003');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Soledade', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2516102');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Sossêgo', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2516151');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Sousa', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2516201');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Sumé', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2516300');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Tacima', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2516409');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Taperoá', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2516508');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Tavares', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2516607');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Teixeira', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2516706');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Tenório', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2516755');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Triunfo', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2516805');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Uiraúna', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2516904');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Umbuzeiro', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2517001');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Várzea', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2517100');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Vieirópolis', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2517209');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Vista Serrana', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2505501');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Zabelê', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 25),'2517407');
+--changeset douglas.ferreira:seed-cidade-pernambuco
+
+
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Abreu e Lima', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2600054');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Afogados da Ingazeira', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2600104');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Afrânio', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2600203');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Agrestina', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2600302');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Água Preta', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2600401');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Águas Belas', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2600500');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Alagoinha', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2600609');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Aliança', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2600708');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Altinho', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2600807');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Amaraji', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2600906');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Angelim', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2601003');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Araçoiaba', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2601052');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Araripina', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2601102');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Arcoverde', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2601201');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Barra de Guabiraba', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2601300');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Barreiros', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2601409');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Belém de Maria', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2601508');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Belém do São Francisco', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2601607');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Belo Jardim', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2601706');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Betânia', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2601805');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Bezerros', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2601904');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Bodocó', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2602001');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Bom Conselho', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2602100');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Bom Jardim', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2602209');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Bonito', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2602308');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Brejão', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2602407');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Brejinho', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2602506');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Brejo da Madre de Deus', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2602605');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Buenos Aires', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2602704');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Buíque', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2602803');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Cabo de Santo Agostinho', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2602902');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Cabrobó', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2603009');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Cachoeirinha', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2603108');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Caetés', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2603207');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Calçado', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2603306');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Calumbi', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2603405');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Camaragibe', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2603454');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Camocim de São Félix', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2603504');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Camutanga', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2603603');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Canhotinho', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2603702');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Capoeiras', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2603801');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Carnaíba', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2603900');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Carnaubeira da Penha', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2603926');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Carpina', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2604007');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Caruaru', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2604106');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Casinhas', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2604155');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Catende', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2604205');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Cedro', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2604304');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Chã de Alegria', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2604403');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Chã Grande', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2604502');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Condado', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2604601');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Correntes', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2604700');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Cortês', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2604809');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Cumaru', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2604908');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Cupira', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2605004');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Custódia', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2605103');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Dormentes', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2605152');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Escada', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2605202');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Exu', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2605301');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Feira Nova', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2605400');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Fernando de Noronha', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2605459');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Ferreiros', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2605509');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Flores', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2605608');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Floresta', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2605707');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Frei Miguelinho', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2605806');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Gameleira', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2605905');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Garanhuns', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2606002');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Glória do Goitá', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2606101');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Goiana', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2606200');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Granito', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2606309');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Gravatá', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2606408');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Iati', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2606507');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Ibimirim', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2606606');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Ibirajuba', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2606705');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Igarassu', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2606804');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Iguaracy', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2606903');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Ilha de Itamaracá', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2607604');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Inajá', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2607000');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Ingazeira', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2607109');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Ipojuca', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2607208');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Ipubi', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2607307');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Itacuruba', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2607406');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Itaíba', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2607505');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Itambé', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2607653');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Itapetim', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2607703');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Itapissuma', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2607752');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Itaquitinga', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2607802');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Jaboatão dos Guararapes', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2607901');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Jaqueira', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2607950');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Jataúba', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2608008');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Jatobá', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2608057');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'João Alfredo', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2608107');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Joaquim Nabuco', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2608206');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Jucati', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2608255');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Jupi', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2608305');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Jurema', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2608404');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Lagoa de Itaenga', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2608503');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Lagoa do Carro', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2608453');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Lagoa do Ouro', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2608602');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Lagoa dos Gatos', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2608701');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Lagoa Grande', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2608750');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Lajedo', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2608800');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Limoeiro', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2608909');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Macaparana', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2609006');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Machados', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2609105');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Manari', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2609154');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Maraial', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2609204');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Mirandiba', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2609303');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Moreilândia', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2614303');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Moreno', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2609402');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Nazaré da Mata', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2609501');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Olinda', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2609600');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Orobó', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2609709');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Orocó', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2609808');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Ouricuri', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2609907');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Palmares', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2610004');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Palmeirina', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2610103');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Panelas', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2610202');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Paranatama', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2610301');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Parnamirim', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2610400');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Passira', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2610509');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Paudalho', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2610608');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Paulista', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2610707');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Pedra', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2610806');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Pesqueira', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2610905');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Petrolândia', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2611002');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Petrolina', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2611101');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Poção', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2611200');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Pombos', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2611309');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Primavera', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2611408');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Quipapá', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2611507');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Quixaba', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2611533');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Recife', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2611606');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Riacho das Almas', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2611705');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Ribeirão', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2611804');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Rio Formoso', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2611903');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Sairé', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2612000');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Salgadinho', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2612109');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Salgueiro', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2612208');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Saloá', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2612307');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Sanharó', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2612406');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Santa Cruz', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2612455');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Santa Cruz da Baixa Verde', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2612471');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Santa Cruz do Capibaribe', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2612505');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Santa Filomena', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2612554');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Santa Maria da Boa Vista', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2612604');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Santa Maria do Cambucá', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2612703');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Santa Terezinha', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2612802');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Benedito do Sul', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2612901');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Bento do Una', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2613008');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Caitano', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2613107');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São João', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2613206');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Joaquim do Monte', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2613305');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São José da Coroa Grande', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2613404');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São José do Belmonte', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2613503');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São José do Egito', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2613602');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Lourenço da Mata', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2613701');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Vicente Férrer', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2613800');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Serra Talhada', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2613909');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Serrita', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2614006');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Sertânia', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2614105');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Sirinhaém', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2614204');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Solidão', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2614402');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Surubim', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2614501');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Tabira', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2614600');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Tacaimbó', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2614709');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Tacaratu', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2614808');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Tamandaré', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2614857');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Taquaritinga do Norte', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2615003');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Terezinha', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2615102');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Terra Nova', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2615201');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Timbaúba', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2615300');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Toritama', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2615409');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Tracunhaém', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2615508');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Trindade', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2615607');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Triunfo', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2615706');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Tupanatinga', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2615805');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Tuparetama', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2615904');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Venturosa', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2616001');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Verdejante', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2616100');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Vertente do Lério', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2616183');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Vertentes', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2616209');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Vicência', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2616308');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Vitória de Santo Antão', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2616407');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Xexéu', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 26),'2616506');
+--changeset douglas.ferreira:seed-cidade-alagoas
+
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Água Branca', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2700102');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Anadia', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2700201');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Arapiraca', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2700300');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Atalaia', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2700409');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Barra de Santo Antônio', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2700508');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Barra de São Miguel', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2700607');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Batalha', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2700706');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Belém', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2700805');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Belo Monte', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2700904');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Boca da Mata', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2701001');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Branquinha', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2701100');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Cacimbinhas', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2701209');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Cajueiro', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2701308');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Campestre', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2701357');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Campo Alegre', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2701407');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Campo Grande', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2701506');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Canapi', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2701605');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Capela', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2701704');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Carneiros', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2701803');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Chã Preta', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2701902');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Coité do Nóia', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2702009');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Colônia Leopoldina', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2702108');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Coqueiro Seco', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2702207');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Coruripe', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2702306');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Craíbas', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2702355');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Delmiro Gouveia', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2702405');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Dois Riachos', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2702504');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Estrela de Alagoas', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2702553');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Feira Grande', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2702603');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Feliz Deserto', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2702702');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Flexeiras', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2702801');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Girau do Ponciano', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2702900');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Ibateguara', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2703007');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Igaci', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2703106');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Igreja Nova', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2703205');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Inhapi', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2703304');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Jacaré dos Homens', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2703403');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Jacuípe', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2703502');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Japaratinga', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2703601');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Jaramataia', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2703700');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Jequiá da Praia', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2703759');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Joaquim Gomes', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2703809');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Jundiá', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2703908');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Junqueiro', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2704005');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Lagoa da Canoa', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2704104');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Limoeiro de Anadia', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2704203');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Maceió', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2704302');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Major Isidoro', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2704401');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Mar Vermelho', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2704906');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Maragogi', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2704500');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Maravilha', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2704609');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Marechal Deodoro', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2704708');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Maribondo', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2704807');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Mata Grande', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2705002');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Matriz de Camaragibe', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2705101');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Messias', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2705200');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Minador do Negrão', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2705309');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Monteirópolis', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2705408');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Murici', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2705507');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Novo Lino', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2705606');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Olho d Água das Flores', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2705705');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Olho d Água do Casado', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2705804');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Olho d Água Grande', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2705903');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Olivença', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2706000');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Ouro Branco', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2706109');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Palestina', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2706208');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Palmeira dos Índios', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2706307');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Pão de Açúcar', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2706406');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Pariconha', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2706422');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Paripueira', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2706448');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Passo de Camaragibe', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2706505');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Paulo Jacinto', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2706604');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Penedo', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2706703');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Piaçabuçu', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2706802');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Pilar', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2706901');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Pindoba', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2707008');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Piranhas', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2707107');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Poço das Trincheiras', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2707206');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Porto Calvo', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2707305');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Porto de Pedras', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2707404');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Porto Real do Colégio', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2707503');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Quebrangulo', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2707602');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Rio Largo', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2707701');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Roteiro', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2707800');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Santa Luzia do Norte', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2707909');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Santana do Ipanema', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2708006');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Santana do Mundaú', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2708105');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Brás', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2708204');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São José da Laje', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2708303');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São José da Tapera', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2708402');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Luís do Quitunde', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2708501');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Miguel dos Campos', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2708600');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Miguel dos Milagres', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2708709');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Sebastião', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2708808');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Satuba', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2708907');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Senador Rui Palmeira', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2708956');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Tanque d Arca', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2709004');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Taquarana', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2709103');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Teotônio Vilela', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2709152');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Traipu', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2709202');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'União dos Palmares', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2709301');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Viçosa', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 27),'2709400');
+--changeset douglas.ferreira:seed-cidade-sergipe
+
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Amparo do São Francisco', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2800100');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Aquidabã', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2800209');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Aracaju', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2800308');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Arauá', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2800407');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Areia Branca', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2800506');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Barra dos Coqueiros', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2800605');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Boquim', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2800670');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Brejo Grande', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2800704');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Campo do Brito', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2801009');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Canhoba', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2801108');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Canindé de São Francisco', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2801207');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Capela', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2801306');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Carira', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2801405');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Carmópolis', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2801504');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Cedro de São João', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2801603');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Cristinápolis', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2801702');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Cumbe', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2801900');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Divina Pastora', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2802007');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Estância', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2802106');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Feira Nova', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2802205');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Frei Paulo', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2802304');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Gararu', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2802403');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'General Maynard', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2802502');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Gracho Cardoso', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2802601');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Ilha das Flores', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2802700');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Indiaroba', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2802809');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Itabaiana', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2802908');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Itabaianinha', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2803005');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Itabi', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2803104');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Itaporanga d Ajuda', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2803203');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Japaratuba', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2803302');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Japoatã', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2803401');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Lagarto', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2803500');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Laranjeiras', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2803609');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Macambira', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2803708');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Malhada dos Bois', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2803807');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Malhador', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2803906');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Maruim', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2804003');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Moita Bonita', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2804102');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Monte Alegre de Sergipe', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2804201');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Muribeca', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2804300');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Neópolis', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2804409');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Nossa Senhora Aparecida', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2804458');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Nossa Senhora da Glória', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2804508');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Nossa Senhora das Dores', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2804607');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Nossa Senhora de Lourdes', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2804706');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Nossa Senhora do Socorro', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2804805');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Pacatuba', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2804904');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Pedra Mole', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2805000');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Pedrinhas', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2805109');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Pinhão', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2805208');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Pirambu', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2805307');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Poço Redondo', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2805406');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Poço Verde', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2805505');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Porto da Folha', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2805604');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Propriá', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2805703');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Riachão do Dantas', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2805802');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Riachuelo', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2805901');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Ribeirópolis', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2806008');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Rosário do Catete', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2806107');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Salgado', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2806206');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Santa Luzia do Itanhy', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2806305');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Santa Rosa de Lima', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2806503');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Santana do São Francisco', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2806404');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Santo Amaro das Brotas', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2806602');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Cristóvão', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2806701');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Domingos', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2806800');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Francisco', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2806909');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'São Miguel do Aleixo', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2807006');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Simão Dias', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2807105');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Siriri', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2807204');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Telha', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2807303');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Tobias Barreto', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2807402');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Tomar do Geru', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2807501');
+INSERT INTO cidade values (sq_cidade.nextval,(SELECT SYSDATE AS current_date FROM dual), (SELECT SYSDATE AS current_date FROM dual), 'Umbaúba', (select ID from ESTADO where ESTADO.CODIGO_IBGE = 28),'2807600');
