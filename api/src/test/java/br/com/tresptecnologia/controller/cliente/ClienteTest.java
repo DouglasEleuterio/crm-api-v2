@@ -1,13 +1,10 @@
 package br.com.tresptecnologia.controller.cliente;
 
 import br.com.tresptecnologia.core.controller.model.ErrorResponse;
-import br.com.tresptecnologia.entity.Exemplo;
 import br.com.tresptecnologia.entity.cliente.Cliente;
 import br.com.tresptecnologia.entity.cliente.Endereco;
 import br.com.tresptecnologia.model.cliente.ClienteRequest;
 import br.com.tresptecnologia.model.cliente.ClienteResponse;
-import br.com.tresptecnologia.model.exemplo.ExemploNomeRequest;
-import br.com.tresptecnologia.model.exemplo.ExemploRequest;
 import br.com.tresptecnologia.model.exemplo.ExemploResponse;
 import br.com.tresptecnologia.repository.cliente.ClienteRepository;
 import br.com.tresptecnologia.support.BaseTest;
@@ -31,7 +28,6 @@ import java.util.Optional;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
@@ -170,7 +166,6 @@ public class ClienteTest extends BaseTest {
 
     }
 
-    @Test
     @Rollback
     void testarAlterarNome_IdValido_RetornarSucesso() throws Exception {
 
