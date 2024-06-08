@@ -1,6 +1,6 @@
 package br.com.tresptecnologia.entity.cliente;
 
-import br.com.tresptecnologia.core.entity.BaseEntity;
+import br.com.tresptecnologia.core.entity.BaseActiveEntity;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -26,7 +26,7 @@ import java.time.LocalDate;
 @Setter
 @Entity
 @Table(name = "cliente")
-public class Cliente extends BaseEntity {
+public class Cliente extends BaseActiveEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_CLIENTE")
     @SequenceGenerator(name = "SQ_CLIENTE", sequenceName = "SQ_CLIENTE", allocationSize = 1)

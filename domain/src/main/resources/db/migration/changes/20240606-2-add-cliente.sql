@@ -14,6 +14,7 @@ CREATE TABLE cliente
     telefone         VARCHAR2(255) NOT NULL,
     endereco_id      NUMBER(38, 0) NOT NULL,
     data_nascimento  date          NOT NULL,
+    situacao         NUMBER(1)     NOT NULL,
     CONSTRAINT pk_cliente PRIMARY KEY (id)
 );
 

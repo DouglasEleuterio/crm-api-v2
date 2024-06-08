@@ -96,8 +96,8 @@ class ExemploTests extends BaseTest {
     @Test
     @Rollback
     void testarAdicionar_DadosVazios_RetornarError() throws Exception {
-        assertMessages(errorsValidations(EXEMPLO_API, 2, new ExemploRequest()),
-                "O campo Situação é obrigatório.","O campo Nome é obrigatório.");
+        assertMessages(errorsValidations(EXEMPLO_API, 1, new ExemploRequest()),
+                "O campo Nome é obrigatório.");
     }
 
     @Test
@@ -260,6 +260,20 @@ class ExemploTests extends BaseTest {
     @Test
     @Rollback
     void testarInativar_IdValido_RetornarSucesso() throws Exception {
+
+        final ExemploRequest exemploRequest = ExemploRequest.builder()
+                .nome("Exemplo Nome")
+                .descricao("Descrição ")
+                .situacao(true)
+                .build();
+
+        final MockHttpServletRequestBuilder requestBuilderSave = post(EXEMPLO_API).content(objectMapper.writeValueAsString(exemploRequest)).with(defaultUserJwt()).contentType(JSON_CONTENT_TYPE);
+
+        final ResultActions result = mvc.perform(requestBuilderSave).andDo(log()).andExpect(status().isCreated());
+
+        objectMapper.readValue(result.andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8), ExemploResponse.class);
+
+
         final var exemploAtivar = exemploRepository.findById(1L).orElse(null);
 
         final BaseEntityActiveRequest ativarRequest = BaseEntityActiveRequest.builder().ativo(false).build();

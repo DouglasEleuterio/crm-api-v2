@@ -13,7 +13,7 @@
     </parent>
 
     <groupId>br.com.tresptecnologia</groupId>
-    <artifactId>vendas-backend</artifactId>
+    <artifactId>clinica-api</artifactId>
     <packaging>pom</packaging>
     <version>${revision}</version>
 
