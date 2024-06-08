@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @Builder
@@ -19,4 +21,14 @@ public class ClienteRequest {
 
     @RequiredSize(label = "cliente.telefone", min = 11, max = 12)
     private String telefone;
+
+    @RequiredSize(label = "cliente.cpf", min = 11)
+    private String cpf;
+
+    @RequiredSize(label = "cliente.email", min = 5)
+    private String email;
+
+    @RequiredSize(label = "cliente.data-nascimento", min = 5)
+    private LocalDate dataNascimento;
+
 }
