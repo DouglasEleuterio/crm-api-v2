@@ -1,6 +1,7 @@
 package br.com.tresptecnologia.model.cliente;
 
 import br.com.tresptecnologia.shared.validation.RequiredSize;
+import com.lowagie.text.pdf.PRIndirectReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,6 +16,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ClienteRequest {
+
+    private Long id;
 
     @RequiredSize(label = "cliente.nome", min = 2, max = 255)
     private String nome;
