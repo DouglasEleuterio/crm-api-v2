@@ -35,7 +35,7 @@ public class Auditoria extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(name = "situacao_registro", nullable = false)
     private ESituacaoRegistro situacaoRegistro;
-    @Column(name = "dado", nullable = false, length = 10000)
+    @Column(name = "dado", nullable = false, length = 2000)
     private String dado;
     @OneToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "historico_id")
