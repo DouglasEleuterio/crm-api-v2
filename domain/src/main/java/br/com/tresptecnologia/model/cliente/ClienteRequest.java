@@ -1,7 +1,9 @@
 package br.com.tresptecnologia.model.cliente;
 
+import br.com.tresptecnologia.entity.cliente.Endereco;
+import br.com.tresptecnologia.shared.validation.Required;
 import br.com.tresptecnologia.shared.validation.RequiredSize;
-import com.lowagie.text.pdf.PRIndirectReference;
+import br.com.tresptecnologia.shared.validation.RequiredType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -34,4 +36,6 @@ public class ClienteRequest {
     @RequiredSize(label = "cliente.data-nascimento", min = 5)
     private LocalDate dataNascimento;
 
+    @Required(label = "endereco", type = RequiredType.ALL)
+    private Endereco endereco;
 }

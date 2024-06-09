@@ -1,7 +1,6 @@
 package br.com.tresptecnologia.entity.cliente;
 
 import br.com.tresptecnologia.core.entity.BaseEntity;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,7 +12,6 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -42,7 +40,7 @@ public class Endereco extends BaseEntity {
     @Column(name = "bairro", nullable = false)
     private String bairro;
     @JoinColumn(name = "cidade_id", nullable = false)
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Cidade cidade;
     @Column(name = "cep", nullable = false)
     private String cep;

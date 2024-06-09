@@ -1,12 +1,15 @@
 package br.com.tresptecnologia.controller.cliente;
 
 import br.com.tresptecnologia.core.controller.model.ErrorResponse;
+import br.com.tresptecnologia.entity.cliente.Cidade;
 import br.com.tresptecnologia.entity.cliente.Cliente;
 import br.com.tresptecnologia.entity.cliente.Endereco;
+import br.com.tresptecnologia.entity.cliente.Estado;
 import br.com.tresptecnologia.model.cliente.ClienteRequest;
 import br.com.tresptecnologia.model.cliente.ClienteResponse;
-import br.com.tresptecnologia.model.exemplo.ExemploResponse;
+import br.com.tresptecnologia.repository.cidade.CidadeRepository;
 import br.com.tresptecnologia.repository.cliente.ClienteRepository;
+import br.com.tresptecnologia.repository.estado.EstadoRepository;
 import br.com.tresptecnologia.support.BaseTest;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
@@ -41,11 +44,18 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class ClienteTest extends BaseTest {
 
     private final String CLIENTE_API = "/cliente";
+
     @Mock
     private Cliente cliente;
 
     @SpyBean
     private ClienteRepository clienteRepository;
+
+    @SpyBean
+    private EstadoRepository estadoRepository;
+
+    @SpyBean
+    private CidadeRepository cidadeRepository;
 
     @BeforeEach
     public void setUp() {
@@ -97,24 +107,47 @@ public class ClienteTest extends BaseTest {
     @Test
     @Rollback
     void testarAdicionar_DadosVazios_RetornarError() throws Exception {
-        assertMessages(errorsValidations(CLIENTE_API, 5, new ClienteRequest()),
+        assertMessages(errorsValidations(CLIENTE_API, 6, new ClienteRequest()),
                 "O campo Nome é obrigatório.",
                 "O campo Telefone é obrigatório.",
                 "O campo CPF é obrigatório.",
                 "O campo Email é obrigatório.",
-                "O campo Data de Nascimento é obrigatório."
-                );
+                "O campo Data de Nascimento é obrigatório.",
+                "O campo Endereï¿½o é obrigatório."
+        );
     }
 
     @Test
     @Rollback
     void testarAdicionar_DadosValidos_RetornarOk() throws Exception {
+        var estado = estadoRepository.saveAndFlush(Estado.builder()
+                .nome("Goias")
+                .codigoIBGE("53")
+                .uf("GO")
+                .build());
+        var cidade = cidadeRepository.saveAndFlush(Cidade.builder()
+                .nome("São Patricio")
+                .codigoIBGE("53100396")
+                .estado(estado)
+                .build());
+
+
+        var endereco = Endereco.builder()
+                .logradouro("Av B")
+                .numero("S/N")
+                .complemento("Qd A")
+                .bairro("Centro")
+                .cidade(cidade)
+                .cep("76343000")
+                .build();
+
         final ClienteRequest exemploRequest = ClienteRequest.builder()
                 .nome("Exemplo Nome")
                 .telefone("62999999999")
                 .cpf("40049617001")
                 .email("teste@email.com")
                 .dataNascimento(LocalDate.now())
+                .endereco(endereco)
                 .build();
 
         final MockHttpServletRequestBuilder requestBuilder = post(CLIENTE_API).content(objectMapper.writeValueAsString(exemploRequest)).with(defaultUserJwt()).contentType(JSON_CONTENT_TYPE);
@@ -143,10 +176,29 @@ public class ClienteTest extends BaseTest {
     @Test
     @Rollback
     void testarAtualizar_IdInvalido_RetornarError() throws Exception {
-
         final var id = 2L;
-
         when(clienteRepository.findById(id)).thenReturn(Optional.empty());
+
+        var estado = estadoRepository.saveAndFlush(Estado.builder()
+                .nome("Goias")
+                .codigoIBGE("53")
+                .uf("GO")
+                .build());
+        var cidade = cidadeRepository.saveAndFlush(Cidade.builder()
+                .nome("São Patricio")
+                .codigoIBGE("53100396")
+                .estado(estado)
+                .build());
+
+
+        var endereco = Endereco.builder()
+                .logradouro("Av B")
+                .numero("S/N")
+                .complemento("Qd A")
+                .bairro("Centro")
+                .cidade(cidade)
+                .cep("76343000")
+                .build();
 
         final ClienteRequest exemploRequest = ClienteRequest.builder()
                 .nome("Exemplo Nome")
@@ -154,6 +206,7 @@ public class ClienteTest extends BaseTest {
                 .cpf("40049617001")
                 .email("teste@email.com")
                 .dataNascimento(LocalDate.now())
+                .endereco(endereco)
                 .build();
 
         final MockHttpServletRequestBuilder requestBuilder = put(CLIENTE_API + "/" + id).content(objectMapper.writeValueAsString(exemploRequest)).with(defaultUserJwt()).contentType(JSON_CONTENT_TYPE);
@@ -167,13 +220,32 @@ public class ClienteTest extends BaseTest {
     }
 
     @Rollback
+    @Test
     void testarAlterarNome_IdValido_RetornarSucesso() throws Exception {
 
-        var endereco = Endereco.builder().build();
-        //todo instanciar endereço
+        var estado = estadoRepository.saveAndFlush(Estado.builder()
+                .nome("Goias")
+                .codigoIBGE("53")
+                .uf("GO")
+                .build());
+        var cidade = cidadeRepository.saveAndFlush(Cidade.builder()
+                .nome("São Patricio")
+                .codigoIBGE("53100396")
+                .estado(estado)
+                .build());
+
+
+        var endereco = Endereco.builder()
+                .logradouro("Av B")
+                .numero("S/N")
+                .complemento("Qd A")
+                .bairro("Centro")
+                .cidade(cidade)
+                .cep("76343000")
+                .build();
 
         Cliente clienteAlterarNome = new Cliente();
-        clienteAlterarNome.setId(2L);
+        clienteAlterarNome.setId(1L);
         clienteAlterarNome.setNome("Exemplo Ativar");
         clienteAlterarNome.setTelefone("62999999999");
         clienteAlterarNome.setCpf("40049617001");
@@ -186,13 +258,17 @@ public class ClienteTest extends BaseTest {
         final ClienteRequest exemploRequest = ClienteRequest.builder()
                 .nome("Alterando...")
                 .telefone("62999999998")
+                .cpf("40049617001")
+                .email("teste@email.com")
+                .dataNascimento(LocalDate.now())
+                .endereco(clienteAlterarNome.getEndereco())
                 .build();
 
-        final MockHttpServletRequestBuilder requestBuilder = put(CLIENTE_API + clienteAlterarNome.getId()).content(objectMapper.writeValueAsString(exemploRequest)).with(defaultUserJwt()).contentType(JSON_CONTENT_TYPE);
+        final MockHttpServletRequestBuilder requestBuilder = put(CLIENTE_API + '/' + clienteAlterarNome.getId()).content(objectMapper.writeValueAsString(exemploRequest)).with(defaultUserJwt()).contentType(JSON_CONTENT_TYPE);
 
         final ResultActions result = mvc.perform(requestBuilder).andDo(log()).andExpect(status().isOk());
 
-        final ExemploResponse exemploResponse = objectMapper.readValue(result.andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8), ExemploResponse.class);
+        final ClienteResponse exemploResponse = objectMapper.readValue(result.andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8), ClienteResponse.class);
 
         Assertions.assertEquals(clienteAlterarNome.getId(), exemploResponse.getId());
         Assertions.assertEquals(clienteAlterarNome.getNome(), exemploResponse.getNome());
