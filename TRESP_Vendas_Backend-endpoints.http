@@ -113,3 +113,8 @@ GET {{urlLocal}}/upload/quantidade-erro
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
+
+### Quantidade de Arquivos XML com erro no processamento
+GET http://localhost:8081/tabela-valores-monofasico-nf/11048724000121?page=0&size=10&sort=id,asc
+Authorization: Bearer {{token}}
+Content-Type: application/json

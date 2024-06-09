@@ -22,4 +22,10 @@ public class TabelaValoresMonofasicosNFService {
 
         return prodRepository.getAllIncidenciaMonofasica(EnumSituacao.ATIVO, cnpjDestinatario, pageable).map(prodMapper::toResponse);
     }
+
+    @Transactional(readOnly = true)
+    public Page<ProdIncidenciaMonoResponse> findAllProdutosComMonofasePorProduto(Pageable pageable) {
+
+        return prodRepository.getAllIncidenciaMonofasica(EnumSituacao.ATIVO, pageable).map(prodMapper::toResponse);
+    }
 }
