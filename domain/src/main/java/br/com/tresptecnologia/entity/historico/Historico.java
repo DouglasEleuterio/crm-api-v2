@@ -1,6 +1,7 @@
 package br.com.tresptecnologia.entity.historico;
 
 import br.com.tresptecnologia.core.entity.BaseEntity;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -8,6 +9,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -17,6 +19,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -45,4 +48,7 @@ public class Historico extends BaseEntity {
     @Column(name = "tipo_entidade", nullable = false)
     @Enumerated(EnumType.STRING)
     private ETipoEntidade tipoEntidade;
+
+    @OneToMany(mappedBy = "historico", cascade = CascadeType.ALL)
+    private Set<Auditoria> auditorias;
 }

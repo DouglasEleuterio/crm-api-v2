@@ -32,7 +32,4 @@ CREATE TABLE auditoria
 );
 
 ALTER TABLE auditoria
-    ADD CONSTRAINT uc_auditoria_historico UNIQUE (historico_id);
-
-ALTER TABLE auditoria
     ADD CONSTRAINT FK_AUDITORIA_ON_HISTORICO FOREIGN KEY (historico_id) REFERENCES historico (id);

@@ -11,6 +11,7 @@ import br.com.tresptecnologia.model.entity.BaseEntityActiveRequest;
 import br.com.tresptecnologia.model.exemplo.ExemploResponse;
 import br.com.tresptecnologia.repository.cidade.CidadeRepository;
 import br.com.tresptecnologia.repository.cliente.ClienteRepository;
+import br.com.tresptecnologia.repository.cliente.HistoricoRepository;
 import br.com.tresptecnologia.repository.estado.EstadoRepository;
 import br.com.tresptecnologia.support.BaseTest;
 import lombok.extern.slf4j.Slf4j;
@@ -53,6 +54,9 @@ public class ClienteTest extends BaseTest {
 
     @SpyBean
     private ClienteRepository clienteRepository;
+
+    @SpyBean
+    private HistoricoRepository historicoRepository;
 
     @SpyBean
     private EstadoRepository estadoRepository;
