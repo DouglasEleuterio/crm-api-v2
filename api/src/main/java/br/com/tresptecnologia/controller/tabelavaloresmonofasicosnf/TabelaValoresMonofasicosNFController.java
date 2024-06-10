@@ -10,9 +10,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.SortDefault;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.time.LocalDate;
 
 @RestController
 @RequiredArgsConstructor
@@ -22,16 +24,15 @@ public class TabelaValoresMonofasicosNFController {
 
     private final TabelaValoresMonofasicosNFService tabelaValoresMonofasicosNFService;
 
-    @GetMapping(path = "/{cnpj}")
-    @Operation(description = "Retorna lista de Produtos na NF que tem incidencia monofasica, dado CNPJ Destinatario")
-    Page<ProdIncidenciaMonoResponse> findAllPorCNPJ(@PathVariable(value = "cnpj") String cnpj,
-                                                             @SortDefault(sort = "det.infnf.ide.dhEmi", direction = Sort.Direction.DESC) Pageable pageable) {
-        return tabelaValoresMonofasicosNFService.findAllProdutosComMonofasePorProduto(cnpj, pageable);
-    }
-
     @GetMapping()
     @Operation(description = "Retorna lista de Produtos na NF que tem incidencia monofasica, todos Destinatarios")
-    Page<ProdIncidenciaMonoResponse> findAllEntityProProduto(@SortDefault(sort = "det.infnf.ide.dhEmi", direction = Sort.Direction.DESC) Pageable pageable) {
-        return tabelaValoresMonofasicosNFService.findAllProdutosComMonofasePorProduto(pageable);
+    Page<ProdIncidenciaMonoResponse> findAllEntityProProduto(
+            @SortDefault(sort = "det.infnf.ide.dhEmi", direction = Sort.Direction.DESC) Pageable pageable,
+            @RequestParam(required = false) LocalDate dataEmissaoInicio,
+            @RequestParam(required = false) String cnpj,
+            @RequestParam(required = false) LocalDate dataEmissaoFim,
+            @RequestParam(required = false) String search
+    ) {
+        return tabelaValoresMonofasicosNFService.findAllProdutosComMonofasePorProduto(pageable, cnpj, dataEmissaoInicio, dataEmissaoFim, search);
     }
 }

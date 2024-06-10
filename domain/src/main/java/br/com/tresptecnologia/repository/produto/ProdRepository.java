@@ -8,6 +8,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
+
 @Repository
 public interface ProdRepository extends BaseRepository<Prod> {
 
@@ -24,23 +26,9 @@ public interface ProdRepository extends BaseRepository<Prod> {
     and (det.imposto.cofins.cofinsaliq is not null or det.imposto.pis.pisaliq is not null)
     and ide.dhEmiDT >= tad.inicioVigencia
     and (ide.dhEmiDT <= tad.fimVigencia or tad.fimVigencia is null )
-    and des.cnpj =:cnpjDestinatario
+    and (:cnpjDestinatario is null or des.cnpj ilike :cnpjDestinatario)
+    and (:dataInicio is null or ide.dhEmiDT >=:dataInicio)
+    and (:dataFim is null or ide.dhEmiDT <=:dataFim)
 """)
-    Page<Prod> getAllIncidenciaMonofasica(EnumSituacao eSituacaoTad, String cnpjDestinatario, Pageable pageable);
-
-    @Query(value = """
-    from Prod prd
-    left join TabelaAliquotaDiferenciada tad on prd.ncm = tad.ncm
-    left join prd.det det
-    join det.infnf inf
-    join inf.ide ide
-    join inf.dest des
-    
-    where tad.situacao = true
-    and tad.enumSituacao =:eSituacaoTad
-    and (det.imposto.cofins.cofinsaliq is not null or det.imposto.pis.pisaliq is not null)
-    and ide.dhEmiDT >= tad.inicioVigencia
-    and (ide.dhEmiDT <= tad.fimVigencia or tad.fimVigencia is null )
-""")
-    Page<Prod> getAllIncidenciaMonofasica(EnumSituacao eSituacaoTad, Pageable pageable);
+    Page<Prod> getAllIncidenciaMonofasica(EnumSituacao eSituacaoTad, String cnpjDestinatario, Pageable pageable, LocalDate dataInicio, LocalDate dataFim);
 }
