@@ -21,6 +21,7 @@ public interface ProdRepository extends BaseRepository<Prod> {
     
     where tad.situacao = true
     and tad.enumSituacao =:eSituacaoTad
+    and (det.imposto.cofins.cofinsaliq is not null or det.imposto.pis.pisaliq is not null)
     and ide.dhEmiDT >= tad.inicioVigencia
     and (ide.dhEmiDT <= tad.fimVigencia or tad.fimVigencia is null )
     and des.cnpj =:cnpjDestinatario
@@ -37,6 +38,7 @@ public interface ProdRepository extends BaseRepository<Prod> {
     
     where tad.situacao = true
     and tad.enumSituacao =:eSituacaoTad
+    and (det.imposto.cofins.cofinsaliq is not null or det.imposto.pis.pisaliq is not null)
     and ide.dhEmiDT >= tad.inicioVigencia
     and (ide.dhEmiDT <= tad.fimVigencia or tad.fimVigencia is null )
 """)
