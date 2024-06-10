@@ -7,6 +7,8 @@ import br.com.tresptecnologia.entity.cliente.Endereco;
 import br.com.tresptecnologia.entity.cliente.Estado;
 import br.com.tresptecnologia.model.cliente.ClienteRequest;
 import br.com.tresptecnologia.model.cliente.ClienteResponse;
+import br.com.tresptecnologia.model.entity.BaseEntityActiveRequest;
+import br.com.tresptecnologia.model.exemplo.ExemploResponse;
 import br.com.tresptecnologia.repository.cidade.CidadeRepository;
 import br.com.tresptecnologia.repository.cliente.ClienteRepository;
 import br.com.tresptecnologia.repository.estado.EstadoRepository;
@@ -31,6 +33,7 @@ import java.util.Optional;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
@@ -272,6 +275,83 @@ public class ClienteTest extends BaseTest {
 
         Assertions.assertEquals(clienteAlterarNome.getId(), exemploResponse.getId());
         Assertions.assertEquals(clienteAlterarNome.getNome(), exemploResponse.getNome());
+
+    }
+
+    @Test
+    @Rollback
+    void testarAtivar_IdInvalido_RetornarError() throws Exception {
+        final var id = 2L;
+
+        when(clienteRepository.findById(id)).thenReturn(Optional.empty());
+
+        final BaseEntityActiveRequest exemploRequest = BaseEntityActiveRequest.builder().ativo(true).build();
+
+        final MockHttpServletRequestBuilder requestBuilder = patch(CLIENTE_API + "/active/" + id).content(objectMapper.writeValueAsString(exemploRequest)).with(defaultUserJwt()).contentType(JSON_CONTENT_TYPE);
+
+        final ResultActions result = mvc.perform(requestBuilder).andDo(log()).andExpect(status().isBadRequest());
+
+        final ErrorResponse response = objectMapper.readValue(result.andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8), ErrorResponse.class);
+
+        Assertions.assertEquals("Registro de id " + id + " não encontrado.", response.getMessage());
+
+    }
+
+    @Test
+    @Rollback
+    void testarInativar_IdValido_RetornarSucesso() throws Exception {
+
+        var estado = estadoRepository.saveAndFlush(Estado.builder()
+                .nome("Goias")
+                .codigoIBGE("53")
+                .uf("GO")
+                .build());
+        var cidade = cidadeRepository.saveAndFlush(Cidade.builder()
+                .nome("São Patricio")
+                .codigoIBGE("53100396")
+                .estado(estado)
+                .build());
+
+        var endereco = Endereco.builder()
+                .logradouro("Av B")
+                .numero("S/N")
+                .complemento("Qd A")
+                .bairro("Centro")
+                .cidade(cidade)
+                .cep("76343000")
+                .build();
+
+        final ClienteRequest clienteRequest = ClienteRequest.builder()
+                .nome("Alterando...")
+                .telefone("62999999998")
+                .cpf("40049617001")
+                .email("teste@email.com")
+                .dataNascimento(LocalDate.now())
+                .endereco(endereco)
+                .build();
+
+        final MockHttpServletRequestBuilder requestBuilderSave = post(CLIENTE_API).content(objectMapper.writeValueAsString(clienteRequest)).with(defaultUserJwt()).contentType(JSON_CONTENT_TYPE);
+
+        final ResultActions result = mvc.perform(requestBuilderSave).andDo(log()).andExpect(status().isCreated());
+
+        objectMapper.readValue(result.andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8), ExemploResponse.class);
+
+
+        final var exemploAtivar = clienteRepository.findById(1L).orElse(null);
+
+        final BaseEntityActiveRequest ativarRequest = BaseEntityActiveRequest.builder().ativo(false).build();
+
+        final MockHttpServletRequestBuilder requestBuilder = patch(CLIENTE_API + "/active/" + exemploAtivar.getId())
+                .content(objectMapper.writeValueAsString(ativarRequest)).with(defaultUserJwt()).contentType(JSON_CONTENT_TYPE);
+
+        mvc.perform(requestBuilder).andDo(log()).andExpect(status().isOk());
+
+        final Cliente exemploResponse = clienteRepository.findById(exemploAtivar.getId()).orElse(null);
+
+        Assertions.assertNotNull(exemploResponse);
+        Assertions.assertEquals(exemploAtivar.getId(), exemploResponse.getId());
+        Assertions.assertEquals(exemploAtivar.getNome(), exemploResponse.getNome());
+        Assertions.assertEquals(exemploAtivar.getEmail(), exemploResponse.getEmail());
 
     }
 }

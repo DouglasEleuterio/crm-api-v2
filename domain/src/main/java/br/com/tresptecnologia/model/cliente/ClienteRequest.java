@@ -38,4 +38,6 @@ public class ClienteRequest {
 
     @Required(label = "endereco", type = RequiredType.ALL)
     private Endereco endereco;
+
+    private Boolean situacao;
 }
