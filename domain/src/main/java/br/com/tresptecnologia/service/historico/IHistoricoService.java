@@ -1,4 +1,4 @@
-package br.com.tresptecnologia.service;
+package br.com.tresptecnologia.service.historico;
 
 import br.com.tresptecnologia.core.service.IBaseService;
 import br.com.tresptecnologia.entity.historico.Historico;

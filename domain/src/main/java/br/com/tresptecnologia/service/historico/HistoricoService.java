@@ -1,4 +1,4 @@
-package br.com.tresptecnologia.service;
+package br.com.tresptecnologia.service.historico;
 
 import br.com.tresptecnologia.core.repository.BaseRepository;
 import br.com.tresptecnologia.core.service.BaseService;

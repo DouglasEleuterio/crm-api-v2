@@ -1,7 +1,6 @@
 package br.com.tresptecnologia.entity.pagamento;
 
-import br.com.tresptecnologia.core.entity.BaseEntity;
-import jakarta.persistence.CascadeType;
+import br.com.tresptecnologia.core.entity.BaseActiveEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,13 +25,13 @@ import java.time.LocalDate;
 @Setter
 @Entity
 @Table(name = "parcela_pagamento")
-public class ParcelaPagamento extends BaseEntity {
+public class ParcelaPagamento extends BaseActiveEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_PARCELA_PAGAMENTO")
     @SequenceGenerator(name = "SQ_PARCELA_PAGAMENTO", sequenceName = "SQ_PARCELA_PAGAMENTO", allocationSize = 1)
     @Column(name = "id", nullable = false)
     private Long id;
-        @Column(name = "data_credito", nullable = false)
+    @Column(name = "data_credito", nullable = false)
     private LocalDate dataCredito;
     @Column(name = "valor_credito", nullable = false)
     private Double valorCredito;
