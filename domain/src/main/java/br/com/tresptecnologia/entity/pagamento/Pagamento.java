@@ -48,7 +48,7 @@ public class Pagamento extends BaseActiveEntity {
     private Integer quantidadeParcelas;
     @Column(name = "taxa", nullable = false)
     private Double taxa;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "aquisicao_id")
     private Aquisicao aquisicao;
 

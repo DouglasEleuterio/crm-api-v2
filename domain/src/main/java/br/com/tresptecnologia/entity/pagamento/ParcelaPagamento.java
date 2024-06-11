@@ -42,7 +42,7 @@ public class ParcelaPagamento {
     @Column(name = "numero_parcela", nullable = false)
     private Integer numeroParcela;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "pagamento_id")
     private Pagamento pagamento;
 }
