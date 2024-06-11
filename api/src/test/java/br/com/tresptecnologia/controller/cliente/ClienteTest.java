@@ -5,15 +5,19 @@ import br.com.tresptecnologia.entity.cliente.Cidade;
 import br.com.tresptecnologia.entity.cliente.Cliente;
 import br.com.tresptecnologia.entity.cliente.Endereco;
 import br.com.tresptecnologia.entity.cliente.Estado;
+import br.com.tresptecnologia.model.auditoria.AuditoriaResponse;
 import br.com.tresptecnologia.model.cliente.ClienteRequest;
 import br.com.tresptecnologia.model.cliente.ClienteResponse;
 import br.com.tresptecnologia.model.entity.BaseEntityActiveRequest;
 import br.com.tresptecnologia.model.exemplo.ExemploResponse;
+import br.com.tresptecnologia.model.historico.HistoricoResponse;
 import br.com.tresptecnologia.repository.cidade.CidadeRepository;
 import br.com.tresptecnologia.repository.cliente.ClienteRepository;
-import br.com.tresptecnologia.repository.cliente.HistoricoRepository;
+import br.com.tresptecnologia.repository.historico.HistoricoRepository;
 import br.com.tresptecnologia.repository.estado.EstadoRepository;
+import br.com.tresptecnologia.service.audit.AuditRevisionInfoService;
 import br.com.tresptecnologia.support.BaseTest;
+import com.fasterxml.jackson.core.type.TypeReference;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -30,6 +34,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import static org.mockito.Mockito.when;
@@ -48,6 +54,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class ClienteTest extends BaseTest {
 
     private final String CLIENTE_API = "/cliente";
+    private final String HISTORICO_API = "/historico";
+    private final String AUDITORIA_API = "/auditoria";
 
     @Mock
     private Cliente cliente;
@@ -57,6 +65,8 @@ public class ClienteTest extends BaseTest {
 
     @SpyBean
     private HistoricoRepository historicoRepository;
+    @SpyBean
+    private AuditRevisionInfoService auditRevisionInfoService;
 
     @SpyBean
     private EstadoRepository estadoRepository;
@@ -356,6 +366,75 @@ public class ClienteTest extends BaseTest {
         Assertions.assertEquals(exemploAtivar.getId(), exemploResponse.getId());
         Assertions.assertEquals(exemploAtivar.getNome(), exemploResponse.getNome());
         Assertions.assertEquals(exemploAtivar.getEmail(), exemploResponse.getEmail());
+
+    }
+
+    @Rollback
+    @Test
+    void testarAlterarNome_IdValido_GerarAudituria() throws Exception {
+
+        var estado = estadoRepository.saveAndFlush(Estado.builder()
+                .nome("Goias")
+                .codigoIBGE("53")
+                .uf("GO")
+                .build());
+        var cidade = cidadeRepository.saveAndFlush(Cidade.builder()
+                .nome("São Patricio")
+                .codigoIBGE("53100396")
+                .estado(estado)
+                .build());
+
+
+        var endereco = Endereco.builder()
+                .logradouro("Av B")
+                .numero("S/N")
+                .complemento("Qd A")
+                .bairro("Centro")
+                .cidade(cidade)
+                .cep("76343000")
+                .build();
+
+        Cliente clienteAlterarNome = new Cliente();
+        clienteAlterarNome.setId(1L);
+        clienteAlterarNome.setNome("Exemplo Ativar");
+        clienteAlterarNome.setTelefone("62999999999");
+        clienteAlterarNome.setCpf("40049617001");
+        clienteAlterarNome.setEmail("teste@email.com");
+        clienteAlterarNome.setEndereco(endereco);
+        clienteAlterarNome.setDataNascimento(LocalDate.now());
+
+        clienteAlterarNome = clienteRepository.saveAndFlush(clienteAlterarNome);
+
+        final ClienteRequest exemploRequest = ClienteRequest.builder()
+                .nome("Alterando...")
+                .telefone("62999999998")
+                .cpf("40049617001")
+                .email("teste@email.com")
+                .dataNascimento(LocalDate.now())
+                .endereco(clienteAlterarNome.getEndereco())
+                .build();
+
+        final MockHttpServletRequestBuilder requestBuilder = put(CLIENTE_API + '/' + clienteAlterarNome.getId()).content(objectMapper.writeValueAsString(exemploRequest)).with(defaultUserJwt()).contentType(JSON_CONTENT_TYPE);
+
+        final ResultActions result = mvc.perform(requestBuilder).andDo(log()).andExpect(status().isOk());
+
+        final ClienteResponse exemploResponse = objectMapper.readValue(result.andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8), ClienteResponse.class);
+
+        Assertions.assertEquals(clienteAlterarNome.getId(), exemploResponse.getId());
+        Assertions.assertEquals(clienteAlterarNome.getNome(), exemploResponse.getNome());
+
+        //Obter historico do cliente
+        final MockHttpServletRequestBuilder requestBuilderHistorico = get(HISTORICO_API + "?search=idEntidadeGeradora==" + exemploResponse.getId() ).with(defaultUserJwt()).contentType(JSON_CONTENT_TYPE);
+        final ResultActions resultHistorico = mvc.perform(requestBuilderHistorico).andDo(log()).andExpect(status().isOk());
+        final List<HistoricoResponse> historicoResponse = objectMapper.readValue(resultHistorico.andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8), new TypeReference<List<HistoricoResponse>>() {});
+        Assertions.assertTrue(Objects.nonNull(historicoResponse));
+
+        //Obter Auditoria do historico
+        final MockHttpServletRequestBuilder requestBuilderAuditoria = get(AUDITORIA_API + "?search=historico==" + historicoResponse.get(0).getId() ).with(defaultUserJwt()).contentType(JSON_CONTENT_TYPE);
+        final ResultActions resultAuditoria = mvc.perform(requestBuilderAuditoria).andDo(log()).andExpect(status().isOk());
+        final List<AuditoriaResponse> auditoriaResponse = objectMapper.readValue(resultAuditoria.andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8), new TypeReference<List<AuditoriaResponse>>() {});
+        Assertions.assertTrue(Objects.nonNull(auditoriaResponse));
+        Assertions.assertEquals(2, auditoriaResponse.size());
 
     }
 }

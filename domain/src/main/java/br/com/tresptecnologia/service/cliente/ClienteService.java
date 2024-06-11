@@ -12,7 +12,7 @@ import br.com.tresptecnologia.entity.historico.ESituacaoRegistro;
 import br.com.tresptecnologia.entity.historico.ETipoEntidade;
 import br.com.tresptecnologia.entity.historico.Historico;
 import br.com.tresptecnologia.repository.cliente.ClienteRepository;
-import br.com.tresptecnologia.repository.cliente.HistoricoRepository;
+import br.com.tresptecnologia.repository.historico.HistoricoRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;

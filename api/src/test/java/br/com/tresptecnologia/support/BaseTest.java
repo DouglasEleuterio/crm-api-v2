@@ -58,6 +58,7 @@ public abstract class BaseTest extends MessageBaseTest {
                 .jwt(token -> token
                         .claim("sub", sub)
                         .claim("name", name)
+                        .claim("preferred_username", name)
                         .claim("email", email)
                 ).authorities(jwt -> roles.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toSet()));
     }

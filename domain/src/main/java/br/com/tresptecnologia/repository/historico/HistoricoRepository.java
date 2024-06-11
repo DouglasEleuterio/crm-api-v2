@@ -1,4 +1,4 @@
-package br.com.tresptecnologia.repository.cliente;
+package br.com.tresptecnologia.repository.historico;
 
 import br.com.tresptecnologia.core.repository.BaseRepository;
 import br.com.tresptecnologia.entity.historico.Historico;
