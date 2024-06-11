@@ -15,5 +15,3 @@ CREATE TABLE parcela_pagamento
     CONSTRAINT pk_parcela_pagamento PRIMARY KEY (id)
 );
 
-ALTER TABLE parcela_pagamento
-    ADD CONSTRAINT FK_PARCELA_PAGAMENTO_ON_PAGAMENTO FOREIGN KEY (pagamento_id) REFERENCES pagamento (id);
