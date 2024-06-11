@@ -3,6 +3,7 @@ package br.com.tresptecnologia.entity.aquisicao;
 import br.com.tresptecnologia.core.entity.BaseActiveEntity;
 import br.com.tresptecnologia.entity.cliente.Cliente;
 import br.com.tresptecnologia.entity.pagamento.Pagamento;
+import br.com.tresptecnologia.entity.procedimento.Procedimento;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,6 +15,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -52,4 +54,6 @@ public class Aquisicao extends BaseActiveEntity {
     @OneToMany(mappedBy = "aquisicao", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Pagamento> pagamentos;
 
+    @Transient
+    private Procedimento procedimento;
 }

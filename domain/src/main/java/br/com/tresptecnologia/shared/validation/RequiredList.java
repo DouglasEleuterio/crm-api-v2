@@ -1,0 +1,36 @@
+package br.com.tresptecnologia.shared.validation;
+
+import jakarta.validation.Constraint;
+import jakarta.validation.Payload;
+
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Documented
+@Constraint(validatedBy = RequiredListValidator.class)
+@Target({ElementType.METHOD, ElementType.FIELD, ElementType.ANNOTATION_TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface RequiredList {
+    String label() default "";
+
+    String message() default "{validation.required}";
+
+    RequiredType type() default RequiredType.ALL;
+
+    Class<?>[] groups() default {};
+
+    Class<? extends Payload>[] payload() default {};
+
+    boolean required() default true;
+
+    int min() default 1;
+    String alias() default "";
+
+    /**
+     * Caso necessite retornar uma mensagem customizada para regra de negócio, defina em customMessage.
+     */
+    String customMessage() default "";
+}

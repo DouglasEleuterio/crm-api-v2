@@ -1,6 +1,6 @@
 package br.com.tresptecnologia.model.cliente;
 
-import br.com.tresptecnologia.entity.cliente.Endereco;
+import br.com.tresptecnologia.model.endereco.EnderecoRequest;
 import br.com.tresptecnologia.shared.validation.Required;
 import br.com.tresptecnologia.shared.validation.RequiredSize;
 import br.com.tresptecnologia.shared.validation.RequiredType;
@@ -33,11 +33,11 @@ public class ClienteRequest {
     @RequiredSize(label = "cliente.email", min = 5)
     private String email;
 
-    @RequiredSize(label = "cliente.data-nascimento", min = 5)
+    @RequiredSize(label = "cliente.data-nascimento")
     private LocalDate dataNascimento;
 
     @Required(label = "endereco", type = RequiredType.ALL)
-    private Endereco endereco;
+    private EnderecoRequest endereco;
 
     private Boolean situacao;
 }
