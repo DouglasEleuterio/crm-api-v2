@@ -1,5 +1,6 @@
 package br.com.tresptecnologia.entity.pagamento;
 
+import br.com.tresptecnologia.core.entity.BaseEntity;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,7 +26,7 @@ import java.time.LocalDate;
 @Setter
 @Entity
 @Table(name = "parcela_pagamento")
-public class ParcelaPagamento {
+public class ParcelaPagamento extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_PARCELA_PAGAMENTO")
     @SequenceGenerator(name = "SQ_PARCELA_PAGAMENTO", sequenceName = "SQ_PARCELA_PAGAMENTO", allocationSize = 1)
