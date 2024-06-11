@@ -1,0 +1,19 @@
+--liquibase formatted sql
+--changeset douglas.ferreira:add-parcela-pagamento
+
+CREATE SEQUENCE sq_parcela_pagamento START WITH 1 INCREMENT BY 1;
+
+CREATE TABLE parcela_pagamento
+(
+    id             NUMBER(38, 0) NOT NULL,
+    data_credito   date          NOT NULL,
+    valor_credito  FLOAT(24)     NOT NULL,
+    valor_taxa     FLOAT(24)     NOT NULL,
+    recebido       NUMBER(1)     NOT NULL,
+    numero_parcela INTEGER       NOT NULL,
+    pagamento_id   NUMBER(38, 0),
+    CONSTRAINT pk_parcela_pagamento PRIMARY KEY (id)
+);
+
+ALTER TABLE parcela_pagamento
+    ADD CONSTRAINT FK_PARCELA_PAGAMENTO_ON_PAGAMENTO FOREIGN KEY (pagamento_id) REFERENCES pagamento (id);
