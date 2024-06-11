@@ -4,5 +4,5 @@ import lombok.Getter;
 
 @Getter
 public enum EEvento {
-    CADASTRO, EDICAO, EXCLUSAO
+    CADASTRO, EDICAO, EXCLUSAO, ATIVACAO, INATIVACAO
 }

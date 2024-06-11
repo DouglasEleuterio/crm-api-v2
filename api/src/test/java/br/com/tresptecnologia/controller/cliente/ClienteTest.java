@@ -437,4 +437,79 @@ public class ClienteTest extends BaseTest {
         Assertions.assertEquals(2, auditoriaResponse.size());
 
     }
+
+    @Test
+    @Rollback
+    void testarInativar_IdValido_GerarAudituria() throws Exception {
+
+        var estado = estadoRepository.saveAndFlush(Estado.builder()
+                .nome("Goias")
+                .codigoIBGE("53")
+                .uf("GO")
+                .build());
+        var cidade = cidadeRepository.saveAndFlush(Cidade.builder()
+                .nome("São Patricio")
+                .codigoIBGE("53100396")
+                .estado(estado)
+                .build());
+
+        var endereco = Endereco.builder()
+                .logradouro("Av B")
+                .numero("S/N")
+                .complemento("Qd A")
+                .bairro("Centro")
+                .cidade(cidade)
+                .cep("76343000")
+                .build();
+
+        final ClienteRequest clienteRequest = ClienteRequest.builder()
+                .nome("Alterando...")
+                .telefone("62999999998")
+                .cpf("40049617001")
+                .email("teste@email.com")
+                .dataNascimento(LocalDate.now())
+                .endereco(endereco)
+                .build();
+
+        final MockHttpServletRequestBuilder requestBuilderSave = post(CLIENTE_API).content(objectMapper.writeValueAsString(clienteRequest)).with(defaultUserJwt()).contentType(JSON_CONTENT_TYPE);
+
+        final ResultActions result = mvc.perform(requestBuilderSave).andDo(log()).andExpect(status().isCreated());
+
+        objectMapper.readValue(result.andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8), ExemploResponse.class);
+
+
+        final var exemploAtivar = clienteRepository.findById(1L).orElse(null);
+
+        final BaseEntityActiveRequest ativarRequest = BaseEntityActiveRequest.builder().ativo(false).build();
+
+        final MockHttpServletRequestBuilder requestBuilder = patch(CLIENTE_API + "/active/" + exemploAtivar.getId())
+                .content(objectMapper.writeValueAsString(ativarRequest)).with(defaultUserJwt()).contentType(JSON_CONTENT_TYPE);
+
+        mvc.perform(requestBuilder).andDo(log()).andExpect(status().isOk());
+
+        final Cliente exemploResponse = clienteRepository.findById(exemploAtivar.getId()).orElse(null);
+
+        Assertions.assertNotNull(exemploResponse);
+        Assertions.assertEquals(exemploAtivar.getId(), exemploResponse.getId());
+        Assertions.assertEquals(exemploAtivar.getNome(), exemploResponse.getNome());
+        Assertions.assertEquals(exemploAtivar.getEmail(), exemploResponse.getEmail());
+
+        //Obter historico da ativacao
+        final MockHttpServletRequestBuilder requestBuilderHistorico = get(HISTORICO_API + "?search=idEntidadeGeradora==" + exemploResponse.getId() ).with(defaultUserJwt()).contentType(JSON_CONTENT_TYPE);
+        final ResultActions resultHistorico = mvc.perform(requestBuilderHistorico).andDo(log()).andExpect(status().isOk());
+        final List<HistoricoResponse> historicoResponse = objectMapper.readValue(resultHistorico.andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8), new TypeReference<List<HistoricoResponse>>() {});
+        Assertions.assertTrue(Objects.nonNull(historicoResponse));
+
+        final BaseEntityActiveRequest inativarRequest = BaseEntityActiveRequest.builder().ativo(true).build();
+        final MockHttpServletRequestBuilder requestInativarBuilder = patch(CLIENTE_API + "/active/" + exemploAtivar.getId())
+                .content(objectMapper.writeValueAsString(inativarRequest)).with(defaultUserJwt()).contentType(JSON_CONTENT_TYPE);
+        mvc.perform(requestInativarBuilder).andDo(log()).andExpect(status().isOk());
+
+        //Obter historico da inativacao
+        final MockHttpServletRequestBuilder requestBuilderHistoricoAtivacao = get(HISTORICO_API + "?search=idEntidadeGeradora==" + exemploResponse.getId() ).with(defaultUserJwt()).contentType(JSON_CONTENT_TYPE);
+        final ResultActions resultHistoricoAtivacao = mvc.perform(requestBuilderHistoricoAtivacao).andDo(log()).andExpect(status().isOk());
+        final List<HistoricoResponse> historicoResponseAtivacao = objectMapper.readValue(resultHistoricoAtivacao.andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8), new TypeReference<List<HistoricoResponse>>() {});
+        Assertions.assertTrue(Objects.nonNull(historicoResponseAtivacao));
+        Assertions.assertEquals(2, historicoResponseAtivacao.size());
+    }
 }

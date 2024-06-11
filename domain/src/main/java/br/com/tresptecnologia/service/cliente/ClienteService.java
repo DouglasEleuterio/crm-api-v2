@@ -77,4 +77,18 @@ public class ClienteService extends BaseActiveService<Cliente> implements IClien
         }
         return super.update(id, updateT);
     }
+
+    @Override
+    public void active(Long id, boolean ativo) throws DomainException {
+        var historico = Historico.builder()
+                .dataOcorrencia(LocalDateTime.now())
+                .idUsuario(AuditRevisionInfo.obterInfo().getUserId())
+                .idEntidadeGeradora(id)
+                .nomeUsuario(AuditRevisionInfo.obterInfo().getUserName())
+                .tipoEntidade(ETipoEntidade.CLIENTE)
+                .tipoEvento(ativo ? EEvento.ATIVACAO : EEvento.INATIVACAO)
+                .build();
+        historicoRepository.save(historico);
+        super.active(id, ativo);
+    }
 }
