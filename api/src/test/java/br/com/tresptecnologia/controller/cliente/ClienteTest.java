@@ -6,9 +6,13 @@ import br.com.tresptecnologia.entity.cliente.Cliente;
 import br.com.tresptecnologia.entity.cliente.Endereco;
 import br.com.tresptecnologia.entity.cliente.Estado;
 import br.com.tresptecnologia.model.auditoria.AuditoriaResponse;
+import br.com.tresptecnologia.model.cliente.ClienteMapperImpl;
 import br.com.tresptecnologia.model.cliente.ClienteRequest;
 import br.com.tresptecnologia.model.cliente.ClienteResponse;
+import br.com.tresptecnologia.model.endereco.EnderecoMapper;
+import br.com.tresptecnologia.model.endereco.EnderecoRequest;
 import br.com.tresptecnologia.model.entity.BaseEntityActiveRequest;
+import br.com.tresptecnologia.model.entity.BaseEntityRequest;
 import br.com.tresptecnologia.model.exemplo.ExemploResponse;
 import br.com.tresptecnologia.model.historico.HistoricoResponse;
 import br.com.tresptecnologia.repository.cidade.CidadeRepository;
@@ -24,6 +28,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.SpyBean;
@@ -65,14 +70,21 @@ public class ClienteTest extends BaseTest {
 
     @SpyBean
     private HistoricoRepository historicoRepository;
+
     @SpyBean
     private AuditRevisionInfoService auditRevisionInfoService;
+
+    @SpyBean
+    private EnderecoMapper enderecoMapper;
 
     @SpyBean
     private EstadoRepository estadoRepository;
 
     @SpyBean
     private CidadeRepository cidadeRepository;
+
+    @SpyBean
+    private ClienteMapperImpl clienteMapper;
 
     @BeforeEach
     public void setUp() {
@@ -149,12 +161,12 @@ public class ClienteTest extends BaseTest {
                 .build());
 
 
-        var endereco = Endereco.builder()
+        var endereco = EnderecoRequest.builder()
                 .logradouro("Av B")
                 .numero("S/N")
                 .complemento("Qd A")
                 .bairro("Centro")
-                .cidade(cidade)
+                .cidade(BaseEntityRequest.of(cidade.getId()))
                 .cep("76343000")
                 .build();
 
@@ -208,12 +220,12 @@ public class ClienteTest extends BaseTest {
                 .build());
 
 
-        var endereco = Endereco.builder()
+        var endereco = EnderecoRequest.builder()
                 .logradouro("Av B")
                 .numero("S/N")
                 .complemento("Qd A")
                 .bairro("Centro")
-                .cidade(cidade)
+                .cidade(BaseEntityRequest.of(cidade.getId()))
                 .cep("76343000")
                 .build();
 
@@ -278,7 +290,7 @@ public class ClienteTest extends BaseTest {
                 .cpf("40049617001")
                 .email("teste@email.com")
                 .dataNascimento(LocalDate.now())
-                .endereco(clienteAlterarNome.getEndereco())
+                .endereco(enderecoMapper.toRequest(clienteAlterarNome.getEndereco()))
                 .build();
 
         final MockHttpServletRequestBuilder requestBuilder = put(CLIENTE_API + '/' + clienteAlterarNome.getId()).content(objectMapper.writeValueAsString(exemploRequest)).with(defaultUserJwt()).contentType(JSON_CONTENT_TYPE);
@@ -326,14 +338,15 @@ public class ClienteTest extends BaseTest {
                 .estado(estado)
                 .build());
 
-        var endereco = Endereco.builder()
+        var endereco = EnderecoRequest.builder()
                 .logradouro("Av B")
                 .numero("S/N")
                 .complemento("Qd A")
                 .bairro("Centro")
-                .cidade(cidade)
+                .cidade(BaseEntityRequest.of(cidade.getId()))
                 .cep("76343000")
                 .build();
+
 
         final ClienteRequest clienteRequest = ClienteRequest.builder()
                 .nome("Alterando...")
@@ -405,14 +418,8 @@ public class ClienteTest extends BaseTest {
 
         clienteAlterarNome = clienteRepository.saveAndFlush(clienteAlterarNome);
 
-        final ClienteRequest exemploRequest = ClienteRequest.builder()
-                .nome("Alterando...")
-                .telefone("62999999998")
-                .cpf("40049617001")
-                .email("teste@email.com")
-                .dataNascimento(LocalDate.now())
-                .endereco(clienteAlterarNome.getEndereco())
-                .build();
+        final ClienteRequest exemploRequest = clienteMapper.toRequest(clienteAlterarNome);
+        exemploRequest.setNome("Alterando...");
 
         final MockHttpServletRequestBuilder requestBuilder = put(CLIENTE_API + '/' + clienteAlterarNome.getId()).content(objectMapper.writeValueAsString(exemploRequest)).with(defaultUserJwt()).contentType(JSON_CONTENT_TYPE);
 
@@ -422,6 +429,7 @@ public class ClienteTest extends BaseTest {
 
         Assertions.assertEquals(clienteAlterarNome.getId(), exemploResponse.getId());
         Assertions.assertEquals(clienteAlterarNome.getNome(), exemploResponse.getNome());
+        Assertions.assertEquals(clienteAlterarNome.getEndereco().getDataCriacao(), exemploResponse.getEndereco().getDataCriacao());
 
         //Obter historico do cliente
         final MockHttpServletRequestBuilder requestBuilderHistorico = get(HISTORICO_API + "?search=idEntidadeGeradora==" + exemploResponse.getId() ).with(defaultUserJwt()).contentType(JSON_CONTENT_TYPE);
@@ -453,12 +461,12 @@ public class ClienteTest extends BaseTest {
                 .estado(estado)
                 .build());
 
-        var endereco = Endereco.builder()
+        var endereco = EnderecoRequest.builder()
                 .logradouro("Av B")
                 .numero("S/N")
                 .complemento("Qd A")
                 .bairro("Centro")
-                .cidade(cidade)
+                .cidade(BaseEntityRequest.of(cidade.getId()))
                 .cep("76343000")
                 .build();
 

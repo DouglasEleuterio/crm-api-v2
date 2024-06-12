@@ -1,7 +1,7 @@
 package br.com.tresptecnologia.model.endereco;
 
-import br.com.tresptecnologia.model.entity.BaseEntityRequest;
-import br.com.tresptecnologia.shared.validation.Required;
+import br.com.tresptecnologia.entity.cliente.Cidade;
+import br.com.tresptecnologia.model.entity.BaseResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,19 +15,15 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class EnderecoRequest {
+public class EnderecoResponse implements BaseResponse {
 
     private Long id;
-    @Required(label = "endereco.logradouro")
     private String logradouro;
     private String numero;
     private String complemento;
     private String bairro;
-    @Required(label = "endereco.cidade")
-    private BaseEntityRequest cidade;
-    @Required(label = "endereco.cep")
+    private Cidade cidade;
     private String cep;
     private LocalDateTime dataCriacao;
     private LocalDateTime dataAtualizacao;
-
 }
