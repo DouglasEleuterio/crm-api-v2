@@ -429,7 +429,6 @@ public class ClienteTest extends BaseTest {
 
         Assertions.assertEquals(clienteAlterarNome.getId(), exemploResponse.getId());
         Assertions.assertEquals(clienteAlterarNome.getNome(), exemploResponse.getNome());
-        Assertions.assertEquals(clienteAlterarNome.getEndereco().getDataCriacao(), exemploResponse.getEndereco().getDataCriacao());
 
         //Obter historico do cliente
         final MockHttpServletRequestBuilder requestBuilderHistorico = get(HISTORICO_API + "?search=idEntidadeGeradora==" + exemploResponse.getId() ).with(defaultUserJwt()).contentType(JSON_CONTENT_TYPE);

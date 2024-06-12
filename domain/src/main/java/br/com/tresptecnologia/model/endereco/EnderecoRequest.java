@@ -28,7 +28,5 @@ public class EnderecoRequest {
     private BaseEntityRequest cidade;
     @Required(label = "endereco.cep")
     private String cep;
-    private LocalDateTime dataCriacao;
-    private LocalDateTime dataAtualizacao;
 
 }

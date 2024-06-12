@@ -13,6 +13,7 @@ import br.com.tresptecnologia.entity.historico.ETipoEntidade;
 import br.com.tresptecnologia.entity.historico.Historico;
 import br.com.tresptecnologia.repository.cliente.ClienteRepository;
 import br.com.tresptecnologia.repository.historico.HistoricoRepository;
+import br.com.tresptecnologia.service.endereco.IEnderecoService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -24,12 +25,15 @@ import java.util.HashSet;
 @Service
 public class ClienteService extends BaseActiveService<Cliente> implements IClienteService {
 
+    private final IEnderecoService enderecoService;
+
     private final JsonMapper jsonMapper;
     private final HistoricoRepository historicoRepository;
     ObjectMapper objectMapper = new ObjectMapper();
 
-    protected ClienteService(BaseRepository<Cliente> repository, JsonMapper jsonMapper, HistoricoRepository historicoRepository) {
+    protected ClienteService(BaseRepository<Cliente> repository, IEnderecoService enderecoService, JsonMapper jsonMapper, HistoricoRepository historicoRepository) {
         super(repository);
+        this.enderecoService = enderecoService;
         this.historicoRepository = historicoRepository;
         objectMapper.registerModule(new JavaTimeModule());
         this.jsonMapper = jsonMapper;
@@ -46,6 +50,12 @@ public class ClienteService extends BaseActiveService<Cliente> implements IClien
 
     @Override
     public Cliente update(Long id, Cliente updateT) throws DomainException {
+
+        var endereco = enderecoService.findById(updateT.getEndereco().getId());
+        updateT.getEndereco().setId(endereco.getId());
+        updateT.getEndereco().setDataCriacao(endereco.getDataCriacao());
+        updateT.getEndereco().setDataAtualizacao(endereco.getDataAtualizacao());
+
         var oldOjb = super.findById(id);
         try {
             var newJson = objectMapper.writeValueAsString(updateT);

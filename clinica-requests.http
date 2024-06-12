@@ -19,7 +19,46 @@ Authorization: Bearer {{token}}
   "situacao": true
 }
 
+###
+GET {{urlLocal}}/cliente
+Content-Type: application/json
+Authorization: Bearer {{token}}
 
+
+###
+PUT {{urlLocal}}/cliente/1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "id": 1,
+  "nome": "Douglas Eleutério",
+  "cpf": "03555759140",
+  "email": "joao@example.com",
+  "telefone": "11987654321",
+  "endereco": {
+    "id": 1,
+    "logradouro": "Rua das Flores, 123456",
+    "numero": null,
+    "complemento": null,
+    "bairro": "Centro",
+    "cidade": {
+      "id": 454,
+      "nome": "Alcântara",
+      "estado": {
+        "dataCriacao": "2024-06-12T23:18:15",
+        "dataAtualizacao": "2024-06-12T23:18:15",
+        "id": 10,
+        "nome": "Maranhão",
+        "codigoIBGE": "21",
+        "uf": "MA"
+      },
+      "codigoIBGE": "2100204"
+    },
+    "cep": "01234-567"
+  },
+  "dataNascimento": "1990-05-15"
+}
 
 ###
 GET {{urlLocal}}/historico?search=idEntidadeGeradora==1

@@ -1,6 +1,7 @@
 package br.com.tresptecnologia.model.endereco;
 
 import br.com.tresptecnologia.entity.cliente.Cidade;
+import br.com.tresptecnologia.model.CidadeResponse;
 import br.com.tresptecnologia.model.entity.BaseResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,8 +23,6 @@ public class EnderecoResponse implements BaseResponse {
     private String numero;
     private String complemento;
     private String bairro;
-    private Cidade cidade;
+    private CidadeResponse cidade;
     private String cep;
-    private LocalDateTime dataCriacao;
-    private LocalDateTime dataAtualizacao;
 }
