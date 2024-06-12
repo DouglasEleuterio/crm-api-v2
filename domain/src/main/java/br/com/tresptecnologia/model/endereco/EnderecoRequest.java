@@ -22,6 +22,7 @@ public class EnderecoRequest {
     private String logradouro;
     private String numero;
     private String complemento;
+    @Required(label = "endereco.bairro")
     private String bairro;
     @Required(label = "endereco.cidade")
     private BaseEntityRequest cidade;
