@@ -1,1 +1,25 @@
+POST {{urlLocal}}/cliente
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "nome": "João da Silva",
+  "telefone": "11987654321",
+  "cpf": "03555759140",
+  "email": "joao@example.com",
+  "dataNascimento": "1990-05-15",
+  "endereco": {
+    "logradouro": "Rua das Flores, 123",
+    "bairro": "Centro",
+    "cidade": {
+      "id": "454"
+    },
+    "cep": "01234-567"
+  },
+  "situacao": true
+}
+
+
+
+###
 GET {{urlLocal}}/historico?search=idEntidadeGeradora==1
