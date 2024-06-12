@@ -10,8 +10,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import javax.xml.bind.annotation.XmlElement;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import lombok.AllArgsConstructor;
@@ -42,7 +40,7 @@ public class IPITrib extends BaseEntity {
     public String cst;
 
     @Column(name = "IPT_qUnid")
-    public Integer qUnid;
+    public Double qUnid;
 
     @Column(name = "IPT_vIPI")
     public Double vIPI;

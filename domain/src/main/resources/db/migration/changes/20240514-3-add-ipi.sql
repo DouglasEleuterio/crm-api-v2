@@ -9,7 +9,7 @@ CREATE TABLE ipt_ipitrib
     data_criacao     TIMESTAMP     NOT NULL,
     data_atualizacao TIMESTAMP     NOT NULL,
     ipt_cst          VARCHAR2(255),
-    ipt_q_unid       INTEGER,
+    ipt_q_unid       DOUBLE PRECISION,
     ipt_vipi         DOUBLE PRECISION,
     ipt_v_unid       DOUBLE PRECISION,
     CONSTRAINT pk_ipt_ipitrib PRIMARY KEY (ipt_id)
