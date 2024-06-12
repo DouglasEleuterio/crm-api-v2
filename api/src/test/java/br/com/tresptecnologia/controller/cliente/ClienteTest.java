@@ -248,8 +248,8 @@ public class ClienteTest extends BaseTest {
 
     }
 
-    @Rollback
     @Test
+    @Rollback
     void testarAlterarNome_IdValido_RetornarSucesso() throws Exception {
 
         var estado = estadoRepository.saveAndFlush(Estado.builder()
@@ -382,8 +382,8 @@ public class ClienteTest extends BaseTest {
 
     }
 
-    @Rollback
     @Test
+    @Rollback
     void testarAlterarNome_IdValido_GerarAudituria() throws Exception {
 
         var estado = estadoRepository.saveAndFlush(Estado.builder()
