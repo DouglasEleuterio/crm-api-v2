@@ -13,7 +13,9 @@ CREATE TABLE parcela_pagamento
     numero_parcela   INTEGER       NOT NULL,
     pagamento_id     NUMBER(38, 0),
     data_atualizacao TIMESTAMP     NOT NULL,
+    data_criacao     TIMESTAMP     NOT NULL,
     dataCriacao      TIMESTAMP     NOT NULL,
+    situacao         NUMBER(1)     NOT NULL,
     CONSTRAINT pk_parcela_pagamento PRIMARY KEY (id)
 );
 

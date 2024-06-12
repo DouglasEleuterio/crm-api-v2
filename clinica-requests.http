@@ -1,0 +1,1 @@
+GET {{urlLocal}}/historico?search=idEntidadeGeradora==1
