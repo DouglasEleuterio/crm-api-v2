@@ -13,6 +13,4 @@ CREATE TABLE ifd_infadic
 );
 
 --changeset douglas.ferreira:edit-inf-adic-ifd_inf_cpl-length
-ALTER TABLE ifd_infadic MODIFY (ifd_inf_cpl VARCHAR2(2000) )
-
-
+ALTER TABLE ifd_infadic MODIFY (ifd_inf_cpl VARCHAR2(2000) NULL );

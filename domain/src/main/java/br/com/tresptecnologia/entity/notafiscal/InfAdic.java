@@ -34,6 +34,6 @@ public class InfAdic extends BaseEntity {
     @Column(name = "IFD_ID", nullable = false)
     private Long id;
 
-    @Column(name = "IFD_infCpl", nullable = false, length = 2000)
+    @Column(name = "IFD_infCpl", length = 2000)
     public String infCpl;
 }
