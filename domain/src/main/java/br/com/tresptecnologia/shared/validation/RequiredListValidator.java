@@ -42,7 +42,7 @@ public class RequiredListValidator extends LabelConstraintValidator
                 errorMessage = customMessage;
             else
                 errorMessage = message("{validation.requiredListMinSize}")
-                        .replace(LABEL_PARAMETER, labelValue);
+                        .replace(LABEL_PARAMETER, labelValue).replace(MIN_PARAMETER, String.valueOf(min)).replace(ALIAS_PARAMETER, alias);
 
             context.buildConstraintViolationWithTemplate(errorMessage)
                     .addConstraintViolation();

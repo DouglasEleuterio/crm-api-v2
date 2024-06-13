@@ -32,6 +32,6 @@ public class AquisicaoRequest {
     private ClienteRequest cliente;
     @Required(label = "aquisicao.procedimento")
     private BaseEntityRequest procedimento;
-    @RequiredList(label = "aquisicao.pagamento")
+    @RequiredList(label = "aquisicao.pagamento", alias = "pagamento(s)")
     private Set<PagamentoRequest> pagamentos;
 }

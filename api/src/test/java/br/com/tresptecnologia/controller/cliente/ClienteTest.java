@@ -6,6 +6,7 @@ import br.com.tresptecnologia.entity.cliente.Cliente;
 import br.com.tresptecnologia.entity.cliente.Endereco;
 import br.com.tresptecnologia.entity.cliente.Estado;
 import br.com.tresptecnologia.model.auditoria.AuditoriaResponse;
+import br.com.tresptecnologia.model.cliente.ClienteMapper;
 import br.com.tresptecnologia.model.cliente.ClienteRequest;
 import br.com.tresptecnologia.model.cliente.ClienteResponse;
 import br.com.tresptecnologia.model.endereco.EnderecoMapper;
@@ -84,7 +85,8 @@ public class ClienteTest extends BaseTest {
     private CidadeRepository cidadeRepository;
 
     @SpyBean
-    private ClienteMapperImpl clienteMapper;
+    private ClienteMapper clienteMapper;
+
     @Autowired
     private EnderecoRepository enderecoRepository;
 
