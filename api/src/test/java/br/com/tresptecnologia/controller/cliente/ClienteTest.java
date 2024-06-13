@@ -6,7 +6,6 @@ import br.com.tresptecnologia.entity.cliente.Cliente;
 import br.com.tresptecnologia.entity.cliente.Endereco;
 import br.com.tresptecnologia.entity.cliente.Estado;
 import br.com.tresptecnologia.model.auditoria.AuditoriaResponse;
-import br.com.tresptecnologia.model.cliente.ClienteMapperImpl;
 import br.com.tresptecnologia.model.cliente.ClienteRequest;
 import br.com.tresptecnologia.model.cliente.ClienteResponse;
 import br.com.tresptecnologia.model.endereco.EnderecoMapper;
@@ -17,6 +16,7 @@ import br.com.tresptecnologia.model.exemplo.ExemploResponse;
 import br.com.tresptecnologia.model.historico.HistoricoResponse;
 import br.com.tresptecnologia.repository.cidade.CidadeRepository;
 import br.com.tresptecnologia.repository.cliente.ClienteRepository;
+import br.com.tresptecnologia.repository.endereco.EnderecoRepository;
 import br.com.tresptecnologia.repository.historico.HistoricoRepository;
 import br.com.tresptecnologia.repository.estado.EstadoRepository;
 import br.com.tresptecnologia.service.audit.AuditRevisionInfoService;
@@ -85,6 +85,8 @@ public class ClienteTest extends BaseTest {
 
     @SpyBean
     private ClienteMapperImpl clienteMapper;
+    @Autowired
+    private EnderecoRepository enderecoRepository;
 
     @BeforeEach
     public void setUp() {
@@ -229,13 +231,15 @@ public class ClienteTest extends BaseTest {
                 .cep("76343000")
                 .build();
 
+        var enderecoEntity = enderecoRepository.save(enderecoMapper.fromRequest(endereco));
+
         final ClienteRequest exemploRequest = ClienteRequest.builder()
                 .nome("Exemplo Nome")
                 .telefone("62999999999")
                 .cpf("40049617001")
                 .email("teste@email.com")
                 .dataNascimento(LocalDate.now())
-                .endereco(endereco)
+                .endereco(enderecoMapper.toRequest(enderecoEntity))
                 .build();
 
         final MockHttpServletRequestBuilder requestBuilder = put(CLIENTE_API + "/" + id).content(objectMapper.writeValueAsString(exemploRequest)).with(defaultUserJwt()).contentType(JSON_CONTENT_TYPE);
@@ -361,10 +365,9 @@ public class ClienteTest extends BaseTest {
 
         final ResultActions result = mvc.perform(requestBuilderSave).andDo(log()).andExpect(status().isCreated());
 
-        objectMapper.readValue(result.andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8), ExemploResponse.class);
+        var response = objectMapper.readValue(result.andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8), ExemploResponse.class);
 
-
-        final var exemploAtivar = clienteRepository.findById(1L).orElse(null);
+        final var exemploAtivar = clienteRepository.findById(response.getId()).orElse(null);
 
         final BaseEntityActiveRequest ativarRequest = BaseEntityActiveRequest.builder().ativo(false).build();
 
