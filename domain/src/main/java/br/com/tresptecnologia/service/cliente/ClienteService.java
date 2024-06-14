@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.Optional;
 
 @Service
 public class ClienteService extends BaseActiveService<Cliente> implements IClienteService {
@@ -100,5 +101,10 @@ public class ClienteService extends BaseActiveService<Cliente> implements IClien
                 .build();
         historicoRepository.save(historico);
         super.active(id, ativo);
+    }
+
+    @Override
+    public Optional<Cliente> findByCPF(String cpf) {
+        return getRepository().findByCpf(cpf);
     }
 }

@@ -19,3 +19,5 @@ CREATE TABLE parcela_pagamento
     CONSTRAINT pk_parcela_pagamento PRIMARY KEY (id)
 );
 
+--changeset douglas.ferreira:edit-parcela-pagamento
+ALTER TABLE PARCELA_PAGAMENTO DROP COLUMN DATACRIACAO;

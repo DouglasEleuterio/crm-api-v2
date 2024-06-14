@@ -3,15 +3,15 @@ package br.com.tresptecnologia.controller.aquisicao;
 import br.com.tresptecnologia.core.controller.model.ErrorResponse;
 import br.com.tresptecnologia.entity.cliente.Cidade;
 import br.com.tresptecnologia.entity.cliente.Estado;
-import br.com.tresptecnologia.entity.pagamento.Pagamento;
+import br.com.tresptecnologia.entity.pagamento.EFormaPagamento;
 import br.com.tresptecnologia.entity.procedimento.Procedimento;
 import br.com.tresptecnologia.model.aquisicao.AquisicaoRequest;
 import br.com.tresptecnologia.model.aquisicao.AquisicaoResponse;
 import br.com.tresptecnologia.model.cliente.ClienteRequest;
-import br.com.tresptecnologia.model.cliente.ClienteResponse;
 import br.com.tresptecnologia.model.endereco.EnderecoRequest;
 import br.com.tresptecnologia.model.entity.BaseEntityRequest;
 import br.com.tresptecnologia.model.pagamento.PagamentoRequest;
+import br.com.tresptecnologia.model.parecelapagamento.ParcelaPagamentoRequest;
 import br.com.tresptecnologia.model.procedimento.ProcedimentoMapper;
 import br.com.tresptecnologia.repository.cidade.CidadeRepository;
 import br.com.tresptecnologia.repository.estado.EstadoRepository;
@@ -31,7 +31,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.HashSet;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -124,8 +123,38 @@ public class AquisicaoTest extends BaseTest {
                         .quantidadeSessoes(1)
                 .build());
 
+        var parcelas = new HashSet<ParcelaPagamentoRequest>();
+        parcelas.add(ParcelaPagamentoRequest.builder()
+                        .dataCredito(LocalDate.now())
+                        .isRecebido(false)
+                        .valorCredito(266.66)
+                        .valorTaxa(4.00)
+                        .numeroParcela(1)
+                .build());
+        parcelas.add(ParcelaPagamentoRequest.builder()
+                        .dataCredito(LocalDate.now())
+                        .isRecebido(false)
+                        .valorCredito(266.66)
+                        .valorTaxa(4.00)
+                        .numeroParcela(2)
+                .build());
+        parcelas.add(ParcelaPagamentoRequest.builder()
+                        .dataCredito(LocalDate.now())
+                        .isRecebido(false)
+                        .valorCredito(266.66)
+                        .valorTaxa(4.00)
+                        .numeroParcela(3)
+                .build());
+
         final var pagamentos = new HashSet<PagamentoRequest>();
-        pagamentos.add(PagamentoRequest.builder().build());
+        pagamentos.add(PagamentoRequest.builder()
+                .dataPagamento(LocalDateTime.now())
+                        .formaPagamento(EFormaPagamento.CARTAO_CREDITO)
+                        .taxa(12.00)
+                        .quantidadeParcelas(3)
+                        .valorPagamento(800.00)
+                        .pagamentos(parcelas)
+                .build());
 
         final var aquisicao = AquisicaoRequest.builder()
                 .cliente(exemploRequest)

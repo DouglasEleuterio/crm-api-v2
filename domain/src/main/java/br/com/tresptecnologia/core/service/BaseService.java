@@ -1,9 +1,9 @@
 package br.com.tresptecnologia.core.service;
 
-import br.com.tresptecnologia.core.exception.DomainException;
-import br.com.tresptecnologia.core.repository.BaseRepository;
 import br.com.tresptecnologia.core.entity.BaseEntity;
+import br.com.tresptecnologia.core.exception.DomainException;
 import br.com.tresptecnologia.core.message.Message;
+import br.com.tresptecnologia.core.repository.BaseRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

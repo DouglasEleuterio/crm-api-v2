@@ -62,3 +62,77 @@ Authorization: Bearer {{token}}
 
 ###
 GET {{urlLocal}}/historico?search=idEntidadeGeradora==1
+
+###
+POST {{urlLocal}}/procedimento
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "nome": "Teste",
+  "valor": 800.00,
+  "quantidadeSessoes": 3,
+  "intervaloEntreSessoes": 15
+}
+
+###
+POST {{urlLocal}}/aquisicao
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "dataAquisicao": "2024-06-13T21:05:41",
+  "valorAquisicao": 700,
+  "valorDesconto": 110,
+  "cliente": {
+    "nome": "Douglas",
+    "telefone": "62985606521",
+    "cpf": "63135457028",
+    "email": "dougl@mail.com",
+    "dataNascimento": "1990-09-24",
+    "endereco": {
+      "logradouro": "Rua ABC",
+      "bairro": "Centro",
+      "cidade": {"id":  1},
+      "cep": "74919770"
+    }
+  },
+  "procedimento": {"id": 1},
+  "pagamentos": [
+    {
+     "dataPagamento":"2024-06-13T21:05:41",
+     "valorPagamento": 800.00,
+     "formaPagamento":"CARTAO_CREDITO",
+     "quantidadeParcelas": 3,
+     "taxa": 12.00,
+     "pagamentos": [
+       {
+         "dataCredito": "2024-07-13",
+         "valorCredito": 266.66,
+         "valorTaxa": 4.0,
+         "isRecebido": false,
+         "numeroParcela": 1
+       },
+       {
+         "dataCredito": "2024-08-13",
+         "valorCredito": 266.66,
+         "valorTaxa": 4.0,
+         "isRecebido": false,
+         "numeroParcela": 2
+       },
+       {
+         "dataCredito": "2024-09-13",
+         "valorCredito": 266.66,
+         "valorTaxa": 4.0,
+         "isRecebido": false,
+         "numeroParcela": 3
+       }
+     ]
+    }
+  ]
+}
+
+###
+GET {{urlLocal}}/aquisicao/16
+Content-Type: application/json
+Authorization: Bearer {{token}}
