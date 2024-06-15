@@ -543,7 +543,6 @@ public class AquisicaoTest extends BaseTest {
 
         final AquisicaoResponse aquisicaoResponseUpdate = objectMapper.readValue(resultUpdate.andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8), AquisicaoResponse.class);
 
-
-
+        Assertions.assertNotNull(aquisicaoResponseUpdate.getId());
     }
 }
