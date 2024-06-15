@@ -1,5 +1,6 @@
 package br.com.tresptecnologia.service.aquisicao;
 
+import br.com.tresptecnologia.core.audit.AuditRevisionInfo;
 import br.com.tresptecnologia.core.exception.DomainException;
 import br.com.tresptecnologia.core.jpa.mapper.JsonMapper;
 import br.com.tresptecnologia.core.message.Message;
@@ -7,15 +8,20 @@ import br.com.tresptecnologia.core.repository.BaseRepository;
 import br.com.tresptecnologia.core.service.BaseActiveService;
 import br.com.tresptecnologia.entity.aquisicao.Aquisicao;
 import br.com.tresptecnologia.entity.aquisicao.AquisicaoProcedimento;
+import br.com.tresptecnologia.entity.historico.*;
 import br.com.tresptecnologia.entity.pagamento.Pagamento;
 import br.com.tresptecnologia.repository.aquisicao.AquisicaoRepository;
+import br.com.tresptecnologia.repository.historico.HistoricoRepository;
 import br.com.tresptecnologia.service.cliente.ClienteService;
 import br.com.tresptecnologia.service.procedimento.ProcedimentoService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.util.concurrent.AtomicDouble;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -25,15 +31,19 @@ public class AquisicaoService extends BaseActiveService<Aquisicao> implements IA
     private final JsonMapper jsonMapper;
     private final AquisicaoRepository aquisicaoRepository;
     private final ProcedimentoService procedimentoService;
+    private final HistoricoRepository historicoRepository;
     private final ClienteService clienteService;
+    ObjectMapper objectMapper = new ObjectMapper();
 
     protected AquisicaoService(BaseRepository<Aquisicao> repository, JsonMapper jsonMapper,
-                               AquisicaoRepository aquisicaoRepository, ProcedimentoService procedimentoService, ClienteService clienteService) {
+                               AquisicaoRepository aquisicaoRepository, ProcedimentoService procedimentoService, HistoricoRepository historicoRepository, ClienteService clienteService) {
         super(repository);
         this.jsonMapper = jsonMapper;
         this.aquisicaoRepository = aquisicaoRepository;
         this.procedimentoService = procedimentoService;
+        this.historicoRepository = historicoRepository;
         this.clienteService = clienteService;
+        this.objectMapper.findAndRegisterModules();
     }
 
     @Override
@@ -44,11 +54,54 @@ public class AquisicaoService extends BaseActiveService<Aquisicao> implements IA
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Aquisicao create(Aquisicao aquisicao) throws DomainException {
-        vincularAquisicaoProcedimento(aquisicao);
+        vincularAquisicaoProcedimento(aquisicao, false);
         vincularCliente(aquisicao);
         vincularPagamento(aquisicao);
         validarPagamento(aquisicao);
         return aquisicaoRepository.save(aquisicao);
+    }
+
+    @Override
+    public Aquisicao update(Long id, Aquisicao aquisicao) throws DomainException {
+
+        var oldOjb = super.findById(id);
+
+        vincularAquisicaoProcedimento(aquisicao, true);
+
+        try {
+            var newJson = objectMapper.writeValueAsString(aquisicao);
+            var oldJson = objectMapper.writeValueAsString(oldOjb);
+            var auditoriaAtual = Auditoria.builder()
+                    .situacaoRegistro(ESituacaoRegistro.ATUAL)
+                    .dado(newJson)
+                    .build();
+            var auditoriaAnterior = Auditoria.builder()
+                    .situacaoRegistro(ESituacaoRegistro.ANTERIOR)
+                    .dado(oldJson)
+                    .build();
+
+            var auditoriaSet = new HashSet<Auditoria>();
+            auditoriaSet.add(auditoriaAtual);
+            auditoriaSet.add(auditoriaAnterior);
+            var historico = Historico.builder()
+                    .dataOcorrencia(LocalDateTime.now())
+                    .idUsuario(AuditRevisionInfo.obterInfo().getUserId())
+                    .idEntidadeGeradora(id)
+                    .nomeUsuario(AuditRevisionInfo.obterInfo().getUserName())
+                    .tipoEntidade(ETipoEntidade.AQUISICAO)
+                    .tipoEvento(EEvento.EDICAO)
+                    .auditorias(auditoriaSet)
+                    .build();
+            auditoriaSet.forEach(audit -> audit.setHistorico(historico));
+            historicoRepository.save(historico);
+        } catch (JsonProcessingException e) {
+            throw new DomainException(e);
+        }
+
+        vincularCliente(aquisicao);
+        vincularPagamento(aquisicao);
+        validarPagamento(aquisicao);
+        return super.update(id, aquisicao);
     }
 
     private void vincularPagamento(Aquisicao aquisicao) {
@@ -97,13 +150,25 @@ public class AquisicaoService extends BaseActiveService<Aquisicao> implements IA
         pacienteOpt.ifPresent(aquisicao::setCliente);
     }
 
-    private void vincularAquisicaoProcedimento(Aquisicao aquisicao) throws DomainException {
-        var procedimento = procedimentoService.findById(aquisicao.getProcedimento().getId());
-        aquisicao.setAquisicaoProcedimento(AquisicaoProcedimento.builder()
-                .nome(procedimento.getNome())
-                .valor(procedimento.getValor())
-                .quantidadeSessoes(procedimento.getQuantidadeSessoes())
-                .intervaloEntreSessoes(procedimento.getIntervaloEntreSessoes())
-                .build());
+    private void vincularAquisicaoProcedimento(Aquisicao aquisicao, boolean isUpdate) throws DomainException {
+
+        if(!isUpdate) {
+            var procedimento = procedimentoService.findById(aquisicao.getProcedimento().getId());
+
+            aquisicao.setAquisicaoProcedimento(AquisicaoProcedimento.builder()
+                    .nome(procedimento.getNome())
+                    .valor(procedimento.getValor())
+                    .quantidadeSessoes(procedimento.getQuantidadeSessoes())
+                    .intervaloEntreSessoes(procedimento.getIntervaloEntreSessoes())
+                    .build());
+        } else {
+            var procedimento = procedimentoService.findById(aquisicao.getAquisicaoProcedimento().getId());
+
+            aquisicao.getAquisicaoProcedimento().setValor(procedimento.getValor());
+            aquisicao.getAquisicaoProcedimento().setNome(procedimento.getNome());
+            aquisicao.getAquisicaoProcedimento().setQuantidadeSessoes(procedimento.getQuantidadeSessoes());
+            aquisicao.getAquisicaoProcedimento().setIntervaloEntreSessoes(procedimento.getIntervaloEntreSessoes());
+        }
+
     }
 }
