@@ -12,7 +12,6 @@ import br.com.tresptecnologia.model.endereco.EnderecoRequest;
 import br.com.tresptecnologia.model.entity.BaseEntityRequest;
 import br.com.tresptecnologia.model.pagamento.PagamentoRequest;
 import br.com.tresptecnologia.model.parecelapagamento.ParcelaPagamentoRequest;
-import br.com.tresptecnologia.model.procedimento.ProcedimentoMapper;
 import br.com.tresptecnologia.repository.cidade.CidadeRepository;
 import br.com.tresptecnologia.repository.estado.EstadoRepository;
 import br.com.tresptecnologia.repository.procedimento.ProcedimentoRepository;
@@ -52,8 +51,6 @@ public class AquisicaoTest extends BaseTest {
     private CidadeRepository cidadeRepository;
     @Autowired
     private ProcedimentoRepository procedimentoRepository;
-    @Autowired
-    private ProcedimentoMapper procedimentoMapper;
 
     @Test
     @Rollback
@@ -75,12 +72,12 @@ public class AquisicaoTest extends BaseTest {
     void testarAdicionar_DadosVazios_RetornarError() throws Exception {
         var aquisicaoRequest = new AquisicaoRequest();
         assertMessages(errorsValidations(AQUISICAO_API, 6, aquisicaoRequest),
-                "O campo Data de Aquisição é obrigatório.",
+                "O campo Data de Aquisiï¿½ï¿½o é obrigatório.",
                 "O campo Valor do Desconto é obrigatório.",
                 "O campo Procedimento é obrigatório.",
                 "O campo Cliente é obrigatório.",
                 "A lista de Pagamento deve ter no minimo 1 pagamento(s)",
-                "O campo Data de Aquisição é obrigatório.");
+                "O campo Valor da Aquisiï¿½ï¿½o é obrigatório." );
     }
 
     @Test
@@ -127,21 +124,21 @@ public class AquisicaoTest extends BaseTest {
         parcelas.add(ParcelaPagamentoRequest.builder()
                         .dataCredito(LocalDate.now())
                         .isRecebido(false)
-                        .valorCredito(266.66)
+                        .valorCredito(262.66)
                         .valorTaxa(4.00)
                         .numeroParcela(1)
                 .build());
         parcelas.add(ParcelaPagamentoRequest.builder()
                         .dataCredito(LocalDate.now())
                         .isRecebido(false)
-                        .valorCredito(266.66)
+                        .valorCredito(262.66)
                         .valorTaxa(4.00)
                         .numeroParcela(2)
                 .build());
         parcelas.add(ParcelaPagamentoRequest.builder()
                         .dataCredito(LocalDate.now())
                         .isRecebido(false)
-                        .valorCredito(266.66)
+                        .valorCredito(262.68)
                         .valorTaxa(4.00)
                         .numeroParcela(3)
                 .build());
@@ -172,5 +169,281 @@ public class AquisicaoTest extends BaseTest {
         final AquisicaoResponse aquisicaoResponse = objectMapper.readValue(result.andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8), AquisicaoResponse.class);
 
         Assertions.assertNotNull(aquisicaoResponse.getId());
+    }
+
+    @Test
+    @Rollback
+    void testarAdicionar_valorAquisicaoSuperiorAoPagamento_RetornarErro() throws Exception {
+        var estado = estadoRepository.saveAndFlush(Estado.builder()
+                .nome("Goias")
+                .codigoIBGE("53")
+                .uf("GO")
+                .build());
+        var cidade = cidadeRepository.saveAndFlush(Cidade.builder()
+                .nome("São Patricio")
+                .codigoIBGE("53100396")
+                .estado(estado)
+                .build());
+
+
+        var endereco = EnderecoRequest.builder()
+                .logradouro("Av B")
+                .numero("S/N")
+                .complemento("Qd A")
+                .bairro("Centro")
+                .cidade(BaseEntityRequest.of(cidade.getId()))
+                .cep("76343000")
+                .build();
+
+        final ClienteRequest exemploRequest = ClienteRequest.builder()
+                .nome("Exemplo Nome")
+                .telefone("62999999999")
+                .cpf("40049617001")
+                .email("teste@email.com")
+                .dataNascimento(LocalDate.now())
+                .endereco(endereco)
+                .build();
+
+        final var procedimento = procedimentoRepository.save(Procedimento.builder()
+                .valor(800.00)
+                .nome("Teste")
+                .intervaloEntreSessoes(7)
+                .quantidadeSessoes(1)
+                .build());
+
+        var parcelas = new HashSet<ParcelaPagamentoRequest>();
+        parcelas.add(ParcelaPagamentoRequest.builder()
+                .dataCredito(LocalDate.now())
+                .isRecebido(false)
+                .valorCredito(262.66)
+                .valorTaxa(4.00)
+                .numeroParcela(1)
+                .build());
+        parcelas.add(ParcelaPagamentoRequest.builder()
+                .dataCredito(LocalDate.now())
+                .isRecebido(false)
+                .valorCredito(262.66)
+                .valorTaxa(4.00)
+                .numeroParcela(2)
+                .build());
+        parcelas.add(ParcelaPagamentoRequest.builder()
+                .dataCredito(LocalDate.now())
+                .isRecebido(false)
+                .valorCredito(262.68)
+                .valorTaxa(4.00)
+                .numeroParcela(3)
+                .build());
+
+        final var pagamentos = new HashSet<PagamentoRequest>();
+        pagamentos.add(PagamentoRequest.builder()
+                .dataPagamento(LocalDateTime.now())
+                .formaPagamento(EFormaPagamento.CARTAO_CREDITO)
+                .taxa(12.00)
+                .quantidadeParcelas(3)
+                .valorPagamento(800.00)
+                .pagamentos(parcelas)
+                .build());
+
+        final var aquisicao = AquisicaoRequest.builder()
+                .cliente(exemploRequest)
+                .pagamentos(pagamentos)
+                .procedimento(BaseEntityRequest.builder().id(procedimento.getId()).build())
+                .dataAquisicao(LocalDateTime.now())
+                .valorAquisicao(700.00)
+                .valorDesconto(0.0)
+                .build();
+
+        final MockHttpServletRequestBuilder requestBuilder = post(AQUISICAO_API).content(objectMapper.writeValueAsString(aquisicao)).with(defaultUserJwt()).contentType(JSON_CONTENT_TYPE);
+
+        final ResultActions result = mvc.perform(requestBuilder).andDo(log()).andExpect(status().isBadRequest());
+
+        final ErrorResponse errorResponse = objectMapper.readValue(result.andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8), ErrorResponse.class);
+
+        Assertions.assertNotNull(errorResponse.getMessage());
+        Assertions.assertTrue(errorResponse.getMessage().contains("menor que o valor do procedimento"));
+    }
+
+        @Test
+        @Rollback
+        void testarAdicionar_valorPagamentosInferiorAquisicao_RetornarErro() throws Exception {
+            var estado = estadoRepository.saveAndFlush(Estado.builder()
+                    .nome("Goias")
+                    .codigoIBGE("53")
+                    .uf("GO")
+                    .build());
+            var cidade = cidadeRepository.saveAndFlush(Cidade.builder()
+                    .nome("São Patricio")
+                    .codigoIBGE("53100396")
+                    .estado(estado)
+                    .build());
+
+
+            var endereco = EnderecoRequest.builder()
+                    .logradouro("Av B")
+                    .numero("S/N")
+                    .complemento("Qd A")
+                    .bairro("Centro")
+                    .cidade(BaseEntityRequest.of(cidade.getId()))
+                    .cep("76343000")
+                    .build();
+
+            final ClienteRequest exemploRequest = ClienteRequest.builder()
+                    .nome("Exemplo Nome")
+                    .telefone("62999999999")
+                    .cpf("40049617001")
+                    .email("teste@email.com")
+                    .dataNascimento(LocalDate.now())
+                    .endereco(endereco)
+                    .build();
+
+            final var procedimento = procedimentoRepository.save(Procedimento.builder()
+                    .valor(800.00)
+                    .nome("Teste")
+                    .intervaloEntreSessoes(7)
+                    .quantidadeSessoes(1)
+                    .build());
+
+            var parcelas = new HashSet<ParcelaPagamentoRequest>();
+            parcelas.add(ParcelaPagamentoRequest.builder()
+                    .dataCredito(LocalDate.now())
+                    .isRecebido(false)
+                    .valorCredito(262.66)
+                    .valorTaxa(4.00)
+                    .numeroParcela(1)
+                    .build());
+            parcelas.add(ParcelaPagamentoRequest.builder()
+                    .dataCredito(LocalDate.now())
+                    .isRecebido(false)
+                    .valorCredito(262.66)
+                    .valorTaxa(4.00)
+                    .numeroParcela(2)
+                    .build());
+            parcelas.add(ParcelaPagamentoRequest.builder()
+                    .dataCredito(LocalDate.now())
+                    .isRecebido(false)
+                    .valorCredito(262.68)
+                    .valorTaxa(4.00)
+                    .numeroParcela(3)
+                    .build());
+
+            final var pagamentos = new HashSet<PagamentoRequest>();
+            pagamentos.add(PagamentoRequest.builder()
+                    .dataPagamento(LocalDateTime.now())
+                    .formaPagamento(EFormaPagamento.CARTAO_CREDITO)
+                    .taxa(12.00)
+                    .quantidadeParcelas(3)
+                    .valorPagamento(700.00)
+                    .pagamentos(parcelas)
+                    .build());
+
+            final var aquisicao = AquisicaoRequest.builder()
+                    .cliente(exemploRequest)
+                    .pagamentos(pagamentos)
+                    .procedimento(BaseEntityRequest.builder().id(procedimento.getId()).build())
+                    .dataAquisicao(LocalDateTime.now())
+                    .valorAquisicao(800.00)
+                    .valorDesconto(0.0)
+                    .build();
+
+            final MockHttpServletRequestBuilder requestBuilder = post(AQUISICAO_API).content(objectMapper.writeValueAsString(aquisicao)).with(defaultUserJwt()).contentType(JSON_CONTENT_TYPE);
+
+            final ResultActions result = mvc.perform(requestBuilder).andDo(log()).andExpect(status().isBadRequest());
+
+            final ErrorResponse errorResponse = objectMapper.readValue(result.andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8), ErrorResponse.class);
+
+            Assertions.assertNotNull(errorResponse.getMessage());
+            Assertions.assertTrue(errorResponse.getMessage().contains("pode ser inferior"));
+    }
+
+    @Test
+    @Rollback
+    void testarAdicionar_valorTotalParcelasInferiorValorPagamento_RetornarErro() throws Exception {
+        var estado = estadoRepository.saveAndFlush(Estado.builder()
+                .nome("Goias")
+                .codigoIBGE("53")
+                .uf("GO")
+                .build());
+        var cidade = cidadeRepository.saveAndFlush(Cidade.builder()
+                .nome("São Patricio")
+                .codigoIBGE("53100396")
+                .estado(estado)
+                .build());
+
+
+        var endereco = EnderecoRequest.builder()
+                .logradouro("Av B")
+                .numero("S/N")
+                .complemento("Qd A")
+                .bairro("Centro")
+                .cidade(BaseEntityRequest.of(cidade.getId()))
+                .cep("76343000")
+                .build();
+
+        final ClienteRequest exemploRequest = ClienteRequest.builder()
+                .nome("Exemplo Nome")
+                .telefone("62999999999")
+                .cpf("40049617001")
+                .email("teste@email.com")
+                .dataNascimento(LocalDate.now())
+                .endereco(endereco)
+                .build();
+
+        final var procedimento = procedimentoRepository.save(Procedimento.builder()
+                .valor(800.00)
+                .nome("Teste")
+                .intervaloEntreSessoes(7)
+                .quantidadeSessoes(1)
+                .build());
+
+        var parcelas = new HashSet<ParcelaPagamentoRequest>();
+        parcelas.add(ParcelaPagamentoRequest.builder()
+                .dataCredito(LocalDate.now())
+                .isRecebido(false)
+                .valorCredito(262.66)
+                .valorTaxa(4.00)
+                .numeroParcela(1)
+                .build());
+        parcelas.add(ParcelaPagamentoRequest.builder()
+                .dataCredito(LocalDate.now())
+                .isRecebido(false)
+                .valorCredito(262.66)
+                .valorTaxa(4.00)
+                .numeroParcela(2)
+                .build());
+        parcelas.add(ParcelaPagamentoRequest.builder()
+                .dataCredito(LocalDate.now())
+                .isRecebido(false)
+                .valorCredito(262.66)
+                .valorTaxa(4.00)
+                .numeroParcela(3)
+                .build());
+
+        final var pagamentos = new HashSet<PagamentoRequest>();
+        pagamentos.add(PagamentoRequest.builder()
+                .dataPagamento(LocalDateTime.now())
+                .formaPagamento(EFormaPagamento.CARTAO_CREDITO)
+                .taxa(12.00)
+                .quantidadeParcelas(3)
+                .valorPagamento(800.00)
+                .pagamentos(parcelas)
+                .build());
+
+        final var aquisicao = AquisicaoRequest.builder()
+                .cliente(exemploRequest)
+                .pagamentos(pagamentos)
+                .procedimento(BaseEntityRequest.builder().id(procedimento.getId()).build())
+                .dataAquisicao(LocalDateTime.now())
+                .valorAquisicao(800.00)
+                .valorDesconto(0.0)
+                .build();
+
+        final MockHttpServletRequestBuilder requestBuilder = post(AQUISICAO_API).content(objectMapper.writeValueAsString(aquisicao)).with(defaultUserJwt()).contentType(JSON_CONTENT_TYPE);
+
+        final ResultActions result = mvc.perform(requestBuilder).andDo(log()).andExpect(status().isBadRequest());
+
+        final ErrorResponse errorResponse = objectMapper.readValue(result.andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8), ErrorResponse.class);
+
+        Assertions.assertNotNull(errorResponse.getMessage());
+        Assertions.assertTrue(errorResponse.getMessage().contains("pode ser inferior ao valor do pagamento"));
     }
 }

@@ -7,14 +7,17 @@ import br.com.tresptecnologia.core.repository.BaseRepository;
 import br.com.tresptecnologia.core.service.BaseActiveService;
 import br.com.tresptecnologia.entity.aquisicao.Aquisicao;
 import br.com.tresptecnologia.entity.aquisicao.AquisicaoProcedimento;
+import br.com.tresptecnologia.entity.pagamento.Pagamento;
 import br.com.tresptecnologia.repository.aquisicao.AquisicaoRepository;
 import br.com.tresptecnologia.service.cliente.ClienteService;
 import br.com.tresptecnologia.service.procedimento.ProcedimentoService;
+import com.google.common.util.concurrent.AtomicDouble;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicReference;
 
 @Service
 public class AquisicaoService extends BaseActiveService<Aquisicao> implements IAquisicaoService {
@@ -63,18 +66,35 @@ public class AquisicaoService extends BaseActiveService<Aquisicao> implements IA
         var valorAquisicao = aquisicao.getValorAquisicao();
         if(valorAquisicao + valorDesconto < valorProcedimento)
             throw new DomainException(Message.toLocale("valor-aquisicao-inferior-valor-procedimento"));
+        validarPagamentos(aquisicao);
+    }
+
+    private void validarPagamentos(Aquisicao aquisicao) throws DomainException {
+        var valorAquisicao = aquisicao.getValorAquisicao();
+        AtomicReference<Double> valorPagamentos = new AtomicReference<>(0.0);
+
+        aquisicao.getPagamentos().forEach(pgto -> valorPagamentos.updateAndGet(v -> v + pgto.getValorPagamento()));
+
+        if(valorPagamentos.get() < valorAquisicao)
+            throw new DomainException(Message.toLocale("valor-pagamento-inferior-aquisicao"));
+
         validarParcelas(aquisicao);
     }
 
-    private void validarParcelas(Aquisicao aquisicao) {
+    private void validarParcelas(Aquisicao aquisicao) throws DomainException {
+        for (Pagamento pagamento : aquisicao.getPagamentos()) {
+            var valorPagamento = pagamento.getValorPagamento();
+            AtomicDouble valorTotalParcelas = new AtomicDouble();
+            pagamento.getPagamentos().forEach(parcelaPagamento -> valorTotalParcelas.addAndGet((parcelaPagamento.getValorCredito() + parcelaPagamento.getValorTaxa())));
+            if(valorTotalParcelas.get() != valorPagamento)
+                throw new DomainException(Message.toLocale("valor-parcelas-inferior-pagamento", pagamento.getFormaPagamento().getLabel()));
+        }
 
     }
 
     private void vincularCliente(Aquisicao aquisicao) {
         var pacienteOpt = clienteService.findByCPF(aquisicao.getCliente().getCpf());
-        if(pacienteOpt.isPresent()) {
-            aquisicao.setCliente(pacienteOpt.get());
-        }
+        pacienteOpt.ifPresent(aquisicao::setCliente);
     }
 
     private void vincularAquisicaoProcedimento(Aquisicao aquisicao) throws DomainException {

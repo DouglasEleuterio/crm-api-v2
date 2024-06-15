@@ -18,8 +18,8 @@ import br.com.tresptecnologia.model.historico.HistoricoResponse;
 import br.com.tresptecnologia.repository.cidade.CidadeRepository;
 import br.com.tresptecnologia.repository.cliente.ClienteRepository;
 import br.com.tresptecnologia.repository.endereco.EnderecoRepository;
-import br.com.tresptecnologia.repository.historico.HistoricoRepository;
 import br.com.tresptecnologia.repository.estado.EstadoRepository;
+import br.com.tresptecnologia.repository.historico.HistoricoRepository;
 import br.com.tresptecnologia.service.audit.AuditRevisionInfoService;
 import br.com.tresptecnologia.support.BaseTest;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -45,10 +45,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -146,7 +143,7 @@ public class ClienteTest extends BaseTest {
                 "O campo CPF é obrigatório.",
                 "O campo Email é obrigatório.",
                 "O campo Data de Nascimento é obrigatório.",
-                "O campo Endereï¿½o é obrigatório."
+                "O campo Endereço é obrigatório."
         );
     }
 
