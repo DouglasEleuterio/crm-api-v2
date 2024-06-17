@@ -11,8 +11,8 @@
     <include file="/db/migration/changes/20240605-2-add-cidade.sql"/>
     <include file="/db/migration/changes/20240606-1-add-endereco.sql"/>
     <include file="/db/migration/changes/20240606-2-add-cliente.sql"/>
-<!--    <include file="/db/migration/changes/20240607-1-add-cidade.sql"/>-->
-<!--    <include file="/db/migration/changes/20240607-2-add-cidade.sql"/>-->
+    <include file="/db/migration/changes/20240607-1-add-cidade.sql"/>
+    <include file="/db/migration/changes/20240607-2-add-cidade.sql"/>
     <include file="/db/migration/changes/20240608-1-add-auditoria.sql"/>
     <include file="/db/migration/changes/20240610-1-add-procedimento.sql"/>
     <include file="/db/migration/changes/20240610-2-add-aquisicao-procedimento.sql"/>
