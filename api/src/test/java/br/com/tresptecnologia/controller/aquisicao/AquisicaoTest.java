@@ -15,13 +15,16 @@ import br.com.tresptecnologia.model.parecelapagamento.ParcelaPagamentoRequest;
 import br.com.tresptecnologia.repository.cidade.CidadeRepository;
 import br.com.tresptecnologia.repository.estado.EstadoRepository;
 import br.com.tresptecnologia.repository.procedimento.ProcedimentoRepository;
+import br.com.tresptecnologia.service.procedimento.ProcedimentoService;
 import br.com.tresptecnologia.support.BaseTest;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
@@ -31,7 +34,9 @@ import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.Optional;
 
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -48,8 +53,10 @@ public class AquisicaoTest extends BaseTest {
     private EstadoRepository estadoRepository;
     @Autowired
     private CidadeRepository cidadeRepository;
-    @Autowired
+    @SpyBean
     private ProcedimentoRepository procedimentoRepository;
+    @Mock
+    private ProcedimentoService procedimentoService;
 
     @Test
     @Rollback
@@ -71,12 +78,12 @@ public class AquisicaoTest extends BaseTest {
     void testarAdicionar_DadosVazios_RetornarError() throws Exception {
         var aquisicaoRequest = new AquisicaoRequest();
         assertMessages(errorsValidations(AQUISICAO_API, 6, aquisicaoRequest),
-                "O campo Data de Aquisiï¿½ï¿½o é obrigatório.",
+                "O campo Data de Aquisição é obrigatório.",
                 "O campo Valor do Desconto é obrigatório.",
                 "O campo Procedimento é obrigatório.",
                 "O campo Cliente é obrigatório.",
                 "A lista de Pagamento deve ter no minimo 1 pagamento(s)",
-                "O campo Valor da Aquisiï¿½ï¿½o é obrigatório." );
+                "O campo Valor da Aquisição é obrigatório." );
     }
 
     @Test
@@ -449,6 +456,8 @@ public class AquisicaoTest extends BaseTest {
     @Test
     @Rollback
     void testarAtualizar_dadosValidos_RetornarSucesso() throws Exception {
+
+
         var estado = estadoRepository.saveAndFlush(Estado.builder()
                 .nome("Goias")
                 .codigoIBGE("53")
@@ -485,6 +494,8 @@ public class AquisicaoTest extends BaseTest {
                 .intervaloEntreSessoes(7)
                 .quantidadeSessoes(1)
                 .build());
+
+        when( procedimentoRepository.findById(1L)).thenReturn(Optional.of(procedimento));
 
         var parcelas = new HashSet<ParcelaPagamentoRequest>();
         parcelas.add(ParcelaPagamentoRequest.builder()
