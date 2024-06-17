@@ -13,3 +13,9 @@ docker tag clinica-api:v1.0.0 douglaseleuterioferreira/apps:clinica-api
 ````shell
 docker push douglaseleuterioferreira/apps:clinica-api
 ````
+
+### Edição de Pagamentos
+Após a criação de uma aquisição, caso deseje alterar informações, qual a melhor solução para visualizar histórico de auditoria?
+* Ao listar os pagamentos, exibir o id do pedido, para identificar a origem;
+* Na listagem, permitir visualização do histórico do pagamento.
+* 

@@ -269,9 +269,9 @@ public class AquisicaoTest extends BaseTest {
         Assertions.assertTrue(errorResponse.getMessage().contains("menor que o valor do procedimento"));
     }
 
-        @Test
-        @Rollback
-        void testarAdicionar_valorPagamentosInferiorAquisicao_RetornarErro() throws Exception {
+    @Test
+    @Rollback
+    void testarAdicionar_valorPagamentosInferiorAquisicao_RetornarErro() throws Exception {
             var estado = estadoRepository.saveAndFlush(Estado.builder()
                     .nome("Goias")
                     .codigoIBGE("53")
