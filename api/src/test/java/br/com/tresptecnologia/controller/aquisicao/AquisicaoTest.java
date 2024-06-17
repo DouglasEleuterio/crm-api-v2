@@ -456,8 +456,6 @@ public class AquisicaoTest extends BaseTest {
     @Test
     @Rollback
     void testarAtualizar_dadosValidos_RetornarSucesso() throws Exception {
-
-
         var estado = estadoRepository.saveAndFlush(Estado.builder()
                 .nome("Goias")
                 .codigoIBGE("53")
