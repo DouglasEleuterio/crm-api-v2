@@ -91,6 +91,7 @@ Authorization: Bearer {{token}}
     "cpf": "63135457028",
     "email": "dougl@mail.com",
     "dataNascimento": "1990-09-24",
+    "genero": "MASCULINO",
     "endereco": {
       "logradouro": "Rua ABC",
       "bairro": "Centro",
