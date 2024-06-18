@@ -1,6 +1,6 @@
 package br.com.tresptecnologia.model.cliente;
 
-import br.com.tresptecnologia.entity.cliente.Endereco;
+import br.com.tresptecnologia.enumeration.cliente.EGenero;
 import br.com.tresptecnologia.model.endereco.EnderecoResponse;
 import br.com.tresptecnologia.model.entity.BaseResponse;
 import lombok.AllArgsConstructor;
@@ -25,4 +25,5 @@ public class ClienteResponse implements BaseResponse {
     private String telefone;
     private EnderecoResponse endereco;
     private LocalDate dataNascimento;
+    private EGenero genero;
 }

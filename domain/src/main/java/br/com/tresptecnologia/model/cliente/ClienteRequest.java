@@ -1,5 +1,6 @@
 package br.com.tresptecnologia.model.cliente;
 
+import br.com.tresptecnologia.enumeration.cliente.EGenero;
 import br.com.tresptecnologia.model.endereco.EnderecoRequest;
 import br.com.tresptecnologia.shared.validation.Required;
 import br.com.tresptecnologia.shared.validation.RequiredSize;
@@ -40,4 +41,6 @@ public class ClienteRequest {
     private EnderecoRequest endereco;
 
     private Boolean situacao;
+
+    private EGenero genero;
 }

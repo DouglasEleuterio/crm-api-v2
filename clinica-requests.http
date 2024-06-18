@@ -8,6 +8,7 @@ Authorization: Bearer {{token}}
   "cpf": "03555759140",
   "email": "joao@example.com",
   "dataNascimento": "1990-05-15",
+  "genero": "MASCULINO",
   "endereco": {
     "logradouro": "Rua das Flores, 123",
     "bairro": "Centro",

@@ -1,9 +1,12 @@
 package br.com.tresptecnologia.entity.cliente;
 
 import br.com.tresptecnologia.core.entity.BaseActiveEntity;
+import br.com.tresptecnologia.enumeration.cliente.EGenero;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -46,4 +49,8 @@ public class Cliente extends BaseActiveEntity {
     private Endereco endereco;
     @Column(name = "data_nascimento", nullable = false)
     private LocalDate dataNascimento;
+    @Column(name = "genero")
+    @Enumerated(EnumType.STRING)
+    private EGenero genero;
+
 }
