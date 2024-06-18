@@ -4,9 +4,9 @@ Authorization: Bearer {{token}}
 
 {
   "nome": "João da Silva",
-  "telefone": "11987654321",
-  "cpf": "03555759140",
-  "email": "joao@example.com",
+  "telefone": "11987659321",
+  "cpf": "89922215098",
+  "email": "joao2@example.com",
   "dataNascimento": "1990-05-15",
   "genero": "MASCULINO",
   "endereco": {
