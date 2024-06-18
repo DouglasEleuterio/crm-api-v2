@@ -32,3 +32,5 @@ ALTER TABLE cliente
 
 ALTER TABLE cliente
     ADD CONSTRAINT FK_CLIENTE_ON_ENDERECO FOREIGN KEY (endereco_id) REFERENCES endereco (id);
+--changeset douglas.ferreira:edit-cliente
+ALTER TABLE cliente add genero varchar2(50) null;
