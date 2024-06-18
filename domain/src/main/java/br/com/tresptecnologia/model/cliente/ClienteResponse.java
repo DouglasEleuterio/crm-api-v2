@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -26,4 +27,6 @@ public class ClienteResponse implements BaseResponse {
     private EnderecoResponse endereco;
     private LocalDate dataNascimento;
     private EGenero genero;
+    private LocalDateTime dataCriacao;
+    private LocalDateTime dataAtualizacao;
 }
