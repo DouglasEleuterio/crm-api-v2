@@ -18,6 +18,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -106,5 +107,22 @@ public class ClienteService extends BaseActiveService<Cliente> implements IClien
     @Override
     public Optional<Cliente> findByCPF(String cpf) {
         return getRepository().findByCpf(cpf);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void delete(Long id) throws DomainException {
+        var cliente = findById(id);
+        cliente.setSituacao(false);
+        super.update(id, cliente);
+        var historico = Historico.builder()
+                .dataOcorrencia(LocalDateTime.now())
+                .idUsuario(AuditRevisionInfo.obterInfo().getUserId())
+                .idEntidadeGeradora(id)
+                .nomeUsuario(AuditRevisionInfo.obterInfo().getUserName())
+                .tipoEntidade(ETipoEntidade.CLIENTE)
+                .tipoEvento(EEvento.EXCLUSAO)
+                .build();
+        historicoRepository.save(historico);
     }
 }
