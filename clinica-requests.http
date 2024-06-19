@@ -4,9 +4,9 @@ Authorization: Bearer {{token}}
 
 {
   "nome": "João da Silva",
-  "telefone": "11987659321",
-  "cpf": "89922215098",
-  "email": "joao2@example.com",
+  "telefone": "11989659321",
+  "cpf": "79689054007",
+  "email": "joas2@example.com",
   "dataNascimento": "1990-05-15",
   "genero": "MASCULINO",
   "endereco": {
@@ -27,18 +27,18 @@ Authorization: Bearer {{token}}
 
 
 ###
-PUT {{urlLocal}}/cliente/1
+PUT {{urlLocal}}/cliente/8
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "id": 1,
+  "id": 8,
   "nome": "Douglas Eleutério",
-  "cpf": "03555759140",
-  "email": "joao@example.com",
-  "telefone": "11987654321",
+  "cpf": "26421985025",
+  "email": "joao-6@example.com",
+  "telefone": "11867654321",
   "endereco": {
-    "id": 1,
+    "id": 8,
     "logradouro": "Rua das Flores, 123456",
     "numero": null,
     "complemento": null,
@@ -138,3 +138,26 @@ Authorization: Bearer {{token}}
 GET {{urlLocal}}/aquisicao/16
 Content-Type: application/json
 Authorization: Bearer {{token}}
+
+
+###
+GET {{urlLocal}}/historico?search=idEntidadeGeradora==6&tipoEntidade==CLIENTE
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+
+###
+#GET {{urlLocal}}/historico/select?search=idEntidadeGeradora==6&tipoEntidade==CLIENTE&page=0&size=10&sort=id,desc&columns=id,tipoEvento,dataOcorrencia
+GET {{urlLocal}}/historico/select?search=idEntidadeGeradora==6;tipoEntidade==CLIENTE&page=0&size=10&sort=id,desc&columns=id,tipoEvento,dataOcorrencia
+Content-Type: application/json
+Authorization: Bearer {{token}}
+Accept: application/json, text/plain, */*
+
+
+
+//Sucesso
+//GET "/historico/select?search=idEntidadeGeradora%3D%3D6&tipoEntidade=%3DCLIENTE&page=0&size=10&sort=id%2Cdesc&columns=id%2CtipoEvento%2CdataOcorrencia"
+
+//Erro
+//GET "/historico/select?search=idEntidadeGeradora==6%26tipoEntidade==CLIENTE&page=0&size=10&sort=id,desc&columns=id,tipoEvento,dataOcorrencia"

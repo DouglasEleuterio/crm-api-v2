@@ -2,11 +2,7 @@ package br.com.tresptecnologia.model.auditoria;
 
 import br.com.tresptecnologia.entity.historico.ESituacaoRegistro;
 import br.com.tresptecnologia.model.entity.BaseResponse;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
