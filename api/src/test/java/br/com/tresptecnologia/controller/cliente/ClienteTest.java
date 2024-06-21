@@ -519,6 +519,6 @@ public class ClienteTest extends BaseTest {
         final ResultActions resultHistoricoAtivacao = mvc.perform(requestBuilderHistoricoAtivacao).andDo(log()).andExpect(status().isOk());
         final List<HistoricoResponse> historicoResponseAtivacao = objectMapper.readValue(resultHistoricoAtivacao.andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8), new TypeReference<List<HistoricoResponse>>() {});
         Assertions.assertTrue(Objects.nonNull(historicoResponseAtivacao));
-        Assertions.assertEquals(2, historicoResponseAtivacao.size());
+        Assertions.assertEquals(3, historicoResponseAtivacao.size());
     }
 }
