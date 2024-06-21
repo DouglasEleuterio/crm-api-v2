@@ -16,8 +16,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -39,7 +37,7 @@ public class Endereco extends BaseEntity {
     private String numero;
     @Column(name = "complemento")
     private String complemento;
-    @Column(name = "bairro", nullable = false)
+    @Column(name = "bairro")
     private String bairro;
     @JoinColumn(name = "cidade_id", nullable = false)
     @ManyToOne

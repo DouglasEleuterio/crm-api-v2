@@ -13,6 +13,7 @@ import br.com.tresptecnologia.entity.historico.ETipoEntidade;
 import br.com.tresptecnologia.entity.historico.Historico;
 import br.com.tresptecnologia.repository.cliente.ClienteRepository;
 import br.com.tresptecnologia.repository.historico.HistoricoRepository;
+import br.com.tresptecnologia.service.cidade.CidadeService;
 import br.com.tresptecnologia.service.endereco.IEnderecoService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -31,14 +32,16 @@ public class ClienteService extends BaseActiveService<Cliente> implements IClien
 
     private final JsonMapper jsonMapper;
     private final HistoricoRepository historicoRepository;
+    private final CidadeService cidadeService;
     ObjectMapper objectMapper = new ObjectMapper();
 
-    protected ClienteService(BaseRepository<Cliente> repository, IEnderecoService enderecoService, JsonMapper jsonMapper, HistoricoRepository historicoRepository) {
+    protected ClienteService(BaseRepository<Cliente> repository, IEnderecoService enderecoService, JsonMapper jsonMapper, HistoricoRepository historicoRepository, CidadeService cidadeService) {
         super(repository);
         this.enderecoService = enderecoService;
         this.historicoRepository = historicoRepository;
         objectMapper.registerModule(new JavaTimeModule());
         this.jsonMapper = jsonMapper;
+        this.cidadeService = cidadeService;
     }
 
     public ClienteRepository getRepository() {
@@ -124,5 +127,21 @@ public class ClienteService extends BaseActiveService<Cliente> implements IClien
                 .tipoEvento(EEvento.EXCLUSAO)
                 .build();
         historicoRepository.save(historico);
+    }
+
+    @Override
+    public Cliente create(Cliente cliente) throws DomainException {
+        cliente.getEndereco().setCidade(cidadeService.findById(cliente.getEndereco().getCidade().getId()));
+        var saved = super.create(cliente);
+        var historico = Historico.builder()
+                .dataOcorrencia(LocalDateTime.now())
+                .idUsuario(AuditRevisionInfo.obterInfo().getUserId())
+                .idEntidadeGeradora(saved.getId())
+                .nomeUsuario(AuditRevisionInfo.obterInfo().getUserName())
+                .tipoEntidade(ETipoEntidade.CLIENTE)
+                .tipoEvento(EEvento.CADASTRO)
+                .build();
+        historicoRepository.save(historico);
+        return saved;
     }
 }

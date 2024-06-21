@@ -19,4 +19,6 @@ CREATE TABLE endereco
 
 ALTER TABLE endereco
     ADD CONSTRAINT FK_ENDERECO_ON_CIDADE FOREIGN KEY (cidade_id) REFERENCES cidade (id);
+--changeset douglas.ferreira:edit-endereco
+alter table endereco modify (bairro VARCHAR2(500) null);
 
