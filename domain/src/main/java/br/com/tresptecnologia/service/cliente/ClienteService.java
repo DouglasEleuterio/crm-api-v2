@@ -130,6 +130,7 @@ public class ClienteService extends BaseActiveService<Cliente> implements IClien
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public Cliente create(Cliente cliente) throws DomainException {
         cliente.getEndereco().setCidade(cidadeService.findById(cliente.getEndereco().getCidade().getId()));
         var saved = super.create(cliente);
