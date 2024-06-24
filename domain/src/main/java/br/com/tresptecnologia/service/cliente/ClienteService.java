@@ -3,6 +3,7 @@ package br.com.tresptecnologia.service.cliente;
 import br.com.tresptecnologia.core.audit.AuditRevisionInfo;
 import br.com.tresptecnologia.core.exception.DomainException;
 import br.com.tresptecnologia.core.jpa.mapper.JsonMapper;
+import br.com.tresptecnologia.core.message.Message;
 import br.com.tresptecnologia.core.repository.BaseRepository;
 import br.com.tresptecnologia.core.service.BaseActiveService;
 import br.com.tresptecnologia.entity.cliente.Cliente;
@@ -33,15 +34,17 @@ public class ClienteService extends BaseActiveService<Cliente> implements IClien
     private final JsonMapper jsonMapper;
     private final HistoricoRepository historicoRepository;
     private final CidadeService cidadeService;
+    private final ClienteRepository clienteRepository;
     ObjectMapper objectMapper = new ObjectMapper();
 
-    protected ClienteService(BaseRepository<Cliente> repository, IEnderecoService enderecoService, JsonMapper jsonMapper, HistoricoRepository historicoRepository, CidadeService cidadeService) {
+    protected ClienteService(BaseRepository<Cliente> repository, IEnderecoService enderecoService, JsonMapper jsonMapper, HistoricoRepository historicoRepository, CidadeService cidadeService, ClienteRepository clienteRepository) {
         super(repository);
         this.enderecoService = enderecoService;
         this.historicoRepository = historicoRepository;
         objectMapper.registerModule(new JavaTimeModule());
         this.jsonMapper = jsonMapper;
         this.cidadeService = cidadeService;
+        this.clienteRepository = clienteRepository;
     }
 
     public ClienteRepository getRepository() {
@@ -132,6 +135,7 @@ public class ClienteService extends BaseActiveService<Cliente> implements IClien
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Cliente create(Cliente cliente) throws DomainException {
+        validateInternal(cliente);
         cliente.getEndereco().setCidade(cidadeService.findById(cliente.getEndereco().getCidade().getId()));
         var saved = super.create(cliente);
         var historico = Historico.builder()
@@ -144,5 +148,17 @@ public class ClienteService extends BaseActiveService<Cliente> implements IClien
                 .build();
         historicoRepository.save(historico);
         return saved;
+    }
+
+    private void validateInternal(Cliente cliente) throws DomainException {
+        var clienteOpt = clienteRepository.findByCpf(cliente.getCpf());
+        if(clienteOpt.isPresent()) {
+            var cli = clienteOpt.get();
+            var situacao = cli.getSituacao();
+            if(!situacao)
+                throw new DomainException(Message.toLocale("cliente-cpf-inativo", cliente.getCpf()));
+            else
+                throw new DomainException(Message.toLocale("cliente-existente", cliente.getCpf()));
+        }
     }
 }
