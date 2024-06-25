@@ -1,6 +1,7 @@
 package br.com.tresptecnologia.entity.historico;
 
 import br.com.tresptecnologia.core.entity.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -35,6 +36,7 @@ public class Historico extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private ETipoEntidade tipoEntidade;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "historico", cascade = CascadeType.ALL)
     private Set<Auditoria> auditorias;
 }

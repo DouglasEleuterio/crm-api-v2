@@ -1,7 +1,6 @@
 package br.com.tresptecnologia.entity.historico;
 
 import br.com.tresptecnologia.core.entity.BaseEntity;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -40,6 +39,5 @@ public class Auditoria extends BaseEntity {
     private String dado;
     @ManyToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "historico_id")
-    @JsonIgnore
     private Historico historico;
 }
