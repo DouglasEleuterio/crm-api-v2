@@ -19,10 +19,12 @@ import br.com.tresptecnologia.service.endereco.IEnderecoService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
 import java.util.Optional;
 
@@ -39,9 +41,11 @@ public class ClienteService extends BaseActiveService<Cliente> implements IClien
 
     protected ClienteService(BaseRepository<Cliente> repository, IEnderecoService enderecoService, JsonMapper jsonMapper, HistoricoRepository historicoRepository, CidadeService cidadeService, ClienteRepository clienteRepository) {
         super(repository);
+        JavaTimeModule javaTimeModule = new JavaTimeModule();
+        javaTimeModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS")));
         this.enderecoService = enderecoService;
         this.historicoRepository = historicoRepository;
-        objectMapper.registerModule(new JavaTimeModule());
+        objectMapper.registerModule(javaTimeModule);
         this.jsonMapper = jsonMapper;
         this.cidadeService = cidadeService;
         this.clienteRepository = clienteRepository;
