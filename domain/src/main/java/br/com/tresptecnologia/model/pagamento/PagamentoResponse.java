@@ -25,5 +25,5 @@ public class PagamentoResponse implements BaseResponse {
     private EFormaPagamento formaPagamento;
     private Integer quantidadeParcelas;
     private Double taxa;
-    private Set<ParcelaPagamentoResponse> pagamentos;
+    private Set<ParcelaPagamentoResponse> parcelas;
 }

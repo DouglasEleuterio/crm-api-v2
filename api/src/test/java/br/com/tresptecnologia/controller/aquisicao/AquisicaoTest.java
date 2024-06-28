@@ -156,7 +156,7 @@ public class AquisicaoTest extends BaseTest {
                         .taxa(12.00)
                         .quantidadeParcelas(3)
                         .valorPagamento(800.00)
-                        .pagamentos(parcelas)
+                        .parcelas(parcelas)
                 .build());
 
         final var aquisicao = AquisicaoRequest.builder()
@@ -247,7 +247,7 @@ public class AquisicaoTest extends BaseTest {
                 .taxa(12.00)
                 .quantidadeParcelas(3)
                 .valorPagamento(800.00)
-                .pagamentos(parcelas)
+                .parcelas(parcelas)
                 .build());
 
         final var aquisicao = AquisicaoRequest.builder()
@@ -339,7 +339,7 @@ public class AquisicaoTest extends BaseTest {
                     .taxa(12.00)
                     .quantidadeParcelas(3)
                     .valorPagamento(700.00)
-                    .pagamentos(parcelas)
+                    .parcelas(parcelas)
                     .build());
 
             final var aquisicao = AquisicaoRequest.builder()
@@ -431,7 +431,7 @@ public class AquisicaoTest extends BaseTest {
                 .taxa(12.00)
                 .quantidadeParcelas(3)
                 .valorPagamento(800.00)
-                .pagamentos(parcelas)
+                .parcelas(parcelas)
                 .build());
 
         final var aquisicao = AquisicaoRequest.builder()
@@ -525,7 +525,7 @@ public class AquisicaoTest extends BaseTest {
                 .taxa(12.00)
                 .quantidadeParcelas(3)
                 .valorPagamento(800.00)
-                .pagamentos(parcelas)
+                .parcelas(parcelas)
                 .build());
 
         final var aquisicao = AquisicaoRequest.builder()

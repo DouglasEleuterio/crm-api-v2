@@ -32,5 +32,5 @@ public class PagamentoRequest {
     @Required(label = "pagamento.taxa")
     private Double taxa;
     @RequiredList(label = "pagamento.parcela-pagamento")
-    private Set<ParcelaPagamentoRequest> pagamentos;
+    private Set<ParcelaPagamentoRequest> parcelas;
 }

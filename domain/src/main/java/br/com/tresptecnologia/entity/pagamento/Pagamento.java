@@ -39,5 +39,5 @@ public class Pagamento extends BaseActiveEntity {
     private Aquisicao aquisicao;
 
     @OneToMany(mappedBy = "pagamento", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<ParcelaPagamento> pagamentos;
+    private Set<ParcelaPagamento> parcelas;
 }

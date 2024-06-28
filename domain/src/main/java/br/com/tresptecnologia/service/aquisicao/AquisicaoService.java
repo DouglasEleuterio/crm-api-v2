@@ -106,7 +106,7 @@ public class AquisicaoService extends BaseActiveService<Aquisicao> implements IA
 
     private void vincularPagamento(Aquisicao aquisicao) {
         aquisicao.getPagamentos().forEach(pgt -> pgt.setAquisicao(aquisicao));
-        aquisicao.getPagamentos().forEach(pgt -> pgt.getPagamentos().forEach(parcelaPagamento -> {
+        aquisicao.getPagamentos().forEach(pgt -> pgt.getParcelas().forEach(parcelaPagamento -> {
             parcelaPagamento.setPagamento(pgt);
             parcelaPagamento.setDataCriacao(LocalDateTime.now());
             parcelaPagamento.setDataAtualizacao(LocalDateTime.now());
@@ -138,7 +138,7 @@ public class AquisicaoService extends BaseActiveService<Aquisicao> implements IA
         for (Pagamento pagamento : aquisicao.getPagamentos()) {
             var valorPagamento = pagamento.getValorPagamento();
             AtomicDouble valorTotalParcelas = new AtomicDouble();
-            pagamento.getPagamentos().forEach(parcelaPagamento -> valorTotalParcelas.addAndGet((parcelaPagamento.getValorCredito() + parcelaPagamento.getValorTaxa())));
+            pagamento.getParcelas().forEach(parcelaPagamento -> valorTotalParcelas.addAndGet((parcelaPagamento.getValorCredito() + parcelaPagamento.getValorTaxa())));
             if(valorTotalParcelas.get() != valorPagamento)
                 throw new DomainException(Message.toLocale("valor-parcelas-inferior-pagamento", pagamento.getFormaPagamento().getLabel()));
         }
