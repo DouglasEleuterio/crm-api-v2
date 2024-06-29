@@ -2,12 +2,14 @@ package br.com.tresptecnologia.model.aquisicao;
 
 import br.com.tresptecnologia.model.aquisicaoprocedimento.AquisicaoProcedimentoRequest;
 import br.com.tresptecnologia.model.cliente.ClienteRequest;
-import br.com.tresptecnologia.model.entity.BaseEntityRequest;
 import br.com.tresptecnologia.model.pagamento.PagamentoRequest;
 import br.com.tresptecnologia.shared.validation.Required;
 import br.com.tresptecnologia.shared.validation.RequiredList;
-import br.com.tresptecnologia.shared.validation.RequiredType;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -28,10 +30,10 @@ public class AquisicaoRequest {
     private Double valorDesconto;
     @Required(label = "aquisicao.cliente")
     private ClienteRequest cliente;
-    @Required(label = "aquisicao.procedimento", type = RequiredType.CREATE)
-    private BaseEntityRequest procedimento;
     @RequiredList(label = "aquisicao.pagamento", alias = "pagamento(s)")
     private Set<PagamentoRequest> pagamentos;
-    @Required(label = "aquisicao.procedimento", type = RequiredType.UPDATE)
-    private AquisicaoProcedimentoRequest aquisicaoProcedimento;
+    @Required(label = "aquisicao.procedimento")
+    private Set<AquisicaoProcedimentoRequest> procedimentos;
+    private LocalDateTime dataCriacao;
+    private LocalDateTime dataAtualizacao;
 }

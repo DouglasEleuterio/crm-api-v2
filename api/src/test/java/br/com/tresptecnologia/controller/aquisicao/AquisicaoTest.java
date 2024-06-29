@@ -7,6 +7,7 @@ import br.com.tresptecnologia.entity.pagamento.EFormaPagamento;
 import br.com.tresptecnologia.entity.procedimento.Procedimento;
 import br.com.tresptecnologia.model.aquisicao.AquisicaoRequest;
 import br.com.tresptecnologia.model.aquisicao.AquisicaoResponse;
+import br.com.tresptecnologia.model.aquisicaoprocedimento.AquisicaoProcedimentoRequest;
 import br.com.tresptecnologia.model.cliente.ClienteRequest;
 import br.com.tresptecnologia.model.endereco.EnderecoRequest;
 import br.com.tresptecnologia.model.entity.BaseEntityRequest;
@@ -37,7 +38,9 @@ import java.util.HashSet;
 import java.util.Optional;
 
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -159,13 +162,22 @@ public class AquisicaoTest extends BaseTest {
                         .parcelas(parcelas)
                 .build());
 
+        var procedimentos = new HashSet<AquisicaoProcedimentoRequest>();
+        procedimentos.add(AquisicaoProcedimentoRequest.builder()
+                .procedimentoOrigemId(procedimento.getId())
+                .valor(procedimento.getValor())
+                .nome(procedimento.getNome())
+                .quantidadeSessoes(procedimento.getQuantidadeSessoes())
+                .intervaloEntreSessoes(procedimento.getIntervaloEntreSessoes())
+                .build());
+
         final var aquisicao = AquisicaoRequest.builder()
                 .cliente(exemploRequest)
                 .pagamentos(pagamentos)
-                .procedimento(BaseEntityRequest.builder().id(procedimento.getId()).build())
                 .dataAquisicao(LocalDateTime.now())
                 .valorAquisicao(800.00)
                 .valorDesconto(0.0)
+                .procedimentos(procedimentos)
                 .build();
 
         final MockHttpServletRequestBuilder requestBuilder = post(AQUISICAO_API).content(objectMapper.writeValueAsString(aquisicao)).with(defaultUserJwt()).contentType(JSON_CONTENT_TYPE);
@@ -250,13 +262,22 @@ public class AquisicaoTest extends BaseTest {
                 .parcelas(parcelas)
                 .build());
 
+        var procedimentos = new HashSet<AquisicaoProcedimentoRequest>();
+        procedimentos.add(AquisicaoProcedimentoRequest.builder()
+                .procedimentoOrigemId(procedimento.getId())
+                .valor(procedimento.getValor())
+                .nome(procedimento.getNome())
+                .quantidadeSessoes(procedimento.getQuantidadeSessoes())
+                .intervaloEntreSessoes(procedimento.getIntervaloEntreSessoes())
+                .build());
+
         final var aquisicao = AquisicaoRequest.builder()
                 .cliente(exemploRequest)
                 .pagamentos(pagamentos)
-                .procedimento(BaseEntityRequest.builder().id(procedimento.getId()).build())
                 .dataAquisicao(LocalDateTime.now())
                 .valorAquisicao(700.00)
                 .valorDesconto(0.0)
+                .procedimentos(procedimentos)
                 .build();
 
         final MockHttpServletRequestBuilder requestBuilder = post(AQUISICAO_API).content(objectMapper.writeValueAsString(aquisicao)).with(defaultUserJwt()).contentType(JSON_CONTENT_TYPE);
@@ -342,13 +363,22 @@ public class AquisicaoTest extends BaseTest {
                     .parcelas(parcelas)
                     .build());
 
+        var procedimentos = new HashSet<AquisicaoProcedimentoRequest>();
+        procedimentos.add(AquisicaoProcedimentoRequest.builder()
+                .procedimentoOrigemId(procedimento.getId())
+                .valor(procedimento.getValor())
+                .nome(procedimento.getNome())
+                .quantidadeSessoes(procedimento.getQuantidadeSessoes())
+                .intervaloEntreSessoes(procedimento.getIntervaloEntreSessoes())
+                .build());
+
             final var aquisicao = AquisicaoRequest.builder()
                     .cliente(exemploRequest)
                     .pagamentos(pagamentos)
-                    .procedimento(BaseEntityRequest.builder().id(procedimento.getId()).build())
                     .dataAquisicao(LocalDateTime.now())
                     .valorAquisicao(800.00)
                     .valorDesconto(0.0)
+                    .procedimentos(procedimentos)
                     .build();
 
             final MockHttpServletRequestBuilder requestBuilder = post(AQUISICAO_API).content(objectMapper.writeValueAsString(aquisicao)).with(defaultUserJwt()).contentType(JSON_CONTENT_TYPE);
@@ -434,13 +464,22 @@ public class AquisicaoTest extends BaseTest {
                 .parcelas(parcelas)
                 .build());
 
+        var procedimentos = new HashSet<AquisicaoProcedimentoRequest>();
+        procedimentos.add(AquisicaoProcedimentoRequest.builder()
+                        .procedimentoOrigemId(procedimento.getId())
+                        .valor(procedimento.getValor())
+                        .nome(procedimento.getNome())
+                        .quantidadeSessoes(procedimento.getQuantidadeSessoes())
+                        .intervaloEntreSessoes(procedimento.getIntervaloEntreSessoes())
+                .build());
+
         final var aquisicao = AquisicaoRequest.builder()
                 .cliente(exemploRequest)
                 .pagamentos(pagamentos)
-                .procedimento(BaseEntityRequest.builder().id(procedimento.getId()).build())
                 .dataAquisicao(LocalDateTime.now())
                 .valorAquisicao(800.00)
                 .valorDesconto(0.0)
+                .procedimentos(procedimentos)
                 .build();
 
         final MockHttpServletRequestBuilder requestBuilder = post(AQUISICAO_API).content(objectMapper.writeValueAsString(aquisicao)).with(defaultUserJwt()).contentType(JSON_CONTENT_TYPE);
@@ -528,13 +567,22 @@ public class AquisicaoTest extends BaseTest {
                 .parcelas(parcelas)
                 .build());
 
+        var procedimentos = new HashSet<AquisicaoProcedimentoRequest>();
+        procedimentos.add(AquisicaoProcedimentoRequest.builder()
+                .procedimentoOrigemId(procedimento.getId())
+                .valor(procedimento.getValor())
+                .nome(procedimento.getNome())
+                .quantidadeSessoes(procedimento.getQuantidadeSessoes())
+                .intervaloEntreSessoes(procedimento.getIntervaloEntreSessoes())
+                .build());
+
         final var aquisicao = AquisicaoRequest.builder()
                 .cliente(exemploRequest)
                 .pagamentos(pagamentos)
-                .procedimento(BaseEntityRequest.builder().id(procedimento.getId()).build())
                 .dataAquisicao(LocalDateTime.now())
                 .valorAquisicao(800.00)
                 .valorDesconto(0.0)
+                .procedimentos(procedimentos)
                 .build();
 
         final MockHttpServletRequestBuilder requestBuilder = post(AQUISICAO_API).content(objectMapper.writeValueAsString(aquisicao)).with(defaultUserJwt()).contentType(JSON_CONTENT_TYPE);

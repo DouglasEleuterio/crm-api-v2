@@ -33,4 +33,6 @@ public class PagamentoRequest {
     private Double taxa;
     @RequiredList(label = "pagamento.parcela-pagamento")
     private Set<ParcelaPagamentoRequest> parcelas;
+    private LocalDateTime dataCriacao;
+    private LocalDateTime dataAtualizacao;
 }

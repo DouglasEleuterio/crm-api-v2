@@ -3,12 +3,12 @@ package br.com.tresptecnologia.entity.aquisicao;
 import br.com.tresptecnologia.core.entity.BaseActiveEntity;
 import br.com.tresptecnologia.entity.cliente.Cliente;
 import br.com.tresptecnologia.entity.pagamento.Pagamento;
-import br.com.tresptecnologia.entity.procedimento.Procedimento;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -30,17 +30,13 @@ public class Aquisicao extends BaseActiveEntity {
     private Double valorAquisicao;
     @Column(name = "valor_desconto", nullable = false)
     private Double valorDesconto;
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "aquisicao_procedimento_id")
-    private AquisicaoProcedimento aquisicaoProcedimento;
-
-    @OneToMany(mappedBy = "aquisicao", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "aquisicao")
+    @JsonBackReference
+    private List<AquisicaoProcedimento> procedimentos;
+    @OneToMany(mappedBy = "aquisicao", cascade = CascadeType.ALL)
     @JsonBackReference
     private Set<Pagamento> pagamentos;
-
-    @Transient
-    private Procedimento procedimento;
 }

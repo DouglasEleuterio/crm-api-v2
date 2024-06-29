@@ -10,8 +10,10 @@ import br.com.tresptecnologia.entity.aquisicao.Aquisicao;
 import br.com.tresptecnologia.entity.aquisicao.AquisicaoProcedimento;
 import br.com.tresptecnologia.entity.historico.*;
 import br.com.tresptecnologia.entity.pagamento.Pagamento;
+import br.com.tresptecnologia.model.aquisicao.AquisicaoMapper;
 import br.com.tresptecnologia.repository.aquisicao.AquisicaoRepository;
 import br.com.tresptecnologia.repository.historico.HistoricoRepository;
+import br.com.tresptecnologia.service.AquisicaoProcedimentoService;
 import br.com.tresptecnologia.service.cliente.ClienteService;
 import br.com.tresptecnologia.service.procedimento.ProcedimentoService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -36,7 +38,12 @@ public class AquisicaoService extends BaseActiveService<Aquisicao> implements IA
     ObjectMapper objectMapper = new ObjectMapper();
 
     protected AquisicaoService(BaseRepository<Aquisicao> repository, JsonMapper jsonMapper,
-                               AquisicaoRepository aquisicaoRepository, ProcedimentoService procedimentoService, HistoricoRepository historicoRepository, ClienteService clienteService) {
+                               AquisicaoRepository aquisicaoRepository,
+                               ProcedimentoService procedimentoService,
+                               HistoricoRepository historicoRepository,
+                               ClienteService clienteService,
+                               AquisicaoMapper aquisicaoMapper,
+                               AquisicaoProcedimentoService aquisicaoProcedimentoService) {
         super(repository);
         this.jsonMapper = jsonMapper;
         this.aquisicaoRepository = aquisicaoRepository;
@@ -114,10 +121,12 @@ public class AquisicaoService extends BaseActiveService<Aquisicao> implements IA
     }
 
     private void validarPagamento(Aquisicao aquisicao) throws DomainException {
-        var valorProcedimento = aquisicao.getAquisicaoProcedimento().getValor();
+        var valorProcedimento = aquisicao.getProcedimentos()
+                .stream()
+                .map(AquisicaoProcedimento::getValor).reduce(0.0, Double::sum);
         var valorDesconto = Objects.isNull(aquisicao.getValorDesconto()) ? 0.00 : aquisicao.getValorDesconto();
         var valorAquisicao = aquisicao.getValorAquisicao();
-        if(valorAquisicao + valorDesconto < valorProcedimento)
+        if (valorAquisicao + valorDesconto < valorProcedimento)
             throw new DomainException(Message.toLocale("valor-aquisicao-inferior-valor-procedimento"));
         validarPagamentos(aquisicao);
     }
@@ -128,7 +137,7 @@ public class AquisicaoService extends BaseActiveService<Aquisicao> implements IA
 
         aquisicao.getPagamentos().forEach(pgto -> valorPagamentos.updateAndGet(v -> v + pgto.getValorPagamento()));
 
-        if(valorPagamentos.get() < valorAquisicao)
+        if (valorPagamentos.get() < valorAquisicao)
             throw new DomainException(Message.toLocale("valor-pagamento-inferior-aquisicao"));
 
         validarParcelas(aquisicao);
@@ -139,7 +148,7 @@ public class AquisicaoService extends BaseActiveService<Aquisicao> implements IA
             var valorPagamento = pagamento.getValorPagamento();
             AtomicDouble valorTotalParcelas = new AtomicDouble();
             pagamento.getParcelas().forEach(parcelaPagamento -> valorTotalParcelas.addAndGet((parcelaPagamento.getValorCredito() + parcelaPagamento.getValorTaxa())));
-            if(valorTotalParcelas.get() != valorPagamento)
+            if (valorTotalParcelas.get() != valorPagamento)
                 throw new DomainException(Message.toLocale("valor-parcelas-inferior-pagamento", pagamento.getFormaPagamento().getLabel()));
         }
 
@@ -152,23 +161,32 @@ public class AquisicaoService extends BaseActiveService<Aquisicao> implements IA
 
     private void vincularAquisicaoProcedimento(Aquisicao aquisicao, boolean isUpdate) throws DomainException {
 
-        if(!isUpdate) {
-            var procedimento = procedimentoService.findById(aquisicao.getProcedimento().getId());
-
-            aquisicao.setAquisicaoProcedimento(AquisicaoProcedimento.builder()
-                    .nome(procedimento.getNome())
-                    .valor(procedimento.getValor())
-                    .quantidadeSessoes(procedimento.getQuantidadeSessoes())
-                    .intervaloEntreSessoes(procedimento.getIntervaloEntreSessoes())
-                    .build());
+        if (!isUpdate) {
+            for (AquisicaoProcedimento aquisicaoProcedimento : aquisicao.getProcedimentos()) {
+                this.buildAquisicaoProcedimento(aquisicaoProcedimento);
+            }
         } else {
-            var procedimento = procedimentoService.findById(aquisicao.getAquisicaoProcedimento().getId());
-
-            aquisicao.getAquisicaoProcedimento().setValor(procedimento.getValor());
-            aquisicao.getAquisicaoProcedimento().setNome(procedimento.getNome());
-            aquisicao.getAquisicaoProcedimento().setQuantidadeSessoes(procedimento.getQuantidadeSessoes());
-            aquisicao.getAquisicaoProcedimento().setIntervaloEntreSessoes(procedimento.getIntervaloEntreSessoes());
+            //Caso esteja editando uma aquisição, se o procedimento da aquisição foi alterado, alteração não deve se propagar para aquisição anterior a mudança.
+            for (AquisicaoProcedimento aquisicaoProcedimento : aquisicao.getProcedimentos()) {
+                // Foram incluídos outros procedimentos na aquisição.
+                if(Objects.isNull(aquisicaoProcedimento.getId())) {
+                    this.buildAquisicaoProcedimento(aquisicaoProcedimento);
+                }
+            }
         }
+        aquisicao.getProcedimentos().forEach(proc -> proc.setAquisicao(aquisicao));
+    }
 
+    /**
+     * Será recebido do front, seguintes dados do procedimento:
+     * - ID
+     * - Quantidade Sessões
+     * - Intervalo entre Sessões
+     * Não permitir que Nome e Preço sejam alterados por requisições mal intencionadas e permitir que quantidade de sessões e intervalo entre sessões sejam diferentes do padrão.
+     */
+    private void buildAquisicaoProcedimento(AquisicaoProcedimento aqProcedimento) throws DomainException {
+        var procedimento = procedimentoService.findById(aqProcedimento.getProcedimentoOrigemId());
+        aqProcedimento.setNome(procedimento.getNome());
+        aqProcedimento.setValor(procedimento.getValor());
     }
 }

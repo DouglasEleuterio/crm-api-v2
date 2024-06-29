@@ -12,6 +12,8 @@ import br.com.tresptecnologia.entity.historico.EEvento;
 import br.com.tresptecnologia.entity.historico.ESituacaoRegistro;
 import br.com.tresptecnologia.entity.historico.ETipoEntidade;
 import br.com.tresptecnologia.entity.historico.Historico;
+import br.com.tresptecnologia.model.cliente.ClienteMapper;
+import br.com.tresptecnologia.model.cliente.ClienteMapperImpl;
 import br.com.tresptecnologia.repository.cliente.ClienteRepository;
 import br.com.tresptecnologia.repository.historico.HistoricoRepository;
 import br.com.tresptecnologia.service.cidade.CidadeService;
@@ -39,7 +41,12 @@ public class ClienteService extends BaseActiveService<Cliente> implements IClien
     private final ClienteRepository clienteRepository;
     ObjectMapper objectMapper = new ObjectMapper();
 
-    protected ClienteService(BaseRepository<Cliente> repository, IEnderecoService enderecoService, JsonMapper jsonMapper, HistoricoRepository historicoRepository, CidadeService cidadeService, ClienteRepository clienteRepository) {
+    protected ClienteService(BaseRepository<Cliente> repository,
+                             IEnderecoService enderecoService,
+                             JsonMapper jsonMapper,
+                             HistoricoRepository historicoRepository,
+                             CidadeService cidadeService,
+                             ClienteRepository clienteRepository) {
         super(repository);
         JavaTimeModule javaTimeModule = new JavaTimeModule();
         javaTimeModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS")));

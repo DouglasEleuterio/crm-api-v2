@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -26,4 +27,6 @@ public class ParcelaPagamentoRequest {
     private Boolean isRecebido;
     @Required(label = "parcela.numero")
     private Integer numeroParcela;
+    private LocalDateTime dataCriacao;
+    private LocalDateTime dataAtualizacao;
 }

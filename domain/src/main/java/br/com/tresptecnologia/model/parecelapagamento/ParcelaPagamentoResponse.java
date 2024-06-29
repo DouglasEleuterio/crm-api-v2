@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -22,4 +23,6 @@ public class ParcelaPagamentoResponse implements BaseResponse {
     private Double valorTaxa;
     private Boolean isRecebido;
     private Integer numeroParcela;
+    private LocalDateTime dataCriacao;
+    private LocalDateTime dataAtualizacao;
 }
