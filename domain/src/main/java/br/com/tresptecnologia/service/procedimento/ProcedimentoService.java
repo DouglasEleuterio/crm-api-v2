@@ -18,6 +18,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -46,9 +47,15 @@ public class ProcedimentoService extends BaseActiveService<Procedimento> impleme
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public Procedimento update(Long id, Procedimento updateT) throws DomainException {
         var oldOjb = super.findById(id);
         validateInternal(updateT);
+        updateT.getRegioes().forEach(regiao -> {
+            if(!regiao.getPersistida())
+                regiao.setId(null);
+            regiao.setProcedimento(updateT);
+        });
         try {
             var newJson = objectMapper.writeValueAsString(updateT);
             var oldJson = objectMapper.writeValueAsString(oldOjb);
@@ -81,8 +88,14 @@ public class ProcedimentoService extends BaseActiveService<Procedimento> impleme
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public Procedimento create(Procedimento procedimento) throws DomainException {
         validateInternal(procedimento);
+        procedimento.getRegioes().forEach(regiao -> {
+            if(!regiao.getPersistida())
+                regiao.setId(null);
+            regiao.setProcedimento(procedimento);
+        });
         var saved =  super.create(procedimento);
         var historico = Historico.builder()
                 .dataOcorrencia(LocalDateTime.now())

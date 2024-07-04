@@ -15,3 +15,7 @@ CREATE TABLE procedimento
     intervalo_entre_sessoes INTEGER,
     CONSTRAINT pk_procedimento PRIMARY KEY (id)
 );
+--changeset douglas.ferreira:edit-procedimento
+ALTER TABLE procedimento add  tipo_procedimento varchar2(50) default '' not null;
+--changeset douglas.ferreira:edit-procedimento-null
+ALTER TABLE procedimento MODIFY (valor null);
