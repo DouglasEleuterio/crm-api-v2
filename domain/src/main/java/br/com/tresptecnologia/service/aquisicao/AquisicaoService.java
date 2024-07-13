@@ -187,6 +187,6 @@ public class AquisicaoService extends BaseActiveService<Aquisicao> implements IA
     private void buildAquisicaoProcedimento(AquisicaoProcedimento aqProcedimento) throws DomainException {
         var procedimento = procedimentoService.findById(aqProcedimento.getProcedimentoOrigemId());
         aqProcedimento.setNome(procedimento.getNome());
-        aqProcedimento.setValor(procedimento.getValor());
+//        aqProcedimento.setValor(procedimento.getValor());
     }
 }

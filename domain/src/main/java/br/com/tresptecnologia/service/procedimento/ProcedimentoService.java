@@ -3,14 +3,9 @@ package br.com.tresptecnologia.service.procedimento;
 import br.com.tresptecnologia.core.audit.AuditRevisionInfo;
 import br.com.tresptecnologia.core.exception.DomainException;
 import br.com.tresptecnologia.core.jpa.mapper.JsonMapper;
-import br.com.tresptecnologia.core.message.Message;
 import br.com.tresptecnologia.core.repository.BaseRepository;
 import br.com.tresptecnologia.core.service.BaseActiveService;
-import br.com.tresptecnologia.entity.historico.Auditoria;
-import br.com.tresptecnologia.entity.historico.EEvento;
-import br.com.tresptecnologia.entity.historico.ESituacaoRegistro;
-import br.com.tresptecnologia.entity.historico.ETipoEntidade;
-import br.com.tresptecnologia.entity.historico.Historico;
+import br.com.tresptecnologia.entity.historico.*;
 import br.com.tresptecnologia.entity.procedimento.Procedimento;
 import br.com.tresptecnologia.repository.historico.HistoricoRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -23,7 +18,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
-import java.util.Objects;
 
 @Service
 public class ProcedimentoService extends BaseActiveService<Procedimento> implements IProcedimentoService {
@@ -34,10 +28,7 @@ public class ProcedimentoService extends BaseActiveService<Procedimento> impleme
 
     protected ProcedimentoService(BaseRepository<Procedimento> repository, JsonMapper jsonMapper, HistoricoRepository historicoRepository) {
         super(repository);
-        JavaTimeModule javaTimeModule = new JavaTimeModule();
-        javaTimeModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS")));
         this.historicoRepository = historicoRepository;
-        objectMapper.registerModule(new JavaTimeModule());
         this.jsonMapper = jsonMapper;
     }
 
@@ -50,13 +41,13 @@ public class ProcedimentoService extends BaseActiveService<Procedimento> impleme
     @Transactional(rollbackFor = Exception.class)
     public Procedimento update(Long id, Procedimento updateT) throws DomainException {
         var oldOjb = super.findById(id);
-        validateInternal(updateT);
-        updateT.getRegioes().forEach(regiao -> {
-            if(!regiao.getPersistida())
-                regiao.setId(null);
-            regiao.setProcedimento(updateT);
-        });
+        updateT.getRegioes().forEach(regiao -> regiao.setProcedimento(updateT));
+
+
         try {
+            JavaTimeModule javaTimeModule = new JavaTimeModule();
+            javaTimeModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS")));
+            objectMapper.registerModule(new JavaTimeModule());
             var newJson = objectMapper.writeValueAsString(updateT);
             var oldJson = objectMapper.writeValueAsString(oldOjb);
             var auditoriaAtual = Auditoria.builder()
@@ -90,12 +81,7 @@ public class ProcedimentoService extends BaseActiveService<Procedimento> impleme
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Procedimento create(Procedimento procedimento) throws DomainException {
-        validateInternal(procedimento);
-        procedimento.getRegioes().forEach(regiao -> {
-            if(!regiao.getPersistida())
-                regiao.setId(null);
-            regiao.setProcedimento(procedimento);
-        });
+        procedimento.getRegioes().forEach(regiao -> regiao.setProcedimento(procedimento));
         var saved =  super.create(procedimento);
         var historico = Historico.builder()
                 .dataOcorrencia(LocalDateTime.now())
@@ -107,11 +93,5 @@ public class ProcedimentoService extends BaseActiveService<Procedimento> impleme
                 .build();
         historicoRepository.save(historico);
         return saved;
-    }
-
-    private void validateInternal(Procedimento procedimento) throws DomainException {
-        if(procedimento.getQuantidadeSessoes() > 1 && Objects.isNull(procedimento.getIntervaloEntreSessoes())) {
-            throw new DomainException(Message.toLocale("quantidade-sessao-invalido-quando-sessao-maior-um"));
-        }
     }
 }

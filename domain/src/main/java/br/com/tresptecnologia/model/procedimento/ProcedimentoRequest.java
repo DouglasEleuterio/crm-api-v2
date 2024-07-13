@@ -1,12 +1,8 @@
 package br.com.tresptecnologia.model.procedimento;
 
-import br.com.tresptecnologia.enumeration.procedimento.ETipoProcedimento;
 import br.com.tresptecnologia.shared.validation.Required;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import br.com.tresptecnologia.shared.validation.RequiredList;
+import lombok.*;
 
 import java.util.List;
 
@@ -19,9 +15,6 @@ public class ProcedimentoRequest {
     private Long id;
     @Required(label = "procedimento.nome")
     private String nome;
-    private Double valor;
-    private Integer quantidadeSessoes;
-    private Integer intervaloEntreSessoes;
-    private ETipoProcedimento tipoProcedimento;
+    @RequiredList(label = "regiões", message = "Procedimento deve ter pelo menos uma região", alias = "regiões")
     private List<RegiaoRequest> regioes;
 }
