@@ -8,7 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -17,14 +17,13 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class AquisicaoProcedimentoRequest {
 
+    @Required(type = RequiredType.UPDATE)
     private Long id;
     private String nome;
-    private Double valor;
-    private Integer quantidadeSessoes;
-    private Integer intervaloEntreSessoes;
-    @Required(type = RequiredType.CREATE)
     private Long procedimentoOrigemId;
-    private LocalDateTime dataCriacao;
-    private LocalDateTime dataAtualizacao;
+    private Set<RegiaoProcedimentoAquisicaoRequest> regioes;
 
+    public Double getValorRegioes() {
+        return getRegioes().stream().reduce(0.0, (partialValue, regiao) -> partialValue + regiao.getValor(), Double::sum);
+    }
 }

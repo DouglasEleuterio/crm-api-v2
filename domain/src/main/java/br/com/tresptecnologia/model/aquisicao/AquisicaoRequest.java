@@ -1,7 +1,7 @@
 package br.com.tresptecnologia.model.aquisicao;
 
 import br.com.tresptecnologia.model.aquisicaoprocedimento.AquisicaoProcedimentoRequest;
-import br.com.tresptecnologia.model.cliente.ClienteRequest;
+import br.com.tresptecnologia.model.entity.BaseEntityRequest;
 import br.com.tresptecnologia.model.pagamento.PagamentoRequest;
 import br.com.tresptecnologia.shared.validation.Required;
 import br.com.tresptecnologia.shared.validation.RequiredList;
@@ -29,11 +29,18 @@ public class AquisicaoRequest {
     @Required(label = "aquisicao.valor-desconto")
     private Double valorDesconto;
     @Required(label = "aquisicao.cliente")
-    private ClienteRequest cliente;
+    private BaseEntityRequest cliente;
     @RequiredList(label = "aquisicao.pagamento", alias = "pagamento(s)")
     private Set<PagamentoRequest> pagamentos;
     @Required(label = "aquisicao.procedimento")
     private Set<AquisicaoProcedimentoRequest> procedimentos;
-    private LocalDateTime dataCriacao;
-    private LocalDateTime dataAtualizacao;
+
+    public Double getValorAquisicao() {
+        return getProcedimentos().stream().reduce(0.0, (partialValor, proc) -> partialValor + proc.getValorRegioes(), Double::sum);
+    }
+
+    public Double getValorDesconto() {
+        var pagamentosTotal = getPagamentos().stream().reduce(0.0, (partialValor, pagto) -> partialValor + pagto.getValorPagamento(), Double::sum);
+        return getValorAquisicao() - pagamentosTotal;
+    }
 }
