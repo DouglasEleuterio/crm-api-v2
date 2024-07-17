@@ -23,7 +23,7 @@ public class AquisicaoProcedimentoRequest {
     private Long procedimentoOrigemId;
     private Set<RegiaoProcedimentoAquisicaoRequest> regioes;
 
-    public Double getValorRegioes() {
-        return getRegioes().stream().reduce(0.0, (partialValue, regiao) -> partialValue + regiao.getValor(), Double::sum);
+    public Long getProcedimentoOrigemId() {
+        return getRegioes().stream().findFirst().orElseThrow().getProcedimento().getId();
     }
 }

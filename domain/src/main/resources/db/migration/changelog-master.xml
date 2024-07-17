@@ -20,4 +20,5 @@
     <include file="/db/migration/changes/20240610-4-add-parcela-pagamento.sql"/>
     <include file="/db/migration/changes/20240610-5-add-pagamento.sql"/>
     <include file="/db/migration/changes/20240703-1-add-regiao.sql"/>
+    <include file="/db/migration/changes/20240716-1-add-regiao-procedimento-aquisicao.sql"/>
 </databaseChangeLog>

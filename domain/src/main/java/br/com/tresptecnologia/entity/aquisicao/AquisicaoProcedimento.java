@@ -1,6 +1,8 @@
 package br.com.tresptecnologia.entity.aquisicao;
 
 import br.com.tresptecnologia.core.entity.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -15,6 +18,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -31,14 +36,12 @@ public class AquisicaoProcedimento extends BaseEntity {
     private Long id;
     @Column(name = "nome", nullable = false)
     private String nome;
-    @Column(name = "valor", nullable = false)
-    private Double valor;
-    @Column(name = "quantidade_sessoes")
-    private Integer quantidadeSessoes;
-    @Column(name = "intervalo_entre_sessoes")
-    private Integer intervaloEntreSessoes;
     @Column(name = "procedimento_origem_id")
     private Long procedimentoOrigemId;
+
+    @OneToMany(mappedBy = "procedimento", cascade = CascadeType.ALL)
+    @JsonBackReference
+    private Set<RegiaoProcedimentoAquisicao> regioes;
 
     @ManyToOne
     @JoinColumn(name = "aquisicao_id", nullable = false)

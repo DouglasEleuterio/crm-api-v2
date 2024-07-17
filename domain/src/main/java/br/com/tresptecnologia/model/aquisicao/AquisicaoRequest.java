@@ -11,7 +11,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.Set;
 
 @Getter
@@ -23,7 +23,7 @@ public class AquisicaoRequest {
 
     private Long id;
     @Required(label = "aquisicao.data-aquisicao")
-    private LocalDateTime dataAquisicao;
+    private LocalDate dataAquisicao;
     @Required(label = "aquisicao.valor-aquisicao")
     private Double valorAquisicao;
     @Required(label = "aquisicao.valor-desconto")
@@ -34,13 +34,4 @@ public class AquisicaoRequest {
     private Set<PagamentoRequest> pagamentos;
     @Required(label = "aquisicao.procedimento")
     private Set<AquisicaoProcedimentoRequest> procedimentos;
-
-    public Double getValorAquisicao() {
-        return getProcedimentos().stream().reduce(0.0, (partialValor, proc) -> partialValor + proc.getValorRegioes(), Double::sum);
-    }
-
-    public Double getValorDesconto() {
-        var pagamentosTotal = getPagamentos().stream().reduce(0.0, (partialValor, pagto) -> partialValor + pagto.getValorPagamento(), Double::sum);
-        return getValorAquisicao() - pagamentosTotal;
-    }
 }

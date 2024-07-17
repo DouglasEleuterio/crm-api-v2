@@ -9,7 +9,7 @@ CREATE TABLE aquisicao
     situacao         NUMBER(1)        NOT NULL,
     data_criacao     TIMESTAMP        NOT NULL,
     data_atualizacao TIMESTAMP        NOT NULL,
-    data_aquisicao   TIMESTAMP        NOT NULL,
+    data_aquisicao   date             NOT NULL,
     valor_aquisicao  DOUBLE PRECISION NOT NULL,
     valor_desconto   DOUBLE PRECISION NOT NULL,
     cliente_id       NUMBER(38, 0),
@@ -26,4 +26,4 @@ ALTER TABLE aquisicao_procedimento
     ADD CONSTRAINT FK_AQUISICAO_PROCEDIMENTO_ON_AQUISICAO FOREIGN KEY (aquisicao_id) REFERENCES aquisicao (id);
 --changeset douglas.ferreira:edit-aquisicao-cliente-remove-uc
 ALTER TABLE aquisicao
-    DROP CONSTRAINT uc_aquisicao_cliente
+    DROP CONSTRAINT uc_aquisicao_cliente;
