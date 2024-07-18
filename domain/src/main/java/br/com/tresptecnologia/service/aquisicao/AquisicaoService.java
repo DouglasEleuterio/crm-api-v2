@@ -12,10 +12,8 @@ import br.com.tresptecnologia.entity.historico.EEvento;
 import br.com.tresptecnologia.entity.historico.ESituacaoRegistro;
 import br.com.tresptecnologia.entity.historico.ETipoEntidade;
 import br.com.tresptecnologia.entity.historico.Historico;
-import br.com.tresptecnologia.model.aquisicao.AquisicaoMapper;
 import br.com.tresptecnologia.repository.aquisicao.AquisicaoRepository;
 import br.com.tresptecnologia.repository.historico.HistoricoRepository;
-import br.com.tresptecnologia.service.AquisicaoProcedimentoService;
 import br.com.tresptecnologia.service.cliente.ClienteService;
 import br.com.tresptecnologia.service.procedimento.ProcedimentoService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -41,9 +39,7 @@ public class AquisicaoService extends BaseActiveService<Aquisicao> implements IA
                                AquisicaoRepository aquisicaoRepository,
                                ProcedimentoService procedimentoService,
                                HistoricoRepository historicoRepository,
-                               ClienteService clienteService,
-                               AquisicaoMapper aquisicaoMapper,
-                               AquisicaoProcedimentoService aquisicaoProcedimentoService) {
+                               ClienteService clienteService) {
         super(repository);
         this.jsonMapper = jsonMapper;
         this.aquisicaoRepository = aquisicaoRepository;

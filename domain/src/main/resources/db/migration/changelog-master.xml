@@ -20,4 +20,6 @@
     <include file="/db/migration/changes/20240610-5-add-pagamento.sql"/>
     <include file="/db/migration/changes/20240703-1-add-regiao.sql"/>
     <include file="/db/migration/changes/20240716-1-add-regiao-procedimento-aquisicao.sql"/>
+    <include file="/db/migration/changes/20240718-1-seed-procedimentos.sql"/>
+    <include file="/db/migration/changes/20240718-2-seed-cliente.sql"/>
 </databaseChangeLog>
