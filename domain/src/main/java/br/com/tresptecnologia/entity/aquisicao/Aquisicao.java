@@ -44,7 +44,7 @@ public class Aquisicao extends BaseActiveEntity {
     private Double valorAquisicao;
     @Column(name = "valor_desconto", nullable = false)
     private Double valorDesconto;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "aquisicao")

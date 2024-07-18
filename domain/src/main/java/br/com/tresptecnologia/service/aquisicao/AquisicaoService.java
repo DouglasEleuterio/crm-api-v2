@@ -62,9 +62,12 @@ public class AquisicaoService extends BaseActiveService<Aquisicao> implements IA
     @Transactional(rollbackFor = Exception.class)
     public Aquisicao create(Aquisicao aquisicao) throws DomainException {
         vincularAquisicaoProcedimento(aquisicao, false);
-        vincularCliente(aquisicao);
-        vincularPagamento(aquisicao);
+        vincularPagamentos(aquisicao);
         return aquisicaoRepository.save(aquisicao);
+    }
+
+    private void vincularPagamentos(Aquisicao aquisicao) {
+        aquisicao.getPagamentos().forEach(pgto -> pgto.setAquisicao(aquisicao));
     }
 
     @Override
@@ -105,18 +108,9 @@ public class AquisicaoService extends BaseActiveService<Aquisicao> implements IA
         }
 
         vincularCliente(aquisicao);
-        vincularPagamento(aquisicao);
         return super.update(id, aquisicao);
     }
 
-    private void vincularPagamento(Aquisicao aquisicao) {
-        aquisicao.getPagamentos().forEach(pgt -> pgt.setAquisicao(aquisicao));
-        aquisicao.getPagamentos().forEach(pgt -> pgt.getParcelas().forEach(parcelaPagamento -> {
-            parcelaPagamento.setPagamento(pgt);
-            parcelaPagamento.setDataCriacao(LocalDateTime.now());
-            parcelaPagamento.setDataAtualizacao(LocalDateTime.now());
-        }));
-    }
 
     private void vincularCliente(Aquisicao aquisicao) throws DomainException {
         var cliente = clienteService.findById(aquisicao.getCliente().getId());
@@ -126,9 +120,10 @@ public class AquisicaoService extends BaseActiveService<Aquisicao> implements IA
     private void vincularAquisicaoProcedimento(Aquisicao aquisicao, boolean isUpdate) throws DomainException {
 
         if (!isUpdate) {
-            for (AquisicaoProcedimento aquisicaoProcedimento : aquisicao.getProcedimentos()) {
-                this.buildAquisicaoProcedimento(aquisicaoProcedimento);
-            }
+            aquisicao.getProcedimentos().forEach(proc -> {
+                proc.setAquisicao(aquisicao);
+                proc.getRegioes().forEach(reg -> reg.setProcedimento(proc));
+            });
         } else {
             //Caso esteja editando uma aquisição, se o procedimento da aquisição foi alterado, alteração não deve se propagar para aquisição anterior a mudança.
             for (AquisicaoProcedimento aquisicaoProcedimento : aquisicao.getProcedimentos()) {
