@@ -18,6 +18,5 @@ public class AquisicaoProcedimentoResponse implements BaseResponse {
 
     private Long id;
     private String nome;
-    private Long procedimentoOrigemId;
     private Set<RegiaoProcedimentoAquisicaoResponse> regioes;
 }

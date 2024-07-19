@@ -13,3 +13,6 @@ CREATE TABLE aquisicao_procedimento
     aquisicao_id            NUMBER(38, 0)    NOT NULL,
     CONSTRAINT pk_aquisicao_procedimento PRIMARY KEY (id)
 );
+--changeset douglas.ferreira:edit-aquisicao-procedimento-remove-datas
+ALTER TABLE aquisicao_procedimento DROP COLUMN data_atualizacao;
+ALTER TABLE aquisicao_procedimento DROP COLUMN data_criacao;

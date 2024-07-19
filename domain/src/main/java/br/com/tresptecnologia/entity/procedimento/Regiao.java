@@ -9,7 +9,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -42,8 +41,5 @@ public class Regiao {
     @ManyToOne
     @JoinColumn(name = "procedimento_id")
     private Procedimento procedimento;
-
-    @Transient
-    private Boolean persistida;
 
 }

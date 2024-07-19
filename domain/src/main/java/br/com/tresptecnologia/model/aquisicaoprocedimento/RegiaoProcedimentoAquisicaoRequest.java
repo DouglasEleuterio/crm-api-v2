@@ -19,6 +19,5 @@ public class RegiaoProcedimentoAquisicaoRequest {
     private int quantidadeSessoes;
     private int intervaloEntreSessoes;
     private Double valor;
-    private Boolean persistida;
     private BaseEntityRequest procedimento;
 }

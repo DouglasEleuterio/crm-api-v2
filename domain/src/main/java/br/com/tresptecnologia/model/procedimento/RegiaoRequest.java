@@ -1,6 +1,10 @@
 package br.com.tresptecnologia.model.procedimento;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -14,11 +18,6 @@ public class RegiaoRequest {
     private int quantidadeSessoes;
     private int intervaloEntreSessoes;
     private Double valor;
-    private Boolean persistida;
-
-    public Long getId() {
-        return persistida ? id : null;
-    }
 }
 
 

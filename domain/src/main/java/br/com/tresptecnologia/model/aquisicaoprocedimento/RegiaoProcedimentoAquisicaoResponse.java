@@ -17,5 +17,5 @@ public class RegiaoProcedimentoAquisicaoResponse {
     private int quantidadeSessoes;
     private int intervaloEntreSessoes;
     private Double valor;
-    private Boolean persistida;
+    private ProcedimentoRegiaoResponse procedimento;
 }

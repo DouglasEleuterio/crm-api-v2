@@ -1,21 +1,17 @@
-package br.com.tresptecnologia.model.procedimento;
+package br.com.tresptecnologia.model.aquisicaoprocedimento;
 
-import br.com.tresptecnologia.model.entity.BaseResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProcedimentoResponse implements BaseResponse {
+public class ProcedimentoRegiaoResponse {
     private Long id;
     private String nome;
-    private List<RegiaoResponse> regioes;
 }

@@ -1,6 +1,5 @@
 package br.com.tresptecnologia.entity.aquisicao;
 
-import br.com.tresptecnologia.core.entity.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -28,7 +27,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "aquisicao_procedimento")
-public class AquisicaoProcedimento extends BaseEntity {
+public class AquisicaoProcedimento {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_AQUISICAO_PROCEDIMENTO")
     @SequenceGenerator(name = "SQ_AQUISICAO_PROCEDIMENTO", sequenceName = "SQ_AQUISICAO_PROCEDIMENTO", allocationSize = 1)
