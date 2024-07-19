@@ -2,121 +2,169 @@
 --changeset douglas.ferreira:seed-procedimentos
 
 INSERT INTO PROCEDIMENTO
-VALUES (1, 1, sysdate, sysdate, 'Depilação a Lazer');
+VALUES ((sq_procedimento.nextval), 1, sysdate, sysdate, 'Depilação a Lazer');
 INSERT INTO PROCEDIMENTO
-VALUES (2, 1, sysdate, sysdate, 'Botox');
+VALUES ((sq_procedimento.nextval), 1, sysdate, sysdate, 'Botox');
 INSERT INTO PROCEDIMENTO
-VALUES (3, 1, sysdate, sysdate, 'Botox Nefertiti');
+VALUES ((sq_procedimento.nextval), 1, sysdate, sysdate, 'Botox Nefertiti');
 INSERT INTO PROCEDIMENTO
-VALUES (4, 1, sysdate, sysdate, 'Laser Lavieen');
+VALUES ((sq_procedimento.nextval), 1, sysdate, sysdate, 'Laser Lavieen');
 INSERT INTO PROCEDIMENTO
-VALUES (5, 1, sysdate, sysdate, 'Preenchimento');
+VALUES ((sq_procedimento.nextval), 1, sysdate, sysdate, 'Preenchimento');
 INSERT INTO PROCEDIMENTO
-VALUES (6, 1, sysdate, sysdate, 'Rinomodelação');
+VALUES ((sq_procedimento.nextval), 1, sysdate, sysdate, 'Rinomodelação');
 INSERT INTO PROCEDIMENTO
-VALUES (7, 1, sysdate, sysdate, 'Bioestimulador de colageno');
+VALUES ((sq_procedimento.nextval), 1, sysdate, sysdate, 'Bioestimulador de colageno');
 INSERT INTO PROCEDIMENTO
-VALUES (8, 1, sysdate, sysdate, 'Botox Fullface');
+VALUES ((sq_procedimento.nextval), 1, sysdate, sysdate, 'Botox Fullface');
 INSERT INTO PROCEDIMENTO
-VALUES (9, 1, sysdate, sysdate, 'Botox sorriso gengival');
+VALUES ((sq_procedimento.nextval), 1, sysdate, sysdate, 'Botox sorriso gengival');
 INSERT INTO PROCEDIMENTO
-VALUES (10, 1, sysdate, sysdate, 'Desing');
+VALUES ((sq_procedimento.nextval), 1, sysdate, sysdate, 'Design');
 INSERT INTO PROCEDIMENTO
-VALUES (11, 1, sysdate, sysdate, 'Desing com rena');
+VALUES ((sq_procedimento.nextval), 1, sysdate, sysdate, 'Design com rena');
 INSERT INTO PROCEDIMENTO
-VALUES (12, 1, sysdate, sysdate, 'Buço na linha');
+VALUES ((sq_procedimento.nextval), 1, sysdate, sysdate, 'Buço na linha');
 INSERT INTO PROCEDIMENTO
-VALUES (13, 1, sysdate, sysdate, 'Limpeza de pele comum');
+VALUES ((sq_procedimento.nextval), 1, sysdate, sysdate, 'Limpeza de pele comum');
 INSERT INTO PROCEDIMENTO
-VALUES (14, 1, sysdate, sysdate, 'Limpeza de pele com dermaplaning');
+VALUES ((sq_procedimento.nextval), 1, sysdate, sysdate, 'Limpeza de pele com dermaplaning');
 INSERT INTO PROCEDIMENTO
-VALUES (15, 1, sysdate, sysdate, 'Dermaplaning');
+VALUES ((sq_procedimento.nextval), 1, sysdate, sysdate, 'Dermaplaning');
 INSERT INTO PROCEDIMENTO
-VALUES (16, 1, sysdate, sysdate, 'Dermapen');
+VALUES ((sq_procedimento.nextval), 1, sysdate, sysdate, 'Dermapen');
 INSERT INTO PROCEDIMENTO
-VALUES (17, 1, sysdate, sysdate, 'Micropigmentação');
+VALUES ((sq_procedimento.nextval), 1, sysdate, sysdate, 'Micropigmentação');
 INSERT INTO PROCEDIMENTO
-VALUES (18, 1, sysdate, sysdate, 'Retoque micropigmentação');
+VALUES ((sq_procedimento.nextval), 1, sysdate, sysdate, 'Retoque micropigmentação');
 INSERT INTO PROCEDIMENTO
-VALUES (19, 1, sysdate, sysdate, 'Pelling quimico');
+VALUES ((sq_procedimento.nextval), 1, sysdate, sysdate, 'Pelling quimico');
 INSERT INTO PROCEDIMENTO
-VALUES (20, 1, sysdate, sysdate, 'Aplicação varizes');
+VALUES ((sq_procedimento.nextval), 1, sysdate, sysdate, 'Aplicação varizes');
 INSERT INTO PROCEDIMENTO
-VALUES (21, 1, sysdate, sysdate, 'Aplicação de enzimas');
+VALUES ((sq_procedimento.nextval), 1, sysdate, sysdate, 'Aplicação de enzimas');
 INSERT INTO PROCEDIMENTO
-VALUES (22, 1, sysdate, sysdate, 'Lipo de papada enzimatica');
+VALUES ((sq_procedimento.nextval), 1, sysdate, sysdate, 'Lipo de papada enzimatica');
 INSERT INTO PROCEDIMENTO
-VALUES (24, 1, sysdate, sysdate, 'Massagem modeladora');
+VALUES ((sq_procedimento.nextval), 1, sysdate, sysdate, 'Massagem modeladora');
 INSERT INTO PROCEDIMENTO
-VALUES (25, 1, sysdate, sysdate, 'Massagem relaxante');
+VALUES ((sq_procedimento.nextval), 1, sysdate, sysdate, 'Massagem relaxante');
 INSERT INTO PROCEDIMENTO
-VALUES (26, 1, sysdate, sysdate, 'Massagem drenagem');
+VALUES ((sq_procedimento.nextval), 1, sysdate, sysdate, 'Massagem drenagem');
 INSERT INTO PROCEDIMENTO
-VALUES (27, 1, sysdate, sysdate, 'Massagem para flacidez');
+VALUES ((sq_procedimento.nextval), 1, sysdate, sysdate, 'Massagem para flacidez');
 INSERT INTO PROCEDIMENTO
-VALUES (28, 1, sysdate, sysdate, 'Massagem para celulite');
+VALUES ((sq_procedimento.nextval), 1, sysdate, sysdate, 'Massagem para celulite');
 INSERT INTO PROCEDIMENTO
-VALUES (29, 1, sysdate, sysdate, 'Lift facial');
+VALUES ((sq_procedimento.nextval), 1, sysdate, sysdate, 'Lift facial');
 INSERT INTO PROCEDIMENTO
-VALUES (30, 1, sysdate, sysdate, 'Radiofrequencia');
+VALUES ((sq_procedimento.nextval), 1, sysdate, sysdate, 'Radiofrequencia');
 INSERT INTO PROCEDIMENTO
-VALUES (31, 1, sysdate, sysdate, 'Lipocavitação');
+VALUES ((sq_procedimento.nextval), 1, sysdate, sysdate, 'Lipocavitação');
 INSERT INTO PROCEDIMENTO
-VALUES (32, 1, sysdate, sysdate, 'Cone yndu');
+VALUES ((sq_procedimento.nextval), 1, sysdate, sysdate, 'Cone yndu');
 INSERT INTO PROCEDIMENTO
-VALUES (33, 1, sysdate, sysdate, 'Sessão detox');
+VALUES ((sq_procedimento.nextval), 1, sysdate, sysdate, 'Sessão detox');
 
 --changeset douglas.ferreira:seed-procedimentos_depilação_lazer
 INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
-VALUES (1, 1, 30, 1, 'Virilha Completa', 150);
+VALUES ((sq_regiao.nextval), 1, 30, 1, 'Virilha Completa', 150);
 INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
-VALUES (2, 1, 30, 1, 'Axilas', 70.00);
+VALUES ((sq_regiao.nextval), 1, 30, 1, 'Axilas', 70.00);
 INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
-VALUES (3, 1, 30, 1, 'Virilha Completa', 150.00);
+VALUES ((sq_regiao.nextval), 1, 30, 1, 'Virilha Simples', 100.00);
 INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
-VALUES (4, 1, 30, 1, 'Virilha Simples', 100.00);
+VALUES ((sq_regiao.nextval), 1, 30, 1, 'Buço', 40.00);
 INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
-VALUES (5, 1, 30, 1, 'Buço', 40.00);
+VALUES ((sq_regiao.nextval), 1, 30, 1, 'Rosto', 100.00);
 INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
-VALUES (6, 1, 30, 1, 'Rosto', 100.00);
+VALUES ((sq_regiao.nextval), 1, 30, 1, 'Contorno DA Barba', 80.00);
 INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
-VALUES (7, 1, 30, 1, 'Contorno DA Barba', 80.00);
+VALUES ((sq_regiao.nextval), 1, 30, 1, 'Barba Completa', 150.00);
 INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
-VALUES (8, 1, 30, 1, 'Barba Completa', 150.00);
+VALUES ((sq_regiao.nextval), 1, 30, 1, 'Meia Perna', 170.00);
 INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
-VALUES (9, 1, 30, 1, 'Meia Perna', 170.00);
+VALUES ((sq_regiao.nextval), 1, 30, 1, 'Perna Completa', 300.00);
 INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
-VALUES (10, 1, 30, 1, 'Perna Completa', 300.00);
+VALUES ((sq_regiao.nextval), 1, 30, 1, 'Costas', 200.00);
 INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
-VALUES (11, 1, 30, 1, 'Costas', 200.00);
+VALUES ((sq_regiao.nextval), 1, 30, 1, 'Abdomen', 150.00);
 INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
-VALUES (12, 1, 30, 1, 'Abdomen', 150.00);
+VALUES ((sq_regiao.nextval), 1, 30, 1, 'Toráx', 130.00);
 INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
-VALUES (13, 1, 30, 1, 'Toráx', 130.00);
+VALUES ((sq_regiao.nextval), 1, 30, 1, 'Linha Alba', 40.00);
 INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
-VALUES (14, 1, 30, 1, 'Linha Alba', 40.00);
+VALUES ((sq_regiao.nextval), 1, 30, 1, 'Nariz', 40.00);
 INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
-VALUES (15, 1, 30, 1, 'Nariz', 40.00);
+VALUES ((sq_regiao.nextval), 1, 30, 1, 'Queixo', 40.00);
 INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
-VALUES (16, 1, 30, 1, 'Queixo', 40.00);
+VALUES ((sq_regiao.nextval), 1, 30, 1, 'Costeletas', 40.00);
 INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
-VALUES (17, 1, 30, 1, 'Costeletas', 40.00);
+VALUES ((sq_regiao.nextval), 1, 30, 1, 'Testa', 40.00);
 INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
-VALUES (18, 1, 30, 1, 'Testa', 40.00);
+VALUES ((sq_regiao.nextval), 1, 30, 1, 'Nuca', 50.00);
 INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
-VALUES (19, 1, 30, 1, 'Nuca', 50.00);
+VALUES ((sq_regiao.nextval), 1, 30, 1, 'Areola', 50.00);
 INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
-VALUES (20, 1, 30, 1, 'Areola', 50.00);
+VALUES ((sq_regiao.nextval), 1, 30, 1, 'Mãos,Pés e Dedos', 50.00);
 INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
-VALUES (21, 1, 30, 1, 'Mãos,Pés e Dedos', 50.00);
+VALUES ((sq_regiao.nextval), 1, 30, 1, 'Pescoço', 80.00);
 INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
-VALUES (22, 1, 30, 1, 'Pescoço', 80.00);
+VALUES ((sq_regiao.nextval), 1, 30, 1, 'Braço', 100.00);
 INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
-VALUES (23, 1, 30, 1, 'Braço', 100.00);
+VALUES ((sq_regiao.nextval), 1, 30, 1, 'Antebraço', 100.00);
 INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
-VALUES (24, 1, 30, 1, 'Antebraço', 100.00);
+VALUES ((sq_regiao.nextval), 1, 30, 1, 'Lombar', 100.00);
 INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
-VALUES (25, 1, 30, 1, 'Lombar', 100.00);
-INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
-VALUES (26, 1, 30, 1, 'Gluteos', 100.00);
+VALUES ((sq_regiao.nextval), 1, 30, 1, 'Gluteos', 100.00);
 
+--changeset douglas.ferreira:seed-procedimentos_botox
+INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
+VALUES ((sq_regiao.nextval), 1, 30, (SELECT ID FROM PROCEDIMENTO WHERE NOME = 'Botox'), 'Terço Superior - Masculino', 850.00);
+INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
+VALUES ((sq_regiao.nextval), 1, 30, (SELECT ID FROM PROCEDIMENTO WHERE NOME = 'Botox'), 'Terço Superior - Feminino', 800.00);
+
+INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
+VALUES ((sq_regiao.nextval), 1, 30, (SELECT ID FROM PROCEDIMENTO WHERE NOME = 'Botox Nefertiti'), 'Pescoço', 1000.00);
+
+--changeset douglas.ferreira:seed-procedimentos_lase_lavieen
+INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
+VALUES ((sq_regiao.nextval), 1, 30, (SELECT ID FROM PROCEDIMENTO WHERE NOME = 'Laser Lavieen'), 'Face', 350.00);
+INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
+VALUES ((sq_regiao.nextval), 1, 30, (SELECT ID FROM PROCEDIMENTO WHERE NOME = 'Laser Lavieen'), 'Facial, Colo e Pescoço', 450.00);
+--changeset douglas.ferreira:seed-procedimentos_preenchimento
+INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
+VALUES ((sq_regiao.nextval), 1, 30, (SELECT ID FROM PROCEDIMENTO WHERE NOME = 'Preenchimento'), 'Labios', 1200.00);
+INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
+VALUES ((sq_regiao.nextval), 1, 30, (SELECT ID FROM PROCEDIMENTO WHERE NOME = 'Preenchimento'), 'Naso', 800.00);
+INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
+VALUES ((sq_regiao.nextval), 1, 30, (SELECT ID FROM PROCEDIMENTO WHERE NOME = 'Preenchimento'), 'Olheiras', 800.00);
+--changeset douglas.ferreira:seed-procedimentos_bioestimulador_colageno
+INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
+VALUES ((sq_regiao.nextval), 1, 30, (SELECT ID FROM PROCEDIMENTO WHERE NOME = 'Bioestimulador de colageno'), 'Face', 1600.00);
+INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
+VALUES ((sq_regiao.nextval), 1, 30, (SELECT ID FROM PROCEDIMENTO WHERE NOME = 'Bioestimulador de colageno'), 'Face', 2000.00);
+--changeset douglas.ferreira:seed-procedimentos_bioestimulador_botox
+INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
+VALUES ((sq_regiao.nextval), 1, 30, (SELECT ID FROM PROCEDIMENTO WHERE NOME = 'Botox Fullface'), 'Face', 1200.00);
+INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
+VALUES ((sq_regiao.nextval), 1, 30, (SELECT ID FROM PROCEDIMENTO WHERE NOME = 'Botox sorriso gengival'), 'Face', 400.00);
+--changeset douglas.ferreira:seed-procedimentos_bioestimulador_design
+INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
+VALUES ((sq_regiao.nextval), 1, 30, (SELECT ID FROM PROCEDIMENTO WHERE NOME = 'Design'), 'Sobrancelhas', 30.00);
+INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
+VALUES ((sq_regiao.nextval), 1, 30, (SELECT ID FROM PROCEDIMENTO WHERE NOME = 'Design com rena'), 'Sobrancelhas', 40.00);
+--changeset douglas.ferreira:seed-procedimentos_bioestimulador_buco_na_linha
+INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
+VALUES ((sq_regiao.nextval), 1, 30, (SELECT ID FROM PROCEDIMENTO WHERE NOME = 'Buço na linha'), 'Buço', 10.00);
+--changeset douglas.ferreira:seed-procedimentos_bioestimulador_limpeza_pele
+INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
+VALUES ((sq_regiao.nextval), 1, 30, (SELECT ID FROM PROCEDIMENTO WHERE NOME = 'Limpeza de pele comum'), 'Face', 100.00);
+INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
+VALUES ((sq_regiao.nextval), 1, 30, (SELECT ID FROM PROCEDIMENTO WHERE NOME = 'Limpeza de pele com dermaplaning'), 'Face', 150.00);
+--changeset douglas.ferreira:seed-procedimentos_bioestimulador_Dermaplaning
+INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
+VALUES ((sq_regiao.nextval), 1, 30, (SELECT ID FROM PROCEDIMENTO WHERE NOME = 'Dermaplaning'), 'Face,Pescoço ou Colo', 400.00);
+--changeset douglas.ferreira:seed-procedimentos_bioestimulador_micropigmentacao
+INSERT INTO REGIAO (ID, QUANTIDADE_SESSOES, INTERVALO_ENTRE_SESSOES, PROCEDIMENTO_ID, NOME, VALOR)
+VALUES ((sq_regiao.nextval), 1, 30, (SELECT ID FROM PROCEDIMENTO WHERE NOME = 'Micropigmentação'), 'Sobrancelhas', 350.00);
