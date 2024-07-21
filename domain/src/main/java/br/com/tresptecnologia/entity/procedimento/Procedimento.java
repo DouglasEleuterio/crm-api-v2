@@ -1,11 +1,9 @@
 package br.com.tresptecnologia.entity.procedimento;
 
 import br.com.tresptecnologia.core.entity.BaseActiveEntity;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import br.com.tresptecnologia.enumeration.EProcedimento;
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,9 +18,15 @@ public class Procedimento extends BaseActiveEntity {
     @SequenceGenerator(name = "SQ_PROCEDIMENTO", sequenceName = "SQ_PROCEDIMENTO", allocationSize = 1)
     @Column(name = "id", nullable = false)
     private Long id;
-    @Column(name = "nome")
-    private String nome;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "procedimento")
-    @JsonBackReference
-    private List<Regiao> regioes;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "nome", nullable = false)
+    private EProcedimento nome;
+    @Column(name = "regiao")
+    private String regiao;
+    @Column(name = "quantidade_sessoes")
+    private int quantidadeSessoes;
+    @Column(name = "intervalo_entre_sessoes")
+    private int intervaloEntreSessoes;
+    @Column(name = "valor", nullable = false)
+    private Double valor;
 }

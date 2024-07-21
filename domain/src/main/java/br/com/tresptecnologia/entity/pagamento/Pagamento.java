@@ -1,12 +1,11 @@
 package br.com.tresptecnologia.entity.pagamento;
 
-import br.com.tresptecnologia.core.entity.BaseActiveEntity;
 import br.com.tresptecnologia.entity.aquisicao.Aquisicao;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -29,7 +28,7 @@ import java.time.LocalDateTime;
 @Setter
 @Entity
 @Table(name = "pagamento")
-public class Pagamento extends BaseActiveEntity {
+public class Pagamento {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_PAGAMENTO")
     @SequenceGenerator(name = "SQ_PAGAMENTO", sequenceName = "SQ_PAGAMENTO", allocationSize = 1)
@@ -45,7 +44,6 @@ public class Pagamento extends BaseActiveEntity {
     @Column(name = "taxa", nullable = false)
     private Double taxa;
     @ManyToOne
-    @JoinColumn(name = "aquisicao_id")
-    @JsonIgnore
+    @JoinColumn(name = "aquisicao_id", foreignKey = @ForeignKey(name = "FK_AQUISICAO_PAGAMENTO"), nullable = false)
     private Aquisicao aquisicao;
 }

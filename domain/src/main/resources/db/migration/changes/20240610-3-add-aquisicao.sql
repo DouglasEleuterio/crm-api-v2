@@ -17,13 +17,7 @@ CREATE TABLE aquisicao
 );
 
 ALTER TABLE aquisicao
-    ADD CONSTRAINT uc_aquisicao_cliente UNIQUE (cliente_id);
-
-ALTER TABLE aquisicao
     ADD CONSTRAINT FK_AQUISICAO_ON_CLIENTE FOREIGN KEY (cliente_id) REFERENCES cliente (id);
 
-ALTER TABLE aquisicao_procedimento
-    ADD CONSTRAINT FK_AQUISICAO_PROCEDIMENTO_ON_AQUISICAO FOREIGN KEY (aquisicao_id) REFERENCES aquisicao (id);
---changeset douglas.ferreira:edit-aquisicao-cliente-remove-uc
-ALTER TABLE aquisicao
-    DROP CONSTRAINT uc_aquisicao_cliente;
+ALTER TABLE procedimento_aquisicao
+    ADD CONSTRAINT FK_AQUISICAOPROCEDIMENTO_AQUISICAO FOREIGN KEY (aqs_id) REFERENCES aquisicao (id);

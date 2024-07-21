@@ -1,7 +1,11 @@
 package br.com.tresptecnologia.entity.aquisicao;
 
+import br.com.tresptecnologia.enumeration.EProcedimento;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -21,16 +25,18 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "regiao_procedimento_aquisicao")
-public class RegiaoProcedimentoAquisicao {
-
+@Table(name = "procedimento_aquisicao")
+public class ProcedimentoAquisicao {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_REGIAO_PROCEDIMENTO_AQUISICAO")
-    @SequenceGenerator(name = "SQ_REGIAO_PROCEDIMENTO_AQUISICAO", sequenceName = "SQ_REGIAO_PROCEDIMENTO_AQUISICAO", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_PROCEDIMENTO_AQUISICAO")
+    @SequenceGenerator(name = "SQ_PROCEDIMENTO_AQUISICAO", sequenceName = "SQ_PROCEDIMENTO_AQUISICAO", allocationSize = 1)
     @Column(name = "id", nullable = false)
     private Long id;
+    @Enumerated(EnumType.STRING)
     @Column(name = "nome", nullable = false)
-    private String nome;
+    private EProcedimento nome;
+    @Column(name = "regiao")
+    private String regioao;
     @Column(name = "quantidade_sessoes")
     private int quantidadeSessoes;
     @Column(name = "intervalo_entre_sessoes")
@@ -39,6 +45,6 @@ public class RegiaoProcedimentoAquisicao {
     private Double valor;
 
     @ManyToOne
-    @JoinColumn(name = "aquisicao_procedimento")
-    private AquisicaoProcedimento procedimento;
+    @JoinColumn(name = "aqs_id", foreignKey = @ForeignKey(name = "FK_AQUISICAOPROCEDIMENTO_AQUISICAO"), nullable = false)
+    private Aquisicao aquisicao;
 }

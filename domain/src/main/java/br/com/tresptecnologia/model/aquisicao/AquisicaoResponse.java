@@ -1,6 +1,6 @@
 package br.com.tresptecnologia.model.aquisicao;
 
-import br.com.tresptecnologia.model.aquisicaoprocedimento.AquisicaoProcedimentoResponse;
+import br.com.tresptecnologia.model.aquisicaoprocedimento.ProcedimentoAquisicaoResponse;
 import br.com.tresptecnologia.model.cliente.ClienteResponse;
 import br.com.tresptecnologia.model.entity.BaseResponse;
 import br.com.tresptecnologia.model.pagamento.PagamentoResponse;
@@ -25,5 +25,5 @@ public class AquisicaoResponse implements BaseResponse {
     private Double valorDesconto;
     private ClienteResponse cliente;
     private Set<PagamentoResponse> pagamentos;
-    private Set<AquisicaoProcedimentoResponse> procedimentos;
+    private Set<ProcedimentoAquisicaoResponse> procedimentos;
 }

@@ -11,15 +11,14 @@
     <include file="/db/migration/changes/20240605-2-add-cidade.sql"/>
     <include file="/db/migration/changes/20240606-1-add-endereco.sql"/>
     <include file="/db/migration/changes/20240606-2-add-cliente.sql"/>
-    <include file="/db/migration/changes/20240607-1-add-cidade.sql"/>
-    <include file="/db/migration/changes/20240607-2-add-cidade.sql"/>
+<!--    <include file="/db/migration/changes/20240607-1-seed-cidade.sql"/>-->
+<!--    <include file="/db/migration/changes/20240607-2-seed-cidade.sql"/>-->
+<!--    <include file="/db/migration/changes/20240607-3-seed-cidade.sql"/>-->
     <include file="/db/migration/changes/20240608-1-add-auditoria.sql"/>
     <include file="/db/migration/changes/20240610-1-add-procedimento.sql"/>
-    <include file="/db/migration/changes/20240610-2-add-aquisicao-procedimento.sql"/>
+    <include file="/db/migration/changes/20240610-2-add-procedimento-aquisicao.sql"/>
     <include file="/db/migration/changes/20240610-3-add-aquisicao.sql"/>
     <include file="/db/migration/changes/20240610-5-add-pagamento.sql"/>
-    <include file="/db/migration/changes/20240703-1-add-regiao.sql"/>
-    <include file="/db/migration/changes/20240716-1-add-regiao-procedimento-aquisicao.sql"/>
     <include file="/db/migration/changes/20240718-1-seed-procedimentos.sql"/>
-    <include file="/db/migration/changes/20240718-2-seed-cliente.sql"/>
+<!--    <include file="/db/migration/changes/20240718-2-seed-cliente.sql"/>-->
 </databaseChangeLog>

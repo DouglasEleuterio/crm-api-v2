@@ -1,6 +1,6 @@
 package br.com.tresptecnologia.model.aquisicaoprocedimento;
 
-import br.com.tresptecnologia.model.entity.BaseEntityRequest;
+import br.com.tresptecnologia.enumeration.EProcedimento;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,12 +12,12 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class RegiaoProcedimentoAquisicaoRequest {
+public class ProcedimentoAquisicaoRequest {
 
     private Long id;
-    private String nome;
+    private EProcedimento nome;
+    private String regioao;
     private int quantidadeSessoes;
     private int intervaloEntreSessoes;
     private Double valor;
-    private BaseEntityRequest procedimento;
 }

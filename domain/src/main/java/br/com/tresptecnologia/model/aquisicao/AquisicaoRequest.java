@@ -1,6 +1,6 @@
 package br.com.tresptecnologia.model.aquisicao;
 
-import br.com.tresptecnologia.model.aquisicaoprocedimento.AquisicaoProcedimentoRequest;
+import br.com.tresptecnologia.model.aquisicaoprocedimento.ProcedimentoAquisicaoRequest;
 import br.com.tresptecnologia.model.entity.BaseEntityRequest;
 import br.com.tresptecnologia.model.pagamento.PagamentoRequest;
 import br.com.tresptecnologia.shared.validation.Required;
@@ -33,5 +33,5 @@ public class AquisicaoRequest {
     @RequiredList(label = "aquisicao.pagamento", alias = "pagamento(s)")
     private Set<PagamentoRequest> pagamentos;
     @Required(label = "aquisicao.procedimento")
-    private Set<AquisicaoProcedimentoRequest> procedimentos;
+    private Set<ProcedimentoAquisicaoRequest> procedimentos;
 }
