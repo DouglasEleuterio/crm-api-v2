@@ -22,7 +22,7 @@ public class Procedimento extends BaseActiveEntity {
     private Long id;
     @Column(name = "nome")
     private String nome;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "procedimento")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "procedimento")
     @JsonBackReference
     private List<Regiao> regioes;
 }
