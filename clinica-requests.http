@@ -172,3 +172,68 @@ Authorization: Bearer {{token}}
 GET {{urlLocal}}/aquisicao/select?search=situacao==true&page=0&size=10&sort=dataAquisicao,asc&columns=id,cliente.id,cliente.nome,dataAquisicao,valorAquisicao,procedimentos.id,procedimentos.nome
 Content-Type: application/json
 Authorization: Bearer {{token}}
+
+
+
+### Criar Aquisicao
+POST {{urlLocal}}/aquisicao
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+{
+  "cliente": 1,
+  "dataAquisicao": "2024-07-01",
+  "valorAquisicao": 760,
+  "valorDesconto": 60,
+  "procedimento": null,
+  "procedimentoSelecionadoForm": {
+    "id": 4,
+    "name": "Laser Lavieen"
+  },
+  "regiao": {
+    "id": 29,
+    "nome": "Face",
+    "intervaloEntreSessoes": 30,
+    "valor": 350,
+    "quantidadeSessoes": 1
+  },
+  "pagamentos": [
+    {
+      "formaPagamento": "CARTAO_CREDITO",
+      "valorPagamento": 700,
+      "taxa": 0,
+      "dataPagamento": "2024-07-30T03:00:00.000Z"
+    }
+  ],
+  "formaPagamento": "CARTAO_CREDITO",
+  "valorPagamento": 700,
+  "valorTaxa": 0,
+  "dataPagamento": "2024-07-30T03:00:00.000Z",
+  "procedimentosDaAquisicao": [
+    {
+      "id": 37,
+      "nome": "Face",
+      "intervaloEntreSessoes": 30,
+      "valor": 400,
+      "quantidadeSessoes": 1,
+      "procedimento": "Botox sorriso gengival"
+    },
+    {
+      "id": 40,
+      "nome": "Buço",
+      "intervaloEntreSessoes": 30,
+      "valor": 10,
+      "quantidadeSessoes": 1,
+      "procedimento": "Buço na linha"
+    },
+    {
+      "id": 29,
+      "nome": "Face",
+      "intervaloEntreSessoes": 30,
+      "valor": 350,
+      "quantidadeSessoes": 1,
+      "procedimento": "Laser Lavieen"
+    }
+  ]
+}
