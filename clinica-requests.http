@@ -184,56 +184,24 @@ Authorization: Bearer {{token}}
 {
   "cliente": 1,
   "dataAquisicao": "2024-07-01",
-  "valorAquisicao": 760,
-  "valorDesconto": 60,
-  "procedimento": null,
-  "procedimentoSelecionadoForm": {
-    "id": 4,
-    "name": "Laser Lavieen"
-  },
-  "regiao": {
-    "id": 29,
-    "nome": "Face",
-    "intervaloEntreSessoes": 30,
-    "valor": 350,
-    "quantidadeSessoes": 1
-  },
+  "valorAquisicao": 2000,
+  "valorDesconto": 0,
   "pagamentos": [
     {
-      "formaPagamento": "CARTAO_CREDITO",
-      "valorPagamento": 700,
+      "formaPagamento": "PIX",
+      "valorPagamento": 2000,
       "taxa": 0,
-      "dataPagamento": "2024-07-30T03:00:00.000Z"
+      "dataPagamento": "2024-07-31T03:00:00.000Z"
     }
   ],
-  "formaPagamento": "CARTAO_CREDITO",
-  "valorPagamento": 700,
-  "valorTaxa": 0,
-  "dataPagamento": "2024-07-30T03:00:00.000Z",
   "procedimentosDaAquisicao": [
     {
-      "id": 37,
+      "procedimentoOrigemId": 35,
       "nome": "Face",
       "intervaloEntreSessoes": 30,
-      "valor": 400,
+      "valor": 2000,
       "quantidadeSessoes": 1,
-      "procedimento": "Botox sorriso gengival"
-    },
-    {
-      "id": 40,
-      "nome": "Buço",
-      "intervaloEntreSessoes": 30,
-      "valor": 10,
-      "quantidadeSessoes": 1,
-      "procedimento": "Buço na linha"
-    },
-    {
-      "id": 29,
-      "nome": "Face",
-      "intervaloEntreSessoes": 30,
-      "valor": 350,
-      "quantidadeSessoes": 1,
-      "procedimento": "Laser Lavieen"
+      "procedimento": "Bioestimulador de colageno"
     }
   ]
 }

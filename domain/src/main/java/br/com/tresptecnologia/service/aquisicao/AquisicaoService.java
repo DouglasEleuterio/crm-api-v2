@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.Objects;
 
 @Service
 public class AquisicaoService extends BaseActiveService<Aquisicao> implements IAquisicaoService {
@@ -55,21 +54,9 @@ public class AquisicaoService extends BaseActiveService<Aquisicao> implements IA
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Aquisicao create(Aquisicao aquisicao) throws DomainException {
-        vincularAquisicaoProcedimento(aquisicao);
-        vincularPagamentos(aquisicao);
+        aquisicao.getProcedimentosDaAquisicao().forEach(proc -> proc.setAquisicao(aquisicao));
+        aquisicao.getPagamentos().forEach(pgto -> { pgto.setSituacao(true); pgto.setAquisicao(aquisicao); });
         return aquisicaoRepository.save(aquisicao);
-    }
-
-    private void vincularPagamentos(Aquisicao aquisicao) {
-        aquisicao.getPagamentos().forEach(pgto -> {
-            if(Objects.isNull(pgto.getAquisicao()))
-                pgto.setAquisicao(aquisicao);
-            //Quando edição, buscar data da criação da entidade e atribuir;
-            if(Objects.nonNull(pgto.getId())) {
-                pgto.setDataCriacao(pagamentoRepository.findById(pgto.getId()).orElseThrow().getDataCriacao());
-                pgto.setSituacao(pagamentoRepository.findById(pgto.getId()).orElseThrow().getSituacao());
-            }
-        });
     }
 
     @Override
@@ -77,8 +64,6 @@ public class AquisicaoService extends BaseActiveService<Aquisicao> implements IA
         var old = findById(id);
         aquisicao.setDataCriacao(old.getDataCriacao());
         aquisicao.setDataAtualizacao(LocalDateTime.now());
-        vincularAquisicaoProcedimento(aquisicao);
-        vincularPagamentos(aquisicao);
 //        try {
 //            var newJson = objectMapper.writeValueAsString(aquisicao);
 //            var oldJson = objectMapper.writeValueAsString(oldOjb);
@@ -117,16 +102,6 @@ public class AquisicaoService extends BaseActiveService<Aquisicao> implements IA
         aquisicao.setCliente(cliente);
     }
 
-    private void vincularAquisicaoProcedimento(Aquisicao aquisicao) throws DomainException {
-        aquisicao.getProcedimentos().forEach(proc -> {
-            if (Objects.isNull(proc.getAquisicao()))
-                proc.setAquisicao(aquisicao);
-            proc.getRegioes().forEach(reg -> {
-                if (Objects.isNull(reg.getProcedimento()))
-                    reg.setProcedimento(proc);
-            });
-        });
-    }
 
     /**
      * Será recebido do front, seguintes dados do procedimento:

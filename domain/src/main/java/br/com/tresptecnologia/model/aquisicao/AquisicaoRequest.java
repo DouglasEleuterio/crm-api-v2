@@ -33,5 +33,5 @@ public class AquisicaoRequest {
     @RequiredList(label = "aquisicao.pagamento", alias = "pagamento(s)")
     private Set<PagamentoRequest> pagamentos;
     @Required(label = "aquisicao.procedimento")
-    private Set<AquisicaoProcedimentoRequest> procedimentos;
+    private Set<AquisicaoProcedimentoRequest> procedimentosDaAquisicao;
 }

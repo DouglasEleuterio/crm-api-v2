@@ -6,13 +6,13 @@ CREATE SEQUENCE sq_aquisicao_procedimento START WITH 1 INCREMENT BY 1;
 CREATE TABLE aquisicao_procedimento
 (
     id                      NUMBER(38, 0)    NOT NULL,
-    data_criacao            TIMESTAMP        NOT NULL,
-    data_atualizacao        TIMESTAMP        NOT NULL,
     nome                    VARCHAR2(255)    NOT NULL,
     procedimento_origem_id  NUMBER(38, 0),
+    intervalo_entre_sessoes INTEGER,
+    quantidade_sessoes      INTEGER,
+    valor                   DOUBLE PRECISION NOT NULL,
     aquisicao_id            NUMBER(38, 0)    NOT NULL,
     CONSTRAINT pk_aquisicao_procedimento PRIMARY KEY (id)
 );
---changeset douglas.ferreira:edit-aquisicao-procedimento-remove-datas
-ALTER TABLE aquisicao_procedimento DROP COLUMN data_atualizacao;
-ALTER TABLE aquisicao_procedimento DROP COLUMN data_criacao;
+--changeset douglas.ferreira:add-aquisicao-procedimento-nome-procedimento
+ALTER TABLE aquisicao_procedimento add procedimento VARCHAR2(255);
