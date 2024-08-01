@@ -47,7 +47,7 @@ public class Aquisicao extends BaseActiveEntity {
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "aquisicao", orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "aquisicao")
     @JsonBackReference
     private List<AquisicaoProcedimento> procedimentosDaAquisicao;
     @OneToMany(mappedBy = "aquisicao", cascade = CascadeType.ALL)

@@ -13,6 +13,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class AquisicaoProcedimentoRequest {
 
+    private Long id;
     private Long procedimentoOrigemId;
     private String nome;
     private Integer intervaloEntreSessoes;

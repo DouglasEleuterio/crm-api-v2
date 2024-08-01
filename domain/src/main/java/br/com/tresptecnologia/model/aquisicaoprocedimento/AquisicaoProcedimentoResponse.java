@@ -7,8 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Set;
-
 @Getter
 @Setter
 @Builder
@@ -18,5 +16,9 @@ public class AquisicaoProcedimentoResponse implements BaseResponse {
 
     private Long id;
     private String nome;
-    private Set<RegiaoProcedimentoAquisicaoResponse> regioes;
+    private Long procedimentoOrigemId;
+    private int intervaloEntreSessoes;
+    private int quantidadeSessoes;
+    private Double valor;
+    private String procedimento;
 }

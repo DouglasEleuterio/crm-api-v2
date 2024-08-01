@@ -25,5 +25,5 @@ public class AquisicaoResponse implements BaseResponse {
     private Double valorDesconto;
     private ClienteResponse cliente;
     private Set<PagamentoResponse> pagamentos;
-    private Set<AquisicaoProcedimentoResponse> procedimentos;
+    private Set<AquisicaoProcedimentoResponse> procedimentosDaAquisicao;
 }

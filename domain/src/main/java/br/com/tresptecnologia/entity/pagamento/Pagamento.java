@@ -1,6 +1,5 @@
 package br.com.tresptecnologia.entity.pagamento;
 
-import br.com.tresptecnologia.core.entity.BaseActiveEntity;
 import br.com.tresptecnologia.entity.aquisicao.Aquisicao;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
@@ -29,7 +28,7 @@ import java.time.LocalDateTime;
 @Setter
 @Entity
 @Table(name = "pagamento")
-public class Pagamento extends BaseActiveEntity {
+public class Pagamento {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_PAGAMENTO")
     @SequenceGenerator(name = "SQ_PAGAMENTO", sequenceName = "SQ_PAGAMENTO", allocationSize = 1)

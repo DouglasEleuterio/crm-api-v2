@@ -6,44 +6,39 @@ import br.com.tresptecnologia.core.repository.BaseRepository;
 import br.com.tresptecnologia.core.service.BaseActiveService;
 import br.com.tresptecnologia.entity.aquisicao.Aquisicao;
 import br.com.tresptecnologia.entity.aquisicao.AquisicaoProcedimento;
+import br.com.tresptecnologia.entity.pagamento.Pagamento;
+import br.com.tresptecnologia.repository.aquisicao.AquisicaoProcedimentoRepository;
 import br.com.tresptecnologia.repository.aquisicao.AquisicaoRepository;
-import br.com.tresptecnologia.repository.historico.HistoricoRepository;
 import br.com.tresptecnologia.repository.pagamento.PagamentoRepository;
 import br.com.tresptecnologia.service.cliente.ClienteService;
-import br.com.tresptecnologia.service.pagamento.PagamentoService;
 import br.com.tresptecnologia.service.procedimento.ProcedimentoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Objects;
 
 @Service
 public class AquisicaoService extends BaseActiveService<Aquisicao> implements IAquisicaoService {
 
     private final JsonMapper jsonMapper;
     private final AquisicaoRepository aquisicaoRepository;
-    private final ProcedimentoService procedimentoService;
-    private final HistoricoRepository historicoRepository;
-    private final ClienteService clienteService;
-    private final PagamentoService pagamentoService;
+    private final AquisicaoProcedimentoRepository aquisicaoProcedimentoRepository;
     private final PagamentoRepository pagamentoRepository;
+
     ObjectMapper objectMapper = new ObjectMapper();
 
-    protected AquisicaoService(BaseRepository<Aquisicao> repository, JsonMapper jsonMapper,
-                               AquisicaoRepository aquisicaoRepository,
-                               ProcedimentoService procedimentoService,
-                               HistoricoRepository historicoRepository,
-                               ClienteService clienteService, PagamentoService pagamentoService, PagamentoRepository pagamentoRepository) {
+    protected AquisicaoService(final BaseRepository<Aquisicao> repository, JsonMapper jsonMapper,
+                               final AquisicaoRepository aquisicaoRepository,
+                               final AquisicaoProcedimentoRepository aquisicaoProcedimentoRepository,
+                               final PagamentoRepository pagamentoRepository) {
         super(repository);
         this.jsonMapper = jsonMapper;
         this.aquisicaoRepository = aquisicaoRepository;
-        this.procedimentoService = procedimentoService;
-        this.historicoRepository = historicoRepository;
-        this.clienteService = clienteService;
-        this.objectMapper.findAndRegisterModules();
-        this.pagamentoService = pagamentoService;
+        this.aquisicaoProcedimentoRepository = aquisicaoProcedimentoRepository;
         this.pagamentoRepository = pagamentoRepository;
+        this.objectMapper.findAndRegisterModules();
     }
 
     @Override
@@ -55,15 +50,21 @@ public class AquisicaoService extends BaseActiveService<Aquisicao> implements IA
     @Transactional(rollbackFor = Exception.class)
     public Aquisicao create(Aquisicao aquisicao) throws DomainException {
         aquisicao.getProcedimentosDaAquisicao().forEach(proc -> proc.setAquisicao(aquisicao));
-        aquisicao.getPagamentos().forEach(pgto -> { pgto.setSituacao(true); pgto.setAquisicao(aquisicao); });
+        aquisicao.getPagamentos().forEach(pgto -> pgto.setAquisicao(aquisicao));
         return aquisicaoRepository.save(aquisicao);
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public Aquisicao update(Long id, Aquisicao aquisicao) throws DomainException {
-        var old = findById(id);
-        aquisicao.setDataCriacao(old.getDataCriacao());
-        aquisicao.setDataAtualizacao(LocalDateTime.now());
+        aquisicao.getProcedimentosDaAquisicao().forEach(proc -> proc.setAquisicao(aquisicao));
+        aquisicao.getPagamentos().forEach(pgt -> pgt.setAquisicao(aquisicao));
+        removerProcedimentos(aquisicao);
+        removerPagamentos(aquisicao);
+        //            if (Objects.nonNull(pgt.getId())) {
+        //                pgt.setDataCriacao(pagamentoService.findById(pgt.getId()).getDataCriacao());
+        //                pgt.setDataAtualizacao(LocalDateTime.now());
+        //            }
 //        try {
 //            var newJson = objectMapper.writeValueAsString(aquisicao);
 //            var oldJson = objectMapper.writeValueAsString(oldOjb);
@@ -96,23 +97,28 @@ public class AquisicaoService extends BaseActiveService<Aquisicao> implements IA
         return super.update(id, aquisicao);
     }
 
+    private void removerProcedimentos(Aquisicao aquisicao) throws DomainException {
+        var toRemoveList = new ArrayList<AquisicaoProcedimento>();
+        var aquisicaoOld = findById(aquisicao.getId());
+        aquisicaoOld.getProcedimentosDaAquisicao().forEach(proc -> {
+            if (aquisicao.getProcedimentosDaAquisicao().stream().noneMatch(aqs -> Objects.nonNull(aqs.getId()) && aqs.getId().equals(proc.getId()))) {
+                toRemoveList.add(proc);
+            }
+        });
 
-    private void vincularCliente(Aquisicao aquisicao) throws DomainException {
-        var cliente = clienteService.findById(aquisicao.getCliente().getId());
-        aquisicao.setCliente(cliente);
+        aquisicaoOld.getProcedimentosDaAquisicao().removeAll(toRemoveList);
+        aquisicaoProcedimentoRepository.deleteAll(toRemoveList);
     }
 
-
-    /**
-     * Será recebido do front, seguintes dados do procedimento:
-     * - ID
-     * - Quantidade Sessões
-     * - Intervalo entre Sessões
-     * Não permitir que Nome e Preço sejam alterados por requisições mal intencionadas e permitir que quantidade de sessões e intervalo entre sessões sejam diferentes do padrão.
-     */
-    private void buildAquisicaoProcedimento(AquisicaoProcedimento aqProcedimento) throws DomainException {
-        var procedimento = procedimentoService.findById(aqProcedimento.getProcedimentoOrigemId());
-        aqProcedimento.setNome(procedimento.getNome());
-//        aqProcedimento.setValor(procedimento.getValor());
+    private void removerPagamentos(Aquisicao aquisicao) throws DomainException {
+        var toRemoveList = new ArrayList<Pagamento>();
+        var aquisicaoOld = findById(aquisicao.getId());
+        aquisicaoOld.getPagamentos().forEach(pgto -> {
+            if (aquisicao.getPagamentos().stream().noneMatch(pg -> Objects.nonNull(pg.getId()) && pg.getId().equals(pgto.getId()))) {
+                toRemoveList.add(pgto);
+            }
+        });
+        toRemoveList.forEach(aquisicaoOld.getPagamentos()::remove);
+        pagamentoRepository.deleteAll(toRemoveList);
     }
 }
