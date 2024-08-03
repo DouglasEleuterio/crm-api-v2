@@ -10,8 +10,7 @@ import br.com.tresptecnologia.entity.pagamento.Pagamento;
 import br.com.tresptecnologia.repository.aquisicao.AquisicaoProcedimentoRepository;
 import br.com.tresptecnologia.repository.aquisicao.AquisicaoRepository;
 import br.com.tresptecnologia.repository.pagamento.PagamentoRepository;
-import br.com.tresptecnologia.service.cliente.ClienteService;
-import br.com.tresptecnologia.service.procedimento.ProcedimentoService;
+import br.com.tresptecnologia.service.evento.EventoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,19 +25,21 @@ public class AquisicaoService extends BaseActiveService<Aquisicao> implements IA
     private final AquisicaoRepository aquisicaoRepository;
     private final AquisicaoProcedimentoRepository aquisicaoProcedimentoRepository;
     private final PagamentoRepository pagamentoRepository;
+    private final EventoService eventoService;
 
     ObjectMapper objectMapper = new ObjectMapper();
 
     protected AquisicaoService(final BaseRepository<Aquisicao> repository, JsonMapper jsonMapper,
                                final AquisicaoRepository aquisicaoRepository,
                                final AquisicaoProcedimentoRepository aquisicaoProcedimentoRepository,
-                               final PagamentoRepository pagamentoRepository) {
+                               final PagamentoRepository pagamentoRepository, EventoService eventoService) {
         super(repository);
         this.jsonMapper = jsonMapper;
         this.aquisicaoRepository = aquisicaoRepository;
         this.aquisicaoProcedimentoRepository = aquisicaoProcedimentoRepository;
         this.pagamentoRepository = pagamentoRepository;
         this.objectMapper.findAndRegisterModules();
+        this.eventoService = eventoService;
     }
 
     @Override
@@ -51,6 +52,7 @@ public class AquisicaoService extends BaseActiveService<Aquisicao> implements IA
     public Aquisicao create(Aquisicao aquisicao) throws DomainException {
         aquisicao.getProcedimentosDaAquisicao().forEach(proc -> proc.setAquisicao(aquisicao));
         aquisicao.getPagamentos().forEach(pgto -> pgto.setAquisicao(aquisicao));
+        eventoService.create(aquisicao);
         return aquisicaoRepository.save(aquisicao);
     }
 

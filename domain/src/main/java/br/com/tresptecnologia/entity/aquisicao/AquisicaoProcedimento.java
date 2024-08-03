@@ -29,7 +29,7 @@ public class AquisicaoProcedimento {
     @Column(name = "id", nullable = false)
     private Long id;
     @Column(name = "nome", nullable = false)
-    private String nome;
+    private String nome; //Região
     @Column(name = "procedimento_origem_id")
     private Long procedimentoOrigemId;
     @Column(name = "intervalo_entre_sessoes")

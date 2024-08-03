@@ -22,4 +22,5 @@
     <include file="/db/migration/changes/20240716-1-add-regiao-procedimento-aquisicao.sql"/>
     <include file="/db/migration/changes/20240718-1-seed-procedimentos.sql"/>
     <include file="/db/migration/changes/20240718-2-seed-cliente.sql"/>
+    <include file="/db/migration/changes/20240803-1-add-evento.sql"/>
 </databaseChangeLog>
