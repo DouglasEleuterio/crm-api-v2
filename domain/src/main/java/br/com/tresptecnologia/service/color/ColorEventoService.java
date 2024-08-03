@@ -10,7 +10,9 @@ public class ColorEventoService implements IColorEventoService {
         switch (procedimento) {
             case "Depilação a Lazer":
                 return "#799496";
+            case "Bioestimulador de colageno":
+                return "#290436";
         }
-        return "";
+        return "#799496";
     }
 }
