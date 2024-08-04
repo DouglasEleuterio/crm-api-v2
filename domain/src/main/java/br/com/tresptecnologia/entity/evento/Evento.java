@@ -44,7 +44,7 @@ public class Evento extends BaseActiveEntity {
     private String backgroundColor;
 
     @Column(name = "confirmado", nullable = false)
-    private boolean confirmado;
+    private Boolean confirmado;
 
     @ManyToOne
     @JoinColumn(name = "aquisicao_procedimento_id")

@@ -17,4 +17,5 @@ public class EventoRequest {
     private Long id;
     private LocalDateTime start;
     private LocalDateTime end;
+    private Boolean allDay;
 }

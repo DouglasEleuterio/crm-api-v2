@@ -46,7 +46,7 @@ public class EventoService extends BaseActiveService<Evento> implements IEventoS
                         .title(p.getProcedimento().concat(" - ").concat(p.getNome()))
                         .start(ultimoAgendamento)
                         .end(ultimoAgendamento.plusMinutes(15L))
-                        .backgroundColor(colorEventoService.getColorByProcedimento(p.getProcedimento()))
+                        .backgroundColor("#8d99ae")
                         .confirmado(false)
                         .aquisicaoProcedimento(p)
                     .build();
@@ -59,9 +59,10 @@ public class EventoService extends BaseActiveService<Evento> implements IEventoS
     @Override
     public Evento update(Long id, Evento updateT) throws DomainException {
         var oldEvento = findById(id);
-        oldEvento.setStart(updateT.getStart().minusHours(3)); //Front está incrementando 3 horas na edição
-        oldEvento.setEnd(updateT.getEnd().minusHours(3));//Front está incrementando 3 horas na edição
+        oldEvento.setStart(updateT.isAllDay() ? updateT.getStart().withHour(0) : updateT.getStart().minusHours(3)); //Front está incrementando 3 horas na edição
+        oldEvento.setEnd(updateT.isAllDay() ? updateT.getStart().withHour(23) : updateT.getEnd().minusHours(3));//Front está incrementando 3 horas na edição
         oldEvento.setConfirmado(true);
+        oldEvento.setBackgroundColor(colorEventoService.getColorByProcedimento(oldEvento.getAquisicaoProcedimento().getProcedimento()));
         return super.update(id, oldEvento);
     }
 
