@@ -56,6 +56,15 @@ public class EventoService extends BaseActiveService<Evento> implements IEventoS
         }
     }
 
+    @Override
+    public Evento update(Long id, Evento updateT) throws DomainException {
+        var oldEvento = findById(id);
+        oldEvento.setStart(updateT.getStart().minusHours(3)); //Front está incrementando 3 horas na edição
+        oldEvento.setEnd(updateT.getEnd().minusHours(3));//Front está incrementando 3 horas na edição
+        oldEvento.setConfirmado(true);
+        return super.update(id, oldEvento);
+    }
+
     private LocalDateTime alterarSeFinalSemana(LocalDateTime ultimoAgendamento) {
         if(ultimoAgendamento.getDayOfWeek() == DayOfWeek.SATURDAY) {
             return ultimoAgendamento.plusDays(2);
