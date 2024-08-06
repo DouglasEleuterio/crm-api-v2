@@ -1,5 +1,6 @@
 package br.com.tresptecnologia.model.procedimento;
 
+import br.com.tresptecnologia.model.profissional.ProfissionalResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,4 +19,6 @@ public class RegiaoResponse {
     private int quantidadeSessoes;
     private int intervaloEntreSessoes;
     private Double valor;
+    private ProfissionalResponse profissional;
+
 }

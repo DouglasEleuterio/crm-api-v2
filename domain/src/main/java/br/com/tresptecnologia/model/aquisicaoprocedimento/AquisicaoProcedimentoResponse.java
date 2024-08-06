@@ -1,5 +1,6 @@
 package br.com.tresptecnologia.model.aquisicaoprocedimento;
 
+import br.com.tresptecnologia.model.aquisicao.AquisicaoClienteResponse;
 import br.com.tresptecnologia.model.entity.BaseResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,4 +22,5 @@ public class AquisicaoProcedimentoResponse implements BaseResponse {
     private int quantidadeSessoes;
     private Double valor;
     private String procedimento;
+    private AquisicaoClienteResponse aquisicao;
 }

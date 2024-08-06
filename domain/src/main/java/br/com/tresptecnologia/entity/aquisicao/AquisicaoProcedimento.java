@@ -1,5 +1,6 @@
 package br.com.tresptecnologia.entity.aquisicao;
 
+import br.com.tresptecnologia.entity.profissional.Profissional;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,8 +31,8 @@ public class AquisicaoProcedimento {
     private Long id;
     @Column(name = "nome", nullable = false)
     private String nome; //Região
-    @Column(name = "procedimento_origem_id")
-    private Long procedimentoOrigemId;
+    @Column(name = "regiao_origem_id")
+    private Long regiaoOrigemId;
     @Column(name = "intervalo_entre_sessoes")
     private int intervaloEntreSessoes;
     @Column(name = "quantidade_sessoes")
@@ -44,4 +45,8 @@ public class AquisicaoProcedimento {
     @ManyToOne
     @JoinColumn(name = "aquisicao_id", nullable = false)
     private Aquisicao aquisicao;
+
+    @ManyToOne
+    @JoinColumn(name = "profissional_id", nullable = true)
+    private Profissional profissional;
 }

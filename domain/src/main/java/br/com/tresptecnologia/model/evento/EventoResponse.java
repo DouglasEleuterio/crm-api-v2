@@ -2,6 +2,7 @@ package br.com.tresptecnologia.model.evento;
 
 import br.com.tresptecnologia.model.aquisicaoprocedimento.AquisicaoProcedimentoResponse;
 import br.com.tresptecnologia.model.entity.BaseResponse;
+import br.com.tresptecnologia.model.profissional.ProfissionalResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -23,4 +24,6 @@ public class EventoResponse implements BaseResponse {
     private String backgroundColor;
     private boolean confirmado;
     private AquisicaoProcedimentoResponse aquisicaoProcedimento;
+    private ProfissionalResponse profissional;
+
 }

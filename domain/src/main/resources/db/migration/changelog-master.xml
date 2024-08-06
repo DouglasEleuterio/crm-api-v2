@@ -23,4 +23,5 @@
     <include file="/db/migration/changes/20240718-1-seed-procedimentos.sql"/>
     <include file="/db/migration/changes/20240718-2-seed-cliente.sql"/>
     <include file="/db/migration/changes/20240803-1-add-evento.sql"/>
+    <include file="/db/migration/changes/20240805-1-add-profissional.sql"/>
 </databaseChangeLog>

@@ -2,6 +2,7 @@ package br.com.tresptecnologia.entity.evento;
 
 import br.com.tresptecnologia.core.entity.BaseActiveEntity;
 import br.com.tresptecnologia.entity.aquisicao.AquisicaoProcedimento;
+import br.com.tresptecnologia.entity.profissional.Profissional;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -49,4 +50,8 @@ public class Evento extends BaseActiveEntity {
     @ManyToOne
     @JoinColumn(name = "aquisicao_procedimento_id")
     private AquisicaoProcedimento aquisicaoProcedimento;
+
+    @ManyToOne
+    @JoinColumn(name = "profissional_id", nullable = false)
+    private Profissional profissional;
 }

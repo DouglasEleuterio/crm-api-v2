@@ -7,7 +7,9 @@ import br.com.tresptecnologia.entity.aquisicao.Aquisicao;
 import br.com.tresptecnologia.entity.aquisicao.AquisicaoProcedimento;
 import br.com.tresptecnologia.entity.evento.Evento;
 import br.com.tresptecnologia.repository.evento.EventoRepository;
+import br.com.tresptecnologia.service.cliente.ClienteService;
 import br.com.tresptecnologia.service.color.ColorEventoService;
+import br.com.tresptecnologia.service.regiao.RegiaoService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,19 +23,25 @@ public class EventoService extends BaseActiveService<Evento> implements IEventoS
 
     private final ColorEventoService colorEventoService;
     private final JsonMapper jsonMapper;
+    private final RegiaoService regiaoService;
+    private final ClienteService clienteService;
 
     protected EventoService(final EventoRepository repository,
                             final ColorEventoService colorEventoService,
-                            final JsonMapper jsonMapper) {
+                            final JsonMapper jsonMapper, RegiaoService regiaoService, ClienteService clienteService) {
         super(repository);
         this.colorEventoService = colorEventoService;
         this.jsonMapper = jsonMapper;
+        this.regiaoService = regiaoService;
+        this.clienteService = clienteService;
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void create(Aquisicao aquisicao) throws DomainException {
         for (AquisicaoProcedimento p : aquisicao.getProcedimentosDaAquisicao()) {
+            var profissional = regiaoService.findById(p.getRegiaoOrigemId()).getProfissional();
+            p.setProfissional(profissional);
             LocalDateTime ultimoAgendamento = null;
             for (int i = 0; i < p.getQuantidadeSessoes(); i++) {
                 if(Objects.isNull(ultimoAgendamento))
@@ -41,11 +49,13 @@ public class EventoService extends BaseActiveService<Evento> implements IEventoS
                 else
                     ultimoAgendamento = ultimoAgendamento.plusDays(p.getIntervaloEntreSessoes());
                 ultimoAgendamento = alterarSeFinalSemana(ultimoAgendamento);
+                var duracao = regiaoService.findById(p.getRegiaoOrigemId()).getDuracao();
                 var evento = Evento.builder()
                         .allDay(false)
-                        .title(p.getProcedimento().concat(" - ").concat(p.getNome()))
+                        .profissional(profissional)
+                        .title(p.getProcedimento().concat(" - ").concat(p.getNome()).concat(" - ").concat(clienteService.findById(p.getAquisicao().getCliente().getId()).getNome()))
                         .start(ultimoAgendamento)
-                        .end(ultimoAgendamento.plusMinutes(15L))
+                        .end(ultimoAgendamento.plusMinutes(Objects.isNull(duracao) ? 15L : duracao))
                         .backgroundColor("#8d99ae")
                         .confirmado(false)
                         .aquisicaoProcedimento(p)

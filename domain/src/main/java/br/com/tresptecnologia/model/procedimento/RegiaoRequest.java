@@ -1,5 +1,6 @@
 package br.com.tresptecnologia.model.procedimento;
 
+import br.com.tresptecnologia.model.entity.BaseEntityRequest;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,6 +19,8 @@ public class RegiaoRequest {
     private int quantidadeSessoes;
     private int intervaloEntreSessoes;
     private Double valor;
+    private BaseEntityRequest profissional;
+
 }
 
 

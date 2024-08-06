@@ -16,3 +16,5 @@ CREATE TABLE regiao
 
 ALTER TABLE regiao
     ADD CONSTRAINT FK_REGIAO_ON_PROCEDIMENTO FOREIGN KEY (procedimento_id) REFERENCES procedimento (id);
+--changeset douglas.ferreira:edit-regiao-add-duracao
+alter table regiao add duracao INTEGER null;

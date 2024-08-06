@@ -1,5 +1,6 @@
 package br.com.tresptecnologia.entity.procedimento;
 
+import br.com.tresptecnologia.entity.profissional.Profissional;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,11 +36,17 @@ public class Regiao {
     private int quantidadeSessoes;
     @Column(name = "intervalo_entre_sessoes")
     private int intervaloEntreSessoes;
+    @Column(name = "duracao")
+    private Integer duracao;
     @Column(name = "valor", nullable = false)
     private Double valor;
 
     @ManyToOne
     @JoinColumn(name = "procedimento_id")
     private Procedimento procedimento;
+
+    @ManyToOne
+    @JoinColumn(name = "profissional_id", nullable = false)
+    private Profissional profissional;
 
 }

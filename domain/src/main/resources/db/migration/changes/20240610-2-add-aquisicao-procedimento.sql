@@ -16,3 +16,6 @@ CREATE TABLE aquisicao_procedimento
 );
 --changeset douglas.ferreira:add-aquisicao-procedimento-nome-procedimento
 ALTER TABLE aquisicao_procedimento add procedimento VARCHAR2(255);
+--changeset douglas.ferreira:edit-aquisicao-procedimento-origem-regiao
+ALTER TABLE aquisicao_procedimento rename COLUMN procedimento_origem_id to regiao_origem_id
+
