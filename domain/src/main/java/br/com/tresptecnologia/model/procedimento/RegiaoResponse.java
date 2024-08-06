@@ -18,6 +18,7 @@ public class RegiaoResponse {
     private String nome;
     private int quantidadeSessoes;
     private int intervaloEntreSessoes;
+    private int duracao;
     private Double valor;
     private ProfissionalResponse profissional;
 

@@ -19,6 +19,7 @@ public class RegiaoRequest {
     private int quantidadeSessoes;
     private int intervaloEntreSessoes;
     private Double valor;
+    private int duracao;
     private BaseEntityRequest profissional;
 
 }

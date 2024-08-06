@@ -34,7 +34,7 @@ public class Evento extends BaseActiveEntity {
     private Long id;
 
     @Column(name = "dia_todo", nullable = false)
-    private boolean allDay;
+    private Boolean allDay;
     @Column(name = "titulo", nullable = false)
     private String title;
     @Column(name = "inicio", nullable = false)

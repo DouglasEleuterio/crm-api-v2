@@ -5,7 +5,11 @@ import br.com.tresptecnologia.core.exception.DomainException;
 import br.com.tresptecnologia.core.jpa.mapper.JsonMapper;
 import br.com.tresptecnologia.core.repository.BaseRepository;
 import br.com.tresptecnologia.core.service.BaseActiveService;
-import br.com.tresptecnologia.entity.historico.*;
+import br.com.tresptecnologia.entity.historico.Auditoria;
+import br.com.tresptecnologia.entity.historico.EEvento;
+import br.com.tresptecnologia.entity.historico.ESituacaoRegistro;
+import br.com.tresptecnologia.entity.historico.ETipoEntidade;
+import br.com.tresptecnologia.entity.historico.Historico;
 import br.com.tresptecnologia.entity.procedimento.Procedimento;
 import br.com.tresptecnologia.repository.historico.HistoricoRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -42,7 +46,6 @@ public class ProcedimentoService extends BaseActiveService<Procedimento> impleme
     public Procedimento update(Long id, Procedimento updateT) throws DomainException {
         var oldOjb = super.findById(id);
         updateT.getRegioes().forEach(regiao -> regiao.setProcedimento(updateT));
-
 
         try {
             JavaTimeModule javaTimeModule = new JavaTimeModule();

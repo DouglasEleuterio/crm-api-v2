@@ -32,4 +32,6 @@ ALTER TABLE aquisicao_procedimento add profissional_id NUMBER(38, 0) default 1 N
 
 ALTER TABLE aquisicao_procedimento
     ADD CONSTRAINT FK_AQUISICAO_PROCEDIMENTO_ON_PROFISSIONAL FOREIGN KEY (profissional_id) REFERENCES profissional (id);
-
+--changeset douglas.ferreira:seed-profissional-2
+UPDATE PROFISSIONAL SET NOME = 'Lara Roberta Stival Honorato' WHERE nome = 'Dra. Lara Stival';
+INSERT INTO profissional VALUES ((sq_profissional.nextval), 1, sysdate, sysdate, 'Tamires Freitas Braga');

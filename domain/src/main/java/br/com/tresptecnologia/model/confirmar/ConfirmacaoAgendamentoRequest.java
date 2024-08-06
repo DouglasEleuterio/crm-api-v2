@@ -18,4 +18,5 @@ public class ConfirmacaoAgendamentoRequest {
     private BaseEntityRequest id;
     private LocalDateTime dataInicio;
     private LocalDateTime dataFim;
+    private BaseEntityRequest profissional;
 }

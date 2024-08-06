@@ -1,6 +1,5 @@
 package br.com.tresptecnologia.model.profissional;
 
-import br.com.tresptecnologia.model.entity.BaseResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,7 +11,7 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProfissionalResponse implements BaseResponse {
+public class ProfissionalRequest {
     private Long id;
     private String nome;
 }

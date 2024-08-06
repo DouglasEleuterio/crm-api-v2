@@ -22,7 +22,7 @@ public class EventoResponse implements BaseResponse {
     private LocalDateTime start;
     private LocalDateTime end;
     private String backgroundColor;
-    private boolean confirmado;
+    private Boolean confirmado;
     private AquisicaoProcedimentoResponse aquisicaoProcedimento;
     private ProfissionalResponse profissional;
 
