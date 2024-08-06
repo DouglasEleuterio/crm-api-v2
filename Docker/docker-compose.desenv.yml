@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+  clinica-api:
+    image: douglaseleuterioferreira/apps:clinica-api-v1.0.10
+    ports:
+      - 8081:8081
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.clinica-api.rule=Host(`clinica.3ptecnologia.com.br`)
+        - traefik.http.routers.clinica-api.entrypoints=websecure
+        - traefik.http.routers.clinica-api.tls.certresolver=letsencryptresolver
+        - traefik.http.routers.clinica-api.priority=1
+        - traefik.http.routers.clinica-api.service=clinica-api
+        - traefik.http.services.clinica-api.loadbalancer.server.port=8080
+        - traefik.http.services.clinica-api.loadbalancer.passHostHeader=true
+    env_file:
+      - desenv.env

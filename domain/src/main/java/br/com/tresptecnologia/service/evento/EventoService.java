@@ -6,6 +6,8 @@ import br.com.tresptecnologia.core.service.BaseActiveService;
 import br.com.tresptecnologia.entity.aquisicao.Aquisicao;
 import br.com.tresptecnologia.entity.aquisicao.AquisicaoProcedimento;
 import br.com.tresptecnologia.entity.evento.Evento;
+import br.com.tresptecnologia.model.evento.EventoMapper;
+import br.com.tresptecnologia.model.evento.EventoResponse;
 import br.com.tresptecnologia.repository.evento.EventoRepository;
 import br.com.tresptecnologia.service.cliente.ClienteService;
 import br.com.tresptecnologia.service.color.ColorEventoService;
@@ -16,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -25,15 +28,17 @@ public class EventoService extends BaseActiveService<Evento> implements IEventoS
     private final JsonMapper jsonMapper;
     private final RegiaoService regiaoService;
     private final ClienteService clienteService;
+    private final EventoMapper eventoMapper;
 
     protected EventoService(final EventoRepository repository,
                             final ColorEventoService colorEventoService,
-                            final JsonMapper jsonMapper, RegiaoService regiaoService, ClienteService clienteService) {
+                            final JsonMapper jsonMapper, RegiaoService regiaoService, ClienteService clienteService, EventoMapper eventoMapper) {
         super(repository);
         this.colorEventoService = colorEventoService;
         this.jsonMapper = jsonMapper;
         this.regiaoService = regiaoService;
         this.clienteService = clienteService;
+        this.eventoMapper = eventoMapper;
     }
 
     @Override
@@ -64,6 +69,16 @@ public class EventoService extends BaseActiveService<Evento> implements IEventoS
                 super.create(evento);
             }
         }
+    }
+
+    @Override
+    public List<EventoResponse> getPreAgendamentos(Long profssionalId) {
+         return eventoMapper.toListResponse(getRepository().findAllByConfirmadoAndProfissionalId(false, profssionalId));
+    }
+
+    @Override
+    public List<EventoResponse> getAgendamentos(Long profssionalId) {
+        return eventoMapper.toListResponse(getRepository().findAllByConfirmadoAndProfissionalId(true, profssionalId));
     }
 
     @Override

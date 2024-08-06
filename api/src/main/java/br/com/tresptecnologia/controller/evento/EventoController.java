@@ -9,8 +9,12 @@ import br.com.tresptecnologia.model.evento.EventoRequest;
 import br.com.tresptecnologia.model.evento.EventoResponse;
 import br.com.tresptecnologia.service.evento.IEventoService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/evento")
@@ -27,4 +31,15 @@ public class EventoController extends BaseRsqlController<Evento, EventoRequest, 
     public IEventoService getService() {
         return (IEventoService) super.getService();
     }
+
+    @GetMapping(path = "/preagendamento")
+    public List<EventoResponse> getAllPreAgendamento(@RequestParam(name = "profissionalId", required = false) Long profssionalId) {
+        return getService().getPreAgendamentos(profssionalId);
+    }
+
+    @GetMapping(path = "/agendamento")
+    public List<EventoResponse> getAllAgendamento(@RequestParam(name = "profissionalId", required = false) Long profssionalId) {
+        return getService().getAgendamentos(profssionalId);
+    }
 }
+
