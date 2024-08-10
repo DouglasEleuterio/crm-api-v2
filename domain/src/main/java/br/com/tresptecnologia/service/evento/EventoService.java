@@ -7,7 +7,6 @@ import br.com.tresptecnologia.entity.aquisicao.Aquisicao;
 import br.com.tresptecnologia.entity.aquisicao.AquisicaoProcedimento;
 import br.com.tresptecnologia.entity.evento.Evento;
 import br.com.tresptecnologia.model.evento.EventoMapper;
-import br.com.tresptecnologia.model.evento.EventoResponse;
 import br.com.tresptecnologia.repository.evento.EventoRepository;
 import br.com.tresptecnologia.service.cliente.ClienteService;
 import br.com.tresptecnologia.service.color.ColorEventoService;
@@ -18,7 +17,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -69,16 +67,6 @@ public class EventoService extends BaseActiveService<Evento> implements IEventoS
                 super.create(evento);
             }
         }
-    }
-
-    @Override
-    public List<EventoResponse> getPreAgendamentos(Long profssionalId) {
-         return eventoMapper.toListResponse(getRepository().findAllByConfirmadoAndProfissionalId(false, profssionalId));
-    }
-
-    @Override
-    public List<EventoResponse> getAgendamentos(Long profssionalId) {
-        return eventoMapper.toListResponse(getRepository().findAllByConfirmadoAndProfissionalId(true, profssionalId));
     }
 
     @Override

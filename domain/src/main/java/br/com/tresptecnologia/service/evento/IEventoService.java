@@ -12,9 +12,4 @@ import java.util.List;
 public interface IEventoService extends IBaseActiveService<Evento>, IBaseFetchMapperService<Evento> {
 
     void create(Aquisicao aquisicao) throws DomainException;
-
-    List<EventoResponse> getPreAgendamentos(Long profssionalId);
-
-    List<EventoResponse> getAgendamentos(Long profssionalId);
-
 }

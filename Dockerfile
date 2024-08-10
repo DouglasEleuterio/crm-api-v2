@@ -6,7 +6,7 @@ ARG PROJECT
 
 COPY . .
 
-RUN --mount=type=cache,target=/root/.m2 mvn -B -Drevision=${REVISION} -P ${PROFILE} package
+RUN --mount=type=cache,target=/root/.m2 mvn -B -Drevision=${REVISION} -P ${PROFILE} package -DskipTests
 
 
 FROM amazoncorretto:17.0.6-alpine

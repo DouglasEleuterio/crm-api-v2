@@ -4,7 +4,7 @@ services:
   clinica-api:
     image: douglaseleuterioferreira/apps:clinica-api-v1.0.10
     ports:
-      - 8081:8081
+      - 8081:8080
     deploy:
       labels:
         - traefik.enable=true

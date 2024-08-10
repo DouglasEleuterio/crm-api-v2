@@ -1,5 +1,5 @@
 alter session set "_ORACLE_SCRIPT"=true;
 
-create user clinica identified by clinica;
+create user clinica_prod identified by clinica_prod;
 
-grant all privileges to clinica;
+grant all privileges to clinica_prod;

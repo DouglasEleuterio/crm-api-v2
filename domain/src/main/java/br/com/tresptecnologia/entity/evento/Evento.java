@@ -54,4 +54,17 @@ public class Evento extends BaseActiveEntity {
     @ManyToOne
     @JoinColumn(name = "profissional_id", nullable = false)
     private Profissional profissional;
+
+    @Override
+    public String toString() {
+        return "Evento{" +
+               "id=" + id +
+               ", allDay=" + allDay +
+               ", title='" + title + '\'' +
+               ", start=" + start +
+               ", end=" + end +
+               ", backgroundColor='" + backgroundColor + '\'' +
+               ", confirmado=" + confirmado +
+               '}';
+    }
 }
