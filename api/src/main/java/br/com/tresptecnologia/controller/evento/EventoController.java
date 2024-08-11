@@ -3,13 +3,17 @@ package br.com.tresptecnologia.controller.evento;
 import br.com.tresptecnologia.core.controller.BaseActiveController;
 import br.com.tresptecnologia.core.controller.BaseJsonSelectController;
 import br.com.tresptecnologia.core.controller.BaseRsqlController;
+import br.com.tresptecnologia.core.exception.DomainException;
 import br.com.tresptecnologia.core.mapper.IBaseMapper;
 import br.com.tresptecnologia.entity.evento.Evento;
 import br.com.tresptecnologia.model.evento.EventoRequest;
 import br.com.tresptecnologia.model.evento.EventoResponse;
 import br.com.tresptecnologia.service.evento.IEventoService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,5 +35,12 @@ public class EventoController extends BaseRsqlController<Evento, EventoRequest, 
     public IEventoService getService() {
         return (IEventoService) super.getService();
     }
+
+    @PutMapping(path = "/cancelaragendamento/{id}")
+    public ResponseEntity<Void> cancelarAgendamento(@PathVariable final Long id) throws DomainException {
+        getService().cancelarAgendamento(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }
 

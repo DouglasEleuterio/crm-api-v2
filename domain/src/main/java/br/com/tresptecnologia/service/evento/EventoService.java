@@ -70,6 +70,15 @@ public class EventoService extends BaseActiveService<Evento> implements IEventoS
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void cancelarAgendamento(Long id) throws DomainException {
+        var agendamento = findById(id);
+        agendamento.setConfirmado(false);
+        agendamento.setBackgroundColor("#8d99ae");
+        getRepository().save(agendamento);
+    }
+
+    @Override
     public Evento update(Long id, Evento updateT) throws DomainException {
         var oldEvento = findById(id);
         oldEvento.setStart(updateT.getAllDay() ? updateT.getStart().withHour(0) : updateT.getStart().minusHours(3)); //Front está incrementando 3 horas na edição

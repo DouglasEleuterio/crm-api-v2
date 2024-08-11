@@ -12,4 +12,6 @@ import java.util.List;
 public interface IEventoService extends IBaseActiveService<Evento>, IBaseFetchMapperService<Evento> {
 
     void create(Aquisicao aquisicao) throws DomainException;
+
+    void cancelarAgendamento(Long id) throws DomainException;
 }
