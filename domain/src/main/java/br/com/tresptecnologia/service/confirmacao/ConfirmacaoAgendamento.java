@@ -1,7 +1,9 @@
 package br.com.tresptecnologia.service.confirmacao;
 
 import br.com.tresptecnologia.core.exception.DomainException;
+import br.com.tresptecnologia.model.agendamento.AgendamentoMapperImpl;
 import br.com.tresptecnologia.model.confirmar.ConfirmacaoAgendamentoRequest;
+import br.com.tresptecnologia.service.agendamento.AgendamentoService;
 import br.com.tresptecnologia.service.evento.EventoService;
 import br.com.tresptecnologia.service.profissional.ProfissionalService;
 import org.springframework.stereotype.Service;
@@ -12,10 +14,14 @@ public class ConfirmacaoAgendamento implements IConfirmacaoAgendamento {
 
     private final EventoService eventoService;
     private final ProfissionalService profissionalService;
+    private final AgendamentoMapperImpl agendamentoMapperImpl;
+    private final AgendamentoService agendamentoService;
 
-    public ConfirmacaoAgendamento(EventoService eventoService, ProfissionalService profissionalService) {
+    public ConfirmacaoAgendamento(EventoService eventoService, ProfissionalService profissionalService, AgendamentoMapperImpl agendamentoMapperImpl, AgendamentoService agendamentoService) {
         this.eventoService = eventoService;
         this.profissionalService = profissionalService;
+        this.agendamentoMapperImpl = agendamentoMapperImpl;
+        this.agendamentoService = agendamentoService;
     }
 
     @Override
@@ -26,6 +32,8 @@ public class ConfirmacaoAgendamento implements IConfirmacaoAgendamento {
         eventoEntity.setEnd(confirmacao.getDataFim());
         eventoEntity.setProfissional(profissionalService.findById(confirmacao.getProfissional().getId()));
         //todo Setar Profissional
-        eventoService.update(evento, eventoEntity);
+        var agendamento = agendamentoMapperImpl.toAgendamento(eventoEntity);
+        agendamentoService.create(agendamento);
+        eventoService.delete(evento);
     }
 }

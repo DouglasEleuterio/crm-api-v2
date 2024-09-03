@@ -8,7 +8,7 @@ services:
     deploy:
       labels:
         - traefik.enable=true
-        - traefik.http.routers.clinica-api.rule=Host(`clinica-api.3ptecnologia.com.br`)
+        - traefik.http.routers.clinica-api.rule=Host(`clinica-api-lenovo.3ptecnologia.com.br`)
         - traefik.http.routers.clinica-api.entrypoints=websecure
         - traefik.http.routers.clinica-api.tls.certresolver=letsencryptresolver
         - traefik.http.routers.clinica-api.priority=1
