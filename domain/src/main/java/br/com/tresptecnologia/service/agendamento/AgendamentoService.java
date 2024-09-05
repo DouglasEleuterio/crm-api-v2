@@ -6,6 +6,7 @@ import br.com.tresptecnologia.core.service.BaseActiveService;
 import br.com.tresptecnologia.entity.Agendamento;
 import br.com.tresptecnologia.entity.aquisicao.Aquisicao;
 import br.com.tresptecnologia.entity.aquisicao.AquisicaoProcedimento;
+import br.com.tresptecnologia.entity.evento.Evento;
 import br.com.tresptecnologia.model.agendamento.AgendamentoMapperImpl;
 import br.com.tresptecnologia.model.agendamento.AlterarAgendamentoRequest;
 import br.com.tresptecnologia.repository.AgendamentoRepository;
@@ -15,6 +16,7 @@ import br.com.tresptecnologia.service.color.ColorEventoService;
 import br.com.tresptecnologia.service.evento.EventoService;
 import br.com.tresptecnologia.service.profissional.ProfissionalService;
 import br.com.tresptecnologia.service.regiao.RegiaoService;
+import jdk.jfr.Event;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -93,7 +95,10 @@ public class AgendamentoService extends BaseActiveService<Agendamento> implement
         var agendamento = findById(id);
         agendamento.setConfirmado(false);
         agendamento.setBackgroundColor("#8d99ae");
-        var evento = agendamentoMapper.toEvento(agendamento);
+        var evento = (Evento) agendamentoMapper.toEvento(agendamento);
+        evento.setSituacao(agendamento.getSituacao());
+        evento.setDataCriacao(agendamento.getDataCriacao());
+        evento.setDataAtualizacao(LocalDateTime.now());
         eventoRepository.save(evento);
         getRepository().delete(agendamento);
     }
