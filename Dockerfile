@@ -18,6 +18,10 @@ ARG REVISION
 ARG PROJECT
 
 COPY --from=build ${PROJECT}/target/${PROJECT}-${REVISION}.jar app.jar
+COPY .//domain//src//main//resources//clinicaapi.crt /tmp/clinicaapi.crt
+
+
+RUN keytool -importcert -file /tmp/clinicaapi.crt -alias clinicaapi -keystore /usr/lib/jvm/java-17-amazon-corretto/lib/security/cacerts -storepass changeit -noprompt
 
 EXPOSE 8080
 
