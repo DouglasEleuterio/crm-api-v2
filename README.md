@@ -4,14 +4,14 @@
 docker login -u douglaseleuterioferreira -p Fox789789@!
 ````
 ````shell
-docker build -t clinica-api:v1.0.12 --build-arg REVISION=1.0.0 --build-arg PROFILE=dev --build-arg PROJECT=api --build-arg AMBIENTE=dev --progress=plain .
+docker build -t clinica-api:v1.0.13 --build-arg REVISION=1.0.0 --build-arg PROFILE=dev --build-arg PROJECT=api --build-arg AMBIENTE=dev --progress=plain .
 ````
 ````shell
-docker tag clinica-api:v1.0.12 douglaseleuterioferreira/apps:clinica-api-v1.0.12
+docker tag clinica-api:v1.0.13 douglaseleuterioferreira/apps:clinica-api-v1.0.13
 ````
 ### Enviar Dockerhub
 ````shell
-docker push douglaseleuterioferreira/apps:clinica-api-v1.0.12
+docker push douglaseleuterioferreira/apps:clinica-api-v1.0.13
 ````
 
 ### Edição de Pagamentos
@@ -55,7 +55,7 @@ Re-enter new password: Skia@#Nn89s
 
 Enter source keystore password: Skia@#Nn89s
 
-Enter key password for <clinicaapi>: Fox789789@!@!
+Enter key password for <clinicaapi>: Skia@#Nn89s
 
 Import command completed:  1 entries successfully imported, 0 entries failed or cancelled
 
@@ -73,3 +73,8 @@ keytool -export -keystore clinicaapi.p12 -alias clinicaapi -file clinicaapi.crt
 Enter keystore password: Skia@#Nn89s
 
 Será exportado para o path do terminal o arquivo clinicaapi.crt
+
+
+### Importar certificado .crt para cacerts
+### Para importação no container, foi realizado na construção da imagem, no arquivo Dockerfile.
+keytool -importcert -file clinicaapi.crt -alias clinicaapi -keystore "C:\Program Files\Java\jdk-17\lib\security\cacerts"
