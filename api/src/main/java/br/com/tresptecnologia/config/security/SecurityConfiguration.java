@@ -63,11 +63,7 @@ public class SecurityConfiguration {
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
                 .exceptionHandling()
                 .accessDeniedHandler(baseAccessDeniedHandler);
-        //Redirecionamento para HTTPS
-        http.requiresChannel(channel -> channel.anyRequest().requiresSecure())
-                .authorizeHttpRequests(authorize ->
-                        authorize.anyRequest().permitAll())
-                .build();
+
         return http.build();
     }
 
