@@ -222,6 +222,14 @@
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
+                <includes>
+                    <include>**/*.p12</include>
+                    <include>**/*.pem</include>
+                    <include>**/*.jks</include>
+                    <include>**/*.crt</include>
+                    <include>**/*.properties</include>
+                    <include>**/*.*</include>
+                </includes>
                 <excludes>
                     <exclude>message.properties</exclude>
                 </excludes>
@@ -237,15 +245,25 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>3.2.0</version>
+                <version>3.1.0</version>
                 <configuration>
                     <propertiesEncoding>ISO-8859-1</propertiesEncoding>
                     <nonFilteredFileExtensions>
                         <nonFilteredFileExtension>jasper</nonFilteredFileExtension>
                         <nonFilteredFileExtension>jrxml</nonFilteredFileExtension>
                         <nonFilteredFileExtension>sql</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>pem</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>p12</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>jks</nonFilteredFileExtension>
                     </nonFilteredFileExtensions>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.shared</groupId>
+                        <artifactId>maven-filtering</artifactId>
+                        <version>3.1.1</version>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
