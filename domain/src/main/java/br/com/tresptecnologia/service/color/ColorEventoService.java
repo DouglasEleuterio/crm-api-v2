@@ -43,4 +43,8 @@ public class ColorEventoService implements IColorEventoService {
             default -> "#edf2f4";
         };
     }
+
+    public String getColorPreAgendamento() {
+        return "#8d99ae";
+    }
 }

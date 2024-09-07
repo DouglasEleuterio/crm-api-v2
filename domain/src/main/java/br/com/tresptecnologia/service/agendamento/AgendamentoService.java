@@ -77,7 +77,7 @@ public class AgendamentoService extends BaseActiveService<Agendamento> implement
                         .title(p.getProcedimento().concat(" - ").concat(p.getNome()).concat(" - ").concat(clienteService.findById(p.getAquisicao().getCliente().getId()).getNome()))
                         .start(ultimoAgendamento)
                         .end(ultimoAgendamento.plusMinutes(Objects.isNull(duracao) ? 15L : duracao))
-                        .backgroundColor("#8d99ae")
+                        .backgroundColor(colorEventoService.getColorPreAgendamento())
                         .confirmado(false)
                         .aquisicaoProcedimento(p)
                         .build();
@@ -92,8 +92,10 @@ public class AgendamentoService extends BaseActiveService<Agendamento> implement
     public void cancelarAgendamento(Long id) throws DomainException {
         var agendamento = findById(id);
         var evento = (Evento) agendamentoMapper.toEvento(agendamento);
+        evento.setSituacao(agendamento.getSituacao());
+        evento.setDataCriacao(agendamento.getDataCriacao());
         evento.setDataAtualizacao(LocalDateTime.now());
-        evento.setBackgroundColor(colorEventoService.getColorByProcedimento(agendamento.getTitle()));
+        evento.setBackgroundColor(colorEventoService.getColorPreAgendamento());
         evento.setConfirmado(false);
         eventoRepository.save(evento);
         getRepository().delete(agendamento);
