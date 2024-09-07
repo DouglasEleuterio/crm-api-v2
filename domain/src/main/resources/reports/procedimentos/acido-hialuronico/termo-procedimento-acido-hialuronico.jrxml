@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.19.0.final using JasperReports Library version 6.19.0-646c68931cebf1a58bc65c4359d1f0ca223c5e94  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="termo-procedimento-acido-hialuronico" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ee020c38-852f-4309-adc0-f9d17060d297">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter"/>
+	<parameter name="BASEREPORT_DIR" class="java.lang.String"/>
+	<parameter name="identificacao_paciente_subreport" class="java.lang.String"/>
+	<parameter name="pacienteNome" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Não informado"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="paciente" class="br.com.tresptecnologia.entity.cliente.Cliente"/>
+	<parameter name="pacienteDataNascimento" class="java.util.Date"/>
+	<parameter name="pacienteCPF" class="java.lang.String"/>
+	<parameter name="pacienteRg" class="java.lang.String"/>
+	<parameter name="pacienteTelefone" class="java.lang.String"/>
+	<parameter name="pacienteEndereco" class="java.lang.String"/>
+	<parameter name="cidadeClinica" class="java.lang.String"/>
+	<parameter name="dia" class="java.lang.String"/>
+	<parameter name="mes" class="java.lang.String"/>
+	<parameter name="ano" class="java.lang.String"/>
+	<detail>
+		<band height="802">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="50" y="0" width="440" height="40" uuid="4675c329-9f45-4b1b-bea4-247642d9ce4d"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[TERMO DE CONSENTIMENTO PARA REALIZAÇÃO DO PROCEDIMENTO PREENCHIMENTO COM ÁCIDO HIALURÔNICO]]></text>
+			</staticText>
+			<subreport>
+				<reportElement stretchType="ContainerHeight" isPrintRepeatedValues="false" x="0" y="40" width="550" height="80" uuid="d98f1f6d-015d-4c33-9a6c-00703bfb454f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<subreportParameter name="pacienteNome">
+					<subreportParameterExpression><![CDATA[$P{pacienteNome}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="pacienteDataNascimento">
+					<subreportParameterExpression><![CDATA[$P{pacienteDataNascimento}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="pacienteCPF">
+					<subreportParameterExpression><![CDATA[$P{pacienteCPF}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="pacienteRg">
+					<subreportParameterExpression><![CDATA[$P{pacienteRg}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="pacienteTelefone">
+					<subreportParameterExpression><![CDATA[$P{pacienteTelefone}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="pacienteEndereco">
+					<subreportParameterExpression><![CDATA[$P{pacienteEndereco}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{BASEREPORT_DIR}.concat("identificacao-paciente-subreport.jasper")]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement x="140" y="129" width="234" height="30" uuid="6418ec57-e0f5-4301-b542-ee1b64f84993"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[SOBRE O PROCEDIMENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="7" y="152" width="540" height="385" uuid="98f55e36-eb54-4629-ab9a-fbcc1137570f"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[	O preenchimento com ácido hialurônico é o mais famoso e indicado para corrigir rugas, sulcos nasogenianos (bigode chinês), comissura labial, glabela, aumento dos lábios, preenchimento de áreas além 
+de promover hidratação.
+
+	A substância tem efeito PREENCHEDOR não sendo eficaz para qualquer outra finalidade que não seja preencher. 
+
+	O preenchimento com o ácido hialurônico não é definitivo, durando entre 6 a 14 meses). Para fazer 
+a aplicação são utilizadas agulhas, cânulas, sendo necessária também a aplicação de anestesia para evitar 
+dores durante a realização do procedimento.
+
+	Para injetar o produto no local ideal, em alguns casos será necessário o descolamento de pele com 
+uso de cânulas, rompimento de fibras e furos.
+
+	O efeito é temporário e a duração do tratamento depende da região a ser tratada. De uma maneira 
+geral, a visualização do resultado do procedimento pode ser vista entre 4 e 21 dias.
+
+	A quantidade de produto varia de acordo com cada paciente, devendo ser realizada uma análise 
+prévia para calculo de quantidade indicada.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="164" y="537" width="230" height="23" uuid="760312b6-f694-4b91-9fed-9aa6d06069d9"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[LOCAL DE TRATAMENTO]]></text>
+			</staticText>
+			<image>
+				<reportElement x="7" y="552" width="540" height="250" uuid="2c99aaef-49f5-4516-aca7-d98bbd2e7e4c"/>
+				<box leftPadding="70"/>
+				<imageExpression><![CDATA["imagem-acido.png"]]></imageExpression>
+			</image>
+			<break>
+				<reportElement x="0" y="794" width="490" height="1" uuid="48edd426-5043-4a36-8429-e8a3f5625a7f"/>
+			</break>
+		</band>
+		<band height="752">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="115" y="-4" width="340" height="20" uuid="eda761ac-5a6a-4b51-babd-d17dcccf8568"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[DO ACEITE PARA REALIZAÇÃO DO PROCEDIMENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="7" y="20" width="540" height="440" uuid="7d45005d-41a2-4b37-ba9e-667496c55ee9"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[	Como paciente, estou ciente dos benefícios reais do ácido hialurônico e declaro não esperar resultados além dos desejados, levando em consideração que o produto age de forma preenchedora e hidratante, apenas.
+
+	Declaro ciência em saber a forma que o procedimento será realizado, bem como declaro não enfrentar fobias ou reações pós-traumáticas com uso de agulhas ou quaisquer equipamentos a serem utilizados.
+
+	Declaro não possuir compromissos que dependam da minha imagem nos próximos 7 dias, considerando que meu rosto poderá apresentar edemas e hematomas esperadas pela aplicação dos produtos.
+
+	Comprometo-me a seguir todas as orientações e a fazer uso de todos os produtos contidos em minha prescrição domiciliar, recebidos por escrito ao final do(s) procedimento(s), respeitando os horários indicados de utilização, isentando neste ato os profissionais envolvidos no(s) procedimento(s), nas hipóteses de minha culpa exclusiva. Registro também, que neste ato, recebi por escrito, todas as instruções pós-evento que devo seguir, visando obter o melhor resultado possível, bem como tenho ciência de que o resultado está subordinado ao meu comportamento e disciplina após o(s) procedimento(s) estético(s).
+
+	Expresso minha concordância e espontânea vontade em funcionar como paciente, assumindo a responsabilidade e os riscos pelos eventuais efeitos indesejáveis decorrentes de alguma omissão ou informação distorcida na avaliação clínica, entendendo também que estes resultados x não trarão responsabilidades ao responsável pela realização do procedimento.
+
+
+	Assim, o faço por livre e espontânea vontade e por decisão consentida e orientada.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="50" y="500" width="440" height="17" uuid="979799fc-ea7b-4295-a285-a51d09df7c1c"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="12" isItalic="false" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cidadeClinica}.concat(", ").concat($P{dia}).concat(" de ").concat($P{mes}).concat(" de ").concat($P{ano})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="50" y="534" width="440" height="30" uuid="a6868ea3-02a2-4105-b120-0c2511006f07"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Paciente:________________________________________________________]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="50" y="555" width="440" height="30" uuid="76c907d1-caf8-41b1-ab12-29ce6d1e7989"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{pacienteNome}]]></textFieldExpression>
+			</textField>
+			<break>
+				<reportElement x="0" y="615" width="546" height="1" uuid="869e70f0-95d5-4dfc-8664-c9906adf145a"/>
+			</break>
+		</band>
+		<band height="681">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="115" y="1" width="340" height="20" uuid="7ca2c42a-e726-459a-8b9c-7b99d2ba8144"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isItalic="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[TERMO DE RESPONSABILIDADE PÓS PROCEDIMENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="115" y="21" width="340" height="20" uuid="416c81a9-4c47-452d-af6d-a99e3a77da01"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isItalic="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Preenchimento com ácido hialurônico]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="40" width="540" height="640" uuid="474b95cd-9fae-4986-b920-4e63e183bcd6"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Declaro que li e entendi todas as informações deste documento.
+
+Tenho consciência de que o bom resultado final também depende de mim, comprometendo-me a seguir, rigorosamente, todos os cuidados prescritos pelo profissional nas orientações pós-procedimento e tomando as medicações prescritas (caso tenham indicado), assim como o retorno para consulta de avaliação clínica, caso tenha necessidade.
+
+Declaro não possuir nenhuma das contraindicações e entregar as informações corretas no momento da anamnese. 
+
+Declaro ciência sobre os resultados dependerem do meu organismo, entendendo que qualquer reação não esperada, que seja causada exclusivamente pelo meu organismo e não por lesão provocada, se tratam de dano iatrogênico e não caberá ao profissional responsabilidade sobre o resultado. Além disso, entendo que não é possível prever a forma que a toxina agirá em meu organismo, entendendo que os resultados são esperados, e não garantidos.
+
+Declaro a ciência da necessidade em avisar ao profissional toda reação pós procedimento que não seja esperada ou desejada para que o mesmo possa verificar necessidade de acompanhamento médico ou não, entendendo que caberá ao profissional responsável pelo procedimento, ou outro profissional de confiança deste para analisar o caso como minha primeira opção.
+
+Me comprometo que, em caso de intercorrência, buscarei auxilio do profissional responsável pelo procedimento e caso necessário, terei acompanhamento em médico indicado.
+
+Declaro me comprometer com as informações abaixo:
+
+•	As contraindicações são: 
+	o	gravidez, 
+	o	lactação, 
+	o	doenças autoimunes, 
+	o	imunodepressão,
+	o	alergia aos componentes da injeção.
+
+•	Nos locais ou pontos de aplicação podem aparecer pequenas marcas transitórias, enrijecimento da pele, hematomas, eritemas (vermelhidão), inflamações ou reações não desejadas. Esses eventos geralmente são transitórios e totalmente reversíveis.
+
+•	Sensações como dor de cabeça podem ocorrer após a aplicação, porém tende a ser de intensidade leve. Essa sensação pode estar relacionada com trauma da injeção, ao estado de ansiedade, antes, durante e depois do procedimento. Estes sintomas costumam ter regressão espontânea.
+]]></text>
+			</staticText>
+			<break>
+				<reportElement x="0" y="680" width="545" height="1" uuid="98b7b958-9a85-40a9-9f6c-0569eb4e0758"/>
+			</break>
+		</band>
+		<band height="641">
+			<staticText>
+				<reportElement x="20" y="1" width="540" height="640" uuid="e157193a-26e4-46a2-8dae-b08ae5bf0e10"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[•	Tendo conhecimento que os resultados não são definitivos, o tempo médio de duração é variável para cada região.
+•	Condições prévias de pele e músculos da face, cirurgia, tratamento anteriores, exposição ao Sol, tabagismo e medicações, são fatores que podem alterar os resultados desejados. As injeções de aplicações poderão ser repetidas após alguns meses, obtendo-se novo período de melhora dos sintomas. A cada repetição, haverá novo custo ao paciente, que poderá ser diferente da aplicação anterior.
+•	Não massagear a área tratada por no mínimo 6 horas. Após esse período, o paciente poderá realizar limpeza suave e aplicar filtro solar para prevenir o aparecimento de manchas na região;
+•	Caso seja indicado, o paciente deverá realizar massagens no local durante período informado pelo profissional, considerando o período mínimo de 6 horas para que o produto não saia do local;
+•	Não abaixar a cabeça e não deitar durante 4 horas;
+•	Evitar alimentos quentes;
+•	Evitar Sol, exercícios físicos e cremes de 3 a 4 dias;
+•	Fazer compressa gelada no local, nas primeiras 48 horas;
+•	Caso ocorram hematomas na região das aplicações, colocar compressa de água morna após 72 horas;
+•	Poderá dirigir e retornar ao trabalho imediatamente, sem necessidade de repouso absoluto;
+•	Não dormir debruçado, usar travesseiro para apoiar a cabeça. (Travesseiro de avião, que circula o pescoço);
+•	Não fazer limpeza de pele (com produtos químicos) por 30 dias;
+•	Evitar pancadas, pressões e esticamento do local de aplicação por no mínimo 3 dias, em razão da possibilidade de deslocamento do produto;
+•	Não ingerir álcool no dia da realização, sendo antes ou depois do procedimento;
+•	Realizar o uso dos medicamentos indicados, podendo ser em comprimido ou pomada;
+•	Para que o produto tenha duração adequada, recomenda-se ingestão de no mínimo 2 litros de água por dia.
+
+Sendo assim, após a leitura completa deste documento, assino firmando meu compromisso no que for cabível e consentimento para tal procedimento.
+]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="50" y="556" width="440" height="30" uuid="7eeceb95-578a-4edf-9112-2c3eca40e41f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{pacienteNome}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="50" y="534" width="440" height="30" uuid="a69dd45a-f106-4856-ad5e-71d8591eec87"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Paciente:________________________________________________________]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="50" y="500" width="440" height="17" uuid="1980efa8-ebc8-4430-8319-abae2c785491"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="12" isItalic="false" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cidadeClinica}.concat(", ").concat($P{dia}).concat(" de ").concat($P{mes}).concat(" de ").concat($P{ano})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="50" y="610" width="440" height="30" uuid="eff3b53b-44e6-41a7-9ae5-3941da4aba58"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Profissional Responsável:________________________________________________________]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>
