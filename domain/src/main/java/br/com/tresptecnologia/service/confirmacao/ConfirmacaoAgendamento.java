@@ -5,6 +5,7 @@ import br.com.tresptecnologia.entity.Agendamento;
 import br.com.tresptecnologia.model.agendamento.AgendamentoMapperImpl;
 import br.com.tresptecnologia.model.confirmar.ConfirmacaoAgendamentoRequest;
 import br.com.tresptecnologia.service.agendamento.AgendamentoService;
+import br.com.tresptecnologia.service.color.ColorEventoService;
 import br.com.tresptecnologia.service.evento.EventoService;
 import br.com.tresptecnologia.service.profissional.ProfissionalService;
 import org.springframework.stereotype.Service;
@@ -19,12 +20,14 @@ public class ConfirmacaoAgendamento implements IConfirmacaoAgendamento {
     private final ProfissionalService profissionalService;
     private final AgendamentoMapperImpl agendamentoMapperImpl;
     private final AgendamentoService agendamentoService;
+    private final ColorEventoService colorEventoService;
 
-    public ConfirmacaoAgendamento(EventoService eventoService, ProfissionalService profissionalService, AgendamentoMapperImpl agendamentoMapperImpl, AgendamentoService agendamentoService) {
+    public ConfirmacaoAgendamento(EventoService eventoService, ProfissionalService profissionalService, AgendamentoMapperImpl agendamentoMapperImpl, AgendamentoService agendamentoService, ColorEventoService colorEventoService) {
         this.eventoService = eventoService;
         this.profissionalService = profissionalService;
         this.agendamentoMapperImpl = agendamentoMapperImpl;
         this.agendamentoService = agendamentoService;
+        this.colorEventoService = colorEventoService;
     }
 
     @Override
@@ -38,6 +41,7 @@ public class ConfirmacaoAgendamento implements IConfirmacaoAgendamento {
         var agendamento = (Agendamento) agendamentoMapperImpl.toAgendamento(eventoEntity);
         agendamento.setDataCriacao(eventoEntity.getDataCriacao());
         agendamento.setSituacao(eventoEntity.getSituacao());
+        agendamento.setBackgroundColor(colorEventoService.getColorByProcedimento(agendamento.getTitle()));
         agendamento.setDataAtualizacao(LocalDateTime.now());
         agendamentoService.create(agendamento);
         eventoService.delete(evento);

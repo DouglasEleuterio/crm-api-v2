@@ -1,11 +1,11 @@
 package br.com.tresptecnologia.core.jpa.mapper.impl;
 
 import br.com.tresptecnologia.core.jpa.mapper.JsonMapper;
+import br.com.tresptecnologia.core.jpa.mapper.JsonMapperConfig;
 import br.com.tresptecnologia.core.jpa.mapper.Row;
 import br.com.tresptecnologia.core.jpa.mapper.exception.JsonMapperException;
 import br.com.tresptecnologia.core.jpa.mapper.impl.model.ObjectIdentifier;
 import br.com.tresptecnologia.core.jpa.mapper.impl.model.ObjectRoot;
-import br.com.tresptecnologia.core.jpa.mapper.JsonMapperConfig;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

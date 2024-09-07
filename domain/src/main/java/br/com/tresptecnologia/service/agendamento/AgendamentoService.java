@@ -13,10 +13,8 @@ import br.com.tresptecnologia.repository.AgendamentoRepository;
 import br.com.tresptecnologia.repository.evento.EventoRepository;
 import br.com.tresptecnologia.service.cliente.ClienteService;
 import br.com.tresptecnologia.service.color.ColorEventoService;
-import br.com.tresptecnologia.service.evento.EventoService;
 import br.com.tresptecnologia.service.profissional.ProfissionalService;
 import br.com.tresptecnologia.service.regiao.RegiaoService;
-import jdk.jfr.Event;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,8 +30,6 @@ public class AgendamentoService extends BaseActiveService<Agendamento> implement
     private final RegiaoService regiaoService;
     private final ClienteService clienteService;
     private final JsonMapper jsonMapper;
-    private final AgendamentoMapperImpl agendamentoMapperImpl;
-    private final EventoService eventoService;
     private final EventoRepository eventoRepository;
     private final AgendamentoMapperImpl agendamentoMapper;
     private final ProfissionalService profissionalService;
@@ -42,14 +38,16 @@ public class AgendamentoService extends BaseActiveService<Agendamento> implement
     public AgendamentoService(final AgendamentoRepository repository,
                               final ColorEventoService colorEventoService,
                               final RegiaoService regiaoService,
-                              final ClienteService clienteService, JsonMapper jsonMapper, AgendamentoMapperImpl agendamentoMapperImpl, EventoService eventoService, EventoRepository eventoRepository, AgendamentoMapperImpl agendamentoMapper, ProfissionalService profissionalService) {
+                              final ClienteService clienteService,
+                              final JsonMapper jsonMapper,
+                              final EventoRepository eventoRepository,
+                              final AgendamentoMapperImpl agendamentoMapper,
+                              final ProfissionalService profissionalService) {
         super(repository);
         this.colorEventoService = colorEventoService;
         this.regiaoService = regiaoService;
         this.clienteService = clienteService;
         this.jsonMapper = jsonMapper;
-        this.agendamentoMapperImpl = agendamentoMapperImpl;
-        this.eventoService = eventoService;
         this.eventoRepository = eventoRepository;
         this.agendamentoMapper = agendamentoMapper;
         this.profissionalService = profissionalService;
@@ -93,12 +91,10 @@ public class AgendamentoService extends BaseActiveService<Agendamento> implement
     @Transactional(rollbackFor = Exception.class)
     public void cancelarAgendamento(Long id) throws DomainException {
         var agendamento = findById(id);
-        agendamento.setConfirmado(false);
-        agendamento.setBackgroundColor("#8d99ae");
         var evento = (Evento) agendamentoMapper.toEvento(agendamento);
-        evento.setSituacao(agendamento.getSituacao());
-        evento.setDataCriacao(agendamento.getDataCriacao());
         evento.setDataAtualizacao(LocalDateTime.now());
+        evento.setBackgroundColor(colorEventoService.getColorByProcedimento(agendamento.getTitle()));
+        evento.setConfirmado(false);
         eventoRepository.save(evento);
         getRepository().delete(agendamento);
     }
@@ -110,18 +106,15 @@ public class AgendamentoService extends BaseActiveService<Agendamento> implement
         agendamento.setDataAtualizacao(LocalDateTime.now());
         agendamento.setStart(confirmacao.getDataInicio());
         agendamento.setEnd(confirmacao.getDataFim());
+        agendamento.setBackgroundColor(colorEventoService.getColorByProcedimento(agendamento.getTitle()));
         agendamento.setProfissional(profissionalService.findById(confirmacao.getProfissional().getId()));
         getRepository().save(agendamento);
     }
 
     @Override
     public Agendamento update(Long id, Agendamento updateT) throws DomainException {
-        var oldEvento = findById(id);
-        oldEvento.setStart(updateT.getAllDay() ? updateT.getStart().withHour(0) : updateT.getStart().minusHours(3)); //Front está incrementando 3 horas na edição
-        oldEvento.setEnd(updateT.getAllDay() ? updateT.getStart().withHour(23) : updateT.getEnd().minusHours(3));//Front está incrementando 3 horas na edição
-        oldEvento.setConfirmado(true);
-        oldEvento.setBackgroundColor(colorEventoService.getColorByProcedimento(oldEvento.getAquisicaoProcedimento().getProcedimento()));
-        return super.update(id, oldEvento);
+        updateT.setBackgroundColor(colorEventoService.getColorByProcedimento(updateT.getAquisicaoProcedimento().getProcedimento()));
+        return super.update(id, updateT);
     }
 
     private LocalDateTime alterarSeFinalSemana(LocalDateTime ultimoAgendamento) {

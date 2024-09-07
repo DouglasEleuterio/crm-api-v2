@@ -1,7 +1,6 @@
 package br.com.tresptecnologia.core.exporter.provider;
 
 
-import br.com.tresptecnologia.core.exporter.exception.ExporterException;
 import br.com.tresptecnologia.core.exporter.ExporterColumn;
 import br.com.tresptecnologia.core.exporter.ExporterConfig;
 import br.com.tresptecnologia.core.exporter.ExporterData;
@@ -9,6 +8,7 @@ import br.com.tresptecnologia.core.exporter.ExporterType;
 import br.com.tresptecnologia.core.exporter.IExporterPagination;
 import br.com.tresptecnologia.core.exporter.IExporterProviderService;
 import br.com.tresptecnologia.core.exporter.IExporterValue;
+import br.com.tresptecnologia.core.exporter.exception.ExporterException;
 import br.com.tresptecnologia.core.exporter.format.ExporterValueFormatFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SequenceWriter;

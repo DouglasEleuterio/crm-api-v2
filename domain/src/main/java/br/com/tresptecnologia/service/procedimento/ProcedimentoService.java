@@ -28,12 +28,16 @@ public class ProcedimentoService extends BaseActiveService<Procedimento> impleme
 
     private final JsonMapper jsonMapper;
     private final HistoricoRepository historicoRepository;
-    ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper;
 
-    protected ProcedimentoService(BaseRepository<Procedimento> repository, JsonMapper jsonMapper, HistoricoRepository historicoRepository) {
+    protected ProcedimentoService(final BaseRepository<Procedimento> repository,
+                                  final JsonMapper jsonMapper,
+                                  final HistoricoRepository historicoRepository,
+                                  final ObjectMapper objectMapper) {
         super(repository);
         this.historicoRepository = historicoRepository;
         this.jsonMapper = jsonMapper;
+        this.objectMapper = objectMapper;
     }
 
     @Override
@@ -50,7 +54,6 @@ public class ProcedimentoService extends BaseActiveService<Procedimento> impleme
         try {
             JavaTimeModule javaTimeModule = new JavaTimeModule();
             javaTimeModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS")));
-            objectMapper.registerModule(new JavaTimeModule());
             var newJson = objectMapper.writeValueAsString(updateT);
             var oldJson = objectMapper.writeValueAsString(oldOjb);
             var auditoriaAtual = Auditoria.builder()

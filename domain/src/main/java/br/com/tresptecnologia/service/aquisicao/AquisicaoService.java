@@ -11,7 +11,6 @@ import br.com.tresptecnologia.repository.aquisicao.AquisicaoProcedimentoReposito
 import br.com.tresptecnologia.repository.aquisicao.AquisicaoRepository;
 import br.com.tresptecnologia.repository.pagamento.PagamentoRepository;
 import br.com.tresptecnologia.service.evento.EventoService;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,18 +26,17 @@ public class AquisicaoService extends BaseActiveService<Aquisicao> implements IA
     private final PagamentoRepository pagamentoRepository;
     private final EventoService eventoService;
 
-    ObjectMapper objectMapper = new ObjectMapper();
-
-    protected AquisicaoService(final BaseRepository<Aquisicao> repository, JsonMapper jsonMapper,
+    protected AquisicaoService(final BaseRepository<Aquisicao> repository,
+                               final JsonMapper jsonMapper,
                                final AquisicaoRepository aquisicaoRepository,
                                final AquisicaoProcedimentoRepository aquisicaoProcedimentoRepository,
-                               final PagamentoRepository pagamentoRepository, EventoService eventoService) {
+                               final PagamentoRepository pagamentoRepository,
+                               final EventoService eventoService) {
         super(repository);
         this.jsonMapper = jsonMapper;
         this.aquisicaoRepository = aquisicaoRepository;
         this.aquisicaoProcedimentoRepository = aquisicaoProcedimentoRepository;
         this.pagamentoRepository = pagamentoRepository;
-        this.objectMapper.findAndRegisterModules();
         this.eventoService = eventoService;
     }
 

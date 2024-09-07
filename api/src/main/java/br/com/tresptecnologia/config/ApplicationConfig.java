@@ -11,6 +11,9 @@ import br.com.tresptecnologia.service.auth.IOAuthLogoutStrategy;
 import br.com.tresptecnologia.service.auth.logout.OAuthLogoutKeycloakStrategy;
 import br.com.tresptecnologia.service.storage.IStorageService;
 import br.com.tresptecnologia.service.storage.MinioStorageService;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import io.minio.MinioClient;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -18,6 +21,7 @@ import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 import io.swagger.v3.oas.models.servers.Server;
+import jakarta.annotation.PostConstruct;
 import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
@@ -28,7 +32,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.TimeZone;
 
 @Configuration
 public class ApplicationConfig {
@@ -44,6 +52,23 @@ public class ApplicationConfig {
         this.applicationProperties = applicationProperties;
         this.baseResponseCustomizer = baseResponseCustomizer;
         this.schemaStoreSingleton = schemaStoreSingleton;
+    }
+
+    @PostConstruct
+    public void init() {
+        TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+    }
+
+    @Bean
+    public ObjectMapper objectMapper() {
+        final ObjectMapper objectMapper = new ObjectMapper();
+        var dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'").withZone(ZoneOffset.UTC);
+        JavaTimeModule javaTimeModule = new JavaTimeModule();
+        javaTimeModule.addSerializer(LocalDateTime.class,
+                new LocalDateTimeSerializer(dateFormat));
+        objectMapper.registerModule(javaTimeModule);
+        objectMapper.setTimeZone(TimeZone.getTimeZone("UTC"));
+        return objectMapper;
     }
 
     @Bean

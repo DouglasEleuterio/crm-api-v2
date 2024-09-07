@@ -12,21 +12,16 @@ import br.com.tresptecnologia.entity.historico.EEvento;
 import br.com.tresptecnologia.entity.historico.ESituacaoRegistro;
 import br.com.tresptecnologia.entity.historico.ETipoEntidade;
 import br.com.tresptecnologia.entity.historico.Historico;
-import br.com.tresptecnologia.model.cliente.ClienteMapper;
-import br.com.tresptecnologia.model.cliente.ClienteMapperImpl;
 import br.com.tresptecnologia.repository.cliente.ClienteRepository;
 import br.com.tresptecnologia.repository.historico.HistoricoRepository;
 import br.com.tresptecnologia.service.cidade.CidadeService;
 import br.com.tresptecnologia.service.endereco.IEnderecoService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
 import java.util.Optional;
 
@@ -39,20 +34,18 @@ public class ClienteService extends BaseActiveService<Cliente> implements IClien
     private final HistoricoRepository historicoRepository;
     private final CidadeService cidadeService;
     private final ClienteRepository clienteRepository;
-    ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper;
 
     protected ClienteService(BaseRepository<Cliente> repository,
                              IEnderecoService enderecoService,
                              JsonMapper jsonMapper,
                              HistoricoRepository historicoRepository,
                              CidadeService cidadeService,
-                             ClienteRepository clienteRepository) {
+                             ClienteRepository clienteRepository, ObjectMapper objectMapper) {
         super(repository);
-        JavaTimeModule javaTimeModule = new JavaTimeModule();
-        javaTimeModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS")));
+        this.objectMapper = objectMapper;
         this.enderecoService = enderecoService;
         this.historicoRepository = historicoRepository;
-        objectMapper.registerModule(javaTimeModule);
         this.jsonMapper = jsonMapper;
         this.cidadeService = cidadeService;
         this.clienteRepository = clienteRepository;
