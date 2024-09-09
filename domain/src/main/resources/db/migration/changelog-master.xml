@@ -25,4 +25,6 @@
     <include file="/db/migration/changes/20240803-1-add-evento.sql"/>
     <include file="/db/migration/changes/20240805-1-add-profissional.sql"/>
     <include file="/db/migration/changes/20240902-1-add-agendamento.sql"/>
+    <include file="/db/migration/changes/20240908-1-add-documento.sql"/>
+    <include file="/db/migration/changes/20240908-2-add-termo.sql"/>
 </databaseChangeLog>
