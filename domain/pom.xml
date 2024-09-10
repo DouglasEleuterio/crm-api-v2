@@ -17,8 +17,10 @@
     <description>Domínio do projeto (modelos, entidades, repositórios e serviços)</description>
 
     <properties>
-<!--        <sonar.projectKey>TREMT.Diarias.Backend.Domain</sonar.projectKey>-->
-<!--        <sonar.projectName>TREMT.Diarias.Backend.Domain</sonar.projectName>-->
+        <!--        <sonar.projectKey>TREMT.Diarias.Backend.Domain</sonar.projectKey>-->
+        <!--        <sonar.projectName>TREMT.Diarias.Backend.Domain</sonar.projectName>-->
+        <!-- Define the version of OPEN HTML TO PDF in the properties section of your POM. -->
+        <openhtml.version>1.0.11</openhtml.version>
     </properties>
 
     <dependencies>
@@ -98,7 +100,7 @@
             <artifactId>jackson-dataformat-csv</artifactId>
             <version>2.14.2</version>
         </dependency>
-<!--        Conversor XML        -->
+        <!--        Conversor XML        -->
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-xml</artifactId>
@@ -193,7 +195,7 @@
             <version>1.13.0</version>
             <optional>true</optional>
         </dependency>
-<!--        RabbitMQ -->
+        <!--        RabbitMQ -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
@@ -212,6 +214,35 @@
             <groupId>io.minio</groupId>
             <artifactId>minio</artifactId>
             <version>8.4.3</version>
+        </dependency>
+
+        <dependency>
+            <!-- ALWAYS required, usually included transitively. -->
+            <groupId>com.openhtmltopdf</groupId>
+            <artifactId>openhtmltopdf-core</artifactId>
+            <version>${openhtml.version}</version>
+        </dependency>
+
+        <dependency>
+            <!-- Required for PDF output. -->
+            <groupId>com.openhtmltopdf</groupId>
+            <artifactId>openhtmltopdf-pdfbox</artifactId>
+            <version>${openhtml.version}</version>
+        </dependency>
+
+        <dependency>
+            <!-- Required for image output only. -->
+            <groupId>com.openhtmltopdf</groupId>
+            <artifactId>openhtmltopdf-java2d</artifactId>
+            <version>${openhtml.version}</version>
+        </dependency>
+
+        <dependency>
+            <!-- Optional, leave out if you do not need MathML support. -->
+            <!-- Introduced in RC-13. -->
+            <groupId>com.openhtmltopdf</groupId>
+            <artifactId>openhtmltopdf-mathml-support</artifactId>
+            <version>${openhtml.version}</version>
         </dependency>
 
     </dependencies>
