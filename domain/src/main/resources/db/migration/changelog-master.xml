@@ -27,4 +27,5 @@
     <include file="/db/migration/changes/20240902-1-add-agendamento.sql"/>
     <include file="/db/migration/changes/20240908-1-add-documento.sql"/>
     <include file="/db/migration/changes/20240908-2-add-termo.sql"/>
+    <include file="/db/migration/changes/20240913-1-add-atendimento.sql"/>
 </databaseChangeLog>

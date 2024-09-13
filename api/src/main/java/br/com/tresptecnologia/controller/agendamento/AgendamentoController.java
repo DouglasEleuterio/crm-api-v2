@@ -6,7 +6,7 @@ import br.com.tresptecnologia.core.controller.BaseRsqlController;
 import br.com.tresptecnologia.core.exception.DomainException;
 import br.com.tresptecnologia.core.mapper.IBaseMapper;
 import br.com.tresptecnologia.core.service.IBaseService;
-import br.com.tresptecnologia.entity.Agendamento;
+import br.com.tresptecnologia.entity.agendamento.Agendamento;
 import br.com.tresptecnologia.model.agendamento.AgendamentoRequest;
 import br.com.tresptecnologia.model.agendamento.AgendamentoResponse;
 import br.com.tresptecnologia.model.agendamento.AlterarAgendamentoRequest;

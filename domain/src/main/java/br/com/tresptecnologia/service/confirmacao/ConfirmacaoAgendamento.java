@@ -1,7 +1,7 @@
 package br.com.tresptecnologia.service.confirmacao;
 
 import br.com.tresptecnologia.core.exception.DomainException;
-import br.com.tresptecnologia.entity.Agendamento;
+import br.com.tresptecnologia.entity.agendamento.Agendamento;
 import br.com.tresptecnologia.model.agendamento.AgendamentoMapperImpl;
 import br.com.tresptecnologia.model.confirmar.ConfirmacaoAgendamentoRequest;
 import br.com.tresptecnologia.service.agendamento.AgendamentoService;

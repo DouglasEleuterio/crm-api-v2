@@ -1,4 +1,4 @@
-package br.com.tresptecnologia.entity;
+package br.com.tresptecnologia.entity.agendamento;
 
 import br.com.tresptecnologia.core.entity.BaseActiveEntity;
 import br.com.tresptecnologia.entity.aquisicao.AquisicaoProcedimento;

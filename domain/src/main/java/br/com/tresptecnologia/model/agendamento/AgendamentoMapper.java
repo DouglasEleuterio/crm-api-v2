@@ -1,7 +1,7 @@
 package br.com.tresptecnologia.model.agendamento;
 
 import br.com.tresptecnologia.core.mapper.IBaseMapper;
-import br.com.tresptecnologia.entity.Agendamento;
+import br.com.tresptecnologia.entity.agendamento.Agendamento;
 import br.com.tresptecnologia.entity.evento.Evento;
 import org.mapstruct.Mapper;
 
