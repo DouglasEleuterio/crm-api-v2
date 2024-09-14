@@ -35,7 +35,7 @@ public class OpenHtmlToPdfConverterService implements IOpenHtmlToPdfConverterSer
         }
     }
 
-    public static String adicionarEstruturaHtml(String conteudo) {
+    public String adicionarEstruturaHtml(String conteudo) {
         StringBuilder htmlBuilder = new StringBuilder();
 
         htmlBuilder.append("<!DOCTYPE html>\n");
@@ -49,7 +49,7 @@ public class OpenHtmlToPdfConverterService implements IOpenHtmlToPdfConverterSer
         htmlBuilder.append(conteudo); // Adiciona o conteúdo enviado pelo TinyMCE
         htmlBuilder.append("</body>\n");
         htmlBuilder.append("</html>");
-
+        var aaa = criarHtml();
         return htmlBuilder.toString();
     }
 

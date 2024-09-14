@@ -20,7 +20,7 @@
         <!--        <sonar.projectKey>TREMT.Diarias.Backend.Domain</sonar.projectKey>-->
         <!--        <sonar.projectName>TREMT.Diarias.Backend.Domain</sonar.projectName>-->
         <!-- Define the version of OPEN HTML TO PDF in the properties section of your POM. -->
-        <openhtml.version>1.0.11</openhtml.version>
+        <openhtml.version>1.0.10</openhtml.version>
     </properties>
 
     <dependencies>

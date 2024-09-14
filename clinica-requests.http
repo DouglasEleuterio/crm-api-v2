@@ -254,7 +254,7 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJQbmhxSz
 
 ### Conversor de HTML para PDF
 
-GET {{urlLocal}}/converter/generate-pdf?idDocumento=6
+GET {{urlLocal}}/converter/generate-pdf?idDocumento=7
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
@@ -263,5 +263,21 @@ Authorization: Bearer {{token}}
 }
 
 
+### Inserir Atendimento
+POST {{urlLocal}}/atendimento
+Content-Type: application/json
+Authorization: Bearer {{token}}
 
-
+{
+  "data": "2024-01-01T00:50:35Z",
+  "observacao": {
+    "conteudo": "conteudo do html"
+  },
+  "agendamento": {
+    "id": "7"
+  },
+  "profissionais": [
+    {"id": "1"},
+    {"id": "2"}
+  ]
+}

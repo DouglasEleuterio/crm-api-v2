@@ -1,8 +1,8 @@
 package br.com.tresptecnologia.entity.atendimento;
 
 import br.com.tresptecnologia.core.entity.BaseActiveEntity;
-import br.com.tresptecnologia.entity.Arquivo;
 import br.com.tresptecnologia.entity.agendamento.Agendamento;
+import br.com.tresptecnologia.entity.documento.Documento;
 import br.com.tresptecnologia.entity.profissional.Profissional;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -12,8 +12,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
@@ -44,14 +45,16 @@ public class Atendimento extends BaseActiveEntity {
     private LocalDateTime data;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "arquivo_id", foreignKey = @ForeignKey(name = "arquivo_on_atendimento"))
-    private Arquivo observacao;
+    @JoinColumn(name = "documento_id", foreignKey = @ForeignKey(name = "fk_arquivo_on_atendimento"))
+    private Documento observacao;
 
     @ManyToOne
-    @JoinColumn(name = "agendamento_id", foreignKey = @ForeignKey(name = "agendamento_on_atendimento"))
-    private Agendamento agendamentos;
+    @JoinColumn(name = "agendamento_id", foreignKey = @ForeignKey(name = "fk_agendamento_on_atendimento"))
+    private Agendamento agendamento;
 
-    @OneToMany
-    @JoinColumn(name = "profissional_id", foreignKey = @ForeignKey(name = "profissional_on_atendimento"))
+    @ManyToMany
+    @JoinTable(name = "profissional_atendimento",
+            joinColumns = @JoinColumn(name = "atendimento_id", nullable = false, foreignKey = @ForeignKey(name = "fk_atendimento_on_profissional_atendimento")),
+            inverseJoinColumns = @JoinColumn(name = "profissional_id", nullable = false, foreignKey = @ForeignKey(name = "fk_profissional_on_profissional_atendimento")))
     private List<Profissional> profissionais;
 }
