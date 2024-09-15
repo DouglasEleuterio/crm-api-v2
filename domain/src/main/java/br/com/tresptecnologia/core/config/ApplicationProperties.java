@@ -28,7 +28,6 @@ public class ApplicationProperties {
     private String defaultAppName;
     private boolean exibirStacktrace;
     private boolean exibirAutorizacao;
-    private boolean ignorarAutorizacao;
     private String resourceReportFolder;
     private String corsOrigin;
     private boolean debugEmail;
@@ -43,5 +42,5 @@ public class ApplicationProperties {
     public boolean isDev() {
         return "dev".equalsIgnoreCase(env);
     }
-
+    private boolean habilitarAutorizacao;
 }

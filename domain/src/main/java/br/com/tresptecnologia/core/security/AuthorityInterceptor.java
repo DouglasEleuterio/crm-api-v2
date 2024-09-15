@@ -1,7 +1,7 @@
 package br.com.tresptecnologia.core.security;
 
-import br.com.tresptecnologia.core.exception.AuthorityException;
 import br.com.tresptecnologia.core.config.ApplicationProperties;
+import br.com.tresptecnologia.core.exception.AuthorityException;
 import br.com.tresptecnologia.core.message.Message;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.servlet.http.HttpServletRequest;
@@ -46,7 +46,7 @@ public class AuthorityInterceptor implements HandlerInterceptor {
     private boolean isAbleToCheckPermission(@Nonnull Object handler) {
         boolean isHandlerMethod = handler instanceof HandlerMethod;
         return isHandlerMethod && ((HandlerMethod) handler).getMethod().isAnnotationPresent(AuthorityAllowed.class)
-                && !properties.isIgnorarAutorizacao();
+                && properties.isHabilitarAutorizacao();
     }
 
     private void checkPermission(Method method) throws AuthorityException {

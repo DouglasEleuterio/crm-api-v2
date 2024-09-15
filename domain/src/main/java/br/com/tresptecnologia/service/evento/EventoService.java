@@ -48,7 +48,7 @@ public class EventoService extends BaseActiveService<Evento> implements IEventoS
             LocalDateTime ultimoAgendamento = null;
             for (int i = 0; i < p.getQuantidadeSessoes(); i++) {
                 if(Objects.isNull(ultimoAgendamento))
-                    ultimoAgendamento = LocalDateTime.of(p.getAquisicao().getDataAquisicao(), LocalTime.of(8, 0,0)).plusDays(p.getIntervaloEntreSessoes());
+                    ultimoAgendamento = LocalDateTime.of(p.getAquisicao().getDataAquisicao(), LocalTime.of(11, 0,0)).plusDays(p.getIntervaloEntreSessoes());//Setando 11 pois trabalhando com horário UTC e não Zoned
                 else
                     ultimoAgendamento = ultimoAgendamento.plusDays(p.getIntervaloEntreSessoes());
                 ultimoAgendamento = alterarSeFinalSemana(ultimoAgendamento);

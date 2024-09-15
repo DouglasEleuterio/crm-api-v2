@@ -5,6 +5,7 @@ import br.com.tresptecnologia.model.entity.BaseEntityRequest;
 import br.com.tresptecnologia.model.pagamento.PagamentoRequest;
 import br.com.tresptecnologia.shared.validation.Required;
 import br.com.tresptecnologia.shared.validation.RequiredList;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,6 +20,7 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AquisicaoRequest {
 
     private Long id;

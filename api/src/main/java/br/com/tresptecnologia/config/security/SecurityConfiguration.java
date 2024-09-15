@@ -47,7 +47,7 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain filterChain(final HttpSecurity http) throws Exception {
 
-        if (!properties.isIgnorarAutorizacao()) {
+        if (properties.isHabilitarAutorizacao()) {
             final Collection<ApplyAuthority> interfaces = beanFactory.getBeansOfType(ApplyAuthority.class)
                     .values();
             for (final ApplyAuthority applyAuthority : interfaces) {
@@ -58,11 +58,12 @@ public class SecurityConfiguration {
             http.authorizeHttpRequests().anyRequest().permitAll();
         }
 
-        http.authorizeHttpRequests().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
+        http.authorizeHttpRequests()
+                .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and().oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
                 .exceptionHandling()
                 .accessDeniedHandler(baseAccessDeniedHandler);
+        http.csrf().disable();
 
         return http.build();
     }

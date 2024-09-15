@@ -1,6 +1,5 @@
 package br.com.tresptecnologia.model.documento;
 
-import br.com.tresptecnologia.shared.validation.Required;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,6 +14,5 @@ import lombok.Setter;
 public class DocumentoRequest {
 
     private Long id;
-    @Required(label = "documento.conteudo")
     private String conteudo;
 }

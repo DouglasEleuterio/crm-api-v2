@@ -41,8 +41,12 @@ public class Atendimento extends BaseActiveEntity {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "data", nullable = false)
-    private LocalDateTime data;
+
+    @Column(name = "data_inicio", nullable = false)
+    private LocalDateTime dataInicio;
+
+    @Column(name = "data_fim", nullable = false)
+    private LocalDateTime dataFim;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "documento_id", foreignKey = @ForeignKey(name = "fk_arquivo_on_atendimento"))

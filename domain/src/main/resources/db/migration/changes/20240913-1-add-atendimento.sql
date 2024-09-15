@@ -35,3 +35,6 @@ ALTER TABLE profissional_atendimento
 
 ALTER TABLE profissional_atendimento
     ADD CONSTRAINT fk_atendimento_on_profissional_atendimentowYc7HX FOREIGN KEY (profissional_id) REFERENCES profissional (id);
+--changeset douglas.ferreira:edit-atendimento-datas
+ALTER TABLE atendimento ADD data_fim TIMESTAMP default '' NOT NULL;
+ALTER TABLE atendimento rename COLUMN data to data_inicio;
