@@ -4,14 +4,14 @@
 docker login -u douglaseleuterioferreira -p Fox789789@!
 ````
 ````shell
-docker build -t clinica-api:v1.0.15 --build-arg REVISION=1.0.0 --build-arg PROFILE=dev --build-arg PROJECT=api --build-arg AMBIENTE=dev --progress=plain .
+docker build -t clinica-api:v1.0.16 --build-arg REVISION=1.0.0 --build-arg PROFILE=dev --build-arg PROJECT=api --build-arg AMBIENTE=dev --progress=plain .
 ````
 ````shell
-docker tag clinica-api:v1.0.15 douglaseleuterioferreira/apps:clinica-api-v1.0.15
+docker tag clinica-api:v1.0.16 douglaseleuterioferreira/apps:clinica-api-v1.0.16
 ````
 ### Enviar Dockerhub
 ````shell
-docker push douglaseleuterioferreira/apps:clinica-api-v1.0.15
+docker push douglaseleuterioferreira/apps:clinica-api-v1.0.16
 ````
 
 ### Edição de Pagamentos
