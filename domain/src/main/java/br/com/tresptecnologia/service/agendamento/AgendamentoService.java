@@ -98,7 +98,7 @@ public class AgendamentoService extends BaseActiveService<Agendamento> implement
         evento.setBackgroundColor(colorEventoService.getColorPreAgendamento());
         evento.setConfirmado(false);
         eventoRepository.save(evento);
-        getRepository().delete(agendamento);
+        agendamento.setSituacao(false);
     }
 
     @Override

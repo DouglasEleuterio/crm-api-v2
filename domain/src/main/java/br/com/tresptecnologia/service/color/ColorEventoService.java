@@ -2,46 +2,80 @@ package br.com.tresptecnologia.service.color;
 
 import org.springframework.stereotype.Service;
 
+import java.util.Locale;
+
 @Service
 public class ColorEventoService implements IColorEventoService {
 
     @Override
     public String getColorByProcedimento(String titulo) {
-        return switch (titulo) {
-            case "Depilação a Lazer" -> "#0077b6";
-            case "Bioestimulador de colageno" -> "#ffc8dd";
-            case "Botox" -> "#bde0fe";
-            case "Botox Nefertiti" -> "#a2d2ff";
-            case "Laser Lavieen" -> "#ccd5ae";
-            case "Preenchimento" -> "#e9edc9";
-            case "Rinomodelação" -> "#fefae0";
-            case "Botox Fullface" -> "#fb5607";
-            case "Botox sorriso gengival" -> "#d4a373";
-            case "Design" -> "#8ecae6";
-            case "Design com rena" -> "#219ebc";
-            case "Buço na linha" -> "#023047";
-            case "Limpeza de pele comum" -> "#ffb703";
-            case "Limpeza de pele com dermaplaning" -> "#fb8500";
-            case "Dermaplaning" -> "#a3b18a";
-            case "Dermapen" -> "#588157";
-            case "Micropigmentação" -> "#8d99ae";
-            case "Retoque micropigmentação" -> "#ef233c";
-            case "Pelling quimico" -> "#e76f51";
-            case "Aplicação varizes" -> "#f4a261";
-            case "Aplicação de enzimas" -> "#e9c46a";
-            case "Lipo de papada enzimatica" -> "#2a9d8f";
-            case "Massagem modeladora" -> "#264653";
-            case "Massagem relaxante" -> "#a8dadc";
-            case "Massagem drenagem" -> "#936639";
-            case "Massagem para flacidez" -> "#a4ac86";
-            case "Massagem para celulite" -> "#c2c5aa";
-            case "Lift facial" -> "#b6ad90";
-            case "Radiofrequencia" -> "#656d4a";
-            case "Lipocavitação" -> "#3a86ff";
-            case "Cone yndu" -> "#8338ec";
-            case "Sessão detox" -> "#ff006e";
-            default -> "#edf2f4";
-        };
+        titulo = titulo.split("-")[0].trim();
+        if (titulo.equals("Depilação a Lazer")) {
+            return "#0077b6";
+        } else if (titulo.equals("Bioestimulador de colageno")) {
+            return "#ffc8dd";
+        } else if (titulo.equals("Botox")) {
+            return "#bde0fe";
+        } else if (titulo.equals("Botox Nefertiti")) {
+            return "#a2d2ff";
+        } else if (titulo.equals("Laser Lavieen")) {
+            return "#ccd5ae";
+        } else if (titulo.equals("Preenchimento")) {
+            return "#e9edc9";
+        } else if (titulo.equals("Rinomodelação")) {
+            return "#fefae0";
+        } else if (titulo.equals("Botox Fullface")) {
+            return "#fb5607";
+        } else if (titulo.equals("Botox sorriso gengival")) {
+            return "#d4a373";
+        } else if (titulo.equals("Design")) {
+            return "#8ecae6";
+        } else if (titulo.equals("Design com rena")) {
+            return "#219ebc";
+        } else if (titulo.equals("Buço na linha")) {
+            return "#023047";
+        } else if (titulo.equals("Limpeza de pele comum")) {
+            return "#ffb703";
+        } else if (titulo.equals("Limpeza de pele com dermaplaning")) {
+            return "#fb8500";
+        } else if (titulo.equals("Dermaplaning")) {
+            return "#a3b18a";
+        } else if (titulo.equals("Dermapen")) {
+            return "#588157";
+        } else if (titulo.equals("Micropigmentação")) {
+            return "#8d99ae";
+        } else if (titulo.equals("Retoque micropigmentação")) {
+            return "#ef233c";
+        } else if (titulo.equals("Pelling quimico")) {
+            return "#e76f51";
+        } else if (titulo.equals("Aplicação varizes")) {
+            return "#f4a261";
+        } else if (titulo.equals("Aplicação de enzimas")) {
+            return "#e9c46a";
+        } else if (titulo.equals("Lipo de papada enzimatica")) {
+            return "#2a9d8f";
+        } else if (titulo.equals("Massagem modeladora")) {
+            return "#264653";
+        } else if (titulo.equals("Massagem relaxante")) {
+            return "#a8dadc";
+        } else if (titulo.equals("Massagem drenagem")) {
+            return "#936639";
+        } else if (titulo.equals("Massagem para flacidez")) {
+            return "#a4ac86";
+        } else if (titulo.equals("Massagem para celulite")) {
+            return "#c2c5aa";
+        } else if (titulo.equals("Lift facial")) {
+            return "#b6ad90";
+        } else if (titulo.equals("Radiofrequencia")) {
+            return "#656d4a";
+        } else if (titulo.equals("Lipocavitação")) {
+            return "#3a86ff";
+        } else if (titulo.equals("Cone yndu")) {
+            return "#8338ec";
+        } else if (titulo.equals("Sessão detox")) {
+            return "#ff006e";
+        }
+        return "#edf2f4";
     }
 
     public String getColorPreAgendamento() {

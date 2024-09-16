@@ -44,6 +44,6 @@ public class ConfirmacaoAgendamento implements IConfirmacaoAgendamento {
         agendamento.setBackgroundColor(colorEventoService.getColorByProcedimento(agendamento.getTitle()));
         agendamento.setDataAtualizacao(LocalDateTime.now());
         agendamentoService.create(agendamento);
-        eventoService.delete(evento);
+        eventoEntity.setSituacao(false);
     }
 }

@@ -1,6 +1,7 @@
 package br.com.tresptecnologia.model.aquisicaoprocedimento;
 
 import br.com.tresptecnologia.model.entity.BaseEntityRequest;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,6 +13,7 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AquisicaoProcedimentoRequest {
 
     private Long id;
