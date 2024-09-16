@@ -2,8 +2,6 @@ package br.com.tresptecnologia.service.color;
 
 import org.springframework.stereotype.Service;
 
-import java.util.Locale;
-
 @Service
 public class ColorEventoService implements IColorEventoService {
 
